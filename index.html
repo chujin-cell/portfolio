@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Deng Jin — Product Manager & Designer</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;900&family=Playfair+Display:ital,wght@0,700;1,400;1,700&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Space+Mono:wght@400;700&family=Noto+Serif+SC:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:#FAF8F4; --fg:#1C1C1A; --accent:#C6F135; --accent-dark:#8fb800;
+    --soft:#6B6459; --muted:#A09488; --border:#E2D8CE; --ph:#EDE3D4;
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  html{font-size:16px;scroll-behavior:smooth;}
+  body{background:var(--bg);color:var(--fg);font-family:'DM Sans',sans-serif;cursor:none;overflow-x:hidden;}
+
+  #co{position:fixed;top:0;left:0;width:28px;height:28px;border:1.5px solid var(--fg);border-radius:50%;pointer-events:none;z-index:9999;mix-blend-mode:multiply;}
+  #ci{position:fixed;top:0;left:0;width:6px;height:6px;background:var(--accent-dark);border-radius:50%;pointer-events:none;z-index:9999;}
+
+  /* Nav */
+  nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:1.25rem 3rem;background:rgba(250,248,244,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);}
+  .nav-logo{font-family:'Playfair Display',serif;font-style:italic;font-size:1.1rem;color:var(--fg);text-decoration:none;}
+  .nav-links{display:flex;gap:2rem;}
+  .nav-links a{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--soft);text-decoration:none;transition:color .2s;}
+  .nav-links a:hover,.nav-links a.active{color:var(--fg);}
+
+  /* ── HERO ── */
+  .hero{min-height:100vh;display:grid;grid-template-columns:42% 1fr;padding-top:0;}
+
+  .hero-photo{position:relative;overflow:hidden;}
+  .hero-photo img{width:100%;height:100%;object-fit:cover;object-position:top;display:block;min-height:100vh;}
+  .hero-ph{width:100%;min-height:100vh;background:var(--ph);display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:'Space Mono',monospace;font-size:11px;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;text-align:center;gap:.5rem;}
+  .hero-ph::before{content:'[ PHOTO ]';}
+
+  .hero-right{display:flex;flex-direction:column;justify-content:center;padding:6rem 5rem 6rem 5rem;}
+  .hero-badge{display:flex;align-items:center;gap:.75rem;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:2.5rem;}
+  .hero-badge::before{content:'';width:20px;height:1px;background:var(--muted);}
+
+  .hero-headline{font-family:'Noto Serif SC',serif;font-weight:900;font-size:clamp(3.2rem,5.5vw,5.5rem);line-height:1.05;color:var(--fg);margin-bottom:2rem;letter-spacing:-.02em;}
+  .hero-headline .hl{background:var(--accent);padding:0 .08em;display:inline;}
+
+  .hero-desc{font-family:'DM Sans',sans-serif;font-size:1rem;line-height:1.9;color:var(--soft);max-width:420px;margin-bottom:2.5rem;}
+
+  .hero-btns{display:flex;gap:1rem;flex-wrap:wrap;}
+  .btn-dark{padding:.85rem 2rem;background:var(--fg);color:#fff;font-family:'Noto Serif SC',serif;font-size:.9rem;text-decoration:none;border-radius:2px;transition:background .2s;white-space:nowrap;}
+  .btn-dark:hover{background:#333;}
+  .btn-outline{padding:.85rem 2rem;border:1.5px solid var(--fg);color:var(--fg);font-family:'Noto Serif SC',serif;font-size:.9rem;text-decoration:none;border-radius:2px;transition:all .2s;white-space:nowrap;}
+  .btn-outline:hover{background:var(--fg);color:#fff;}
+
+  /* Marquee */
+  .marquee-bar{background:var(--accent);overflow:hidden;padding:.7rem 0;white-space:nowrap;}
+  .marquee-track{display:inline-flex;animation:marquee 22s linear infinite;}
+  .marquee-item{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1rem;text-transform:uppercase;color:var(--fg);letter-spacing:.06em;padding:0 2rem;}
+  .marquee-item span{color:rgba(0,0,0,.3);margin-left:2rem;}
+  @keyframes marquee{0%{transform:translateX(0)} 100%{transform:translateX(-50%)}}
+
+  /* ── PROJECTS ── */
+  .sec{padding:5rem 3rem;opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease;}
+  .sec.vis{opacity:1;transform:none;}
+  .sec-inner{max-width:1160px;margin:0 auto;}
+  .sec-label{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:2rem;display:flex;align-items:center;gap:.75rem;}
+  .sec-label::before{content:'';display:inline-block;width:20px;height:1px;background:var(--muted);}
+
+  .projects-list{display:flex;flex-direction:column;gap:0;}
+
+  .project-card{display:grid;grid-template-columns:1fr 42%;gap:4rem;border-top:1px solid var(--border);padding:4rem 0;align-items:center;text-decoration:none;color:inherit;transition:opacity .25s;}
+  .project-card:last-child{border-bottom:1px solid var(--border);}
+  .project-card:hover{opacity:1;transform:translateY(-3px);}  .project-card:hover .pc-img img{transform:scale(1.03);}  .pc-img img{transition:transform .35s ease;}  .project-card{transition:transform .28s ease,opacity .28s;}
+
+  .pc-text{padding-right:4rem;}
+  .pc-meta{display:flex;align-items:center;gap:1.5rem;font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:1.25rem;}
+  .pc-meta .pc-num{color:var(--fg);font-weight:700;}
+  .pc-title{font-family:'Playfair Display',serif;font-style:italic;font-weight:700;font-size:clamp(2.5rem,4vw,3.8rem);line-height:1;color:var(--fg);margin-bottom:.75rem;}
+  .pc-title .zh{font-family:'Noto Serif SC',serif;font-style:normal;font-weight:700;}
+  .pc-subtitle{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1rem;text-transform:uppercase;letter-spacing:.04em;color:var(--fg);margin-bottom:1.25rem;line-height:1.3;max-width:380px;}
+  .pc-desc-zh{font-family:'DM Sans',sans-serif;font-size:.875rem;line-height:1.85;color:var(--soft);max-width:400px;margin-bottom:1.5rem;}
+  .pc-tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:1.75rem;}
+  .pc-tag{font-family:'DM Sans',sans-serif;font-size:12px;padding:.3rem .75rem;border:1px solid var(--border);border-radius:20px;color:var(--soft);background:#fff;}
+  .pc-link{display:inline-flex;align-items:center;gap:.5rem;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--fg);border-bottom:1px solid var(--fg);padding-bottom:2px;}
+
+  .pc-img{min-height:420px;max-height:500px;border-radius:6px;overflow:hidden;background:var(--ph);display:flex;align-items:center;justify-content:center;font-family:'Space Mono',monospace;font-size:10px;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;}
+  .pc-img img{width:100%;height:100%;object-fit:cover;display:block;}
+
+  /* About placeholder */
+  .about-ph{background:#fff;padding:5rem 3rem;text-align:center;}
+  .about-ph-inner{max-width:600px;margin:0 auto;font-family:'Space Mono',monospace;font-size:11px;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;border:1px dashed var(--border);padding:3rem;border-radius:4px;}
+
+  /* Footer */
+  .footer{border-top:1px solid var(--border);padding:2.5rem 3rem;display:flex;justify-content:space-between;align-items:center;max-width:1160px;margin:0 auto;}
+  .footer-logo{font-family:'Playfair Display',serif;font-style:italic;font-size:1rem;color:var(--fg);}
+  .footer-copy{font-family:'Space Mono',monospace;font-size:10px;color:var(--muted);letter-spacing:.08em;}
+
+  @media(max-width:768px){
+    nav{padding:1rem 1.5rem;}
+    .hero{grid-template-columns:1fr;}
+    .hero-photo{min-height:60vw;}
+    .hero-photo img,.hero-ph{min-height:60vw;}
+    .hero-right{padding:3rem 1.5rem;}
+    .hero-headline{font-size:clamp(2.8rem,10vw,4rem);}
+    .sec{padding:3.5rem 1.5rem;}
+    .project-card{grid-template-columns:1fr;}
+    .pc-text{padding-right:0;margin-bottom:2rem;}
+    .pc-img{height:240px;}
+  }
+
+  /* ── Connect the Dots ── */
+  .cd-section { padding:5rem 3rem; }
+  .cd-inner { max-width:1100px; margin:0 auto; }
+  .cd-h-track { position:relative; height:420px; margin-top:2.5rem; }
+  .cd-h-wave { position:absolute; left:0; top:140px; width:100%; height:120px; overflow:visible; pointer-events:none; z-index:0; }
+  /* 每个节点绝对定位，dot精确落在波浪上 */
+  .cd-h-node { position:absolute; width:155px; height:10px; transform:translateX(-50%); z-index:2; }
+  .cd-h-dot { width:10px; height:10px; border-radius:50%; background:var(--fg); margin:0 auto; }
+  .cd-h-card { position:absolute; width:100%; padding:0.75rem; background:#f9f9f7; border:1px solid var(--border); box-sizing:border-box; box-shadow:0 2px 8px rgba(0,0,0,.06); transition:border-color .25s, box-shadow .25s, transform .25s, z-index 0s; cursor:default; }
+  .cd-h-node { z-index:2; transition:z-index 0s; }
+  .cd-h-node:hover { z-index:10; }
+  .cd-h-card:hover { border-color:var(--accent-dark); box-shadow:0 6px 24px rgba(0,0,0,.08); transform:translateY(-3px); }
+  .cd-h-card--above { bottom:calc(100% + 12px); left:0; }
+  .cd-h-card--below { top:calc(100% + 12px); left:0; }
+  .cd-h-meta { font-family:'Space Mono',monospace; font-size:9px; color:var(--muted); margin-bottom:0.35rem; letter-spacing:.06em; }
+  .cd-h-title { font-family:'Noto Serif SC',serif; font-weight:700; font-size:0.88rem; color:var(--fg); margin-bottom:0.4rem; line-height:1.3; }
+  .cd-h-body { font-family:'DM Sans',sans-serif; font-size:12.5px; color:var(--soft); line-height:1.8; }
+  .cd-h-node--current .cd-h-dot { background:var(--accent-dark); box-shadow:0 0 0 3px var(--accent); }
+  .cd-h-node--current .cd-h-title { color:var(--accent-dark); }
+  .cd-header { display:flex; align-items:flex-end; justify-content:space-between; margin-bottom:0; }
+  .cd-main-title { font-family:'Noto Serif SC',serif; font-weight:700; font-size:2rem; color:var(--fg); line-height:1.1; }
+  .cd-btn { font-family:'Space Mono',monospace; font-size:11px; letter-spacing:.08em; color:var(--fg); border:1px solid var(--fg); padding:0.5rem 1.2rem; text-decoration:none; transition:background .2s,color .2s; white-space:nowrap; }
+  .cd-btn:hover { background:var(--fg); color:#fff; }
+  .cd-quote { max-width:780px; margin:3rem auto 0; padding:0 0.5rem; }
+  .cd-quote p { font-family:'Noto Serif SC',serif; font-size:15px; color:var(--soft); line-height:2.2; letter-spacing:.04em; }
+  .cd-quote p + p { margin-top:1.2em; }
+  @media(max-width:800px) { .cd-section{padding:3rem 1.5rem;} .cd-h-track{overflow-x:auto;} }
+</style>
+</head>
+<body>
+<div id="co"></div>
+<div id="ci"></div>
+
+<nav>
+  <a href="portfolio.html" class="nav-logo">Deng Jin</a>
+  <div class="nav-links">
+    <a href="#">Home</a>
+    <a href="#projects" class="active">Projects</a>
+    <a href="about.html">About</a>
+  </div>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="hero">
+  <div class="hero-photo">
+    <img src="hero-photo.jpg" style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block;">
+  </div>
+  <div class="hero-right">
+    <div class="hero-badge">Open to Work</div>
+    <h1 class="hero-headline">
+      打<span class="hl">造</span><br>
+      有温度<br>
+      的产品
+    </h1>
+    <p class="hero-desc">相信好的产品，是用户与商业之间最温暖的桥梁。每一次迭代，都让人与产品的距离更近一步。</p>
+    <div class="hero-btns">
+      <a href="#projects" class="btn-dark">查看项目 →</a>
+      <a href="mailto:dengjin@example.com" class="btn-outline">联系我</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── MARQUEE ── -->
+
+<!-- ── PROJECTS ── -->
+<section class="sec" id="projects">
+  <div class="sec-inner">
+    <div class="sec-label">Selected Work / 精选项目</div>
+    <div class="projects-list">
+
+      <!-- Project 01 -->
+      <a href="project-furnipair.html" class="project-card">
+        <div class="pc-text">
+          <div class="pc-meta">
+            <span class="pc-num">01</span>
+            <span>Service Design / Sustainability</span>
+            <span>2019.10 — 2020.6</span>
+          </div>
+          <div class="pc-title"><em>FURNIPAR</em> <span class="zh">家具派</span></div>
+          <div class="pc-subtitle">Reducing Waste Through<br>Circular Service Design</div>
+          <p class="pc-desc-zh">一个致力于减少二手家具资源浪费的服务平台。通过建立"家具身份证"、社区仓储箱以及拼车运输等创新服务模式，提升二手家具的利用率。项目涵盖了从线上交易到线下DIY工作坊的全链路体验设计，旨在构建一个可持续的家具循环生态。</p>
+          <div class="pc-tags">
+            <span class="pc-tag">服务设计</span>
+            <span class="pc-tag">循环经济</span>
+            <span class="pc-tag">交互设计</span>
+            <span class="pc-tag">用户研究</span>
+          </div>
+          <span class="pc-link">View Case Study →</span>
+        </div>
+        <div class="pc-img">
+          <img src="project-furnipar.jpg" alt="FURNIPAR project cover">
+        </div>
+      </a>
+
+      <!-- Project 02 -->
+      <a href="project-bookstore.html" class="project-card">
+        <div class="pc-text">
+          <div class="pc-meta">
+            <span class="pc-num">02</span>
+            <span>Service Design / Space Design</span>
+            <span>2020.7 — 2021.7</span>
+          </div>
+          <div class="pc-title"><em>JINGSHI</em> <span class="zh">经世书局</span></div>
+          <div class="pc-subtitle">Reimagining an Independent<br>Bookstore's Service Experience</div>
+          <p class="pc-desc-zh">重构一家独立书店的服务体验——将空间、社区与文化融合为一个有机的生命系统。通过共创设计、集装箱建筑改造与数字触点整合，打造兼具商业价值与文化温度的书局新形态。</p>
+          <div class="pc-tags">
+            <span class="pc-tag">服务设计</span>
+            <span class="pc-tag">空间设计</span>
+            <span class="pc-tag">体验设计</span>
+            <span class="pc-tag">上海</span>
+          </div>
+          <span class="pc-link">View Case Study →</span>
+        </div>
+        <div class="pc-img">
+          <img src="project-jingshi.jpg" alt="经世书局 project cover">
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── ABOUT / Connect the Dots ── -->
+<section class="cd-section fade" id="about">
+  <div class="cd-inner">
+    <div class="cd-header">
+      <div>
+        <h2 class="cd-main-title">关于我</h2>
+        <div class="sec-label" style="margin-top:0.5rem;">Connect the Dots</div>
+      </div>
+      <a href="about.html" class="cd-btn">了解更多 →</a>
+    </div>
+    <div class="cd-h-track">
+
+      <!-- 手绘波浪线 -->
+      <svg class="cd-h-wave" viewBox="0 0 800 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <filter id="hand-drawn" x="-5%" y="-30%" width="110%" height="160%">
+            <feTurbulence type="fractalNoise" baseFrequency="0.012 0.035" numOctaves="2" seed="9" result="noise"/>
+            <feDisplacementMap in="SourceGraphic" in2="noise" scale="2" xChannelSelector="R" yChannelSelector="G"/>
+          </filter>
+        </defs>
+        <path d="M0,60 C30,60 42,60 57,60 C90,110 138,110 171,60 C204,10 252,10 286,60 C318,106 366,112 400,60 C434,8 470,6 514,60 C548,112 592,112 629,60 C662,8 706,8 743,60 C762,60 800,60 800,60"
+          stroke="#b0a89c" stroke-width="1.5" fill="none" stroke-linecap="round" filter="url(#hand-drawn)"/>
+      </svg>
+
+      <!-- 01: 平缓起点 x=30 y_svg=60 → top=195px -->
+      <div class="cd-h-node" style="left:3.75%;top:195px;">
+        <div class="cd-h-dot"></div>
+        <div class="cd-h-card cd-h-card--above">
+          <div class="cd-h-meta">01 · 2015</div>
+          <div class="cd-h-title">环境设计</div>
+          <div class="cd-h-body">从空间读懂"以人为中心"，却逐渐看到未来的交互核心正在从物理实体向数字化转移。</div>
+        </div>
+      </div>
+
+      <!-- 02: 下弧底部 x=114 y_svg=98 → top=233px -->
+      <div class="cd-h-node" style="left:14.25%;top:233px;">
+        <div class="cd-h-dot"></div>
+        <div class="cd-h-card cd-h-card--above">
+          <div class="cd-h-meta">02 · 2017</div>
+          <div class="cd-h-title">蔬心农场（创业项目）</div>
+          <div class="cd-h-body">帮助农民建立有机蔬菜商业模式——第一次感受到，好的机制设计可以让商业逻辑产生真实的社会价值。</div>
+        </div>
+      </div>
+
+      <!-- 03: 上弧顶部 x=228 y_svg=23 → top=158px -->
+      <div class="cd-h-node" style="left:28.5%;top:158px;">
+        <div class="cd-h-dot"></div>
+        <div class="cd-h-card cd-h-card--below">
+          <div class="cd-h-meta">03 · 2019</div>
+          <div class="cd-h-title">建筑设计院（米川建筑）</div>
+          <div class="cd-h-body">项目不只是一栋建筑——协调人、流程、商业与技术，让多重因素共同服务于一个目标。</div>
+        </div>
+      </div>
+
+      <!-- 04: 下弧底部 x=342 y_svg=97 → top=232px -->
+      <div class="cd-h-node" style="left:42.75%;top:232px;">
+        <div class="cd-h-dot"></div>
+        <div class="cd-h-card cd-h-card--above">
+          <div class="cd-h-meta">04 · 2022</div>
+          <div class="cd-h-title">产品服务设计</div>
+          <div class="cd-h-body">米兰理工：产品只是服务的载体。双钻模型、设计冲刺——科学的方法论让直觉变得可验证。</div>
+        </div>
+      </div>
+
+      <!-- 05: 上弧顶部 x=454 y_svg=21 → top=156px -->
+      <div class="cd-h-node" style="left:56.75%;top:156px;">
+        <div class="cd-h-dot"></div>
+        <div class="cd-h-card cd-h-card--below">
+          <div class="cd-h-meta">05 · 2022–2023</div>
+          <div class="cd-h-title">智己汽车</div>
+          <div class="cd-h-body">第一次端到端负责功能从 0 到 1 上线。数据说话，迭代落地，在量产节奏中磨出产品直觉。</div>
+        </div>
+      </div>
+
+      <!-- 06: 波浪交叉点 x=514 y_svg=60 → top=195px -->
+      <div class="cd-h-node" style="left:64.25%;top:195px;">
+        <div class="cd-h-dot"></div>
+        <div class="cd-h-card cd-h-card--above">
+          <div class="cd-h-meta">06 · 2023</div>
+          <div class="cd-h-title">管理工程双学位</div>
+          <div class="cd-h-body">产品经理不仅要对用户体验负责，更要对产品的商业成功负责。补齐了设计师通常缺乏的理性思维。</div>
+        </div>
+      </div>
+
+      <!-- 07: 下弧底部 x=571 y_svg=99 → top=234px -->
+      <div class="cd-h-node" style="left:71.375%;top:234px;">
+        <div class="cd-h-dot"></div>
+        <div class="cd-h-card cd-h-card--above">
+          <div class="cd-h-meta">07 · 2024.7–12</div>
+          <div class="cd-h-title">WPS · AI 协同</div>
+          <div class="cd-h-body">逐渐形成判断：不要让 AI 替代人，而要让人与 AI 各做擅长的事——Augmented Intelligence。</div>
+        </div>
+      </div>
+
+      <!-- 07: 波浪交叉点 x=628 y_svg=60 → top=195px -->
+      <div class="cd-h-node" style="left:78.5%;top:195px;">
+        <div class="cd-h-dot"></div>
+        <div class="cd-h-card cd-h-card--above">
+          <div class="cd-h-meta">08 · 2024</div>
+          <div class="cd-h-title">奥迪中国</div>
+          <div class="cd-h-body">通过竞品分析对行业宏观洞察与趋势预判，深化了在商业约束下的决策判断力。</div>
+        </div>
+      </div>
+
+      <!-- 08: 上弧顶部 x=685 y_svg=21 → top=156px (当前) -->
+      <div class="cd-h-node cd-h-node--current" style="left:85.625%;top:156px;">
+        <div class="cd-h-dot"></div>
+        <div class="cd-h-card cd-h-card--below">
+          <div class="cd-h-meta">09 · 2025 →</div>
+          <div class="cd-h-title">小冰 · 进行中</div>
+          <div class="cd-h-body">迅速识别并拆解业务的重复性、规则性环节，利用 Coze 快速搭建 MVP 智能体，用技术手段迅速撬动业务杠杆。</div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="cd-quote">
+      <p>我无法预知未来，只能在回望时，才发现那些看似杂乱的点滴，是如何奇妙地串联在一起的。所以，我必须相信，此刻的好奇心与探索，终将在未来某一天，以我意想不到的方式，连接成一条属于我的独特路径。</p>
+      <p>回顾过往，从建筑空间的感知，到服务系统的思考，再到如今 AI 产品的重构。我发现，那些曾经看似无关的设计点滴，如今正汇聚成一股力量，指引我用更本质、更人文的视角，去探索下一代智能产品的可能。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<div style="border-top:1px solid var(--border);padding:2.5rem 3rem;display:flex;justify-content:space-between;align-items:center;">
+  <div style="font-family:'Playfair Display',serif;font-style:italic;font-size:1rem;color:var(--fg);">Deng Jin</div>
+  <div style="font-family:'Space Mono',monospace;font-size:10px;color:var(--muted);letter-spacing:.08em;">© 2025 · dengjin</div>
+</div>
+
+<script>
+  const co=document.getElementById('co'),ci=document.getElementById('ci');
+  let mx=0,my=0,ox=0,oy=0;
+  document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;ci.style.left=(mx-3)+'px';ci.style.top=(my-3)+'px';});
+  (function loop(){ox+=(mx-14-ox)*.12;oy+=(my-14-oy)*.12;co.style.left=ox+'px';co.style.top=oy+'px';requestAnimationFrame(loop);})();
+  const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('vis');}),{threshold:.15});
+  document.querySelectorAll('.sec').forEach(s=>obs.observe(s));
+</script>
+
+</body>
+</html>
