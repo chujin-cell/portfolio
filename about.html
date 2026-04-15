@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About — Deng Jin</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;900&family=Playfair+Display:ital,wght@0,700;1,400;1,700&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Space+Mono:wght@400;700&family=Noto+Serif+SC:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:#FAF8F4; --fg:#1C1C1A; --accent:#C6F135; --accent-dark:#8fb800;
+    --soft:#6B6459; --muted:#A09488; --border:#E2D8CE; --ph:#EDE3D4;
+    --white:#fff;
+  }
+  *,*::before,*::after { box-sizing:border-box; margin:0; padding:0; }
+  html { font-size:16px; scroll-behavior:smooth; }
+  body { background:var(--bg); color:var(--fg); font-family:'DM Sans',sans-serif; cursor:none; overflow-x:hidden; }
+
+  #co { position:fixed;top:0;left:0;width:28px;height:28px;border:1.5px solid var(--fg);border-radius:50%;pointer-events:none;z-index:9999;mix-blend-mode:multiply; }
+  #ci { position:fixed;top:0;left:0;width:6px;height:6px;background:var(--accent-dark);border-radius:50%;pointer-events:none;z-index:9999; }
+
+  /* ── Nav ── */
+  nav { position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:1.25rem 3rem;background:rgba(250,248,244,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--border); }
+  .nav-logo { font-family:'Playfair Display',serif;font-style:italic;font-size:1.1rem;color:var(--fg);text-decoration:none; }
+  .nav-links { display:flex;gap:2rem; }
+  .nav-links a { font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--soft);text-decoration:none;transition:color .2s; }
+  .nav-links a:hover, .nav-links a.active { color:var(--fg); }
+
+  /* ── Intro Banner ── */
+  .intro { padding:9rem 3rem 5rem; max-width:1160px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:5rem; align-items:end; }
+  .intro-left {}
+  .intro-greeting { font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);display:flex;align-items:center;gap:.75rem;margin-bottom:1.5rem; }
+  .intro-greeting::before { content:'';width:20px;height:1px;background:var(--muted); }
+  .intro-name { font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(4rem,7vw,7rem);text-transform:uppercase;line-height:.88;letter-spacing:-.02em;color:var(--fg); }
+  .intro-name em { font-family:'Playfair Display',serif;font-style:italic;color:var(--accent-dark); }
+  .intro-title { font-family:'Noto Serif SC',serif;font-size:1.1rem;color:var(--muted);margin-top:.75rem; }
+
+  .intro-right { padding-bottom:.5rem; }
+  .intro-bio { font-family:'DM Sans',sans-serif;font-size:1rem;line-height:1.9;color:var(--soft);margin-bottom:1.5rem; }
+  .intro-bio-zh { font-family:'DM Sans',sans-serif;font-size:13px;font-style:italic;color:var(--muted);line-height:1.85;border-left:2px solid var(--border);padding-left:1rem;margin-bottom:1.5rem; }
+  .btn-download { display:inline-flex;align-items:center;gap:.5rem;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--fg);background:var(--accent);padding:.6rem 1.25rem;border-radius:2px;text-decoration:none;transition:opacity .2s; }
+  .btn-download:hover { opacity:.8; }
+  .btn-contact { display:inline-flex;align-items:center;gap:.5rem;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--fg);background:transparent;border:1.5px solid var(--fg);padding:.6rem 1.25rem;border-radius:2px;text-decoration:none;transition:all .2s; }
+  .btn-contact:hover { background:var(--fg);color:var(--bg); }
+
+
+  .stat-row { display:flex;gap:2.5rem; }
+  .stat-item {}
+  .stat-num { font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:2.5rem;line-height:1;color:var(--fg); }
+  .stat-num span { color:var(--accent-dark); }
+  .stat-label { font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-top:.25rem; }
+
+  /* ── Marquee ── */
+  .marquee-bar { background:var(--accent);overflow:hidden;padding:.6rem 0;white-space:nowrap; }
+  .marquee-track { display:inline-flex;animation:marquee 22s linear infinite; }
+  .marquee-item { font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:.95rem;text-transform:uppercase;color:var(--fg);letter-spacing:.06em;padding:0 2rem; }
+  .marquee-item span { color:rgba(0,0,0,.3);margin-left:2rem; }
+  @keyframes marquee { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
+
+  /* ── Main Grid ── */
+  .main-grid { max-width:1160px;margin:0 auto;padding:4rem 3rem 6rem;display:grid;grid-template-columns:300px 1fr;gap:5rem;align-items:start; }
+
+  /* ── Sidebar ── */
+  .sidebar {}
+  .sb-block { margin-bottom:3rem; }
+  .sb-photo { width:100%;aspect-ratio:3/4;background:var(--ph);border-radius:6px;display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:'Space Mono',monospace;font-size:10px;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;margin-bottom:2.5rem;overflow:hidden; }
+  .sb-photo img { width:100%;height:100%;object-fit:cover;object-position:top; }
+
+  .sb-label { font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:1rem;display:flex;align-items:center;gap:.5rem; }
+  .sb-label::before { content:'';width:14px;height:1px;background:var(--border); }
+
+  /* Education */
+  .edu-item { padding:.9rem 0;border-bottom:1px solid var(--border); }
+  .edu-item:last-child { border-bottom:none; }
+  .edu-school { font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1rem;color:var(--fg);margin-bottom:.2rem; }
+  .edu-degree { font-family:'DM Sans',sans-serif;font-size:12px;color:var(--soft);line-height:1.5;margin-bottom:.25rem; }
+  .edu-meta { font-family:'Space Mono',monospace;font-size:9px;color:var(--muted);letter-spacing:.06em; }
+
+  /* Skills */
+  .skill-cloud { display:flex;flex-wrap:wrap;gap:.4rem; }
+  .skill-tag { font-family:'DM Sans',sans-serif;font-size:11px;padding:.3rem .65rem;border:1px solid var(--border);border-radius:20px;color:var(--soft);background:var(--white); }
+
+  /* Tools */
+  .tools-row { display:flex;flex-wrap:wrap;gap:.4rem; }
+  .tool-badge { font-family:'Space Mono',monospace;font-size:9px;padding:.25rem .6rem;background:var(--fg);color:var(--white);border-radius:3px;letter-spacing:.04em; }
+
+  /* Contact */
+  .contact-list { display:flex;flex-direction:column;gap:.6rem; }
+  .contact-item { display:flex;align-items:center;gap:.6rem;font-family:'DM Sans',sans-serif;font-size:12px;color:var(--soft); }
+  .contact-item::before { content:'→';font-family:'Space Mono',monospace;font-size:9px;color:var(--accent-dark); }
+
+  /* ── Main Content ── */
+  .main-content {}
+
+  /* Section header */
+  .sec-head { display:flex;align-items:center;gap:1rem;margin-bottom:2rem; }
+  .sec-head-label { font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted); }
+  .sec-head-line { flex:1;height:1px;background:var(--border); }
+
+  /* Experience Timeline */
+  .timeline { display:flex;flex-direction:column;gap:0;margin-bottom:4rem; }
+  .tl-item { display:grid;grid-template-columns:90px 1fr;gap:1.5rem;padding:1.75rem 0;border-bottom:1px solid var(--border);position:relative; }
+  .tl-item:last-child { border-bottom:none; }
+
+  .tl-year { padding-top:.15rem; }
+  .tl-badge { display:inline-block;font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.06em;background:var(--fg);color:var(--white);padding:.3rem .5rem;border-radius:3px;white-space:nowrap; }
+  .tl-badge.current { background:var(--accent-dark);color:var(--white); }
+  .tl-dot { width:8px;height:8px;background:var(--accent-dark);border-radius:50%;margin:0 auto;margin-top:.75rem; }
+
+  .tl-body {}
+  .tl-company { font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1.15rem;text-transform:uppercase;color:var(--fg);letter-spacing:.02em; }
+  .tl-role { font-family:'DM Sans',sans-serif;font-size:13px;color:var(--accent-dark);font-weight:500;margin:.15rem 0 .75rem; }
+  .tl-location { font-family:'Space Mono',monospace;font-size:9px;color:var(--muted);letter-spacing:.06em;margin-bottom:.75rem; }
+  .tl-bullets { list-style:none;display:flex;flex-direction:column;gap:.5rem; }
+  .tl-bullets li { font-family:'DM Sans',sans-serif;font-size:13px;line-height:1.75;color:var(--soft);padding-left:1rem;position:relative; }
+  .tl-bullets li::before { content:'';position:absolute;left:0;top:.65em;width:4px;height:4px;background:var(--border);border-radius:50%; }
+  .tl-bullets li strong { color:var(--fg);font-weight:500; }
+
+  /* Projects */
+  .proj-grid { display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:4rem; }
+  .proj-card { border:1px solid var(--border);border-radius:6px;padding:1.25rem;background:var(--white); }
+  .proj-card-num { font-family:'Space Mono',monospace;font-size:9px;color:var(--accent-dark);letter-spacing:.08em;margin-bottom:.5rem; }
+  .proj-card-title { font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1.1rem;text-transform:uppercase;color:var(--fg);margin-bottom:.4rem; }
+  .proj-card-desc { font-family:'DM Sans',sans-serif;font-size:12px;color:var(--soft);line-height:1.65; }
+
+  /* Awards */
+  .awards-list { display:flex;flex-direction:column;gap:.75rem;margin-bottom:4rem; }
+  .award-item { display:flex;align-items:start;gap:1rem;padding:.9rem 1rem;background:var(--white);border:1px solid var(--border);border-radius:4px; }
+  .award-icon { font-size:1.1rem;flex-shrink:0;margin-top:.1rem; }
+  .award-text { font-family:'DM Sans',sans-serif;font-size:13px;color:var(--soft);line-height:1.6; }
+  .award-text strong { color:var(--fg);font-weight:500; }
+
+  /* Footer */
+  .footer { border-top:1px solid var(--border);padding:2.5rem 3rem;display:flex;justify-content:space-between;align-items:center; }
+  .footer-logo { font-family:'Playfair Display',serif;font-style:italic;font-size:1rem;color:var(--fg); }
+  .footer-copy { font-family:'Space Mono',monospace;font-size:10px;color:var(--muted);letter-spacing:.08em; }
+
+  /* Fade-in */
+  .fade { opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s ease; }
+  .fade.vis { opacity:1;transform:none; }
+
+  @media(max-width:900px) {
+    nav { padding:1rem 1.5rem; }
+    .intro { grid-template-columns:1fr;gap:2rem;padding:8rem 1.5rem 3rem; }
+    .main-grid { grid-template-columns:1fr;padding:3rem 1.5rem 4rem; }
+    .sb-photo { aspect-ratio:unset;height:280px; }
+    .proj-grid { grid-template-columns:1fr; }
+    .tl-item { grid-template-columns:70px 1fr;gap:1rem; }
+  }
+</style>
+</head>
+<body>
+<div id="co"></div>
+<div id="ci"></div>
+
+<nav>
+  <a href="portfolio.html" class="nav-logo">Deng Jin</a>
+  <div class="nav-links">
+    <a href="portfolio.html">Home</a>
+    <a href="portfolio.html#projects">Projects</a>
+    <a href="about.html" class="active">About</a>
+  </div>
+</nav>
+
+<!-- ── Intro ── -->
+<div class="intro fade">
+  <div class="intro-left">
+    <div class="intro-greeting">Hello, I'm</div>
+    <div class="intro-name">DENG<br><em>Jin</em></div>
+    <div class="intro-title">邓金 · 产品经理 & 体验设计师</div>
+  </div>
+  <div class="intro-right">
+    <p class="intro-bio">Product Manager focused on AI product design, user growth and experience design. I believe great products are the warmest bridge between users and business — every iteration brings people one step closer.</p>
+    <p class="intro-bio-zh">专注 AI 产品设计、用户增长与体验设计的产品经理。相信好的产品是用户与商业之间最温暖的桥梁，每一次迭代都让人与产品的距离更近一步。</p>
+    <div style="display:flex;gap:1rem;flex-wrap:wrap;">
+      <a href="resume.pdf" download="邓金简历.pdf" class="btn-download">↓ 下载简历 / Download CV</a>
+      <a href="mailto:yyddlin@163.com" class="btn-contact">✉ 立即联系 / Contact</a>
+    </div>
+  </div>
+</div>
+
+<!-- ── Main Grid ── -->
+<div class="main-grid">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar fade">
+
+    <!-- Contact -->
+    <div class="sb-block">
+      <div class="sb-label">Contact / 联系方式</div>
+      <div class="contact-list">
+        <div class="contact-item">yyddlin@163.com</div>
+        <div class="contact-item">+86 131 3215 1038</div>
+        <div class="contact-item">Milan, Italy / China</div>
+      </div>
+    </div>
+
+    <!-- Education -->
+    <div class="sb-block">
+      <div class="sb-label">Education / 教育经历</div>
+      <div class="edu-item">
+        <div class="edu-school">Politecnico di Milano</div>
+        <div class="edu-degree">产品服务系统设计 &amp; 管理工程 双学位</div>
+        <div class="edu-meta">2022 – 2026 · 米兰，意大利 · GPA 28.2/30</div>
+      </div>
+      <div class="edu-item">
+        <div class="edu-school">天津工业大学</div>
+        <div class="edu-degree">环境设计</div>
+        <div class="edu-meta">2015 – 2019 · 天津，中国 · GPA 3.76/4 (Top 3%)</div>
+      </div>
+    </div>
+
+    <!-- Skills -->
+    <div class="sb-block">
+      <div class="sb-label">Core Skills / 核心技能</div>
+      <div class="skill-cloud">
+        <span class="skill-tag">AI产品设计</span>
+        <span class="skill-tag">服务设计</span>
+        <span class="skill-tag">用户研究</span>
+        <span class="skill-tag">体验设计</span>
+        <span class="skill-tag">产品驱动增长</span>
+        <span class="skill-tag">数据分析</span>
+        <span class="skill-tag">Prompt工程</span>
+        <span class="skill-tag">AI大模型评测</span>
+        <span class="skill-tag">交互设计</span>
+        <span class="skill-tag">A/B Test</span>
+      </div>
+    </div>
+
+    <!-- Tools -->
+    <div class="sb-block">
+      <div class="sb-label">Tools / 工具</div>
+      <div class="tools-row">
+        <span class="tool-badge">Figma</span>
+        <span class="tool-badge">SQL</span>
+        <span class="tool-badge">Excel</span>
+        <span class="tool-badge">Xmind</span>
+        <span class="tool-badge">PS</span>
+        <span class="tool-badge">3Dmax</span>
+        <span class="tool-badge">Coze</span>
+      </div>
+    </div>
+
+    <!-- Languages -->
+    <div class="sb-block">
+      <div class="sb-label">Languages / 语言</div>
+      <div class="skill-cloud">
+        <span class="skill-tag">中文 — Native</span>
+        <span class="skill-tag">English — Working (TOEFL 96)</span>
+        <span class="skill-tag">CET-6</span>
+      </div>
+    </div>
+
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main-content fade">
+
+    <!-- Work Experience -->
+    <div class="sec-head">
+      <div class="sec-head-label">Professional Experience / 工作经历</div>
+      <div class="sec-head-line"></div>
+    </div>
+
+    <div class="timeline">
+
+      <div class="tl-item">
+        <div class="tl-year">
+          <div class="tl-badge current">2025.12 — Now</div>
+          <div class="tl-dot"></div>
+        </div>
+        <div class="tl-body">
+          <div class="tl-company">小冰跃动科技 · 微软小冰</div>
+          <div class="tl-role">AI 营销产品经理</div>
+          <div class="tl-location">北京，中国</div>
+          <ul class="tl-bullets">
+            <li>基于 RAG 技术在 Coze 平台搭建 <strong>AI 医疗助手智能体</strong>，实现 7×24 小时自动化专业问答服务</li>
+            <li>拆解运营工作流，搭建 <strong>AI 自动化内容工作流</strong>，实现营销文章与智能客服的批量生产</li>
+            <li>研究 GEO 趋势，优化内容策略，提升官网产品信息的可见性与触达效率</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-year">
+          <div class="tl-badge">2025.7 — 12</div>
+          <div class="tl-dot"></div>
+        </div>
+        <div class="tl-body">
+          <div class="tl-company">金山办公 WPS</div>
+          <div class="tl-role">表格 AI 应用产品经理</div>
+          <div class="tl-location">珠海，中国</div>
+          <ul class="tl-bullets">
+            <li>从 0 到 1 上线 <strong>AI 智能提取、AI 简历助手、AI 情绪识别</strong>等 7 个 AI 功能插件</li>
+            <li>推动 AI 能力插件化策略，开发周期从 <strong>40 天缩短至 3 天</strong>，支撑 100+ AI 功能快速上新</li>
+            <li>主导智能分列功能诊断优化，标注归因 500 条客诉，<strong>用户采纳率提升至 90%</strong></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-year">
+          <div class="tl-badge">2025.2 — 6</div>
+          <div class="tl-dot"></div>
+        </div>
+        <div class="tl-body">
+          <div class="tl-company">Tangity · NTT Group</div>
+          <div class="tl-role">用户体验设计师 (Intern)</div>
+          <div class="tl-location">Milan, Italy</div>
+          <ul class="tl-bullets">
+            <li>参与意大利头部定制旅行平台 <strong>Aliday B 端 AI 助手</strong>产品设计，将 AI 深度集成至旅行社工作流</li>
+            <li>参与意大利国家级支付平台 <strong>Pagopa 数字钱包商业模式设计</strong>，通过深度市场调研提出一站式数字税务平台方案</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-year">
+          <div class="tl-badge">2023.4 — 11</div>
+          <div class="tl-dot"></div>
+        </div>
+        <div class="tl-body">
+          <div class="tl-company">大众汽车集团 · 奥迪中国</div>
+          <div class="tl-role">行业与产品创新研究员</div>
+          <div class="tl-location">长春，中国</div>
+          <ul class="tl-bullets">
+            <li>完成 6 份竞品深度报告（蔚来、理想等）、7 份技术趋势调研，调研结论被用于<strong>定义下一代车载功能</strong></li>
+            <li>设计"周更-双周-双月"三级情报推送机制，搭建中德双方常态化协同沟通体系</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-year">
+          <div class="tl-badge">2022.4 — 11</div>
+          <div class="tl-dot"></div>
+        </div>
+        <div class="tl-body">
+          <div class="tl-company">上汽集团 · 智己汽车</div>
+          <div class="tl-role">手机 APP · ToC 产品经理</div>
+          <div class="tl-location">上海，中国</div>
+          <ul class="tl-bullets">
+            <li>重构蓝牙钥匙激活流程，优化界面文案与动效，显著降低新用户功能放弃率</li>
+            <li>设计并上线<strong>桌面车控小组件</strong>，关键操作步骤减少 <strong>60%</strong>（5–6 步 → 1–2 步）</li>
+            <li>基于 16 名用户深度访谈与 865 条反馈，主导远程控车首页结构性改版</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="tl-row">
+        <div class="tl-left">
+          <div class="tl-badge">2019.7 — 2021.10</div>
+          <div class="tl-dot"></div>
+        </div>
+        <div class="tl-body">
+          <div class="tl-company">米川工作室 · 水石建筑设计院</div>
+          <div class="tl-role">建筑师</div>
+          <div class="tl-location">上海，中国</div>
+          <div class="tl-location" style="margin-top:.35rem;color:var(--muted);font-size:12px;">主要项目：上海复旦经世书局 · 常州山外有山综合体 · 万科小镇社区服务中心</div>
+          <ul class="tl-bullets">
+            <li>主导<strong>用户调研与需求挖掘</strong>，结合访谈、问卷与竞品分析，支撑多类型商业项目的方案决策</li>
+            <li>设计<strong>多业态运营方案</strong>，提出"租金＋股金＋就业收入"模型，推动乡村振兴项目可持续落地</li>
+            <li><strong>跨角色协调推进</strong>，对接甲方、材料商与施工方，全程跟进项目交付</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Academic Projects -->
+    <div class="sec-head">
+      <div class="sec-head-label">Academic Projects / 项目经历</div>
+      <div class="sec-head-line"></div>
+    </div>
+
+    <div class="proj-grid" style="margin-bottom:4rem;">
+      <div class="proj-card">
+        <div class="proj-card-num">POLIMI STUDIO · 2023.9 — 2023.12</div>
+        <div class="proj-card-title">内外 × 阿道弗·皮尼基金会</div>
+        <p class="proj-card-desc">服务设计 — 通过参与式设计将米兰艺术家与郊区多元社区连接，输出服务蓝图、APP 设计与线下艺术展车方案。</p>
+      </div>
+      <div class="proj-card">
+        <div class="proj-card-num">POLIMI STUDIO · 2022.10 — 2023.3</div>
+        <div class="proj-card-title">NetNook 能源社区</div>
+        <p class="proj-card-desc">产品服务设计 — 为缓解欧洲能源问题提出可持续城市工作空间方案，覆盖数字与实体全触点体验设计。</p>
+      </div>
+    </div>
+
+    <!-- Recognition -->
+    <div class="sec-head">
+      <div class="sec-head-label">Recognition / 荣誉与奖项</div>
+      <div class="sec-head-line"></div>
+    </div>
+
+    <div class="awards-list">
+      <div class="award-item">
+        <div class="award-icon">★</div>
+        <div class="award-text"><strong>校长一等奖学金</strong> — 天津工业大学</div>
+      </div>
+      <div class="award-item">
+        <div class="award-icon">★</div>
+        <div class="award-text"><strong>天津人民政府奖学金</strong> — 天津市人民政府</div>
+      </div>
+      <div class="award-item">
+        <div class="award-icon">☆</div>
+        <div class="award-text"><strong>Enactus 创行创业团队</strong> — 华北赛区第四名</div>
+      </div>
+      <div class="award-item">
+        <div class="award-icon">☆</div>
+        <div class="award-text"><strong>学生班主任 / 辅导员助理</strong> · 天津美术馆常驻志愿者</div>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<!-- ── Footer ── -->
+<div class="footer">
+  <div class="footer-logo">Deng Jin</div>
+  <div class="footer-copy">© 2025 · yyddlin@163.com</div>
+</div>
+
+<script>
+  const co=document.getElementById('co'),ci=document.getElementById('ci');
+  let mx=0,my=0,ox=0,oy=0;
+  document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;ci.style.left=(mx-3)+'px';ci.style.top=(my-3)+'px';});
+  (function loop(){ox+=(mx-14-ox)*.12;oy+=(my-14-oy)*.12;co.style.left=ox+'px';co.style.top=oy+'px';requestAnimationFrame(loop);})();
+  const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('vis');}),{threshold:.1});
+  document.querySelectorAll('.fade').forEach(s=>obs.observe(s));
+</script>
+
+</body>
+</html>

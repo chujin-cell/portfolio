@@ -1,0 +1,31 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(unzip -o \"/Users/dengjin/Documents/网页上的下载内容/dengjin-portfolio.zip\" -d .)",
+      "Bash(open \"/Users/dengjin/dengjin zuopinji/project-furnipair.html\")",
+      "Bash(npx serve:*)",
+      "mcp__Claude_Preview__preview_start",
+      "Bash(python3 -)",
+      "Bash(xargs ls:*)",
+      "Bash(ls ~/Desktop/1* ~/Desktop/2*)",
+      "Bash(ls ~/Desktop/3* ~/Desktop/4*)",
+      "Bash(python3)",
+      "Bash(ls ~/Desktop/*.png)",
+      "Bash(pip3 install:*)",
+      "Bash(python3 -c ':*)",
+      "Bash(ls /var/folders/*/T/*.png /tmp/*.png)",
+      "Bash(ls ~/Library/Caches/claude*)",
+      "Bash(ls /tmp/*.jpg /tmp/*.png /tmp/*.jpeg)",
+      "Bash(ls ~/Downloads/*.png ~/Downloads/*.jpg)",
+      "Bash(sort -t_ -k1)",
+      "Bash(ls -lt ~/Downloads/*.png)",
+      "Bash(ls -lt ~/Desktop/*.png ~/Desktop/*.jpg)",
+      "Bash(ls /Users/dengjin/Desktop/2-10*)",
+      "Bash(ls /Users/dengjin/Desktop/2-11*)",
+      "Bash(ls /Users/dengjin/Desktop/2-15*)",
+      "Bash(grep -iE \"\\\\.\\(png|jpg|jpeg\\)$\")",
+      "Bash(curl -s \"http://localhost:3456/portfolio.html\")",
+      "Bash(ls -lh \"/Users/dengjin/dengjin zuopinji/\"*.jpg \"/Users/dengjin/dengjin zuopinji/\"*.png)"
+    ]
+  }
+}
