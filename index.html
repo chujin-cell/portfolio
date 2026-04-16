@@ -90,6 +90,16 @@
   .footer-logo{font-family:'Playfair Display',serif;font-style:italic;font-size:1rem;color:var(--fg);}
   .footer-copy{font-family:'Space Mono',monospace;font-size:10px;color:var(--muted);letter-spacing:.08em;}
 
+  /* Toast */
+  #toast{position:fixed;bottom:2.5rem;left:50%;transform:translateX(-50%) translateY(12px);background:var(--fg);color:#fff;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.08em;padding:.7rem 1.5rem;border-radius:2px;opacity:0;pointer-events:none;transition:opacity .25s,transform .25s;z-index:9999;white-space:nowrap;}
+  #toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+
+  /* Placeholder project card */
+  .project-card--wip{cursor:pointer;opacity:.55;}
+  .project-card--wip:hover{opacity:.75;transform:none;}
+  .pc-wip-img{width:100%;height:100%;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:.75rem;background:var(--ph);}
+  .pc-wip-label{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);border:1px dashed var(--muted);padding:.35rem .8rem;}
+
   @media(max-width:768px){
     nav{padding:1rem 1.5rem;}
     .hero{grid-template-columns:1fr;}
@@ -221,6 +231,63 @@
           <img src="project-jingshi.jpg" alt="经世书局 project cover">
         </div>
       </a>
+
+      <!-- Project 03 WIP -->
+      <div class="project-card project-card--wip" onclick="showToast()">
+        <div class="pc-text">
+          <div class="pc-meta">
+            <span class="pc-num">03</span>
+            <span>Product Design / Automotive</span>
+            <span>2022</span>
+          </div>
+          <div class="pc-title"><em>IM ZHIJI</em> <span class="zh">智己汽车</span></div>
+          <div class="pc-subtitle">Car Control Home Page Revision<br>Page Revision Based on User Experience</div>
+          <p class="pc-desc-zh">智己汽车是一家致力于为用户创造愉悦生活方式的新能源汽车企业。在产品快速迭代后，App 已达到"能用"但尚未达到"好用"的阶段。本项目通过用户研究与设计冲刺，重新梳理车控首页体验，让核心功能真正贴近用户真实需求。</p>
+          <div class="pc-tags">
+            <span class="pc-tag">体验设计</span>
+            <span class="pc-tag">用户研究</span>
+            <span class="pc-tag">用户分析</span>
+            <span class="pc-tag">Design Sprint</span>
+          </div>
+          <span class="pc-link" style="opacity:.5;">Case Study Coming Soon</span>
+        </div>
+        <div class="pc-img"><div class="pc-wip-img"><span class="pc-wip-label">In Progress</span></div></div>
+      </div>
+
+      <!-- Project 04 WIP -->
+      <div class="project-card project-card--wip" onclick="showToast()">
+        <div class="pc-text">
+          <div class="pc-meta">
+            <span class="pc-num">04</span>
+            <span>Service Design / Agriculture</span>
+            <span>2015.5 — 2016.10</span>
+          </div>
+          <div class="pc-title"><em>RELIEVED FARM</em> <span class="zh">蔬心农场</span></div>
+          <div class="pc-subtitle">Relieved Farm Service Design<br>Exploring Localised Improvements to the CSA Model</div>
+          <p class="pc-desc-zh">致力于优化 CSA 模式，持续本地化改良，探索符合城乡协调发展目标的农场服务体系。通过消除城市消费者对有机蔬菜的疑虑、加强城乡新居民沟通，实现农民可持续增收与区域农业的长效发展。</p>
+          <div class="pc-tags">
+            <span class="pc-tag">服务设计</span>
+            <span class="pc-tag">CSA 模式</span>
+            <span class="pc-tag">市场研究</span>
+            <span class="pc-tag">产品设计</span>
+          </div>
+          <span class="pc-link" style="opacity:.5;">Case Study Coming Soon</span>
+        </div>
+        <div class="pc-img"><div class="pc-wip-img"><span class="pc-wip-label">In Progress</span></div></div>
+      </div>
+
+      <!-- Project 05 WIP -->
+      <div class="project-card project-card--wip" onclick="showToast()">
+        <div class="pc-text">
+          <div class="pc-meta">
+            <span class="pc-num">05</span>
+            <span>Coming Soon</span>
+          </div>
+          <div class="pc-title" style="color:var(--muted);">项目五</div>
+          <div class="pc-subtitle" style="color:var(--muted);">正在整理中，敬请期待</div>
+        </div>
+        <div class="pc-img"><div class="pc-wip-img"><span class="pc-wip-label">In Progress</span></div></div>
+      </div>
 
     </div>
   </div>
@@ -362,7 +429,16 @@
   (function loop(){ox+=(mx-14-ox)*.12;oy+=(my-14-oy)*.12;co.style.left=ox+'px';co.style.top=oy+'px';requestAnimationFrame(loop);})();
   const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('vis');}),{threshold:.15});
   document.querySelectorAll('.sec').forEach(s=>obs.observe(s));
+
+  function showToast(){
+    const t=document.getElementById('toast');
+    t.classList.add('show');
+    clearTimeout(t._timer);
+    t._timer=setTimeout(()=>t.classList.remove('show'),2200);
+  }
 </script>
+
+<div id="toast">正在更新中，敬请期待 ✦</div>
 
 </body>
 </html>
