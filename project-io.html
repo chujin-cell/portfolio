@@ -1,0 +1,1991 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IO — Exchange Our Creativity · Deng Jin Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;900&family=Playfair+Display:ital,wght@0,700;1,400;1,700&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,400&family=Space+Mono:wght@400;700&family=Noto+Serif+SC:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #F9F9F7;
+    --fg: #1C1C1A;
+    --navy: #2B1F6E;
+    --teal: #5ECFC9;
+    --coral: #F07878;
+    --accent-bg: #ECEAF8;
+    --soft: #5A5450;
+    --muted: #9A9590;
+    --ph: #ECEAF8;
+    --border: #E0DAD4;
+    --dark: #1A1728;
+  }
+  *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
+  html { font-size:16px; scroll-behavior:smooth; }
+  body { background:var(--bg); color:var(--fg); font-family:'DM Sans',sans-serif; overflow-x:hidden; cursor:none; }
+
+  /* Cursor */
+  #co { position:fixed;top:0;left:0;width:28px;height:28px;border:1.5px solid var(--fg);border-radius:50%;pointer-events:none;z-index:9999;mix-blend-mode:multiply; }
+  #ci { position:fixed;top:0;left:0;width:6px;height:6px;background:var(--teal);border-radius:50%;pointer-events:none;z-index:9999; }
+
+  /* Nav */
+  nav { position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:1.25rem 3rem;background:rgba(249,249,247,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--border); }
+  .nav-logo { font-family:'Playfair Display',serif;font-style:italic;font-size:1.1rem;color:var(--fg);text-decoration:none; }
+  .nav-links { display:flex;gap:2rem; }
+  .nav-links a { font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--soft);text-decoration:none;transition:color .2s; }
+  .nav-links a:hover { color:var(--navy); }
+
+  /* Hero */
+  .hero { padding:9rem 3rem 5rem;max-width:1080px;margin:0 auto; }
+  .hero-meta { display:flex;align-items:center;gap:1.5rem;margin-bottom:3rem; }
+  .hero-meta span { font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--navy); }
+  .hero-meta .line { flex:1;max-width:80px;height:1px;background:var(--muted); }
+  .hero-title-en { font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(3.5rem,9vw,7rem);line-height:.92;text-transform:uppercase;color:var(--fg);letter-spacing:-.02em; }
+  .hero-title-en em { font-family:'Playfair Display',serif;font-style:italic;font-weight:700;color:var(--navy);text-transform:none; }
+  .hero-sub { font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:clamp(1rem,2.5vw,1.4rem);letter-spacing:.28em;text-transform:uppercase;color:var(--teal);margin-top:.5rem; }
+  .hero-desc { margin-top:2.5rem;max-width:640px; }
+  .hero-desc p.en { font-family:'Playfair Display',serif;font-size:1.1rem;line-height:1.8;color:var(--fg); }
+  .hero-strip { width:100%;height:2px;background:linear-gradient(90deg,var(--navy),transparent);margin-top:3rem; }
+
+  /* Section */
+  .sec { padding:5rem 3rem; }
+  .sec-inner { max-width:1080px;margin:0 auto; }
+  .sec-label { display:flex;align-items:center;gap:.75rem;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--navy);margin-bottom:1.5rem; }
+  .sec-label::before { content:'';display:inline-block;width:24px;height:1px;background:var(--navy); }
+  .sec-chapter { font-size:1.35rem;letter-spacing:.08em;font-weight:700;margin-bottom:2rem; }
+  .sec-chapter::before { width:36px;height:2px; }
+
+  /* Title block */
+  .title-block { margin-bottom:2.5rem; }
+  .t-en { font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(2rem,5vw,3.5rem);text-transform:uppercase;line-height:.95;color:var(--fg);letter-spacing:-.01em; }
+  .t-en em { font-family:'Playfair Display',serif;font-style:italic;font-weight:700;color:var(--navy);text-transform:none; }
+  .t-sub { font-family:'DM Sans',sans-serif;font-size:13px;color:var(--muted);font-style:italic;margin-top:.75rem;line-height:1.75; }
+
+  /* Dark quote section */
+  .quote-sec { background:var(--dark);padding:5rem 3rem; }
+  .quote-sec .sec-inner { max-width:1080px;margin:0 auto; }
+
+  /* Separator */
+  hr.sep { border:none;border-top:1px solid var(--border);margin:0; }
+
+  /* Placeholder */
+  .ph { background:var(--ph);border-radius:6px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.5rem; }
+  .ph svg { opacity:.4; }
+  .ph span { font-family:'Space Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;color:var(--navy);opacity:.7; }
+
+  /* Grids */
+  .two-col { display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start; }
+  .three-col { display:grid;grid-template-columns:1fr 1fr 1fr;gap:2rem; }
+  .four-col { display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem; }
+  .two-col > *, .three-col > *, .four-col > * { min-width:0; }
+
+  /* Cards */
+  .card { background:#fff;border:1px solid var(--border);border-radius:6px;padding:1.5rem; }
+  .card-num { font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:2rem;color:rgba(43,31,110,.1);line-height:1;margin-bottom:.5rem; }
+
+  /* Stats */
+  .stat-num { font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(3rem,7vw,5rem);line-height:1;color:var(--coral); }
+
+  /* Tags */
+  .tag-row { display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.75rem; }
+  .tag { font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.08em;text-transform:uppercase;padding:.25rem .6rem;border-radius:3px;border:1px solid var(--border);color:var(--muted); }
+  .tag.teal { border-color:var(--teal);color:var(--teal); }
+  .tag.coral { border-color:var(--coral);color:var(--coral); }
+  .tag.navy { border-color:var(--navy);color:var(--navy); }
+
+  /* Bilingual */
+  .t-zh { font-family:'Noto Serif SC',serif;font-weight:700;font-size:clamp(1.2rem,3vw,2rem);color:var(--navy);line-height:1.1;margin-top:.2rem; }
+  .body-zh { font-family:'DM Sans',sans-serif;font-size:13px;line-height:1.9;color:var(--muted);font-style:italic;border-left:2px solid var(--border);padding-left:1rem;margin-top:.6rem; }
+  .hero-title-zh { font-family:'Noto Serif SC',serif;font-weight:900;font-size:clamp(2rem,6vw,4.5rem);line-height:1;color:var(--navy);margin-top:.3rem;letter-spacing:.04em; }
+
+  /* Quote card inline */
+  .q-card { padding:1.25rem 1.5rem;background:var(--accent-bg);border-left:3px solid var(--navy);border-radius:0 6px 6px 0; }
+  .q-card p { font-size:13px;line-height:1.75;font-style:italic;color:var(--soft); }
+  .q-card .attr { font-size:10px;font-family:'Space Mono',monospace;color:var(--muted);margin-top:.5rem; }
+
+  /* ── RESEARCH ── */
+  .dark-block { background:var(--dark);border-radius:8px;padding:3rem; }
+  .dark-block h3 { font-family:'Playfair Display',serif;font-style:italic;font-size:1.6rem;color:#fff;margin-bottom:1.5rem; }
+  .dark-block p { font-size:14px;color:rgba(255,255,255,.75);line-height:1.85; }
+  .dark-block strong { color:#fff; }
+  .dark-quote { font-family:'Playfair Display',serif;font-style:italic;font-size:1.1rem;color:rgba(255,255,255,.9);margin:1rem 0; }
+  .dark-attr { font-size:12px;color:rgba(255,255,255,.35); }
+
+  /* Persona cards */
+  .persona-card { background:#fff;border:1px solid var(--border);border-radius:6px;padding:1.25rem; }
+  .persona-flag { font-size:1.5rem;margin-bottom:.4rem; }
+  .persona-name { font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1.1rem;text-transform:uppercase;color:var(--navy);margin-bottom:.15rem; }
+  .persona-origin { font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.06em;text-transform:uppercase;color:var(--teal);margin-bottom:.6rem; }
+  .persona-desc { font-size:12.5px;color:var(--soft);line-height:1.65; }
+
+  /* Case study card */
+  .cs-card { background:#fff;border:1px solid var(--border);border-radius:6px;padding:1.75rem;border-top:3px solid var(--navy); }
+  .cs-meta { display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:1rem; }
+  .cs-meta span { font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.08em;text-transform:uppercase;padding:.2rem .5rem;border-radius:2px;background:var(--accent-bg);color:var(--navy); }
+
+  /* HMW */
+  .hmw-block { background:var(--dark);border-radius:8px;padding:4rem;margin-top:4rem;text-align:center; }
+  .hmw-block blockquote { font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(1.25rem,2.6vw,1.85rem);color:#fff;line-height:1.6;max-width:700px;margin:0 auto 2rem; }
+  .hmw-answer { font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1.1rem;letter-spacing:.1em;text-transform:uppercase;color:var(--teal);margin-top:1.5rem; }
+
+  /* ── CONCEPT ── */
+  .io-split { display:grid;grid-template-columns:1fr 1fr 1fr;gap:1.5rem;margin-top:1.5rem; }
+  .io-col { border-radius:6px;padding:2rem;border:1px solid var(--border);background:#fff; }
+  .io-col.outside { border-top:3px solid var(--teal); }
+  .io-col.inside { border-top:3px solid var(--navy); }
+  .io-col.both { border-top:3px solid var(--coral); }
+  .io-col-title { font-family:'Playfair Display',serif;font-style:italic;font-size:1.25rem;color:var(--navy);margin-bottom:.85rem; }
+
+  .keyword-cloud { display:flex;flex-wrap:wrap;gap:.4rem;margin-top:1.25rem; }
+  .kw { font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:.3rem .75rem;border-radius:3px;border:1px solid var(--border);color:var(--muted); }
+
+  /* Offer cards */
+  .offer-grid { display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-top:2rem; }
+  .offer-card { background:#fff;border:1px solid var(--border);border-radius:6px;padding:1.75rem; }
+  .offer-card.out { border-top:3px solid var(--teal); }
+  .offer-card.inn { border-top:3px solid var(--coral); }
+  .offer-card-title { font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1rem;text-transform:uppercase;color:var(--fg);margin-bottom:1rem;letter-spacing:.06em; }
+  .offer-list { list-style:none;padding:0; }
+  .offer-list li { font-size:13px;color:var(--soft);line-height:1.7;padding:.4rem 0 .4rem 1rem;border-bottom:1px solid var(--border);position:relative; }
+  .offer-list li::before { content:'·';position:absolute;left:0;color:var(--teal); }
+
+  /* Core Offerings */
+  .co-wrap { display:flex;align-items:center;gap:3rem;padding:2.5rem;background:#fff;border:1px solid var(--border);border-radius:8px;margin-top:1.5rem; }
+  .co-center { flex-shrink:0;width:140px;text-align:center;background:var(--navy);border-radius:8px;padding:1.25rem; }
+  .co-center-icon { font-size:1.5rem;margin-bottom:.5rem; }
+  .co-center-name { font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.9rem;text-transform:uppercase;color:#fff;line-height:1.2; }
+  .co-center-sub { font-family:'Space Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-top:.3rem; }
+  .co-nodes { flex:1;display:flex;flex-direction:column;gap:1rem; }
+  .co-row { display:flex;align-items:center;gap:.75rem; }
+  .co-line { width:40px;height:1px;background:var(--border); }
+  .co-arrowhead { color:var(--muted);font-size:10px; }
+  .co-node { flex:1;background:var(--bg);border:1px solid var(--border);border-radius:6px;padding:.85rem 1.1rem; }
+  .co-node.young { border-left:3px solid var(--muted); }
+  .co-node.mixed { border-left:3px solid var(--teal); }
+  .co-node.community { border-left:3px solid var(--coral); }
+  .co-node-title { font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.95rem;text-transform:uppercase;color:var(--fg);margin-bottom:.2rem; }
+  .co-node-sub { font-size:12px;color:var(--soft);line-height:1.55; }
+
+  /* Activity render cards */
+  .act-render-grid { display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem; }
+  .act-render-card { background:#fff;border:1px solid var(--border);border-radius:6px;overflow:hidden; }
+  .act-render-ph { aspect-ratio:16/10; }
+  .act-render-body { padding:1.1rem; }
+  .act-render-floor { display:inline-block;font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.06em;text-transform:uppercase;padding:.2rem .5rem;border-radius:2px;margin-bottom:.6rem; }
+  .act-render-floor.ground { background:rgba(94,207,201,.12);color:var(--teal); }
+  .act-render-floor.second { background:rgba(43,31,110,.1);color:var(--navy); }
+  .act-render-floor.basement { background:rgba(240,120,120,.12);color:var(--coral); }
+  .act-render-title { font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1.05rem;text-transform:uppercase;color:var(--fg);margin-bottom:.4rem; }
+  .act-render-desc { font-size:12px;color:var(--soft);line-height:1.6; }
+
+  /* ── PROJECT ── */
+  .step-flow { display:flex;gap:0;margin-top:1.5rem; }
+  .step-item { flex:1;display:flex;flex-direction:column;align-items:center;text-align:center;position:relative;padding:0 .5rem; }
+  .step-item:not(:last-child)::after { content:'';position:absolute;top:20px;left:50%;width:100%;height:2px;background:var(--border);z-index:0; }
+  .step-dot { width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1rem;z-index:1;position:relative; }
+  .step-dot.teal { background:var(--teal);color:#fff; }
+  .step-dot.teal-o { background:#fff;border:2px solid var(--teal);color:var(--teal); }
+  .step-dot.coral { background:var(--coral);color:#fff; }
+  .step-title { font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.9rem;text-transform:uppercase;color:var(--fg);margin-top:.75rem;line-height:1.2; }
+  .step-desc { font-size:11px;color:var(--muted);line-height:1.5;margin-top:.3rem;max-width:120px; }
+
+  /* Activity cards */
+  .activity-grid { display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem; }
+  .act-card { background:#fff;border:1px solid var(--border);border-radius:6px;padding:1.25rem;border-left:3px solid var(--teal); }
+  .act-card.side { border-left-color:var(--coral); }
+  .act-floor { font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:.5rem; }
+  .act-name { font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1rem;text-transform:uppercase;color:var(--fg);margin-bottom:.5rem; }
+  .act-desc { font-size:12px;color:var(--soft);line-height:1.6; }
+
+  /* Branding */
+  .brand-insp-grid { display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:1.5rem; }
+  .brand-kw { background:#fff;border:1px solid var(--border);border-radius:6px;padding:1.1rem;display:flex;flex-direction:column;gap:.4rem; }
+  .brand-kw-word { font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.1rem;letter-spacing:.06em;text-transform:uppercase;color:var(--fg); }
+  .brand-kw-note { font-size:11.5px;color:var(--muted);line-height:1.55; }
+  .logo-usage { display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:1rem;margin-top:1.5rem; }
+  .logo-use-card { background:#fff;border:1px solid var(--border);border-radius:6px;padding:.85rem;text-align:center; }
+  .logo-use-badge { font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.08em;text-transform:uppercase;margin-bottom:.75rem; }
+  .logo-use-card.ok .logo-use-badge { color:var(--teal); }
+  .logo-use-card.no .logo-use-badge { color:var(--coral); }
+  .logo-use-circle { width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto .75rem; }
+  .logo-use-label { font-size:10.5px;color:var(--muted); }
+
+  /* Touchpoints */
+  .tp-grid { display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;margin-top:1.5rem; }
+  .tp-card { background:#fff;border:1px solid var(--border);border-radius:6px;overflow:hidden; }
+  .tp-header { font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:.5rem 1rem; }
+  .tp-header.physical { background:rgba(94,207,201,.1);color:var(--teal); }
+  .tp-header.digital { background:rgba(43,31,110,.08);color:var(--navy); }
+  .tp-body { padding:1rem; }
+  .tp-name { font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1rem;text-transform:uppercase;color:var(--fg);margin-bottom:.5rem; }
+  .tp-desc { font-size:11.5px;color:var(--soft);line-height:1.6; }
+
+  /* Timeline */
+  .timeline-months { display:flex;gap:0;margin-bottom:.5rem;margin-left:140px; }
+  .timeline-month { flex:1;font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);text-align:center; }
+  .timeline-row { display:flex;align-items:center;height:28px;border-bottom:1px solid var(--border); }
+  .timeline-label { font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.06em;text-transform:uppercase;color:var(--soft);width:140px;flex-shrink:0; }
+  .timeline-bar-wrap { flex:1;height:8px;background:var(--border);border-radius:4px;position:relative;overflow:visible; }
+  .timeline-bar { position:absolute;height:8px;border-radius:4px;top:0; }
+  .timeline-bar.phase1 { background:var(--teal); }
+  .timeline-dots { display:flex;align-items:center;gap:4px; }
+  .timeline-dot { width:8px;height:8px;border-radius:50%;background:var(--coral);flex-shrink:0; }
+
+  /* ── SERVICE ── */
+  .stakeholder-wrap { display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start; }
+  .stakeholder-list { display:flex;flex-direction:column;gap:.5rem; }
+  .sh-row { display:flex;align-items:center;gap:.75rem; }
+  .sh-dot { width:8px;height:8px;border-radius:50%;flex-shrink:0; }
+  .sh-dot.outside { background:var(--teal); }
+  .sh-dot.inside { background:var(--coral); }
+  .sh-text { font-size:13px;color:var(--soft); }
+
+  /* Offering / System map placeholders */
+  .offering-map-ph { background:var(--ph);border-radius:6px;aspect-ratio:16/9;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem; }
+
+  /* Business Model Canvas */
+  .bmc { display:grid;grid-template-columns:1fr 1.4fr 1fr 1fr 1fr;gap:0;border:1px solid var(--border);border-radius:6px;overflow:hidden;margin-top:1.5rem; }
+  .bmc-cell { border:1px solid var(--border);padding:1.1rem;background:#fff; }
+  .bmc-cell.vp { background:var(--accent-bg); }
+  .bmc-cell.cost-s { background:rgba(240,120,120,.05); }
+  .bmc-cell.rev-s { background:rgba(94,207,201,.05); }
+  .bmc-cell.span-col2 { grid-column:span 2; }
+  .bmc-cell-h { font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--navy);margin-bottom:.75rem;font-weight:700; }
+  .bmc-list { list-style:none;padding:0; }
+  .bmc-list li { font-size:11.5px;color:var(--soft);line-height:1.6;padding:.2rem 0;border-bottom:1px solid var(--border); }
+  .bmc-list li:last-child { border:none; }
+
+  /* Journey Map */
+  .journey-col { background:#fff;border:1px solid var(--border);border-radius:6px;padding:1.5rem; }
+  .journey-user { display:flex;align-items:center;gap:.85rem;margin-bottom:1.25rem;padding-bottom:1rem;border-bottom:1px solid var(--border); }
+  .journey-icon { width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1rem; }
+  .journey-icon.teal { background:rgba(94,207,201,.15); }
+  .journey-icon.coral { background:rgba(240,120,120,.15); }
+  .journey-icon.grey { background:rgba(0,0,0,.04);border:1px solid var(--border); }
+  .journey-name { font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1rem;text-transform:uppercase;color:var(--fg);margin-bottom:.1rem; }
+  .journey-steps { display:flex;flex-direction:column;gap:.5rem; }
+  .j-step { display:flex;align-items:flex-start;gap:.6rem;font-size:12px;color:var(--soft);line-height:1.5; }
+  .j-num { width:20px;height:20px;border-radius:50%;background:var(--border);display:flex;align-items:center;justify-content:center;font-family:'Space Mono',monospace;font-size:9px;color:var(--muted);flex-shrink:0; }
+  .j-step.red .j-num { background:var(--coral);color:#fff; }
+
+  /* Service Blueprints */
+  .blueprint-ph { background:var(--ph);border-radius:6px;aspect-ratio:21/9;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.5rem; }
+  .blueprint-ph-title { font-family:'Playfair Display',serif;font-style:italic;font-size:1.1rem;color:var(--fg); }
+  .blueprint-ph-sub { font-family:'Space Mono',monospace;font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted); }
+
+  /* Flows */
+  .flows-grid { display:grid;grid-template-columns:1fr 1fr;gap:2rem; }
+  .flow-card { background:#fff;border:1px solid var(--border);border-radius:6px;padding:1.5rem; }
+  .flow-head { display:flex;align-items:center;gap:1rem;margin-bottom:1rem;padding-bottom:.85rem;border-bottom:1px solid var(--border); }
+  .flow-flag { font-size:1.5rem; }
+  .flow-name { font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1rem;text-transform:uppercase;color:var(--navy); }
+  .flow-meta { font-size:11.5px;color:var(--muted); }
+  .flow-quote { font-family:'Playfair Display',serif;font-style:italic;font-size:1rem;color:var(--fg);border-left:3px solid var(--navy);padding-left:.85rem;margin-bottom:1rem;line-height:1.6; }
+  .flow-attrs { display:flex;flex-direction:column;gap:.4rem;margin-bottom:1rem; }
+  .flow-attr { font-size:12px;color:var(--soft);line-height:1.6; }
+  .flow-path-row { display:flex;flex-wrap:wrap;gap:.35rem;margin-top:1rem;padding-top:.85rem;border-top:1px solid var(--border); }
+  .fp-tag { font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.06em;text-transform:uppercase;padding:.25rem .6rem;border-radius:3px; }
+  .fp-tag.t { background:rgba(94,207,201,.12);color:var(--teal);border:1px solid rgba(94,207,201,.35); }
+  .fp-tag.c { background:rgba(43,31,110,.07);color:var(--navy);border:1px solid rgba(43,31,110,.2); }
+
+  /* Financial */
+  .fin-3col { display:grid;grid-template-columns:1fr 1fr 1fr;gap:2rem;margin-top:1.5rem; }
+  .fin-block { background:#fff;border:1px solid var(--border);border-radius:6px;padding:1.5rem; }
+  .fin-block h4 { font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1rem;text-transform:uppercase;color:var(--navy);margin-bottom:1rem;letter-spacing:.06em; }
+  .fin-row { display:flex;justify-content:space-between;align-items:baseline;padding:.3rem 0;border-bottom:1px solid var(--border);font-size:12.5px; }
+  .fin-label { color:var(--soft); }
+  .fin-val { font-family:'Space Mono',monospace;font-size:11px;color:var(--fg); }
+  .fin-total-row { display:flex;justify-content:space-between;align-items:baseline;padding:.4rem 0;margin-top:.25rem;border-top:2px solid var(--navy); }
+  .fin-total-row .fin-label { font-weight:700;color:var(--fg); }
+  .fin-total-row .fin-val { font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1.2rem;color:var(--navy); }
+
+  /* Next footer */
+  .next-footer { padding:4rem 3rem;border-top:1px solid var(--border); }
+  .next-footer .sec-inner { max-width:1080px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:2rem; }
+  .back-link { display:inline-flex;align-items:center;gap:.5rem;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .2s; }
+  .back-link:hover { color:var(--fg); }
+  .footer-project { text-align:right; }
+  .footer-label { font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:.35rem; }
+  .footer-title { font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.5rem;text-transform:uppercase;color:var(--fg); }
+  .footer-team { font-size:12px;color:var(--muted);margin-top:.3rem; }
+
+  /* Utilities */
+  .mb4 { margin-bottom:4rem; }
+  .mb3 { margin-bottom:3rem; }
+  .mt2 { margin-top:2rem; }
+  .mt3 { margin-top:3rem; }
+  .sub-h { font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:700;color:var(--fg);margin-bottom:.5rem; }
+  .sub-h em { font-style:italic;color:var(--navy); }
+  .sub-note { font-size:13px;color:var(--muted);margin-bottom:1.5rem;font-style:italic; }
+
+  /* Responsive */
+  @media (max-width:900px) {
+    nav { padding:1rem 1.5rem; }
+    .hero { padding:7rem 1.5rem 3rem; }
+    .sec, .quote-sec { padding:3.5rem 1.5rem; }
+    .two-col { grid-template-columns:1fr;gap:2rem; }
+    .three-col { grid-template-columns:1fr 1fr;gap:1.5rem; }
+    .four-col { grid-template-columns:1fr 1fr;gap:1rem; }
+    .io-split { grid-template-columns:1fr; }
+    .offer-grid { grid-template-columns:1fr; }
+    .brand-insp-grid { grid-template-columns:1fr 1fr; }
+    .logo-usage { grid-template-columns:1fr 1fr; }
+    .tp-grid { grid-template-columns:1fr 1fr; }
+    .fin-3col { grid-template-columns:1fr;gap:1.5rem; }
+    .flows-grid { grid-template-columns:1fr; }
+    .act-render-grid { grid-template-columns:1fr 1fr; }
+    .activity-grid { grid-template-columns:1fr 1fr; }
+    .stakeholder-wrap { grid-template-columns:1fr; }
+    .bmc { grid-template-columns:1fr 1fr; }
+    .step-flow { flex-direction:column;gap:1.5rem; }
+    .step-item::after { display:none; }
+    .next-footer .sec-inner { flex-direction:column;align-items:flex-start; }
+    .footer-project { text-align:left; }
+    .hmw-block { padding:2.5rem 1.5rem; }
+  }
+  @media (max-width:600px) {
+    .three-col, .four-col { grid-template-columns:1fr; }
+    .brand-insp-grid { grid-template-columns:1fr; }
+    .tp-grid { grid-template-columns:1fr; }
+    .act-render-grid { grid-template-columns:1fr; }
+    .activity-grid { grid-template-columns:1fr; }
+    .co-wrap { flex-direction:column; }
+  }
+</style>
+</head>
+<body>
+
+<div id="co"></div>
+<div id="ci"></div>
+
+<!-- Nav -->
+<nav>
+  <a href="index.html" class="nav-logo">Deng Jin</a>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="index.html#projects">Projects</a>
+    <a href="about.html">About</a>
+  </div>
+</nav>
+
+<!-- Hero -->
+<div class="hero">
+  <div class="hero-meta">
+    <span>Project 04</span>
+    <div class="line"></div>
+    <span>Service Design · Politecnico di Milano</span>
+  </div>
+  <div class="hero-title-en">IO<br><em>Exchange Our Creativity</em></div>
+  <div class="hero-title-zh">交换我们的创造力</div>
+  <div class="hero-sub">Inside / Outside &nbsp;·&nbsp; 内部 / 外部</div>
+  <div class="hero-desc">
+    <p class="en">A service design proposal connecting Milan's distant neighborhoods with Fondazione Adolfo Pini through participatory art — bringing the institution outside and the community inside.</p>
+    <p style="font-family:'DM Sans',sans-serif;font-size:13px;line-height:1.85;color:var(--muted);font-style:italic;margin-top:.5rem;">通过参与式艺术，连接米兰郊区社区与阿道夫·皮尼基金会——将机构带向街头，将社区带回艺术空间。</p>
+  </div>
+  <div style="margin-top:2.5rem;display:flex;gap:3rem;flex-wrap:wrap;">
+    <div>
+      <div style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:.25rem;">Year</div>
+      <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1.1rem;color:var(--fg);">2023</div>
+    </div>
+    <div>
+      <div style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:.25rem;">Studio</div>
+      <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1.1rem;color:var(--fg);">PSSD — CityMatter_Stretching</div>
+    </div>
+    <div>
+      <div style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:.25rem;">Team</div>
+      <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1.1rem;color:var(--fg);">Battiato · Deng · Garancini · Hirata · Kuerban</div>
+    </div>
+    <div>
+      <div style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:.25rem;">Type</div>
+      <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1.1rem;color:var(--fg);">Service Design · Community</div>
+    </div>
+  </div>
+  <div class="hero-strip"></div>
+</div>
+
+<!-- ─── 00 PROJECT OVERVIEW ─── -->
+<section class="sec" id="overview">
+  <div class="sec-inner">
+    <img src="io-overview-33.jpg" style="width:100%;display:block;border-radius:8px;margin-bottom:2.5rem;">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start;">
+      <div>
+        <p style="font-size:13px;color:var(--fg);line-height:1.85;margin:0 0 1.25rem;">IO aims to reach marginalised communities and engage middle-school kids through art activities at Fondazione Pini, Corso Garibaldi 2. The concept centres on exchanging ideas across cultures to build a more inclusive social environment — going beyond stereotypes and spreading the Foundation's vision across all of Milan.</p>
+        <p style="font-size:13px;color:var(--fg);line-height:1.85;margin:0;">Rooted in the cultural heritage of Adolfo Pini and Renzo Bongiovanni Radice, the project grew from a deep analysis of Brera and Milan's peripheries — where a significant gap in art education exists and many teenagers are disoriented, often facing complex family situations.</p>
+      </div>
+      <div>
+        <p class="body-zh" style="font-size:13px;color:var(--muted);line-height:1.85;margin:0 0 1.25rem;">IO 旨在触达边缘化社区，为米兰初中生在 Fondazione Pini（Corso Garibaldi 2号）提供艺术活动。项目核心在于推动不同文化之间的思想交流，打造更具包容性的社会环境——突破偏见，向全体米兰市民传递基金会的愿景与使命。</p>
+        <p class="body-zh" style="font-size:13px;color:var(--muted);line-height:1.85;margin:0;">项目根植于 Adolfo Pini 与 Renzo Bongiovanni Radice 的文化遗产，源于对布雷拉区与米兰近郊的深度调研——不同区域之间艺术教育差距显著，大量青少年感到迷失，家庭状况也往往较为复杂。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── 01 THE RESEARCH ─── -->
+<section class="sec" id="research">
+  <div class="sec-inner">
+    <div class="sec-label sec-chapter">01 / The Research · 调研</div>
+    <div class="title-block">
+      <div class="t-en">Understanding the <em>City & Its People</em></div>
+      <div class="t-zh">理解城市与它的人</div>
+      <div class="t-sub">Milan's immigrant communities, participatory art practice, and the Fondazione Adolfo Pini as a catalyst for connection.</div>
+    </div>
+
+    <!-- The Suburbs -->
+    <div class="two-col mb4">
+      <div>
+        <h3 style="font-family:'Playfair Display',serif;font-size:1.4rem;color:var(--navy);margin-bottom:1.25rem;">The Suburbs</h3>
+        <p style="font-style:italic;font-size:14px;color:var(--muted);margin-bottom:.4rem;">Foreigners residing in Milan represent</p>
+        <div class="stat-num">18.8%</div>
+        <p style="font-size:13px;color:var(--muted);margin-bottom:1.25rem;">of the resident population.</p>
+        <p style="font-size:14px;color:var(--soft);line-height:1.8;margin-bottom:.85rem;">Immigrants in Milan, forced to live in rough areas, try to enlarge their territory through urban routes.</p>
+        <p style="font-size:14px;color:var(--soft);line-height:1.8;">Everyday, people living in suburbs <strong>cross social and spatial borders</strong> in their attempts to connect with the center of the city and sometimes improve their social status.</p>
+        <p class="body-zh">米兰的移民群体聚居于城市边缘地带，每天穿越社会与空间的双重边界，试图与城市中心建立连接，寻求更好的生活可能。</p>
+      </div>
+      <div style="display:flex;align-items:center;justify-content:center;">
+        <img src="io-suburbs-map.png" alt="Milan Suburbs Map" style="width:100%;display:block;border-radius:8px;">
+      </div>
+    </div>
+
+    <!-- Participatory Art -->
+    <!-- The Participatory Art — light layout -->
+    <div class="mb4" style="display:grid;grid-template-columns:1fr 1.2fr;gap:4rem;align-items:center;">
+      <div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:5rem;line-height:1;color:rgba(43,31,110,.08);margin-bottom:-.5rem;">01</div>
+        <h3 style="font-family:'Playfair Display',serif;font-size:1.75rem;font-weight:700;color:var(--fg);margin-bottom:.2rem;">The Participatory Art</h3>
+        <div style="font-family:'Noto Serif SC',serif;font-size:1rem;font-weight:700;color:var(--navy);margin-bottom:1.25rem;">参与式艺术</div>
+        <p style="font-size:14px;color:var(--soft);line-height:1.85;margin-bottom:.5rem;"><strong>Participatory art</strong> is an approach of making art which engages public participation in the creative process, letting them become co-authors, editors and observers of the work.</p>
+        <p style="font-size:12px;color:var(--muted);line-height:1.75;font-style:italic;margin-bottom:1.25rem;">参与式艺术是一种让公众参与创作过程的艺术形式，使其成为作品的共同作者、编辑与观察者。</p>
+        <p style="font-family:'Playfair Display',serif;font-style:italic;font-size:1.05rem;color:var(--fg);line-height:1.6;margin-bottom:.4rem;">"This type of art is incomplete without viewers' physical interaction."</p>
+        <p style="font-size:12px;color:var(--muted);font-style:italic;margin-bottom:1.5rem;">没有观众的身体参与，这类艺术便是不完整的。</p>
+        <div style="border-top:1px solid var(--border);padding-top:1.25rem;">
+          <div style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--teal);margin-bottom:.6rem;">What do the artists say? · 艺术家说</div>
+          <p style="font-size:13px;color:var(--soft);line-height:1.85;font-style:italic;margin-bottom:.5rem;">"Not like old-generation artists with a solitary mindset; young artists nowadays really like to work in groups. Lots of our projects actually involve mass participation, mostly with friends and other artists, but we are curious also about working with strangers like community residents."</p>
+          <p style="font-size:12px;color:var(--muted);line-height:1.75;font-style:italic;margin-bottom:.5rem;">与上一代独自创作的艺术家不同，当代年轻艺术家热衷于群体合作。我们的许多项目都涉及大规模参与——通常与朋友和其他艺术家合作，但我们也渴望与社区居民等陌生人共同创作。</p>
+          <p style="font-size:11px;color:var(--muted);font-family:'Space Mono',monospace;margin-top:.6rem;">— Winners of Pini Art Prize</p>
+        </div>
+      </div>
+      <div>
+        <img src="io-art-photos.png" alt="Participatory Art Photos" style="width:100%;display:block;border-radius:8px;">
+      </div>
+    </div>
+
+    <!-- Case Studies -->
+    <div class="mb4">
+      <div class="sec-label mb3">Case Studies</div>
+      <div class="two-col">
+        <div class="cs-card">
+          <div class="card-num">CS 03</div>
+          <img src="io-cs-01.png" alt="Artist-initiated Public Art" style="width:100%;display:block;border-radius:6px;margin-bottom:1rem;">
+          <h4 style="font-family:'Playfair Display',serif;font-size:1.25rem;color:var(--navy);margin-bottom:.15rem;">Artist-initiated Public Art</h4>
+          <div style="font-family:'Noto Serif SC',serif;font-size:.85rem;font-weight:700;color:var(--muted);margin-bottom:.75rem;">艺术家主导的公共艺术</div>
+          <div class="cs-meta"><span>Peterborough</span><span>City Hall</span><span>2022</span></div>
+          <p style="font-size:13px;color:var(--soft);line-height:1.7;margin-bottom:.5rem;">The city of Peterborough adopted the Public Art Policy in 2009, recognizing the role public art plays in creating culturally vibrant cities. The city promotes the creation of contemporary artwork in the public area in collaboration with arts or community organizations or with local businesses.</p>
+          <p style="font-size:12px;color:var(--muted);line-height:1.7;font-style:italic;margin-bottom:.7rem;">彼得伯勒市于2009年制定《公共艺术政策》，认可公共艺术在打造文化活力城市中的价值，推动与艺术机构、社区组织及当地企业合作，在公共空间中创作当代艺术作品。</p>
+          <div style="font-size:12px;color:var(--muted);"><strong>Target · 目标：</strong> Professional artists of all disciplines, communities and local businesses. / 各艺术门类的专业艺术家、社区及本地企业。</div>
+        </div>
+        <div class="cs-card">
+          <div class="card-num">CS 04</div>
+          <img src="io-cs-02.png" alt="Participatory Embroidery" style="width:100%;display:block;border-radius:6px;margin-bottom:1rem;">
+          <h4 style="font-family:'Playfair Display',serif;font-size:1.25rem;color:var(--navy);margin-bottom:.15rem;">Participatory Embroidery</h4>
+          <div style="font-family:'Noto Serif SC',serif;font-size:.85rem;font-weight:700;color:var(--muted);margin-bottom:.75rem;">参与式社区刺绣</div>
+          <div class="cs-meta"><span>Australia</span><span>Liam Benson</span><span>2013–2017</span></div>
+          <p style="font-size:13px;color:var(--soft);line-height:1.7;margin-bottom:.5rem;">The Participatory Community Embroidery project collaborated with a local studio and community members from diverse ethnic backgrounds, to co-create the map and flag which are interpretations of Australian national identity.</p>
+          <p style="font-size:12px;color:var(--muted);line-height:1.7;font-style:italic;margin-bottom:.7rem;">参与式社区刺绣项目与当地工作室及来自不同族裔背景的社区成员合作，共同创作地图与旗帜，诠释澳大利亚的国家认同。</p>
+          <div style="font-size:12px;color:var(--muted);"><strong>Target · 目标：</strong> Communities from different ethnic backgrounds. / 来自不同族裔背景的社区成员。</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- The Communities -->
+    <div class="mb4">
+      <div class="sec-label" style="margin-bottom:1.5rem;">The Communities · 郊区社区</div>
+
+      <!-- 全宽图 -->
+      <div style="border-radius:10px;overflow:hidden;margin-bottom:2rem;line-height:0;">
+        <img src="io-communities.png" alt="The Communities & Artists" style="width:100%;display:block;">
+      </div>
+
+      <!-- 图下：标题左 + 描述右 -->
+      <div style="display:grid;grid-template-columns:1fr 2fr;gap:3rem;align-items:start;">
+        <div>
+          <h3 style="font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:700;color:var(--fg);margin-bottom:.25rem;">The Communities</h3>
+          <div style="font-family:'Noto Serif SC',serif;font-size:1rem;font-weight:700;color:var(--navy);margin-bottom:1.25rem;">郊区社区居民</div>
+          <div class="tag-row">
+            <span class="tag teal">different ages</span>
+            <span class="tag teal">different origins</span>
+            <span class="tag teal">different works</span>
+            <span class="tag teal">different passions</span>
+            <span class="tag teal">different backgrounds</span>
+            <span class="tag teal">different habits</span>
+            <span class="tag teal">different needs</span>
+          </div>
+        </div>
+        <div>
+          <p style="font-size:14px;color:var(--soft);line-height:1.9;margin-bottom:.65rem;">Milan's suburban communities are made up of people from vastly different backgrounds — in age, origin, occupation and daily life. They share the same neighbourhoods but rarely share the same spaces of expression or cultural exchange.</p>
+          <p style="font-size:12px;color:var(--muted);line-height:1.75;font-style:italic;">米兰郊区社区由来自不同年龄、国籍、职业与生活方式的居民构成。他们共享同一片街区，却鲜少拥有共同表达与文化交流的空间——而这正是 IO 希望改变的。</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- HMW -->
+    <div class="hmw-block">
+      <div style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:rgba(94,207,201,.6);margin-bottom:1.5rem;">How Might We? · 我们如何做到？</div>
+      <blockquote>"How might we connect neighborhoods with lack of artistic access with artists who need participants for their projects?"</blockquote>
+      <div style="font-family:'Noto Serif SC',serif;font-size:clamp(1.1rem,2vw,1.5rem);color:rgba(255,255,255,.7);font-style:normal;margin:.75rem 0 2rem;line-height:1.8;">「我们如何将缺乏艺术资源的郊区社区，与需要参与者的艺术家连接起来？」</div>
+      <div style="font-family:'Playfair Display',serif;font-style:italic;font-size:1.15rem;color:rgba(255,255,255,.6);margin-bottom:.4rem;">Through participatory art. Through IO.</div>
+      <div style="font-family:'Noto Serif SC',serif;font-size:.9rem;color:rgba(255,255,255,.4);margin-bottom:2rem;">通过参与式艺术，通过 IO。</div>
+      <div style="display:flex;align-items:center;justify-content:center;gap:4rem;margin:2rem 0;">
+        <div style="text-align:center;">
+          <div style="font-family:'Space Mono',monospace;font-size:8px;color:rgba(255,255,255,.3);text-transform:uppercase;letter-spacing:.1em;margin-bottom:1rem;">Before</div>
+          <div style="display:flex;align-items:center;gap:.75rem;">
+            <span style="font-size:13px;color:rgba(255,255,255,.6);">suburbs</span>
+            <div style="width:50px;height:1px;border-top:1.5px dashed rgba(255,255,255,.2);position:relative;"><span style="position:absolute;top:-10px;left:50%;transform:translateX(-50%);color:var(--coral);font-size:16px;">?</span></div>
+            <span style="font-size:13px;color:rgba(255,255,255,.6);">artists</span>
+          </div>
+        </div>
+        <div style="width:1px;height:50px;background:rgba(255,255,255,.1);"></div>
+        <div style="text-align:center;">
+          <div style="font-family:'Space Mono',monospace;font-size:8px;color:rgba(255,255,255,.3);text-transform:uppercase;letter-spacing:.1em;margin-bottom:1rem;">After</div>
+          <div style="display:flex;align-items:center;gap:.75rem;">
+            <span style="font-size:13px;color:rgba(255,255,255,.6);">suburbs</span>
+            <div style="width:40px;height:2px;background:var(--teal);"></div>
+            <div style="width:40px;height:40px;background:var(--navy);border:2px solid var(--teal);border-radius:50%;display:flex;align-items:center;justify-content:center;"><span style="font-family:'Playfair Display',serif;font-style:italic;font-size:14px;color:var(--teal);font-weight:700;">io</span></div>
+            <div style="width:40px;height:2px;background:var(--teal);"></div>
+            <span style="font-size:13px;color:rgba(255,255,255,.6);">artists</span>
+          </div>
+        </div>
+      </div>
+      <div class="hmw-answer">Through participatory art · Through IO · 通过 IO，连接艺术与社区</div>
+    </div>
+  </div>
+</section>
+
+<hr class="sep">
+
+<!-- ─── 02 THE CONCEPT ─── -->
+<section class="sec" id="concept">
+  <div class="sec-inner">
+    <div class="sec-label sec-chapter">02 / The Concept · 概念</div>
+    <div class="title-block">
+      <div class="t-en">Mission & <em>Vision</em></div>
+      <div class="t-zh">使命与愿景</div>
+      <div class="t-sub">IO — Exchange our creativity. Taking participatory art outside the walls, bringing communities inside.</div>
+    </div>
+
+    <!-- Mission -->
+    <div class="two-col mb4">
+      <div>
+        <div style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.15em;text-transform:uppercase;color:var(--teal);margin-bottom:.75rem;">IO</div>
+        <p style="font-family:'Playfair Display',serif;font-style:italic;font-size:1.35rem;color:var(--fg);line-height:1.6;margin-bottom:1.25rem;">Exchange our creativity!</p>
+        <p style="font-size:14px;color:var(--soft);line-height:1.85;margin-bottom:1rem;">Participatory art experiences for <strong>everybody</strong> around the distant neighborhoods of Milan.</p>
+        <p style="font-size:14px;color:var(--soft);line-height:1.85;">Before closing, the Fondazione hosted workshops for children <em style="color:var(--coral);">inside</em> the walls. IO proposes taking participatory art <strong style="color:var(--teal);">outside</strong> to different groups — giving everyone the experience of living art in first person, creating and reinforcing communities.</p>
+        <div class="keyword-cloud">
+          <span class="kw">participation</span><span class="kw">movement</span><span class="kw">all the arts</span><span class="kw">infinite collaborations</span><span class="kw">inside</span><span class="kw">outside the walls</span>
+        </div>
+        <p class="body-zh">在基金会关闭前，仅面向儿童开展室内工坊。IO提出将参与式艺术带出围墙，面向所有群体——让每个人都能亲身体验艺术的创造，在参与中建立并强化社区联结。</p>
+      </div>
+      <div style="display:flex;align-items:center;justify-content:center;">
+        <img src="io-mission.png" alt="Mission Visual" style="width:100%;display:block;">
+      </div>
+    </div>
+
+    <!-- Inside / Outside / InsideOutside -->
+    <!-- Inside / Outside / InsideOutside — map left, text right -->
+    <div class="mb4" style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;">
+      <div>
+        <img src="io-suburbs-map.png" alt="Milan Suburbs Map" style="width:100%;display:block;">
+      </div>
+      <div style="display:flex;flex-direction:column;gap:2rem;">
+        <div>
+          <div style="font-family:'Playfair Display',serif;font-style:italic;font-size:1.25rem;color:var(--teal);margin-bottom:.5rem;">Outside:</div>
+          <p style="font-size:14px;color:var(--soft);line-height:1.85;">the neighborhoods, the suburbs, the people, the curiosity, the new, the families, the experiences, the differences.</p>
+          <p style="font-size:12px;color:var(--muted);line-height:1.7;font-style:italic;margin-top:.35rem;">社区、郊区、人群、好奇心、家庭、体验与差异。</p>
+        </div>
+        <div>
+          <div style="font-family:'Playfair Display',serif;font-style:italic;font-size:1.25rem;color:var(--coral);margin-bottom:.5rem;">Inside:</div>
+          <p style="font-size:14px;color:var(--soft);line-height:1.85;">the Fondazione, the works of Renzo Bongiovanni Radice, the effort of Adolfo Pini, the spaces, the culture, Brera, the art.</p>
+          <p style="font-size:12px;color:var(--muted);line-height:1.7;font-style:italic;margin-top:.35rem;">基金会、历史藏品、布雷拉的空间、艺术与文化积淀。</p>
+        </div>
+        <div>
+          <div style="font-family:'Playfair Display',serif;font-style:italic;font-size:1.25rem;color:var(--navy);margin-bottom:.5rem;">InsideOutside:</div>
+          <p style="font-size:14px;color:var(--soft);line-height:1.85;">the community, sharing experiences, exchanging ideas, the bonding, the understanding, creating something new together, networks.</p>
+          <p style="font-size:12px;color:var(--muted);line-height:1.7;font-style:italic;margin-top:.35rem;">共同体、交流、理解、共创——编织内部与外部之间的新纽带。</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Taking the Fondazione — two glow columns -->
+    <div class="mb4">
+      <h2 style="font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(1.6rem,3vw,2.5rem);font-weight:700;color:var(--fg);text-align:center;margin-bottom:3rem;">Taking the Fondazione<br><span style="font-family:'Noto Serif SC',serif;font-size:.6em;font-style:normal;color:var(--muted);">将基金会带向城市</span></h2>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;">
+
+        <!-- Outside -->
+        <div style="position:relative;padding:3rem 2.5rem;text-align:center;overflow:hidden;border-radius:12px;">
+          <div style="position:absolute;top:50%;left:30%;transform:translate(-50%,-50%);width:320px;height:320px;background:radial-gradient(circle,rgba(94,207,201,.35) 0%,transparent 70%);pointer-events:none;"></div>
+          <div style="position:relative;z-index:1;">
+            <h3 style="font-family:'Playfair Display',serif;font-style:italic;font-size:2.5rem;color:var(--fg);margin-bottom:1.5rem;">Outside</h3>
+            <p style="font-size:14px;color:var(--soft);margin-bottom:.4rem;">Community collaborations</p>
+            <p style="font-size:13px;color:var(--muted);font-style:italic;margin-bottom:1.5rem;">how?</p>
+            <p style="font-size:12px;color:var(--soft);font-style:italic;margin-bottom:.75rem;">Main activities:</p>
+            <ul style="list-style:none;padding:0;font-size:13px;color:var(--soft);line-height:2;">
+              <li>· Apecar that moves around</li>
+              <li>· 流动Apecar工坊</li>
+              <li>· Participatory art in squares, theaters, parks, social centers, etc.</li>
+              <li>· 广场、剧院、公园、社区中心的参与式艺术</li>
+              <li>· Same concept developed in 2 different neighborhoods</li>
+              <li>· 同一理念在2个社区同步推进</li>
+            </ul>
+            <div style="margin-top:1.5rem;font-size:13px;color:var(--teal);line-height:1.9;">
+              awareness · 知名度提升<br>bonding and sharing · 凝聚与分享<br>connecting the suburbs · 连接郊区<br>recognizable Fondazione Pini · 强化品牌形象
+            </div>
+          </div>
+        </div>
+
+        <!-- Inside -->
+        <div style="position:relative;padding:3rem 2.5rem;text-align:center;overflow:hidden;border-radius:12px;">
+          <div style="position:absolute;top:50%;left:60%;transform:translate(-50%,-50%);width:320px;height:320px;background:radial-gradient(circle,rgba(240,120,120,.3) 0%,transparent 70%);pointer-events:none;"></div>
+          <div style="position:relative;z-index:1;">
+            <h3 style="font-family:'Playfair Display',serif;font-style:italic;font-size:2.5rem;color:var(--fg);margin-bottom:1.5rem;">Inside</h3>
+            <p style="font-size:14px;color:var(--soft);margin-bottom:.4rem;">Cultural activities</p>
+            <p style="font-size:13px;color:var(--muted);font-style:italic;margin-bottom:1.5rem;">how?</p>
+            <p style="font-size:12px;color:var(--soft);font-style:italic;margin-bottom:.75rem;">Side activities:</p>
+            <ul style="list-style:none;padding:0;font-size:13px;color:var(--soft);line-height:2;">
+              <li>· Exhibitions of the participatory art · 参与式艺术展览</li>
+              <li>· Archive · 档案馆</li>
+              <li>· Movie Nights · 电影之夜</li>
+              <li>· Treasure hunts · 寻宝游戏</li>
+              <li>· PiniTalks · PiniTalks讲座</li>
+            </ul>
+            <div style="margin-top:1.5rem;font-size:13px;color:var(--coral);line-height:1.9;">
+              unique art discovery · 独特艺术发现<br>strengthen communities · 强化社区凝聚<br>new connections between inside and outside<br>建立内外新连接
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Core Offerings layered approach -->
+    <div class="mb4">
+      <div style="position:relative;width:100%;">
+
+        <!-- Layer 1: bg image with people figures -->
+        <img src="io-co-bg.jpg?v=6" style="width:100%;display:block;">
+
+        <!-- Layer 2: center overlay -->
+        <div style="position:absolute;top:0;left:31%;width:33%;height:100%;background:var(--bg);"></div>
+
+        <!-- Layer 3: bilingual content -->
+        <div style="position:absolute;top:0;left:31%;width:33%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:2rem 1.5rem;text-align:center;box-sizing:border-box;">
+
+          <!-- Section label -->
+          <div style="display:flex;align-items:baseline;gap:1rem;margin-bottom:1.5rem;align-self:flex-start;">
+            <span style="font-family:'Playfair Display',serif;font-size:4rem;font-weight:700;line-height:1;color:var(--fg);opacity:.12;">02</span>
+            <div style="text-align:left;">
+              <div style="font-family:'Playfair Display',serif;font-size:2rem;font-weight:400;color:var(--fg);line-height:1.1;">Core Offerings</div>
+              <div style="font-size:11px;color:var(--muted);">核心服务体系</div>
+            </div>
+          </div>
+
+          <!-- Two dots -->
+          <div style="display:flex;justify-content:center;gap:.8rem;margin-bottom:1.2rem;align-items:flex-end;">
+            <div style="width:44px;height:44px;border-radius:50%;background:var(--teal);filter:blur(5px);opacity:.75;"></div>
+            <div style="width:34px;height:34px;border-radius:50%;background:var(--coral);filter:blur(4px);opacity:.75;margin-bottom:5px;"></div>
+          </div>
+
+          <!-- Bilingual question -->
+          <p style="font-family:'Playfair Display',serif;font-style:italic;font-size:.95rem;line-height:1.6;color:var(--fg);margin-bottom:.3rem;">
+            How does IO work with the current proposals?
+          </p>
+          <p style="font-size:11px;color:var(--muted);font-style:italic;margin-bottom:1.2rem;">IO如何在现有方案中发挥作用？</p>
+
+          <!-- Body text EN + ZH -->
+          <p style="font-size:11.5px;line-height:1.75;text-align:left;color:var(--fg);margin-bottom:.6rem;">
+            Fondazione Adolfo Pini wants to finance and help all the young artists. <strong>"Establish awards and scholarships for young artists"</strong> is the starting point of IO. IO targets <strong>every non-artist from different backgrounds</strong>, helping them <strong>work on their creativities together</strong> and <strong>discover each other</strong>, building new <strong>relationships</strong> inside and outside Fondazione Adolfo Pini.
+          </p>
+          <p style="font-size:11px;line-height:1.75;text-align:left;color:var(--muted);margin-bottom:1.2rem;">
+            皮尼基金会的使命是资助青年艺术家。IO以此为起点，将<strong>不同背景的非艺术家</strong>纳入目标群体，推动人们跨越边界<strong>共同激发创意</strong>，在基金会内外建立全新的<strong>人际连接</strong>与关系网络。
+          </p>
+
+          <!-- Bottom tagline -->
+          <p style="font-family:'Playfair Display',serif;font-style:italic;font-size:.9rem;color:var(--muted);text-align:center;margin:0;">
+            all together partecipating to the building of our core
+            <br><span style="font-size:.82rem;">共同参与，共同构建我们的核心</span>
+          </p>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Core Offerings diagram (image 8) -->
+    <div class="mb4">
+      <p style="font-size:13px;color:var(--muted);line-height:1.8;margin-bottom:1rem;">IO项目以皮尼基金会（Fondazione Pini）为核心枢纽，在现有方案的基础上支持青年艺术家；同时提出新方案，将非艺术家与艺术家混合群体纳入合作，通过新活动投入资源、建立连接，共同扩展至更多社区，形成更广泛的参与网络。</p>
+      <img src="io-co-diagram.jpg?v=4" style="width:100%;display:block;">
+    </div>
+
+    <!-- Out: the neighborhoods -->
+    <div class="mb4">
+      <h3 style="font-family:'Playfair Display',serif;font-style:italic;font-size:1.25rem;color:var(--fg);margin-bottom:.5rem;">Out: the Neighborhoods · 走向社区</h3>
+      <p style="font-size:13px;color:var(--muted);margin-bottom:1.5rem;">The Apecar travels to suburbs with artists, bringing participatory art directly to the people. / Apecar携艺术家深入郊区，将参与式艺术直接带给居民。</p>
+      <div class="two-col">
+        <img src="io-out-10.jpg" style="width:100%;display:block;border-radius:8px;">
+        <img src="io-out-11.jpg" style="width:100%;display:block;border-radius:8px;">
+      </div>
+    </div>
+
+    <!-- In: the Fondazione -->
+    <div>
+      <h3 style="font-family:'Playfair Display',serif;font-style:italic;font-size:1.25rem;color:var(--fg);margin-bottom:.5rem;">In: the Fondazione · 走进基金会</h3>
+      <p style="font-size:13px;color:var(--muted);margin-bottom:1.5rem;">Activities spread across all floors of the Fondazione Pini building. / 皮尼基金会各楼层均设有配套活动。</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:start;">
+        <div>
+          <img src="io-in-12.jpg" style="width:100%;display:block;border-radius:8px;margin-bottom:1rem;">
+          <div style="display:flex;gap:.5rem;align-items:center;margin-bottom:.5rem;">
+            <span class="act-render-floor ground" style="margin:0;">Ground Floor</span>
+          </div>
+          <p style="font-size:13px;color:var(--fg);font-weight:600;margin:0 0 .25rem;">展览与档案 · 电影之夜 · 皮尼讲座</p>
+          <p style="font-size:12px;color:var(--muted);line-height:1.75;margin:0;">一楼设有社区艺术展览空间与档案室，保存历届创作成果；同时提供文化放映和艺术对谈活动，向所有人开放。</p>
+        </div>
+        <div>
+          <img src="io-in-13.jpg" style="width:100%;display:block;border-radius:8px;margin-bottom:1rem;">
+          <div style="display:flex;gap:.5rem;align-items:center;margin-bottom:.5rem;">
+            <span class="act-render-floor second" style="margin:0;">2F &amp; Basement</span>
+          </div>
+          <p style="font-size:13px;color:var(--fg);font-weight:600;margin:0 0 .25rem;">私人课程 · 寻宝游戏</p>
+          <p style="font-size:12px;color:var(--muted);line-height:1.75;margin:0;">二楼提供付费一对一艺术课程，满足深度学习需求；地下室则以寻宝游戏的形式，让孩子在趣味探索中感受艺术。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="sep">
+
+<!-- ─── 03 THE PROJECT ─── -->
+<section class="sec" id="project">
+  <div class="sec-inner">
+    <div class="sec-label sec-chapter">03 / The Project · 产品</div>
+    <div class="title-block">
+      <div class="t-en">From <em>Outside</em> to Inside</div>
+      <div class="t-zh">从街头到展厅</div>
+      <div class="t-sub">The Apecar as a mobile creative unit, community neighborhoods as the canvas, Fondazione Pini as the destination.</div>
+    </div>
+
+    <!-- Outside journey -->
+    <div class="mb4">
+      <h3 style="font-family:'Playfair Display',serif;font-size:1.25rem;color:var(--navy);margin-bottom:.5rem;">Outside — The Apecar Journey</h3>
+      <p style="font-size:13px;color:var(--muted);margin-bottom:2rem;">2 apecars · 2 neighborhoods · 2 communities · 1 project · various artists</p>
+      <div style="display:grid;grid-template-columns:3fr 2fr;gap:3rem;align-items:center;">
+        <div class="step-flow">
+          <div class="step-item">
+            <div class="step-dot teal">1</div>
+            <div class="step-title">Starting Point · 出发点</div>
+            <div class="step-desc">Fondazione Pini — departure & customisation of the vehicle / 基金会皮尼——出发与车辆定制</div>
+          </div>
+          <div class="step-item">
+            <div class="step-dot teal-o">2</div>
+            <div class="step-title">Pit Stop · 中途站</div>
+            <div class="step-desc">Schools, studios, art associations that donate materials that would be wasted / 学校、工作室、艺术协会——捐赠废旧材料</div>
+          </div>
+          <div class="step-item">
+            <div class="step-dot teal-o">3</div>
+            <div class="step-title">Finish Line · 终点</div>
+            <div class="step-desc">Neighborhoods outside the center of Milan — create artworks with recovered materials / 米兰郊区社区——用回收材料共同创作</div>
+          </div>
+          <div class="step-item">
+            <div class="step-dot coral">↩</div>
+            <div class="step-title">Coming Back · 返回</div>
+            <div class="step-desc">Show the outside works <em>inside</em> the Fondazione! / 将户外作品带回基金会内部展出！</div>
+          </div>
+        </div>
+        <img src="io-apecar-14.jpg" style="width:55%;display:block;border-radius:8px;margin:0 auto;">
+      </div>
+      <div style="margin-top:1.5rem;display:flex;flex-wrap:wrap;gap:.5rem;">
+        <span style="font-size:12px;color:var(--muted);margin-right:.25rem;">Neighborhoods:</span>
+        <span class="tag navy">Bovisa</span><span class="tag navy">Farini</span><span class="tag navy">Selinunte</span><span class="tag navy">Ortomercato</span><span class="tag navy">Scalo Romana</span><span class="tag navy">Martesana</span>
+      </div>
+      <p class="body-zh" style="margin-top:1rem;">Apecar从基金会出发，途经捐赠材料的学校与工作室，最终抵达郊区社区进行创作——完成后，作品将被带回基金会展出。</p>
+    </div>
+
+    <!-- Participatory Art description -->
+    <div class="mb4">
+      <h3 style="font-family:'Playfair Display',serif;font-size:1.25rem;color:var(--navy);margin-bottom:.5rem;">The Participatory Art</h3>
+      <div style="margin-bottom:1.5rem;">
+        <p style="font-size:14px;color:var(--soft);line-height:1.85;margin-bottom:1rem;">Participatory art projects, fueled by the vibrant diversity of artists from various backgrounds and nations, are breathing life into the city's streets. The hearth is the apecar, a symbol of mobility and connection. Thanks to the collaboration with local municipalities, these artistic caravans find their designated stops, unlocking creative spaces where communities come alive.</p>
+        <p style="font-size:14px;color:var(--soft);line-height:1.85;">The call for IO permits artists to find people to create works of art and develop community projects, where the public becomes artist and the artist becomes public.</p>
+        <p class="body-zh">IO的召集令让艺术家得以找到参与者共同创作——公众化身艺术家，艺术家融入公众。以Apecar为核心，参与式艺术在城市街头生长。</p>
+        <div style="margin-top:1.5rem;display:flex;gap:1.5rem;flex-wrap:wrap;">
+          <div style="text-align:center;"><div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:2rem;color:var(--teal);">2</div><div style="font-family:'Space Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);">Apecars</div></div>
+          <div style="text-align:center;"><div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:2rem;color:var(--teal);">2</div><div style="font-family:'Space Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);">Neighborhoods</div></div>
+          <div style="text-align:center;"><div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:2rem;color:var(--teal);">2</div><div style="font-family:'Space Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);">Communities</div></div>
+          <div style="text-align:center;"><div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:2rem;color:var(--coral);">1</div><div style="font-family:'Space Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);">Project</div></div>
+        </div>
+      </div>
+      <img src="io-map-15.jpg" style="width:100%;display:block;border-radius:8px;margin-bottom:1.5rem;">
+      <p style="font-size:14px;color:var(--soft);line-height:1.85;margin-bottom:.75rem;">The call for IO permits artists to find people to create works of art and develop community projects, where the public becomes artist and the artist becomes public — and they both can live the experience of sharing.</p>
+      <p style="font-size:14px;color:var(--soft);line-height:1.85;margin-bottom:.75rem;">Also, each community itself has the opportunity of meeting always new people everyday and discovering common traits, but also different passions and ways of living between each single person.</p>
+      <p class="body-zh" style="margin-bottom:1.25rem;">IO的召集令让艺术家与公众共同创作——公众化身艺术家，艺术家融入公众，共同体验分享的喜悦。每个社区也因此得以不断结识新面孔，发现彼此的共同点，也感受每个个体不同的热情与生活方式。</p>
+      <img src="io-art-16.jpg" style="width:100%;display:block;border-radius:8px;">
+    </div>
+
+    <!-- Inside Activities -->
+    <div class="mb4">
+      <h3 style="font-family:'Playfair Display',serif;font-size:1.25rem;color:var(--navy);margin-bottom:.5rem;">Inside — Fondazione Activities</h3>
+      <p style="font-size:13px;color:var(--muted);margin-bottom:1.5rem;">Main activities + Side activities across all floors / 一楼至地下层各类主活动与配套活动</p>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;">
+        <div class="act-card" style="display:flex;gap:0;padding:0;overflow:hidden;">
+          <div style="flex:1;padding:1.25rem;">
+            <div class="act-floor">Ground Floor · Main / 一楼 · 主活动</div>
+            <div class="act-name">🖼 Exhibition & AR · 展览与AR</div>
+            <div class="act-desc">Participatory workshops; the public becomes artist and the artist becomes public. AR technology enhances the experience.<br><em style="font-size:11px;color:var(--muted);">参与式工坊：公众化身艺术家，艺术家融入公众。AR技术提升体验。</em></div>
+          </div>
+          <img src="io-act-exhibition.jpg" style="width:45%;object-fit:cover;display:block;flex-shrink:0;">
+        </div>
+        <div class="act-card" style="display:flex;gap:0;padding:0;overflow:hidden;">
+          <div style="flex:1;padding:1.25rem;">
+            <div class="act-floor">Ground Floor · Main / 一楼 · 主活动</div>
+            <div class="act-name">📦 The Archive · 档案馆</div>
+            <div class="act-desc">Materials won't be wasted — archived in specific rooms. Workspace with tables, bookshelves full of art and different projects.<br><em style="font-size:11px;color:var(--muted);">材料不会浪费——归档于专属房间，工作台与满架艺术书籍。</em></div>
+          </div>
+          <img src="io-act-archive.jpg" style="width:45%;object-fit:cover;display:block;flex-shrink:0;">
+        </div>
+        <div class="act-card side" style="display:flex;gap:0;padding:0;overflow:hidden;">
+          <div style="flex:1;padding:1.25rem;">
+            <div class="act-floor">Ground Floor · Side / 一楼 · 配套活动</div>
+            <div class="act-name">🎬 Movie Nights · 电影之夜</div>
+            <div class="act-desc">Cultural movie screenings in a fun, open atmosphere. Artists curate special nights around the workshop themes.<br><em style="font-size:11px;color:var(--muted);">轻松开放的文化电影放映，艺术家围绕工坊主题策划特别放映夜。</em></div>
+          </div>
+          <img src="io-act-movie.jpg" style="width:45%;object-fit:cover;display:block;flex-shrink:0;">
+        </div>
+        <div class="act-card side" style="display:flex;gap:0;padding:0;overflow:hidden;">
+          <div style="flex:1;padding:1.25rem;">
+            <div class="act-floor">Ground Floor · Side / 一楼 · 配套活动</div>
+            <div class="act-name">🎤 PiniTalks · 皮尼讲座</div>
+            <div class="act-desc">Speakers from the community debate on art topics. Creates a cultural space open for everyone.<br><em style="font-size:11px;color:var(--muted);">社区嘉宾就艺术话题展开对话，构建向所有人开放的文化交流空间。</em></div>
+          </div>
+          <img src="io-act-pinitalks.jpg" style="width:45%;object-fit:cover;display:block;flex-shrink:0;">
+        </div>
+        <div class="act-card side" style="display:flex;gap:0;padding:0;overflow:hidden;">
+          <div style="flex:1;padding:1.25rem;">
+            <div class="act-floor">Basement · Side / 地下层 · 配套活动</div>
+            <div class="act-name">🗺 Treasure Hunts · 寻宝游戏</div>
+            <div class="act-desc">Fun for children — understanding art in an engaging way. Kids learn to cooperate with others of different ages.<br><em style="font-size:11px;color:var(--muted);">专为儿童设计——在趣味互动中理解艺术，学会与不同年龄的人协作。</em></div>
+          </div>
+          <img src="io-act-treasure.jpg" style="width:45%;object-fit:cover;display:block;flex-shrink:0;">
+        </div>
+        <div class="act-card side" style="display:flex;gap:0;padding:0;overflow:hidden;">
+          <div style="flex:1;padding:1.25rem;">
+            <div class="act-floor">Second Floor · Side / 二楼 · 配套活动</div>
+            <div class="act-name">📚 Private Lessons · 私人课程</div>
+            <div class="act-desc">Paid one-to-one lessons. The Fondazione provides the possibility of developing more on a particular subject or topic.<br><em style="font-size:11px;color:var(--muted);">付费一对一课程，满足每位参与者对特定主题的深度学习需求。</em></div>
+          </div>
+          <img src="io-act-lessons.jpg" style="width:45%;object-fit:cover;display:block;flex-shrink:0;">
+        </div>
+      </div>
+    </div>
+
+    <!-- Branding -->
+    <div class="mb4">
+      <div class="sec-label" style="margin-bottom:1.5rem;">Branding</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;">
+        <div>
+          <h3 style="font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--navy);margin-bottom:.4rem;">Logo Inspiration · 标志灵感</h3>
+          <p style="font-size:13px;color:var(--soft);line-height:1.75;margin-bottom:.4rem;">The logo is deeply inspired by the keywords that permeate our project — expressing a general feeling of safety, inclusion and connection between cultures and families with different backgrounds.</p>
+          <p class="body-zh" style="margin-bottom:.75rem;">标志灵感源自项目核心关键词——安全感、包容性与跨文化连接。关键词：创造力 · 自我成长 · 包容 · 交换 · 内外 · IO=我。</p>
+          <img src="io-brand-21.jpg" style="width:100%;display:block;border-radius:8px;">
+        </div>
+        <div>
+          <h3 style="font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--navy);margin-bottom:.4rem;">Logo Usage · 标志使用规范</h3>
+          <p style="font-size:13px;color:var(--soft);line-height:1.75;margin-bottom:.4rem;">Minimum size: 2.5 cm for the graphic. Primary lockup: navy background (#202043) with white logotype. Colour and background must not be changed.</p>
+          <p class="body-zh" style="margin-bottom:.75rem;">最小尺寸：图形部分2.5厘米。标准用法：深蓝底（#202043）配白色字标，不可更改颜色或背景。</p>
+          <img src="io-brand-22.jpg" style="width:100%;display:block;border-radius:8px;">
+        </div>
+      </div>
+    </div>
+
+    <!-- Touchpoints -->
+    <div class="mb4">
+      <div class="sec-label" style="margin-bottom:1.5rem;">Touchpoints</div>
+      <div class="tp-grid">
+        <div class="tp-card">
+          <div class="tp-header physical">Physical Touchpoint</div>
+          <div class="tp-body">
+            <img src="io-tp-apecar.jpg" style="width:100%;display:block;border-radius:6px;margin-bottom:1rem;object-fit:cover;aspect-ratio:16/9;">
+            <div class="tp-name">The Apecar · 流动工坊车</div>
+            <div class="tp-desc">The Apecar visits the different neighborhoods to carry out workshop activities. A symbol of mobility and connection, it also features on social media as a recognisable identity.<br><em style="font-size:11px;color:var(--muted);">Apecar走访各社区开展工坊活动，是流动与连接的象征，同时作为可识别的品牌形象活跃于社交媒体。</em></div>
+          </div>
+        </div>
+        <div class="tp-card">
+          <div class="tp-header physical">Physical Touchpoint</div>
+          <div class="tp-body">
+            <img src="io-tp-flyer.jpg" style="width:100%;display:block;border-radius:6px;margin-bottom:1rem;object-fit:cover;aspect-ratio:16/9;">
+            <div class="tp-name">Open Call Flyer · 公开征集传单</div>
+            <div class="tp-desc">During the Open Call for new artists, flyers run around Milan — giving general information about the activities outside the Fondazione. "Reimagining your Community".<br><em style="font-size:11px;color:var(--muted);">艺术家公开征集期间，传单遍布米兰，传递基金会墙外活动信息。「重新想象你的社区」。</em></div>
+          </div>
+        </div>
+        <div class="tp-card">
+          <div class="tp-header digital">Digital Touchpoint</div>
+          <div class="tp-body">
+            <img src="io-tp-social.jpg" style="width:100%;display:block;border-radius:6px;margin-bottom:1rem;object-fit:cover;aspect-ratio:16/9;">
+            <div class="tp-name">#spottheapecar · 发现Apecar</div>
+            <div class="tp-desc">The online challenge to spread the word about the existence of the Apecar around Milan — creating a different channel for promotion and building community online.<br><em style="font-size:11px;color:var(--muted);">在米兰街头寻找Apecar的线上挑战赛——打造独特的推广渠道，在线上凝聚社区。</em></div>
+          </div>
+        </div>
+        <div class="tp-card">
+          <div class="tp-header digital">Digital Touchpoint</div>
+          <div class="tp-body">
+            <img src="io-tp-website.jpg" style="width:100%;display:block;border-radius:6px;margin-bottom:1rem;object-fit:cover;aspect-ratio:16/9;">
+            <div class="tp-name">Website · 官方网站</div>
+            <div class="tp-desc">Accessible through the Fondazione's menu page — general information, call-to-action buttons for artists and people from the city to access the open call and subscribe to activities.<br><em style="font-size:11px;color:var(--muted);">通过基金会菜单页面访问——提供基本信息与行动入口，供艺术家和市民参与公开征集及活动报名。</em></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Timeline -->
+    <div>
+      <div class="sec-label" style="margin-bottom:.75rem;">Timeline</div>
+      <p class="sub-note" style="margin-bottom:1.25rem;">Phased rollout across three semesters — from pilot testing in one neighbourhood to a city-wide network of Apecar routes and inside activities. · 分三个学期分阶段推进——从单一社区的试点测试，逐步扩展至覆盖全市的 Apecar 路线网络与室内活动体系。</p>
+      <img src="io-timeline.jpg" style="width:100%;display:block;border-radius:8px;">
+    </div>
+  </div>
+</section>
+
+<hr class="sep">
+
+<!-- ─── 04 THE SERVICE ─── -->
+<section class="sec" id="service">
+  <div class="sec-inner">
+    <div class="sec-label sec-chapter">04 / The Service · 服务</div>
+    <div class="title-block">
+      <div class="t-en">Service <em>Architecture</em></div>
+      <div class="t-zh">服务架构</div>
+      <div class="t-sub">Stakeholders, offering map, system map, business model, journey maps, service blueprints, flows and financial estimation.</div>
+    </div>
+
+    <!-- Stakeholders Map -->
+    <div class="mb4">
+      <h3 class="sub-h">Stakeholders <em>Map</em> · 利益相关者地图</h3>
+      <p class="sub-note">All actors involved — inside and outside the Fondazione. · 所有参与方——基金会内部与外部。</p>
+      <div class="stakeholder-wrap">
+        <div>
+          <div style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--teal);margin-bottom:1rem;">Outside the Foundation</div>
+          <div class="stakeholder-list" style="margin-bottom:2rem;">
+            <div class="sh-row"><div class="sh-dot outside"></div><span class="sh-text">Communities (suburbs)</span></div>
+            <div class="sh-row"><div class="sh-dot outside"></div><span class="sh-text">Artists (various backgrounds)</span></div>
+            <div class="sh-row"><div class="sh-dot outside"></div><span class="sh-text">Visitors</span></div>
+            <div class="sh-row"><div class="sh-dot outside"></div><span class="sh-text">Municipality</span></div>
+            <div class="sh-row"><div class="sh-dot outside"></div><span class="sh-text">Donators of Material (studios, art schools)</span></div>
+            <div class="sh-row"><div class="sh-dot outside"></div><span class="sh-text">Associations & Social Centers</span></div>
+            <div class="sh-row"><div class="sh-dot outside"></div><span class="sh-text">Teachers (for Private Lessons)</span></div>
+            <div class="sh-row"><div class="sh-dot outside"></div><span class="sh-text">Speakers (for PiniTalks)</span></div>
+          </div>
+          <div style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--coral);margin-bottom:1rem;">Inside the Foundation</div>
+          <div class="stakeholder-list">
+            <div class="sh-row"><div class="sh-dot inside"></div><span class="sh-text"><strong>Fondazione Adolfo Pini</strong> — Center</span></div>
+            <div class="sh-row"><div class="sh-dot inside"></div><span class="sh-text">Coordinator</span></div>
+            <div class="sh-row"><div class="sh-dot inside"></div><span class="sh-text">Communities (inside)</span></div>
+            <div class="sh-row"><div class="sh-dot inside"></div><span class="sh-text">Artist (as curator)</span></div>
+          </div>
+        </div>
+        <img src="io-stakeholders-26.jpg" style="width:100%;display:block;border-radius:8px;">
+      </div>
+    </div>
+
+    <!-- Offering Map + System Map row -->
+    <div class="mb4" style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:start;">
+      <div>
+        <h3 class="sub-h">Offering <em>Map</em> · 服务提供地图</h3>
+        <p class="sub-note">Full offering matrix: who is involved, what they can do, what happens inside vs. outside. · 完整服务矩阵：各参与方、可执行活动及内外空间的对应关系。</p>
+        <img src="io-offering-27.jpg" style="width:100%;display:block;border-radius:8px;">
+        <p class="body-zh" style="margin-top:1rem;font-size:12px;color:var(--muted);line-height:1.85;">
+          IO 到底能为谁做什么？左边列出了所有相关的人——基金会员工、社区居民、艺术家、学生志愿者……右边则分成"在基金会里发生的"和"去社区里做的"两块。把两边一对应，就能看出每类人能参与哪些活动，比如 PiniTalks 讲座、电影之夜是在室内办的，Apecar 流动站和参与式工作坊则是跑出去的。
+        </p>
+      </div>
+      <div>
+        <h3 class="sub-h">System <em>Map</em> · 系统地图</h3>
+        <p class="sub-note">Financial, information, material and spatial flows between all actors. · 各参与方之间的资金、信息、材料与空间流动关系。</p>
+        <img src="io-system-28.jpg" style="width:100%;display:block;border-radius:8px;">
+        <p class="body-zh" style="margin-top:1rem;font-size:12px;color:var(--muted);line-height:1.85;">
+          系统地图展示了 IO 项目各参与方之间的四类流动关系。中心是 IO 与 Fondazione Pini，向外连接艺术家、社区、米兰市政府、各区政府、捐赠方等。绿色线代表资金流，红色线代表信息流，粉色线代表材料流，灰色线代表空间流动。通过这张图可以直观看出谁在给谁输送资源、谁之间存在双向互动，帮助团队梳理服务运转的完整逻辑。
+        </p>
+      </div>
+    </div>
+
+    <!-- Journey Map -->
+    <div class="mb4">
+      <h3 class="sub-h">Journey <em>Map</em> · 用户旅程</h3>
+      <p class="sub-note">Three different user paths through the IO service ecosystem. · 三条用户路径：私教学员、参与式艺术参与者、驻留艺术家。</p>
+      <div class="three-col">
+        <div class="journey-col">
+          <div class="journey-user">
+            <div class="journey-icon teal">👤</div>
+            <div><div class="journey-name">Private Lesson · 私教课程</div><div style="font-family:'Space Mono',monospace;font-size:8px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);">Participant · 学员</div></div>
+          </div>
+          <div class="journey-steps">
+            <div class="j-step"><div class="j-num">1</div><span>Find out from apecar, flyer, social media, website / 通过Apecar、传单、社交媒体或网站了解</span></div>
+            <div class="j-step"><div class="j-num">2</div><span>Check the website for more details / 访问网站获取更多详情</span></div>
+            <div class="j-step"><div class="j-num">3</div><span>Make reservation to hear more about the lesson / 预约进一步了解课程信息</span></div>
+            <div class="j-step red"><div class="j-num">4</div><span>Visit the foundation / 前往基金会</span></div>
+            <div class="j-step"><div class="j-num">5</div><span>Register on portal and type preference on courses / 在门户注册并填写课程偏好</span></div>
+            <div class="j-step"><div class="j-num">6</div><span>Complete the payment and donate / 完成付款并捐款</span></div>
+            <div class="j-step"><div class="j-num">7</div><span>Start courses in the foundation / 在基金会开始上课</span></div>
+          </div>
+        </div>
+        <div class="journey-col">
+          <div class="journey-user">
+            <div class="journey-icon coral">👥</div>
+            <div><div class="journey-name">Participatory Art · 参与式艺术</div><div style="font-family:'Space Mono',monospace;font-size:8px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);">Project Participant · 项目参与者</div></div>
+          </div>
+          <div class="journey-steps">
+            <div class="j-step"><div class="j-num">1</div><span>Find out about participatory art from social media, website / 通过社交媒体或网站了解参与式艺术</span></div>
+            <div class="j-step"><div class="j-num">2</div><span>Check dates and location of workshops on website / 在网站查看工坊日期与地点</span></div>
+            <div class="j-step red"><div class="j-num">3</div><span>Visit and participate / 到场参与</span></div>
+            <div class="j-step"><div class="j-num">4</div><span>Sign up on website for project updates / 在网站注册以接收项目进展</span></div>
+            <div class="j-step"><div class="j-num">5</div><span>Receive notification of project completion / 收到项目完成通知</span></div>
+            <div class="j-step red"><div class="j-num">6</div><span>Visit the foundation to see the results / 前往基金会参观成果展览</span></div>
+            <div class="j-step"><div class="j-num">7</div><span>Consider participating in other inside/outside activities / 考虑参与其他室内外活动</span></div>
+          </div>
+        </div>
+        <div class="journey-col">
+          <div class="journey-user">
+            <div class="journey-icon grey">🎨</div>
+            <div><div class="journey-name">Artist · 艺术家</div><div style="font-family:'Space Mono',monospace;font-size:8px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);">Open call applicant · 公开征集申请者</div></div>
+          </div>
+          <div class="journey-steps">
+            <div class="j-step"><div class="j-num">1</div><span>Find out about the open call from social media, website / 通过社交媒体或网站了解公开征集</span></div>
+            <div class="j-step"><div class="j-num">2</div><span>Prepare and submit the project proposal / 准备并提交项目方案</span></div>
+            <div class="j-step"><div class="j-num">3</div><span>Wait for the selection / 等待筛选结果</span></div>
+            <div class="j-step"><div class="j-num">4</div><span>Come to Milan / 前往米兰</span></div>
+            <div class="j-step red"><div class="j-num">5</div><span>Start working at the project site / 在项目现场开始创作</span></div>
+            <div class="j-step"><div class="j-num">6</div><span>Keep working at site — complete the project / 持续创作直至完成</span></div>
+            <div class="j-step"><div class="j-num">7</div><span>Archive and exhibit at the Fondazione / 归档并在基金会展出</span></div>
+          </div>
+        </div>
+      </div>
+      <img src="io-journey-30.jpg" style="width:100%;display:block;border-radius:8px;margin-top:1.5rem;">
+    </div>
+
+    <!-- Service Blueprints -->
+    <div class="mb4">
+      <h3 class="sub-h">Service <em>Blueprints</em> · 服务蓝图</h3>
+      <p class="sub-note">Detailed front-stage and back-stage interaction maps for each service flow. · 三条服务流程的前台与后台详细交互图谱。</p>
+      <!-- Blueprint 0: Artist -->
+      <div style="margin-bottom:2.5rem;">
+        <h4 style="font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:600;color:var(--navy);margin:0 0 .25rem;">Service Blueprint of Artist</h4>
+        <p style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:0 0 1.25rem;">艺术家服务蓝图</p>
+        <div style="overflow-x:auto;">
+        <table style="width:100%;border-collapse:collapse;font-size:11px;line-height:1.6;min-width:900px;">
+          <thead>
+            <tr>
+              <th style="width:100px;padding:6px 8px;border-bottom:2px solid var(--navy);"></th>
+              <th colspan="2" style="padding:8px 8px;text-align:center;background:#fdf0ee;color:var(--navy);font-size:12px;font-family:'Space Mono',monospace;letter-spacing:.04em;text-transform:uppercase;border-bottom:2px solid var(--navy);">Discovery · 发现</th>
+              <th colspan="5" style="padding:8px 8px;text-align:center;background:#e8f5f3;color:var(--navy);font-size:12px;font-family:'Space Mono',monospace;letter-spacing:.04em;text-transform:uppercase;border-bottom:2px solid var(--navy);">Application · 申请</th>
+              <th colspan="3" style="padding:8px 8px;text-align:center;background:#eef0f8;color:var(--navy);font-size:12px;font-family:'Space Mono',monospace;letter-spacing:.04em;text-transform:uppercase;border-bottom:2px solid var(--navy);">Development · 发展</th>
+              <th colspan="2" style="padding:8px 8px;text-align:center;background:#f5f0eb;color:var(--navy);font-size:12px;font-family:'Space Mono',monospace;letter-spacing:.04em;text-transform:uppercase;border-bottom:2px solid var(--navy);">Reflection · 反思</th>
+              <th colspan="2" style="padding:8px 8px;text-align:center;background:#f0f5ee;color:var(--navy);font-size:12px;font-family:'Space Mono',monospace;letter-spacing:.04em;text-transform:uppercase;border-bottom:2px solid var(--navy);">Exhibition · 展览</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Evidence -->
+            <tr style="background:#fafaf8;">
+              <td style="padding:6px 8px;font-family:'Space Mono',monospace;font-size:8.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);vertical-align:top;border-right:1px solid #e0e0da;">Evidence<br><span style="color:#bbb;">证据</span></td>
+              <td style="padding:6px 8px;vertical-align:top;border-right:1px dashed #e0e0da;color:var(--fg);font-size:11px;">Official website, social media, peer communities, art institutions/schools<br><span style="color:var(--muted);">官网、社媒、同行社群、艺术机构</span></td>
+              <td style="padding:6px 8px;vertical-align:top;border-right:1px solid #e0e0da;color:var(--fg);font-size:11px;">Detailed info on official website &amp; social media<br><span style="color:var(--muted);">官网与社媒上的详细信息</span></td>
+              <td style="padding:6px 8px;vertical-align:top;border-right:1px dashed #e0e0da;color:var(--fg);font-size:11px;">Requirements on website<br><span style="color:var(--muted);">网站上的申请要求</span></td>
+              <td style="padding:6px 8px;vertical-align:top;border-right:1px dashed #e0e0da;color:var(--fg);font-size:11px;">Application form; upload project proposal<br><span style="color:var(--muted);">申请表格；上传项目方案</span></td>
+              <td style="padding:6px 8px;vertical-align:top;border-right:1px dashed #e0e0da;color:var(--fg);font-size:11px;">Email receipt confirmation<br><span style="color:var(--muted);">邮件收件确认</span></td>
+              <td style="padding:6px 8px;vertical-align:top;border-right:1px dashed #e0e0da;color:var(--fg);font-size:11px;">Website status: "selection"<br><span style="color:var(--muted);">网站状态：评选中</span></td>
+              <td style="padding:6px 8px;vertical-align:top;border-right:1px solid #e0e0da;color:var(--fg);font-size:11px;">Email: selected / waitlisted / rejected<br><span style="color:var(--muted);">邮件：录取/候补/拒绝通知</span></td>
+              <td style="padding:6px 8px;vertical-align:top;border-right:1px dashed #e0e0da;color:var(--fg);font-size:11px;">Emails, calls, in-person (if possible)<br><span style="color:var(--muted);">邮件、电话、线下沟通</span></td>
+              <td style="padding:6px 8px;vertical-align:top;border-right:1px dashed #e0e0da;color:var(--fg);font-size:11px;">Emails, calls, in-person<br><span style="color:var(--muted);">邮件、电话、线下</span></td>
+              <td style="padding:6px 8px;vertical-align:top;border-right:1px solid #e0e0da;color:var(--fg);font-size:11px;">Emails, calls<br><span style="color:var(--muted);">邮件与电话</span></td>
+              <td style="padding:6px 8px;vertical-align:top;border-right:1px dashed #e0e0da;color:var(--fg);font-size:11px;">Interaction with foundation staff; trip to the site<br><span style="color:var(--muted);">与基金会工作人员互动；前往项目现场</span></td>
+              <td style="padding:6px 8px;vertical-align:top;border-right:1px solid #e0e0da;color:var(--fg);font-size:11px;">Public participation<br><span style="color:var(--muted);">公众参与</span></td>
+              <td style="padding:6px 8px;vertical-align:top;border-right:1px dashed #e0e0da;color:var(--fg);font-size:11px;">Email: selected / waitlisted; next steps<br><span style="color:var(--muted);">录取通知邮件；后续步骤说明</span></td>
+              <td style="padding:6px 8px;vertical-align:top;color:var(--fg);font-size:11px;">Emails and calls<br><span style="color:var(--muted);">邮件与电话</span></td>
+            </tr>
+            <!-- Customer Actions -->
+            <tr>
+              <td style="padding:6px 8px;font-family:'Space Mono',monospace;font-size:8.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);vertical-align:top;border-right:1px solid #e0e0da;">Artist Actions<br><span style="color:#bbb;">艺术家行为</span></td>
+              <td style="padding:6px 8px;vertical-align:top;border-right:1px dashed #e0e0da;color:var(--fg);font-size:11px;">Finds out about the program<br><span style="color:var(--muted);">了解到项目</span></td>
+              <td style="padding:6px 8px;vertical-align:top;border-right:1px solid #e0e0da;color:var(--fg);font-size:11px;">Gets to know about the program<br><span style="color:var(--muted);">深入了解项目详情</span></td>
+              <td style="padding:6px 8px;vertical-align:top;border-right:1px dashed #e0e0da;color:var(--fg);font-size:11px;">Thinks about it; prepares project proposal<br><span style="color:var(--muted);">思考并准备项目方案</span></td>
+              <td style="padding:6px 8px;vertical-align:top;border-right:1px dashed #e0e0da;color:var(--fg);font-size:11px;">Registers; prepares project proposal<br><span style="color:var(--muted);">注册账号；准备方案</span></td>
+              <td style="padding:6px 8px;vertical-align:top;border-right:1px dashed #e0e0da;color:var(--fg);font-size:11px;">Submits project proposal<br><span style="color:var(--muted);">提交项目方案</span></td>
+              <td style="padding:6px 8px;vertical-align:top;border-right:1px dashed #e0e0da;color:var(--fg);font-size:11px;">Waits for the results<br><span style="color:var(--muted);">等待评选结果</span></td>
+              <td style="padding:6px 8px;vertical-align:top;border-right:1px solid #e0e0da;color:var(--fg);font-size:11px;">Receives the results<br><span style="color:var(--muted);">收到结果通知</span></td>
+              <td style="padding:6px 8px;vertical-align:top;border-right:1px dashed #e0e0da;color:var(--fg);font-size:11px;">Accepts offer; starts communicating; meeting for project execution<br><span style="color:var(--muted);">接受录取；开始沟通；项目执行会议</span></td>
+              <td style="padding:6px 8px;vertical-align:top;border-right:1px dashed #e0e0da;color:var(--fg);font-size:11px;">Joint meetings with project stakeholders (municipality)<br><span style="color:var(--muted);">与项目相关方（市政府）联合会议</span></td>
+              <td style="padding:6px 8px;vertical-align:top;border-right:1px solid #e0e0da;color:var(--fg);font-size:11px;">Prepares for coming to Milan; comes to Milan and settles in<br><span style="color:var(--muted);">准备前往米兰；抵达并安顿</span></td>
+              <td style="padding:6px 8px;vertical-align:top;border-right:1px dashed #e0e0da;color:var(--fg);font-size:11px;">Starts on-site preparation; develops the artwork daily<br><span style="color:var(--muted);">开始现场准备；每日前往现场创作</span></td>
+              <td style="padding:6px 8px;vertical-align:top;border-right:1px solid #e0e0da;color:var(--fg);font-size:11px;">Prepares presentation &amp; archive materials<br><span style="color:var(--muted);">准备展示与存档材料</span></td>
+              <td style="padding:6px 8px;vertical-align:top;border-right:1px dashed #e0e0da;color:var(--fg);font-size:11px;">Presents at the foundation<br><span style="color:var(--muted);">在基金会展出</span></td>
+              <td style="padding:6px 8px;vertical-align:top;color:var(--fg);font-size:11px;">Attends the exhibition<br><span style="color:var(--muted);">出席展览开幕</span></td>
+            </tr>
+            <!-- Line of Interaction -->
+            <tr><td colspan="15" style="padding:3px 8px;background:#f0f0eb;font-family:'Space Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);border-top:1px solid #ccc;border-bottom:1px solid #ccc;">— Line of Interaction · 互动线 —</td></tr>
+            <!-- Front Stage -->
+            <tr style="background:#fafaf8;">
+              <td style="padding:6px 8px;font-family:'Space Mono',monospace;font-size:8.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);vertical-align:top;border-right:1px solid #e0e0da;">Front Stage<br><span style="color:#bbb;">前台</span></td>
+              <td style="padding:6px 8px;vertical-align:top;border-right:1px dashed #e0e0da;color:var(--fg);font-size:11px;">Social media post; announces the program<br><span style="color:var(--muted);">发布社媒帖子；宣传项目</span></td>
+              <td style="padding:6px 8px;vertical-align:top;border-right:1px solid #e0e0da;color:var(--fg);font-size:11px;">Social media post and website content<br><span style="color:var(--muted);">社媒与网站内容更新</span></td>
+              <td style="padding:6px 8px;vertical-align:top;border-right:1px dashed #e0e0da;color:var(--fg);font-size:11px;">—</td>
+              <td style="padding:6px 8px;vertical-align:top;border-right:1px dashed #e0e0da;color:var(--fg);font-size:11px;">Sign up the portal; popup notification of missing fields<br><span style="color:var(--muted);">注册入口；缺项弹窗提醒</span></td>
+              <td style="padding:6px 8px;vertical-align:top;border-right:1px dashed #e0e0da;color:var(--fg);font-size:11px;">—</td>
+              <td style="padding:6px 8px;vertical-align:top;border-right:1px dashed #e0e0da;color:var(--fg);font-size:11px;">—</td>
+              <td style="padding:6px 8px;vertical-align:top;border-right:1px solid #e0e0da;color:var(--fg);font-size:11px;">Email from the selection committee<br><span style="color:var(--muted);">评选委员会发出邮件</span></td>
+              <td style="padding:6px 8px;vertical-align:top;border-right:1px dashed #e0e0da;color:var(--fg);font-size:11px;">Call meeting<br><span style="color:var(--muted);">电话/视频会议</span></td>
+              <td style="padding:6px 8px;vertical-align:top;border-right:1px dashed #e0e0da;color:var(--fg);font-size:11px;">Call meeting<br><span style="color:var(--muted);">电话/视频会议</span></td>
+              <td style="padding:6px 8px;vertical-align:top;border-right:1px solid #e0e0da;color:var(--fg);font-size:11px;">Distance support, email and call; accommodation organization<br><span style="color:var(--muted);">远程支持、邮件与电话；住宿安排</span></td>
+              <td style="padding:6px 8px;vertical-align:top;border-right:1px dashed #e0e0da;color:var(--fg);font-size:11px;">Greetings with foundation staff; Apecar ride on-site; people come and visit<br><span style="color:var(--muted);">与基金会员工接待；Apecar现场参观；公众到访</span></td>
+              <td style="padding:6px 8px;vertical-align:top;border-right:1px solid #e0e0da;color:var(--fg);font-size:11px;">Support for archive creation; record the archive<br><span style="color:var(--muted);">支持存档创建；记录存档</span></td>
+              <td style="padding:6px 8px;vertical-align:top;border-right:1px dashed #e0e0da;color:var(--fg);font-size:11px;">Foundation cares for archival materials; people visit<br><span style="color:var(--muted);">基金会维护存档材料；公众参观</span></td>
+              <td style="padding:6px 8px;vertical-align:top;color:var(--fg);font-size:11px;">Contact from the foundation<br><span style="color:var(--muted);">基金会保持联络</span></td>
+            </tr>
+            <!-- Line of Visibility -->
+            <tr><td colspan="15" style="padding:3px 8px;background:#f0f0eb;font-family:'Space Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);border-top:1px solid #ccc;border-bottom:1px solid #ccc;">— Line of Visibility · 可见线 —</td></tr>
+            <!-- Back Stage -->
+            <tr>
+              <td style="padding:6px 8px;font-family:'Space Mono',monospace;font-size:8.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);vertical-align:top;border-right:1px solid #e0e0da;">Back Stage<br><span style="color:#bbb;">后台</span></td>
+              <td style="padding:6px 8px;vertical-align:top;border-right:1px dashed #e0e0da;color:var(--fg);font-size:11px;">Prepare social media materials; reply to questions<br><span style="color:var(--muted);">准备社媒素材；回复咨询</span></td>
+              <td style="padding:6px 8px;vertical-align:top;border-right:1px solid #e0e0da;color:var(--fg);font-size:11px;">Content appealing to artists' interest; reply to questions<br><span style="color:var(--muted);">制作面向艺术家的内容；回复提问</span></td>
+              <td style="padding:6px 8px;vertical-align:top;border-right:1px dashed #e0e0da;color:var(--fg);font-size:11px;">—</td>
+              <td style="padding:6px 8px;vertical-align:top;border-right:1px dashed #e0e0da;color:var(--fg);font-size:11px;">Setting up sign-up/log-in page<br><span style="color:var(--muted);">建立注册/登录页面</span></td>
+              <td style="padding:6px 8px;vertical-align:top;border-right:1px dashed #e0e0da;color:var(--fg);font-size:11px;">Go over the application<br><span style="color:var(--muted);">审阅申请材料</span></td>
+              <td style="padding:6px 8px;vertical-align:top;border-right:1px dashed #e0e0da;color:var(--fg);font-size:11px;">—</td>
+              <td style="padding:6px 8px;vertical-align:top;border-right:1px solid #e0e0da;color:var(--fg);font-size:11px;">Send results via email; send follow-up email<br><span style="color:var(--muted);">发送结果邮件；发送后续跟进邮件</span></td>
+              <td style="padding:6px 8px;vertical-align:top;border-right:1px dashed #e0e0da;color:var(--fg);font-size:11px;">Set up and facilitate meeting; inform about the project<br><span style="color:var(--muted);">组织会议；介绍项目详情</span></td>
+              <td style="padding:6px 8px;vertical-align:top;border-right:1px dashed #e0e0da;color:var(--fg);font-size:11px;">Set up meeting; inform about the municipality<br><span style="color:var(--muted);">组织会议；通报市政相关事宜</span></td>
+              <td style="padding:6px 8px;vertical-align:top;border-right:1px solid #e0e0da;color:var(--fg);font-size:11px;">Reply emails and calls; support with documentation; accommodation<br><span style="color:var(--muted);">回复邮件与电话；协助办理文件；安排住宿</span></td>
+              <td style="padding:6px 8px;vertical-align:top;border-right:1px dashed #e0e0da;color:var(--fg);font-size:11px;">Provide space; arrange vehicle/transportation card; PR campaign for public participation<br><span style="color:var(--muted);">提供场地；安排交通；宣传活动吸引公众参与</span></td>
+              <td style="padding:6px 8px;vertical-align:top;border-right:1px solid #e0e0da;color:var(--fg);font-size:11px;">Prepare exhibition venue; hire media coverage on-site<br><span style="color:var(--muted);">准备展览场地；安排媒体记录</span></td>
+              <td style="padding:6px 8px;vertical-align:top;border-right:1px dashed #e0e0da;color:var(--fg);font-size:11px;">Track visitor numbers; collect contact info<br><span style="color:var(--muted);">记录参观人数；收集联系信息</span></td>
+              <td style="padding:6px 8px;vertical-align:top;color:var(--fg);font-size:11px;">Send emails to alumni for upcoming projects<br><span style="color:var(--muted);">向历届艺术家发送未来项目通知</span></td>
+            </tr>
+            <!-- Support Process -->
+            <tr style="background:#fafaf8;">
+              <td style="padding:6px 8px;font-family:'Space Mono',monospace;font-size:8.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);vertical-align:top;border-right:1px solid #e0e0da;border-top:1px solid #e0e0da;">Support Process<br><span style="color:#bbb;">支撑流程</span></td>
+              <td style="padding:6px 8px;vertical-align:top;border-right:1px dashed #e0e0da;border-top:1px solid #e0e0da;color:var(--fg);font-size:11px;">Marketing plan; networking with institutions &amp; schools<br><span style="color:var(--muted);">营销计划；与机构学校建立联系</span></td>
+              <td style="padding:6px 8px;vertical-align:top;border-right:1px solid #e0e0da;border-top:1px solid #e0e0da;color:var(--fg);font-size:11px;">Effective marketing plan for target audience<br><span style="color:var(--muted);">针对目标群体的有效营销方案</span></td>
+              <td style="padding:6px 8px;vertical-align:top;border-right:1px dashed #e0e0da;border-top:1px solid #e0e0da;color:var(--fg);font-size:11px;">—</td>
+              <td style="padding:6px 8px;vertical-align:top;border-right:1px dashed #e0e0da;border-top:1px solid #e0e0da;color:var(--fg);font-size:11px;">Manage website registration &amp; application system<br><span style="color:var(--muted);">管理网站注册与申请系统</span></td>
+              <td style="padding:6px 8px;vertical-align:top;border-right:1px dashed #e0e0da;border-top:1px solid #e0e0da;color:var(--fg);font-size:11px;">Store application info on confidential portal<br><span style="color:var(--muted);">在保密平台存储申请信息</span></td>
+              <td style="padding:6px 8px;vertical-align:top;border-right:1px dashed #e0e0da;border-top:1px solid #e0e0da;color:var(--fg);font-size:11px;">—</td>
+              <td style="padding:6px 8px;vertical-align:top;border-right:1px solid #e0e0da;border-top:1px solid #e0e0da;color:var(--fg);font-size:11px;">Results communicated via list; document next steps &amp; instructions<br><span style="color:var(--muted);">通过列表传达结果；记录后续步骤与说明</span></td>
+              <td style="padding:6px 8px;vertical-align:top;border-right:1px dashed #e0e0da;border-top:1px solid #e0e0da;color:var(--fg);font-size:11px;">Define project detail internally<br><span style="color:var(--muted);">内部确定项目细节</span></td>
+              <td style="padding:6px 8px;vertical-align:top;border-right:1px dashed #e0e0da;border-top:1px solid #e0e0da;color:var(--fg);font-size:11px;">Send documents to municipality; inform about candidates<br><span style="color:var(--muted);">向市政府发送文件；通报候选人情况</span></td>
+              <td style="padding:6px 8px;vertical-align:top;border-right:1px solid #e0e0da;border-top:1px solid #e0e0da;color:var(--fg);font-size:11px;">If non-Italian: support visa &amp; accommodation help<br><span style="color:var(--muted);">若为非意大利籍：协助签证与住宿事宜</span></td>
+              <td style="padding:6px 8px;vertical-align:top;border-right:1px dashed #e0e0da;border-top:1px solid #e0e0da;color:var(--fg);font-size:11px;">Assign person in charge; prepare vehicle/transportation card<br><span style="color:var(--muted);">指派负责人；准备交通工具/卡</span></td>
+              <td style="padding:6px 8px;vertical-align:top;border-right:1px solid #e0e0da;border-top:1px solid #e0e0da;color:var(--fg);font-size:11px;">Contact archival curation professionals; hire staff for exhibition venue<br><span style="color:var(--muted);">联系专业存档人员；招募展览现场工作人员</span></td>
+              <td style="padding:6px 8px;vertical-align:top;border-right:1px dashed #e0e0da;border-top:1px solid #e0e0da;color:var(--fg);font-size:11px;">Prepare proper exhibition setup; archive exhibition info<br><span style="color:var(--muted);">布置展览；存档展览信息</span></td>
+              <td style="padding:6px 8px;vertical-align:top;border-top:1px solid #e0e0da;color:var(--fg);font-size:11px;">Archive setup; build database of past exhibited artists<br><span style="color:var(--muted);">建立存档；构建历届艺术家数据库</span></td>
+            </tr>
+          </tbody>
+        </table>
+        </div>
+      </div>
+
+      <!-- Blueprint 1: Participatory Art -->
+      <div style="margin-bottom:2.5rem;">
+        <h4 style="font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:600;color:var(--navy);margin:0 0 .25rem;">Service Blueprint of Public — Participatory Art Project</h4>
+        <p style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:0 0 1.25rem;">公众服务蓝图 · 参与式艺术项目</p>
+        <div style="overflow-x:auto;">
+        <table style="width:100%;border-collapse:collapse;font-size:11.5px;line-height:1.6;min-width:700px;">
+          <thead>
+            <tr>
+              <th style="width:110px;padding:6px 8px;text-align:left;font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);border-bottom:2px solid var(--navy);"></th>
+              <th colspan="2" style="padding:8px 8px;text-align:center;background:#e8f5f3;color:var(--navy);font-size:12px;font-family:'Space Mono',monospace;letter-spacing:.04em;text-transform:uppercase;border-bottom:2px solid var(--navy);">Encounter · 邂逅</th>
+              <th colspan="3" style="padding:8px 8px;text-align:center;background:#fdf0ee;color:var(--navy);font-size:12px;font-family:'Space Mono',monospace;letter-spacing:.04em;text-transform:uppercase;border-bottom:2px solid var(--navy);">Participation · 参与</th>
+              <th colspan="3" style="padding:8px 8px;text-align:center;background:#eef0f8;color:var(--navy);font-size:12px;font-family:'Space Mono',monospace;letter-spacing:.04em;text-transform:uppercase;border-bottom:2px solid var(--navy);">Visit · 到访展览</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Evidence -->
+            <tr style="background:#fafaf8;">
+              <td style="padding:7px 8px;font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);vertical-align:top;border-right:1px solid #e0e0da;">Evidence<br><span style="color:#bbb;">证据</span></td>
+              <td style="padding:7px 8px;vertical-align:top;border-right:1px dashed #e0e0da;color:var(--fg);">Apecar, social media campaign &amp; flyer<br><span style="color:var(--muted);">Apecar、社媒宣传与传单</span></td>
+              <td style="padding:7px 8px;vertical-align:top;border-right:1px solid #e0e0da;color:var(--fg);">Apecar, social media campaign &amp; flyer<br><span style="color:var(--muted);">Apecar、社媒宣传与传单</span></td>
+              <td style="padding:7px 8px;vertical-align:top;border-right:1px dashed #e0e0da;color:var(--fg);">Project site, interacting with artists<br><span style="color:var(--muted);">项目现场，与艺术家互动</span></td>
+              <td style="padding:7px 8px;vertical-align:top;border-right:1px dashed #e0e0da;color:var(--fg);">Email list registration; social media posts<br><span style="color:var(--muted);">邮件订阅注册；社交媒体帖子</span></td>
+              <td style="padding:7px 8px;vertical-align:top;border-right:1px solid #e0e0da;color:var(--fg);">Email notification<br><span style="color:var(--muted);">邮件通知</span></td>
+              <td style="padding:7px 8px;vertical-align:top;border-right:1px dashed #e0e0da;color:var(--fg);">Foundation site; interaction with artists &amp; staff<br><span style="color:var(--muted);">基金会现场；与艺术家和工作人员互动</span></td>
+              <td style="padding:7px 8px;vertical-align:top;border-right:1px dashed #e0e0da;color:var(--fg);">Website, flyer, posters<br><span style="color:var(--muted);">网站、传单与海报</span></td>
+              <td style="padding:7px 8px;vertical-align:top;color:var(--fg);">—</td>
+            </tr>
+            <!-- Customer Actions -->
+            <tr>
+              <td style="padding:7px 8px;font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);vertical-align:top;border-right:1px solid #e0e0da;">Customer Actions<br><span style="color:#bbb;">用户行为</span></td>
+              <td style="padding:7px 8px;vertical-align:top;border-right:1px dashed #e0e0da;color:var(--fg);">Finds out about the participatory art project<br><span style="color:var(--muted);">了解参与式艺术项目</span></td>
+              <td style="padding:7px 8px;vertical-align:top;border-right:1px solid #e0e0da;color:var(--fg);">Gets to know about the project<br><span style="color:var(--muted);">进一步了解项目详情</span></td>
+              <td style="padding:7px 8px;vertical-align:top;border-right:1px dashed #e0e0da;color:var(--fg);">Shows up, participates in the project<br><span style="color:var(--muted);">到场参与项目</span></td>
+              <td style="padding:7px 8px;vertical-align:top;border-right:1px dashed #e0e0da;color:var(--fg);">Shares experience on social media; joins mailing list<br><span style="color:var(--muted);">分享体验至社媒；加入邮件订阅</span></td>
+              <td style="padding:7px 8px;vertical-align:top;border-right:1px solid #e0e0da;color:var(--fg);">Receives email of project completion<br><span style="color:var(--muted);">收到项目完成通知邮件</span></td>
+              <td style="padding:7px 8px;vertical-align:top;border-right:1px dashed #e0e0da;color:var(--fg);">Visits the exhibition<br><span style="color:var(--muted);">前往观看成果展览</span></td>
+              <td style="padding:7px 8px;vertical-align:top;border-right:1px dashed #e0e0da;color:var(--fg);">Considers attending another activity<br><span style="color:var(--muted);">考虑参与其他活动</span></td>
+              <td style="padding:7px 8px;vertical-align:top;color:var(--fg);">—</td>
+            </tr>
+            <!-- Line of Interaction -->
+            <tr><td colspan="9" style="padding:3px 8px;background:#f0f0eb;font-family:'Space Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);border-top:1px solid #ccc;border-bottom:1px solid #ccc;">— Line of Interaction · 互动线 —</td></tr>
+            <!-- Front Stage -->
+            <tr style="background:#fafaf8;">
+              <td style="padding:7px 8px;font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);vertical-align:top;border-right:1px solid #e0e0da;">Front Stage<br><span style="color:#bbb;">前台</span></td>
+              <td style="padding:7px 8px;vertical-align:top;border-right:1px dashed #e0e0da;color:var(--fg);">Social media post, announce the program<br><span style="color:var(--muted);">社媒帖子宣传活动</span></td>
+              <td style="padding:7px 8px;vertical-align:top;border-right:1px solid #e0e0da;color:var(--fg);">Social media post and website content<br><span style="color:var(--muted);">社媒与网站内容更新</span></td>
+              <td style="padding:7px 8px;vertical-align:top;border-right:1px dashed #e0e0da;color:var(--fg);">Interaction with the artist<br><span style="color:var(--muted);">与艺术家现场互动</span></td>
+              <td style="padding:7px 8px;vertical-align:top;border-right:1px dashed #e0e0da;color:var(--fg);">Website, sign-up on the portal<br><span style="color:var(--muted);">网站报名入口</span></td>
+              <td style="padding:7px 8px;vertical-align:top;border-right:1px solid #e0e0da;color:var(--fg);">Email notifying project completion<br><span style="color:var(--muted);">发送项目完成通知邮件</span></td>
+              <td style="padding:7px 8px;vertical-align:top;border-right:1px dashed #e0e0da;color:var(--fg);">Communication with staff, artists on-site<br><span style="color:var(--muted);">现场与工作人员及艺术家沟通</span></td>
+              <td style="padding:7px 8px;vertical-align:top;border-right:1px dashed #e0e0da;color:var(--fg);">Email thanking participation &amp; offering other activities<br><span style="color:var(--muted);">致谢邮件并推荐其他活动</span></td>
+              <td style="padding:7px 8px;vertical-align:top;color:var(--fg);">—</td>
+            </tr>
+            <!-- Line of Visibility -->
+            <tr><td colspan="9" style="padding:3px 8px;background:#f0f0eb;font-family:'Space Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);border-top:1px solid #ccc;border-bottom:1px solid #ccc;">— Line of Visibility · 可见线 —</td></tr>
+            <!-- Back Stage -->
+            <tr>
+              <td style="padding:7px 8px;font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);vertical-align:top;border-right:1px solid #e0e0da;">Back Stage<br><span style="color:#bbb;">后台</span></td>
+              <td style="padding:7px 8px;vertical-align:top;border-right:1px dashed #e0e0da;color:var(--fg);">Prepare social media materials; reply to questions<br><span style="color:var(--muted);">准备社媒素材；回复咨询</span></td>
+              <td style="padding:7px 8px;vertical-align:top;border-right:1px solid #e0e0da;color:var(--fg);">Content appealing to public interest; reply to questions<br><span style="color:var(--muted);">制作吸引公众的内容；回复提问</span></td>
+              <td style="padding:7px 8px;vertical-align:top;border-right:1px dashed #e0e0da;color:var(--fg);">Members support on-site<br><span style="color:var(--muted);">成员现场支持</span></td>
+              <td style="padding:7px 8px;vertical-align:top;border-right:1px dashed #e0e0da;color:var(--fg);">Create email sign-up portal; start hashtag campaign<br><span style="color:var(--muted);">建立邮件注册系统；发起话题标签活动</span></td>
+              <td style="padding:7px 8px;vertical-align:top;border-right:1px solid #e0e0da;color:var(--fg);">Send out project completion email<br><span style="color:var(--muted);">发送项目完成邮件</span></td>
+              <td style="padding:7px 8px;vertical-align:top;border-right:1px dashed #e0e0da;color:var(--fg);">Mark participants as attending<br><span style="color:var(--muted);">标记参与者出席状态</span></td>
+              <td style="padding:7px 8px;vertical-align:top;border-right:1px dashed #e0e0da;color:var(--fg);">Send thank-you email with other offer promotions<br><span style="color:var(--muted);">发送致谢邮件并附上其他活动推荐</span></td>
+              <td style="padding:7px 8px;vertical-align:top;color:var(--fg);">—</td>
+            </tr>
+            <!-- Support Process -->
+            <tr style="background:#fafaf8;">
+              <td style="padding:7px 8px;font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);vertical-align:top;border-right:1px solid #e0e0da;border-top:1px solid #e0e0da;">Support Process<br><span style="color:#bbb;">支撑流程</span></td>
+              <td style="padding:7px 8px;vertical-align:top;border-right:1px dashed #e0e0da;border-top:1px solid #e0e0da;color:var(--fg);">Marketing plan; networking with institutions/schools<br><span style="color:var(--muted);">营销计划；与机构及学校建立联系</span></td>
+              <td style="padding:7px 8px;vertical-align:top;border-right:1px solid #e0e0da;border-top:1px solid #e0e0da;color:var(--fg);">Preparing effective marketing plan &amp; content for target audience<br><span style="color:var(--muted);">为目标群体制定有效营销方案</span></td>
+              <td style="padding:7px 8px;vertical-align:top;border-right:1px dashed #e0e0da;border-top:1px solid #e0e0da;color:var(--fg);">Deploy staff in charge at project site<br><span style="color:var(--muted);">安排负责人员驻守项目现场</span></td>
+              <td style="padding:7px 8px;vertical-align:top;border-right:1px dashed #e0e0da;border-top:1px solid #e0e0da;color:var(--fg);">Marketing plan using social media hashtag; create emailing database<br><span style="color:var(--muted);">利用话题标签开展营销；建立邮件数据库</span></td>
+              <td style="padding:7px 8px;vertical-align:top;border-right:1px solid #e0e0da;border-top:1px solid #e0e0da;color:var(--fg);">Compile email recipient list; prepare an email<br><span style="color:var(--muted);">整理收件人名单；准备邮件内容</span></td>
+              <td style="padding:7px 8px;vertical-align:top;border-right:1px dashed #e0e0da;border-top:1px solid #e0e0da;color:var(--fg);">Store application info on portal; prepare exhibition materials<br><span style="color:var(--muted);">在平台存档信息；准备展览物料</span></td>
+              <td style="padding:7px 8px;vertical-align:top;border-right:1px dashed #e0e0da;border-top:1px solid #e0e0da;color:var(--fg);">Communicate results between selection team<br><span style="color:var(--muted);">向评选团队传达结果</span></td>
+              <td style="padding:7px 8px;vertical-align:top;border-top:1px solid #e0e0da;color:var(--fg);">—</td>
+            </tr>
+          </tbody>
+        </table>
+        </div>
+      </div>
+
+      <!-- Blueprint 2: Private Lessons -->
+      <div>
+        <h4 style="font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:600;color:var(--navy);margin:0 0 .25rem;">Service Blueprint of Public — Private Lessons</h4>
+        <p style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:0 0 1.25rem;">公众服务蓝图 · 私教课程</p>
+        <div style="overflow-x:auto;">
+        <table style="width:100%;border-collapse:collapse;font-size:11.5px;line-height:1.6;min-width:700px;">
+          <thead>
+            <tr>
+              <th style="width:110px;padding:6px 8px;text-align:left;font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);border-bottom:2px solid var(--navy);"></th>
+              <th colspan="2" style="padding:8px 8px;text-align:center;background:#e8f5f3;color:var(--navy);font-size:12px;font-family:'Space Mono',monospace;letter-spacing:.04em;text-transform:uppercase;border-bottom:2px solid var(--navy);">Encounter · 邂逅</th>
+              <th style="padding:8px 8px;text-align:center;background:#fdf0ee;color:var(--navy);font-size:12px;font-family:'Space Mono',monospace;letter-spacing:.04em;text-transform:uppercase;border-bottom:2px solid var(--navy);">Get to Know · 了解</th>
+              <th colspan="2" style="padding:8px 8px;text-align:center;background:#eef0f8;color:var(--navy);font-size:12px;font-family:'Space Mono',monospace;letter-spacing:.04em;text-transform:uppercase;border-bottom:2px solid var(--navy);">Sign-up · 报名</th>
+              <th colspan="3" style="padding:8px 8px;text-align:center;background:#f5f0fa;color:var(--navy);font-size:12px;font-family:'Space Mono',monospace;letter-spacing:.04em;text-transform:uppercase;border-bottom:2px solid var(--navy);">Start · 开始</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Evidence -->
+            <tr style="background:#fafaf8;">
+              <td style="padding:7px 8px;font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);vertical-align:top;border-right:1px solid #e0e0da;">Evidence<br><span style="color:#bbb;">证据</span></td>
+              <td style="padding:7px 8px;vertical-align:top;border-right:1px dashed #e0e0da;color:var(--fg);">Apecar, social media campaign &amp; flyer<br><span style="color:var(--muted);">Apecar、社媒宣传与传单</span></td>
+              <td style="padding:7px 8px;vertical-align:top;border-right:1px solid #e0e0da;color:var(--fg);">Apecar, social media campaign &amp; flyer<br><span style="color:var(--muted);">Apecar、社媒宣传与传单</span></td>
+              <td style="padding:7px 8px;vertical-align:top;border-right:1px solid #e0e0da;color:var(--fg);">Website sign-up portal<br><span style="color:var(--muted);">网站报名入口</span></td>
+              <td style="padding:7px 8px;vertical-align:top;border-right:1px dashed #e0e0da;color:var(--fg);">In-person at the foundation site<br><span style="color:var(--muted);">在基金会现场</span></td>
+              <td style="padding:7px 8px;vertical-align:top;border-right:1px solid #e0e0da;color:var(--fg);">Website reservation portal; email notification<br><span style="color:var(--muted);">网站预约入口；邮件通知</span></td>
+              <td style="padding:7px 8px;vertical-align:top;border-right:1px dashed #e0e0da;color:var(--fg);">Web page to fill in; email notification<br><span style="color:var(--muted);">填写网页表单；邮件通知</span></td>
+              <td style="padding:7px 8px;vertical-align:top;border-right:1px dashed #e0e0da;color:var(--fg);">Email notification; payment confirmation<br><span style="color:var(--muted);">邮件通知；付款确认</span></td>
+              <td style="padding:7px 8px;vertical-align:top;color:var(--fg);">Email notification; re-confirmation<br><span style="color:var(--muted);">邮件通知；再次确认</span></td>
+            </tr>
+            <!-- Customer Actions -->
+            <tr>
+              <td style="padding:7px 8px;font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);vertical-align:top;border-right:1px solid #e0e0da;">Customer Actions<br><span style="color:#bbb;">用户行为</span></td>
+              <td style="padding:7px 8px;vertical-align:top;border-right:1px dashed #e0e0da;color:var(--fg);">Finds out about the foundation<br><span style="color:var(--muted);">了解到基金会</span></td>
+              <td style="padding:7px 8px;vertical-align:top;border-right:1px solid #e0e0da;color:var(--fg);">Gets to know about the offers<br><span style="color:var(--muted);">了解基金会提供的服务</span></td>
+              <td style="padding:7px 8px;vertical-align:top;border-right:1px solid #e0e0da;color:var(--fg);">Signs up for an inquiry<br><span style="color:var(--muted);">提交咨询申请</span></td>
+              <td style="padding:7px 8px;vertical-align:top;border-right:1px dashed #e0e0da;color:var(--fg);">Visits the foundation<br><span style="color:var(--muted);">前往基金会参观</span></td>
+              <td style="padding:7px 8px;vertical-align:top;border-right:1px solid #e0e0da;color:var(--fg);">Makes reservation for the class<br><span style="color:var(--muted);">预约课程</span></td>
+              <td style="padding:7px 8px;vertical-align:top;border-right:1px dashed #e0e0da;color:var(--fg);">Waits for teacher matching<br><span style="color:var(--muted);">等待匹配老师</span></td>
+              <td style="padding:7px 8px;vertical-align:top;border-right:1px dashed #e0e0da;color:var(--fg);">Completes payment<br><span style="color:var(--muted);">完成付款</span></td>
+              <td style="padding:7px 8px;vertical-align:top;color:var(--fg);">Starts the course<br><span style="color:var(--muted);">开始上课</span></td>
+            </tr>
+            <!-- Line of Interaction -->
+            <tr><td colspan="9" style="padding:3px 8px;background:#f0f0eb;font-family:'Space Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);border-top:1px solid #ccc;border-bottom:1px solid #ccc;">— Line of Interaction · 互动线 —</td></tr>
+            <!-- Front Stage -->
+            <tr style="background:#fafaf8;">
+              <td style="padding:7px 8px;font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);vertical-align:top;border-right:1px solid #e0e0da;">Front Stage<br><span style="color:#bbb;">前台</span></td>
+              <td style="padding:7px 8px;vertical-align:top;border-right:1px dashed #e0e0da;color:var(--fg);">Social media post, announce program<br><span style="color:var(--muted);">社媒发布课程宣传</span></td>
+              <td style="padding:7px 8px;vertical-align:top;border-right:1px solid #e0e0da;color:var(--fg);">Social media post &amp; website content<br><span style="color:var(--muted);">社媒与网站内容更新</span></td>
+              <td style="padding:7px 8px;vertical-align:top;border-right:1px solid #e0e0da;color:var(--fg);">Sign-up form on website<br><span style="color:var(--muted);">网站在线报名表单</span></td>
+              <td style="padding:7px 8px;vertical-align:top;border-right:1px dashed #e0e0da;color:var(--fg);">Conversation with foundation staff; visual materials<br><span style="color:var(--muted);">与工作人员交谈；提供视觉展示材料</span></td>
+              <td style="padding:7px 8px;vertical-align:top;border-right:1px solid #e0e0da;color:var(--fg);">Choose offer at in-person meeting<br><span style="color:var(--muted);">现场面谈选择课程方案</span></td>
+              <td style="padding:7px 8px;vertical-align:top;border-right:1px dashed #e0e0da;color:var(--fg);">Section on website to add student's needs<br><span style="color:var(--muted);">网站填写学员需求偏好</span></td>
+              <td style="padding:7px 8px;vertical-align:top;border-right:1px dashed #e0e0da;color:var(--fg);">Email with online payment link<br><span style="color:var(--muted);">发送包含付款链接的邮件</span></td>
+              <td style="padding:7px 8px;vertical-align:top;color:var(--fg);">Email notifying first date, place &amp; teacher<br><span style="color:var(--muted);">发邮件通知首次课程时间、地点与老师</span></td>
+            </tr>
+            <!-- Line of Visibility -->
+            <tr><td colspan="9" style="padding:3px 8px;background:#f0f0eb;font-family:'Space Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);border-top:1px solid #ccc;border-bottom:1px solid #ccc;">— Line of Visibility · 可见线 —</td></tr>
+            <!-- Back Stage -->
+            <tr>
+              <td style="padding:7px 8px;font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);vertical-align:top;border-right:1px solid #e0e0da;">Back Stage<br><span style="color:#bbb;">后台</span></td>
+              <td style="padding:7px 8px;vertical-align:top;border-right:1px dashed #e0e0da;color:var(--fg);">Prepare social media materials; reply to questions<br><span style="color:var(--muted);">准备社媒素材；回复咨询</span></td>
+              <td style="padding:7px 8px;vertical-align:top;border-right:1px solid #e0e0da;color:var(--fg);">Content appealing to public; reply to questions<br><span style="color:var(--muted);">制作吸引公众的内容；回复提问</span></td>
+              <td style="padding:7px 8px;vertical-align:top;border-right:1px solid #e0e0da;color:var(--fg);">Manage sign-up inquiries &amp; calendar<br><span style="color:var(--muted);">管理咨询申请与预约日历</span></td>
+              <td style="padding:7px 8px;vertical-align:top;border-right:1px dashed #e0e0da;color:var(--fg);">Create email sign-up portal; launch social media hashtag campaign<br><span style="color:var(--muted);">建立邮件注册系统；发起话题标签活动</span></td>
+              <td style="padding:7px 8px;vertical-align:top;border-right:1px solid #e0e0da;color:var(--fg);">Web portal for staff to register students<br><span style="color:var(--muted);">工作人员通过后台录入学员信息</span></td>
+              <td style="padding:7px 8px;vertical-align:top;border-right:1px dashed #e0e0da;color:var(--fg);">Notify students not completing registration; match teacher by skills &amp; needs<br><span style="color:var(--muted);">提醒未完成注册的学员；按技能与需求匹配老师</span></td>
+              <td style="padding:7px 8px;vertical-align:top;border-right:1px dashed #e0e0da;color:var(--fg);">Generate individual payment link<br><span style="color:var(--muted);">生成个人专属付款链接</span></td>
+              <td style="padding:7px 8px;vertical-align:top;color:var(--fg);">Send course details email to student &amp; teacher<br><span style="color:var(--muted);">向学员与老师发送课程详情邮件</span></td>
+            </tr>
+            <!-- Support Process -->
+            <tr style="background:#fafaf8;">
+              <td style="padding:7px 8px;font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);vertical-align:top;border-right:1px solid #e0e0da;border-top:1px solid #e0e0da;">Support Process<br><span style="color:#bbb;">支撑流程</span></td>
+              <td style="padding:7px 8px;vertical-align:top;border-right:1px dashed #e0e0da;border-top:1px solid #e0e0da;color:var(--fg);">Marketing plan; networking with institutions &amp; schools<br><span style="color:var(--muted);">营销计划；与机构及学校建立联系</span></td>
+              <td style="padding:7px 8px;vertical-align:top;border-right:1px solid #e0e0da;border-top:1px solid #e0e0da;color:var(--fg);">Effective marketing plan for target audience<br><span style="color:var(--muted);">针对目标群体制定有效营销方案</span></td>
+              <td style="padding:7px 8px;vertical-align:top;border-right:1px solid #e0e0da;border-top:1px solid #e0e0da;color:var(--fg);">Prepare registration forms; build emailing database<br><span style="color:var(--muted);">准备报名表格；建立邮件数据库</span></td>
+              <td style="padding:7px 8px;vertical-align:top;border-right:1px dashed #e0e0da;border-top:1px solid #e0e0da;color:var(--fg);">Social media hashtag marketing; database for in-person meetings<br><span style="color:var(--muted);">社媒话题标签营销；建立现场会面数据库</span></td>
+              <td style="padding:7px 8px;vertical-align:top;border-right:1px solid #e0e0da;border-top:1px solid #e0e0da;color:var(--fg);">Prepare registration portal for staff on-site<br><span style="color:var(--muted);">为现场工作人员准备注册系统</span></td>
+              <td style="padding:7px 8px;vertical-align:top;border-right:1px dashed #e0e0da;border-top:1px solid #e0e0da;color:var(--fg);">Build matching system; database of artists, alumni &amp; skills<br><span style="color:var(--muted);">建立匹配系统；维护艺术家与学员技能数据库</span></td>
+              <td style="padding:7px 8px;vertical-align:top;border-right:1px dashed #e0e0da;border-top:1px solid #e0e0da;color:var(--fg);">Create online payment account<br><span style="color:var(--muted);">建立线上支付账户</span></td>
+              <td style="padding:7px 8px;vertical-align:top;border-top:1px solid #e0e0da;color:var(--fg);">Reserve classroom; prepare materials needed for class<br><span style="color:var(--muted);">预留教室；准备课程所需材料</span></td>
+            </tr>
+          </tbody>
+        </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Flows -->
+    <div class="mb4">
+      <h3 class="sub-h"><em>Flows</em> · 用户流程</h3>
+      <p class="sub-note">How four community personas navigate the Fondazione Pini building in their first visit. · 四位社区人物角色初次到访皮尼基金会的行动路径。</p>
+      <div class="flows-grid">
+        <!-- Patrice -->
+        <div class="flow-card" style="padding:0;overflow:hidden;">
+          <img src="io-flow-patrice.jpg" style="width:100%;display:block;">
+          <div style="padding:1rem 1.25rem 1rem;">
+            <div style="display:flex;align-items:center;gap:.5rem;margin-bottom:.6rem;">
+              <span class="flow-flag">🇨🇩</span>
+              <div class="flow-name" style="margin:0;">Patrice</div>
+              <div class="flow-meta" style="margin:0;">33岁 · 布雷拉调酒师 · 订婚</div>
+            </div>
+            <div class="flow-attrs" style="margin-bottom:.75rem;">
+              <div class="flow-attr"><strong>Thinks · 想法：</strong>Brera is very cool but does not really know anything about its story. / 布雷拉很酷，但对其历史一无所知。</div>
+              <div class="flow-attr"><strong>Feels · 感受：</strong>He has a lot of free time to do new stuff, also before his turns at the bar. / 上班前有大量空闲时间，渴望做点新鲜事。</div>
+              <div class="flow-attr"><strong>Needs · 需求：</strong>To discover new things related to culture; to feel like also common people like him are able to create. / 发现与文化相关的新事物；感受到普通人也有创造的能力。</div>
+            </div>
+            <div class="flow-path-row">
+              <span class="fp-tag t">艺术路径</span><span class="fp-tag t">展览</span><span class="fp-tag t">档案馆</span>
+            </div>
+          </div>
+        </div>
+        <!-- Najmeh -->
+        <div class="flow-card" style="padding:0;overflow:hidden;">
+          <img src="io-flow-najmeh.jpg" style="width:100%;display:block;">
+          <div style="padding:1rem 1.25rem 1rem;">
+            <div style="display:flex;align-items:center;gap:.5rem;margin-bottom:.6rem;">
+              <span class="flow-flag">🇮🇷</span>
+              <div class="flow-name" style="margin:0;">Najmeh</div>
+              <div class="flow-meta" style="margin:0;">22岁 · 工程系 Erasmus 交换生</div>
+            </div>
+            <div class="flow-attrs" style="margin-bottom:.75rem;">
+              <div class="flow-attr"><strong>Thinks · 想法：</strong>That sometimes her student friends waste a lot of time drinking in bars. / 同学们有时把太多时间浪费在酒吧里。</div>
+              <div class="flow-attr"><strong>Feels · 感受：</strong>Not understood by people of her age; sometimes wishes she could meet real life artists and speak with them. / 不被同龄人理解，渴望能与真实的艺术家交流。</div>
+              <div class="flow-attr"><strong>Needs · 需求：</strong>To know more about people that actually follow her interest in writing poetry. / 找到真正热爱诗歌创作、与她志同道合的人。</div>
+            </div>
+            <div class="flow-path-row">
+              <span class="fp-tag c">PiniTalks 讲座路径</span><span class="fp-tag c">电影之夜路径</span>
+            </div>
+          </div>
+        </div>
+        <!-- Silvia -->
+        <div class="flow-card" style="padding:0;overflow:hidden;">
+          <img src="io-flow-silvia.jpg" style="width:100%;display:block;">
+          <div style="padding:1rem 1.25rem 1rem;">
+            <div style="display:flex;align-items:center;gap:.5rem;margin-bottom:.6rem;">
+              <span class="flow-flag">🇮🇹</span>
+              <div class="flow-name" style="margin:0;">Silvia</div>
+              <div class="flow-meta" style="margin:0;">11岁 · 学生</div>
+            </div>
+            <div class="flow-attrs" style="margin-bottom:.75rem;">
+              <div class="flow-attr"><strong>Thinks · 想法：</strong>There is no time in school to draw and the art classes are not fun. / 学校里没时间画画，艺术课也不有趣。</div>
+              <div class="flow-attr"><strong>Feels · 感受：</strong>She doesn't have a lot of passions in common with her friends; this makes her feel really alone. / 与朋友鲜有共同爱好，感到非常孤独。</div>
+              <div class="flow-attr"><strong>Needs · 需求：</strong>People to share her interests and to create a first friendship network. / 找到能分享兴趣的伙伴，建立属于自己的第一个友谊网络。</div>
+            </div>
+            <div class="flow-path-row">
+              <span class="fp-tag t">寻宝探险路径</span>
+            </div>
+          </div>
+        </div>
+        <!-- Oliver -->
+        <div class="flow-card" style="padding:0;overflow:hidden;">
+          <img src="io-flow-oliver.jpg" style="width:100%;display:block;">
+          <div style="padding:1rem 1.25rem 1rem;">
+            <div style="display:flex;align-items:center;gap:.5rem;margin-bottom:.6rem;">
+              <span class="flow-flag">🇨🇳</span>
+              <div class="flow-name" style="margin:0;">Oliver</div>
+              <div class="flow-meta" style="margin:0;">69岁 · 退休前空乘 · 已婚</div>
+            </div>
+            <div class="flow-attrs" style="margin-bottom:.75rem;">
+              <div class="flow-attr"><strong>Thinks · 想法：</strong>His work gave him inspiration, but no time to create. / 工作给了他灵感，却没给他创作的时间。</div>
+              <div class="flow-attr"><strong>Feels · 感受：</strong>Finally empowered and able to discover having more free time. / 终于拥有更多自由时间，感到充实与自主。</div>
+              <div class="flow-attr"><strong>Needs · 需求：</strong>To start practicing the bases of something he is not sure he has the abilities of doing. / 开始练习一件他不确定自己是否有能力做到的事情。</div>
+            </div>
+            <div class="flow-path-row">
+              <span class="fp-tag c">私教课程路径</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Business Model Canvas -->
+    <div class="mb4">
+      <h3 class="sub-h">Business <em>Model</em> · 商业模式画布</h3>
+      <p class="sub-note">Canvas adapted from Business Model Generation — Osterwalder & Pigneur. · 价值主张：为社区提供跨越社会边界的艺术参与机会；为艺术家提供空间、材料与人群。</p>
+      <div class="bmc">
+        <div class="bmc-cell" style="grid-row:1/3;">
+          <div class="bmc-cell-h">Key Partners · 关键合作方</div>
+          <ul class="bmc-list">
+            <li>Comune di Milano · 米兰市政府</li>
+            <li>Municipalities · 各区市政机构</li>
+            <li>Art studios · 艺术工作室</li>
+            <li>Associations & social centers · 协会与社会中心</li>
+          </ul>
+        </div>
+        <div class="bmc-cell">
+          <div class="bmc-cell-h">Key Activities · 关键活动</div>
+          <ul class="bmc-list">
+            <li>Collecting & selecting artist proposals · 征集并筛选艺术家方案</li>
+            <li>Defining place, participants & timeframe · 确定场地、参与者与时间</li>
+            <li>Organizing space, participants & artists · 统筹空间、参与者与艺术家</li>
+            <li>Communicating between stakeholders · 协调各利益相关方沟通</li>
+          </ul>
+        </div>
+        <div class="bmc-cell vp" style="grid-row:1/3;">
+          <div class="bmc-cell-h">Value Proposition · 价值主张</div>
+          <ul class="bmc-list">
+            <li>For the public: opportunity to cross social & spatial borders through art · 对公众：通过艺术跨越社会与空间边界</li>
+            <li>For artists: space, materials & crowds to realize participatory concepts · 对艺术家：提供空间、材料与人群支持</li>
+          </ul>
+        </div>
+        <div class="bmc-cell">
+          <div class="bmc-cell-h">Audience Relationship · 用户关系</div>
+          <ul class="bmc-list">
+            <li>Co-creation · 共同创作</li>
+            <li>Community · 社区归属感</li>
+            <li>Partnership & Collaboration · 伙伴合作</li>
+            <li>Recognition & loyalty · 认同感与忠诚度</li>
+          </ul>
+        </div>
+        <div class="bmc-cell" style="grid-row:1/3;">
+          <div class="bmc-cell-h">Audience Segments · 用户群体</div>
+          <ul class="bmc-list">
+            <li>Artists seeking participants for projects · 寻找参与者的艺术家</li>
+            <li>School-age kids & school trips · 在校学生与学校参观团</li>
+            <li>Elderlies enriching their free time · 希望充实业余生活的老年人</li>
+            <li>Residents wanting community & art · 渴望参与社区与艺术的居民</li>
+          </ul>
+        </div>
+        <div class="bmc-cell">
+          <div class="bmc-cell-h">Key Resources · 关键资源</div>
+          <ul class="bmc-list">
+            <li>Financial resources · 资金资源</li>
+            <li>Physical facilities · 实体场地</li>
+            <li>Network & past partnerships · 人脉与历史合作关系</li>
+            <li>Legal & regulatory support · 法律与政策支持</li>
+            <li>Public support & reputation · 公众支持与口碑</li>
+          </ul>
+        </div>
+        <div class="bmc-cell">
+          <div class="bmc-cell-h">Channels · 传播渠道</div>
+          <ul class="bmc-list">
+            <li>Apecar on the streets · 街头 Apecar 流动站</li>
+            <li>Website · 官方网站</li>
+            <li>Social media · 社交媒体</li>
+            <li>Flyers · 传单</li>
+          </ul>
+        </div>
+        <div class="bmc-cell cost-s span-col2">
+          <div class="bmc-cell-h">Cost Structure · 成本结构</div>
+          <ul class="bmc-list" style="columns:2;gap:2rem;">
+            <li>Acquiring & maintaining apecars · 购置及维护 Apecar</li>
+            <li>Material acquisition · 材料采购（捐赠不足时）</li>
+            <li>Hardware acquisition (projector etc.) · 硬件采购（投影仪等）</li>
+            <li>Website & registration system · 网站建设与注册系统</li>
+          </ul>
+        </div>
+        <div class="bmc-cell rev-s" style="grid-column:3/6;">
+          <div class="bmc-cell-h">Revenue Streams · 收入来源</div>
+          <ul class="bmc-list" style="columns:2;gap:2rem;">
+            <li>Incentives from municipality · 市政府激励资金</li>
+            <li>Donations from the public · 公众捐款</li>
+            <li>Private lesson fees (40% teacher / 60% Fondazione) · 私教课程费用（4:6分成）</li>
+            <li>PiniTalks speaker gifts · PiniTalks 讲者礼品</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Financial -->
+    <div class="mb4">
+      <h3 class="sub-h">Expanded <em>Estimation</em> — Participatory Art Project · 参与式艺术项目财务估算</h3>
+      <div class="fin-3col">
+        <div class="fin-block">
+          <h4>Initial Cost · 初始成本</h4>
+          <div class="fin-row"><span class="fin-label">Apecar purchase · Apecar 购置</span><span class="fin-val">€ 4,000</span></div>
+          <div class="fin-row"><span class="fin-label">Website reconstruction · 网站重建</span><span class="fin-val">€ 2,000</span></div>
+          <div class="fin-total-row"><span class="fin-label">Total · 合计</span><span class="fin-val">€ 6,000</span></div>
+        </div>
+        <div class="fin-block">
+          <h4>One-time Cost for Exhibition · 单次展览成本</h4>
+          <div class="fin-row"><span class="fin-label">Space preparation · 场地布置</span><span class="fin-val">€ 2,000</span></div>
+          <div class="fin-row"><span class="fin-label">Exhibition staff deployment · 展览人员部署</span><span class="fin-val">€ 6,000</span></div>
+          <div class="fin-row"><span class="fin-label">Exhibition promotion · 展览宣传</span><span class="fin-val">€ 1,000</span></div>
+          <div class="fin-total-row"><span class="fin-label">Per exhibition · 每次展览</span><span class="fin-val">€ 9,000</span></div>
+          <div class="fin-total-row"><span class="fin-label">Per year (2 exhibitions) · 全年（2次）</span><span class="fin-val">€ 18,000</span></div>
+        </div>
+        <div class="fin-block">
+          <h4>Monthly Cost · 月度成本</h4>
+          <div class="fin-row"><span class="fin-label">Material from donation · 捐赠材料</span><span class="fin-val">€ 0</span></div>
+          <div class="fin-row"><span class="fin-label">Other materials · 其他材料</span><span class="fin-val">€ 200</span></div>
+          <div class="fin-row"><span class="fin-label">Promotional flyer printing · 宣传传单印刷</span><span class="fin-val">€ 100</span></div>
+          <div class="fin-row"><span class="fin-label">Website hosting · 网站托管</span><span class="fin-val">€ 20</span></div>
+          <div class="fin-row"><span class="fin-label">Advertising & Promotions · 广告与推广</span><span class="fin-val">€ 1,000</span></div>
+          <div class="fin-row"><span class="fin-label">Gas for apecar · Apecar 燃油</span><span class="fin-val">€ 40</span></div>
+          <div class="fin-row"><span class="fin-label">Parking of apecar · Apecar 停车</span><span class="fin-val">€ 100</span></div>
+          <div class="fin-row"><span class="fin-label">Meeting fee · 会议费用</span><span class="fin-val">€ 200</span></div>
+          <div class="fin-row"><span class="fin-label">Accommodation support · 住宿支持</span><span class="fin-val">€ 500</span></div>
+          <div class="fin-total-row"><span class="fin-label">Monthly cost · 月度合计</span><span class="fin-val">€ 2,160</span></div>
+          <div class="fin-total-row"><span class="fin-label">Yearly cost · 年度合计</span><span class="fin-val">€ 25,920</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <h3 class="sub-h">Cost Revenue <em>Estimation</em> — Inside Activities · 室内活动成本收入估算</h3>
+      <div class="fin-3col">
+        <div class="fin-block">
+          <h4>Initial Cost · 初始成本</h4>
+          <div class="fin-row"><span class="fin-label">Projector for movie nights · 电影之夜投影仪</span><span class="fin-val">€ 2,000</span></div>
+          <div class="fin-row"><span class="fin-label">Website registration system · 网站注册系统</span><span class="fin-val">€ 2,000</span></div>
+          <div class="fin-total-row"><span class="fin-label">Total · 合计</span><span class="fin-val">€ 4,000</span></div>
+        </div>
+        <div class="fin-block">
+          <h4>Income from Private Lesson · 私教课程收入</h4>
+          <div class="fin-row"><span class="fin-label">Per lesson / 40% of fee · 每课时（费用40%）</span><span class="fin-val">€ 10–18</span></div>
+          <div class="fin-row"><span class="fin-label">Per day · 每日</span><span class="fin-val">€ 160–288</span></div>
+          <div class="fin-row"><span class="fin-label">Per week · 每周</span><span class="fin-val">€ 1,440–2,592</span></div>
+          <div class="fin-total-row"><span class="fin-label">Per month · 每月</span><span class="fin-val">€ 5,760–10,368</span></div>
+        </div>
+        <div class="fin-block">
+          <h4>Monthly Cost · 月度成本</h4>
+          <div class="fin-row"><span class="fin-label">Donated materials · 捐赠材料</span><span class="fin-val">€ 0</span></div>
+          <div class="fin-row"><span class="fin-label">Materials · 其他材料</span><span class="fin-val">€ 200</span></div>
+          <div class="fin-row"><span class="fin-label">Gift for PiniTalks guest 1 · PiniTalks 嘉宾礼品1</span><span class="fin-val">€ 300</span></div>
+          <div class="fin-row"><span class="fin-label">Gift for PiniTalks guest 2 · PiniTalks 嘉宾礼品2</span><span class="fin-val">€ 300</span></div>
+          <div class="fin-row"><span class="fin-label">Treasure Hunts materials · 寻宝活动材料</span><span class="fin-val">€ 200</span></div>
+          <div class="fin-row"><span class="fin-label">Promotion fee · 推广费用</span><span class="fin-val">€ 500</span></div>
+          <div class="fin-row"><span class="fin-label">Flyer printing fee · 传单印刷费</span><span class="fin-val">€ 100</span></div>
+          <div class="fin-row"><span class="fin-label">Website hosting · 网站托管</span><span class="fin-val">€ 20</span></div>
+          <div class="fin-row"><span class="fin-label">Meeting fee · 会议费用</span><span class="fin-val">€ 500</span></div>
+          <div class="fin-row"><span class="fin-label">Additional utility · 其他杂费</span><span class="fin-val">€ 100</span></div>
+          <div class="fin-total-row"><span class="fin-label">Monthly cost · 月度合计</span><span class="fin-val">€ 2,120</span></div>
+          <div class="fin-total-row"><span class="fin-label">Yearly cost · 年度合计</span><span class="fin-val">€ 25,440</span></div>
+        </div>
+      </div>
+    </div>
+
+    <p class="body-zh" style="margin-top:2rem;">IO的财务模型以私教课程收入（60%归基金会）、市政府激励资金及公众捐助为主要收入来源，实现项目的可持续运营。</p>
+  </div>
+</section>
+
+<!-- ─── APPENDIX ─── -->
+<section class="sec" id="appendix">
+  <div class="sec-inner">
+    <div class="sec-label sec-chapter">05 / Annexes · 附录</div>
+    <div class="title-block" style="margin-bottom:3rem;">
+      <h2 class="sec-title">Research <em>Plan</em></h2>
+      <p class="sec-sub">研究计划</p>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:2.5rem;">
+
+      <!-- Desk Research -->
+      <div style="position:relative;">
+        <div style="position:absolute;top:-1rem;left:-1rem;width:160px;height:160px;background:radial-gradient(circle,rgba(210,100,90,.35) 0%,transparent 70%);border-radius:50%;pointer-events:none;"></div>
+        <div style="position:relative;">
+          <h3 style="font-family:'Playfair Display',serif;font-size:2rem;font-weight:400;color:var(--fg);line-height:1.15;margin:0 0 1.25rem;">Desk<br>Research</h3>
+          <p style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:0 0 1rem;">案头研究</p>
+          <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:.6rem;">
+            <li style="font-size:13px;color:var(--fg);line-height:1.6;display:flex;gap:.5rem;"><span style="color:var(--coral);flex-shrink:0;">·</span><span>Scanning of the documents provided by the foundation · <span style="color:var(--muted);">扫阅基金会提供的文件资料</span></span></li>
+            <li style="font-size:13px;color:var(--fg);line-height:1.6;display:flex;gap:.5rem;"><span style="color:var(--coral);flex-shrink:0;">·</span><span>Social media analysis · <span style="color:var(--muted);">社交媒体分析</span></span></li>
+            <li style="font-size:13px;color:var(--fg);line-height:1.6;display:flex;gap:.5rem;"><span style="color:var(--coral);flex-shrink:0;">·</span><span>Academic papers review · <span style="color:var(--muted);">学术论文综述</span></span></li>
+            <li style="font-size:13px;color:var(--fg);line-height:1.6;display:flex;gap:.5rem;"><span style="color:var(--coral);flex-shrink:0;">·</span><span>Online articles scanning · <span style="color:var(--muted);">在线文章扫读</span></span></li>
+            <li style="font-size:13px;color:var(--fg);line-height:1.6;display:flex;gap:.5rem;"><span style="color:var(--coral);flex-shrink:0;">·</span><span>Case Studies · <span style="color:var(--muted);">案例研究</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Field Research -->
+      <div style="position:relative;">
+        <div style="position:absolute;top:-1rem;left:2rem;width:160px;height:160px;background:radial-gradient(circle,rgba(210,100,90,.35) 0%,transparent 70%);border-radius:50%;pointer-events:none;"></div>
+        <div style="position:relative;">
+          <h3 style="font-family:'Playfair Display',serif;font-size:2rem;font-weight:400;color:var(--fg);line-height:1.15;margin:0 0 1.25rem;">Field<br>Research</h3>
+          <p style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:0 0 1rem;">田野调研</p>
+          <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:.6rem;">
+            <li style="font-size:13px;color:var(--fg);line-height:1.6;display:flex;gap:.5rem;"><span style="color:var(--coral);flex-shrink:0;">·</span><span>Analysis of spatial conditions, define the limits and opportunities · <span style="color:var(--muted);">分析空间现状，梳理限制与机遇</span></span></li>
+            <li style="font-size:13px;color:var(--fg);line-height:1.6;display:flex;gap:.5rem;"><span style="color:var(--coral);flex-shrink:0;">·</span><span>On-site interview of the people who work or live there · <span style="color:var(--muted);">对在地工作或生活的人进行实地访谈</span></span></li>
+            <li style="font-size:13px;color:var(--fg);line-height:1.6;display:flex;gap:.5rem;"><span style="color:var(--coral);flex-shrink:0;">·</span><span>Interview or workshop with potential audiences · <span style="color:var(--muted);">与潜在受众开展访谈或工作坊</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Design Brief -->
+      <div style="position:relative;">
+        <div style="position:absolute;top:-1rem;left:2rem;width:160px;height:160px;background:radial-gradient(circle,rgba(210,100,90,.35) 0%,transparent 70%);border-radius:50%;pointer-events:none;"></div>
+        <div style="position:relative;">
+          <h3 style="font-family:'Playfair Display',serif;font-size:2rem;font-weight:400;color:var(--fg);line-height:1.15;margin:0 0 1.25rem;">Design<br>Brief</h3>
+          <p style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:0 0 1rem;">设计简报</p>
+          <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:.6rem;">
+            <li style="font-size:13px;color:var(--fg);line-height:1.6;display:flex;gap:.5rem;"><span style="color:var(--coral);flex-shrink:0;">·</span><span>Insight synthesis and defining the opportunity area · <span style="color:var(--muted);">洞察综合，界定机会领域</span></span></li>
+            <li style="font-size:13px;color:var(--fg);line-height:1.6;display:flex;gap:.5rem;"><span style="color:var(--coral);flex-shrink:0;">·</span><span>Come up with the How Might We question · <span style="color:var(--muted);">提出"我们如何才能……"的设计问题</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Document scans -->
+    <div style="margin-top:3rem;border-top:1px solid var(--border);padding-top:2rem;">
+      <p style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--navy);margin:0 0 2rem;">Foundation Documents · 基金会文件资料</p>
+      <div style="display:flex;flex-direction:column;gap:2.5rem;">
+
+        <div style="display:grid;grid-template-columns:140px 1fr;gap:2rem;align-items:start;">
+          <div>
+            <p style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:0 0 .4rem;">Doc 01</p>
+            <p style="font-size:13px;font-weight:500;color:var(--fg);line-height:1.4;margin:0 0 .5rem;">Timeline<br>Fondazione Pini</p>
+            <p style="font-family:'Noto Serif SC',serif;font-size:11px;color:var(--soft);line-height:1.6;margin:0;">记录基金会自1898年 Renzo Bongiovanni Radice 出生至2021年"现在"阶段的完整历程。从1920–1986年的艺术实践与馆藏积累，到1991年 Fondazione Adolfo Pini 正式成立，再到当代阶段向公众开放、拓展教育项目，时间轴呈现了机构从私人遗产到公共文化空间的转型轨迹。</p>
+          </div>
+          <img src="io-annex-34.jpg" style="width:100%;display:block;border-radius:8px;box-shadow:0 2px 12px rgba(0,0,0,.07);">
+        </div>
+
+        <div style="display:grid;grid-template-columns:140px 1fr;gap:2rem;align-items:start;">
+          <div>
+            <p style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:0 0 .4rem;">Doc 02</p>
+            <p style="font-size:13px;font-weight:500;color:var(--fg);line-height:1.4;margin:0 0 .5rem;">Aim of<br>Fondazione Pini</p>
+            <div style="font-family:'Noto Serif SC',serif;font-size:11px;color:var(--soft);line-height:1.6;">
+              <p style="margin:0 0 .5rem;">基金会官方使命文件，明确三项核心目标：</p>
+              <ul style="margin:0;padding-left:1rem;display:flex;flex-direction:column;gap:.35rem;">
+                <li>宣传与推广 Renzo Bongiovanni Radice 的艺术遗产</li>
+                <li>组织研讨会、演示、会议与展览等活动</li>
+                <li>为青年艺术家设立奖项与奖学金</li>
+              </ul>
+              <p style="margin:.6rem 0 0;">这份文件是理解基金会价值观与战略优先级的重要基础，也直接指向 IO 项目"走出去、带进来"的设计方向。</p>
+            </div>
+          </div>
+          <img src="io-annex-35.jpg" style="width:100%;display:block;border-radius:8px;box-shadow:0 2px 12px rgba(0,0,0,.07);">
+        </div>
+
+        <div style="display:grid;grid-template-columns:140px 1fr;gap:2rem;align-items:start;">
+          <div>
+            <p style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:0 0 .4rem;">Doc 03</p>
+            <p style="font-size:13px;font-weight:500;color:var(--fg);line-height:1.4;margin:0 0 .5rem;">Financial &amp;<br>Past Activities</p>
+            <div style="font-family:'Noto Serif SC',serif;font-size:11px;color:var(--soft);line-height:1.6;">
+              <ul style="margin:0;padding-left:1rem;display:flex;flex-direction:column;gap:.5rem;">
+                <li>财务状况图表呈现基金会的生产价值、生产成本与运营成本结构，揭示其收支模式与可持续性挑战。</li>
+                <li>往期活动时间轴（2016–2021）记录历届展览与合作项目，包括与 Molteni、Primo Piano、Ingo Maurer 等品牌的跨界合作及 PiniTalks 系列论坛，展现机构在艺术、设计与教育领域的多元实践。</li>
+              </ul>
+            </div>
+          </div>
+          <img src="io-annex-36.jpg" style="width:100%;display:block;border-radius:8px;box-shadow:0 2px 12px rgba(0,0,0,.07);">
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ── RESEARCH IMAGES ── -->
+
+    <!-- Group 1: City Research -->
+    <div style="margin-top:3rem;border-top:1px solid var(--border);padding-top:2rem;">
+      <p style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--navy);margin:0 0 2rem;">01 · 城市研究 City Context</p>
+      <div style="display:flex;flex-direction:column;gap:2.5rem;">
+
+        <div style="display:grid;grid-template-columns:140px 1fr;gap:2rem;align-items:start;">
+          <div>
+            <p style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:0 0 .4rem;">Res 01</p>
+            <p style="font-size:13px;font-weight:500;color:var(--fg);line-height:1.4;margin:0 0 .5rem;">Milan: City Overview &amp;<br>Cultural Districts</p>
+            <div style="font-family:'Noto Serif SC',serif;font-size:11px;color:var(--soft);line-height:1.6;"><ul style="margin:0;padding-left:1rem;display:flex;flex-direction:column;gap:.4rem;"><li>全市逾90座博物馆、80家艺术画廊与106块电影屏幕，国际知名节庆遍布全年。</li><li>地图标注六大文化区——时尚四边形、兰布拉特、伊索拉、博维萨、托尔托纳与纳维利，展示 Fondazione Pini 所处的城市文化语境与潜在辐射范围。</li></ul></div>
+          </div>
+          <img src="io-annex-37.jpg" style="width:100%;display:block;border-radius:8px;box-shadow:0 2px 12px rgba(0,0,0,.07);">
+        </div>
+
+        <div style="display:grid;grid-template-columns:140px 1fr;gap:2rem;align-items:start;">
+          <div>
+            <p style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:0 0 .4rem;">Res 02</p>
+            <p style="font-size:13px;font-weight:500;color:var(--fg);line-height:1.4;margin:0 0 .5rem;">Milan: Cultural<br>Timeline</p>
+            <div style="font-family:'Noto Serif SC',serif;font-size:11px;color:var(--soft);line-height:1.6;"><ul style="margin:0;padding-left:1rem;display:flex;flex-direction:column;gap:.4rem;"><li>古罗马定居 → 中世纪维斯康蒂家族统治 → 文艺复兴时期布雷拉美术学院创立</li><li>二战对城市文化的冲击，以及战后重建</li><li>当代米兰确立为意大利制造业、时尚与设计的全球中心</li></ul></div>
+          </div>
+          <img src="io-annex-38.jpg" style="width:100%;display:block;border-radius:8px;box-shadow:0 2px 12px rgba(0,0,0,.07);">
+        </div>
+
+        <div style="display:grid;grid-template-columns:140px 1fr;gap:2rem;align-items:start;">
+          <div>
+            <p style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:0 0 .4rem;">Res 03</p>
+            <p style="font-size:13px;font-weight:500;color:var(--fg);line-height:1.4;margin:0 0 .5rem;">Demography &amp;<br>Art Education</p>
+            <div style="font-family:'Noto Serif SC',serif;font-size:11px;color:var(--soft);line-height:1.6;"><ul style="margin:0;padding-left:1rem;display:flex;flex-direction:column;gap:.4rem;"><li>外籍居民占米兰总人口18.8%，部分街区多元化程度极高。</li><li>小学阶段艺术为必修课，但课时模糊；初中选修空间有限，高中阶段几乎缺席，系统性支持严重不足。</li></ul></div>
+          </div>
+          <img src="io-annex-45.jpg" style="width:100%;display:block;border-radius:8px;box-shadow:0 2px 12px rgba(0,0,0,.07);">
+        </div>
+
+        <div style="display:grid;grid-template-columns:140px 1fr;gap:2rem;align-items:start;">
+          <div>
+            <p style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:0 0 .4rem;">Res 04</p>
+            <p style="font-size:13px;font-weight:500;color:var(--fg);line-height:1.4;margin:0 0 .5rem;">Access to Services:<br>Spatial Analysis</p>
+            <div style="font-family:'Noto Serif SC',serif;font-size:11px;color:var(--soft);line-height:1.6;"><ul style="margin:0;padding-left:1rem;display:flex;flex-direction:column;gap:.4rem;"><li>步行或骑行15分钟内可覆盖主要文化场所，但城郊居民因公共交通不足，参与艺术活动的概率大幅降低。</li><li>第二张地图叠加创意产业密度与交通网络，揭示艺术资源高度集中于中心城区、外围社区严重服务不足的空间不平等问题。</li></ul></div>
+          </div>
+          <img src="io-annex-46.jpg" style="width:100%;display:block;border-radius:8px;box-shadow:0 2px 12px rgba(0,0,0,.07);">
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Group 2: Competitive Landscape -->
+    <div style="margin-top:3rem;border-top:1px solid var(--border);padding-top:2rem;">
+      <p style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--navy);margin:0 0 2rem;">02 · 竞争环境与数据 Context &amp; Data</p>
+      <div style="display:flex;flex-direction:column;gap:2.5rem;">
+
+        <div style="display:grid;grid-template-columns:140px 1fr;gap:2rem;align-items:start;">
+          <div>
+            <p style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:0 0 .4rem;">Res 05</p>
+            <p style="font-size:13px;font-weight:500;color:var(--fg);line-height:1.4;margin:0 0 .5rem;">Brera &amp; Beyond:<br>Cultural Venues</p>
+            <div style="font-family:'Noto Serif SC',serif;font-size:11px;color:var(--soft);line-height:1.6;"><ul style="margin:0;padding-left:1rem;display:flex;flex-direction:column;gap:.4rem;"><li>艺术家之家 Casa degli Artisti（Corso Garibaldi 69A）——提供低价工作室与展览空间</li><li>布雷拉美术学院（Via Brera 28）——历史最悠久的艺术高校</li><li>Rovati基金会（Corso Venezia 52）——当代艺术与古代艺术的对话空间</li><li>Villa Necchi Campiglio——由 FAI 管理的历史宅邸</li></ul></div>
+          </div>
+          <img src="io-annex-39.jpg" style="width:100%;display:block;border-radius:8px;box-shadow:0 2px 12px rgba(0,0,0,.07);">
+        </div>
+
+        <div style="display:grid;grid-template-columns:140px 1fr;gap:2rem;align-items:start;">
+          <div>
+            <p style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:0 0 .4rem;">Res 06</p>
+            <p style="font-size:13px;font-weight:500;color:var(--fg);line-height:1.4;margin:0 0 .5rem;">Competitors &amp;<br>Housing Prices</p>
+            <div style="font-family:'Noto Serif SC',serif;font-size:11px;color:var(--soft);line-height:1.6;"><ul style="margin:0;padding-left:1rem;display:flex;flex-direction:column;gap:.4rem;"><li>各区艺术画廊与博物馆分布叠加住房价格数据——布雷拉周边房价持续攀升，驱逐原有居民并引入新人口结构。</li><li>周边新兴艺术家展览空间竞争激烈，Fondazione Pini 须以移动性与社区嵌入为差异化策略才能突围。</li></ul></div>
+          </div>
+          <img src="io-annex-40.jpg" style="width:100%;display:block;border-radius:8px;box-shadow:0 2px 12px rgba(0,0,0,.07);">
+        </div>
+
+        <div style="display:grid;grid-template-columns:140px 1fr;gap:2rem;align-items:start;">
+          <div>
+            <p style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:0 0 .4rem;">Res 07</p>
+            <p style="font-size:13px;font-weight:500;color:var(--fg);line-height:1.4;margin:0 0 .5rem;">Digital Analytics &amp;<br>Stakeholder Map</p>
+            <div style="font-family:'Noto Serif SC',serif;font-size:11px;color:var(--soft);line-height:1.6;"><ul style="margin:0;padding-left:1rem;display:flex;flex-direction:column;gap:.4rem;"><li>Instagram 参与率仅 0.27%（12,008粉丝，平均31个点赞），每月仅464次官网访问，品牌触达极为有限。</li><li>利益相关方地图识别五类核心群体：市政府、普通公众、青年艺术家、布雷拉公寓租户及其他艺术基金会，为 IO 多方协作模式提供结构依据。</li></ul></div>
+          </div>
+          <img src="io-annex-41.jpg" style="width:100%;display:block;border-radius:8px;box-shadow:0 2px 12px rgba(0,0,0,.07);">
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Group 3: Analysis & Concepts -->
+    <div style="margin-top:3rem;border-top:1px solid var(--border);padding-top:2rem;">
+      <p style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--navy);margin:0 0 2rem;">03 · 分析与概念 Analysis &amp; Early Concepts</p>
+      <div style="display:flex;flex-direction:column;gap:2.5rem;">
+
+        <div style="display:grid;grid-template-columns:140px 1fr;gap:2rem;align-items:start;">
+          <div>
+            <p style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:0 0 .4rem;">Res 08</p>
+            <p style="font-size:13px;font-weight:500;color:var(--fg);line-height:1.4;margin:0 0 .5rem;">SWOT Analysis &amp;<br>Storyboard</p>
+            <div style="font-family:'Noto Serif SC',serif;font-size:11px;color:var(--soft);line-height:1.6;"><ul style="margin:0;padding-left:1rem;display:flex;flex-direction:column;gap:.4rem;"><li>优势：雄厚资金储备、Renzo Radice 艺术收藏、布雷拉历史建筑；劣势：公众知名度极低、维护成本高、展览空间受限</li><li>机会：承办国际巡回展览、扩大青年受众；威胁：Fondazione Prada 等成熟机构的强势竞争</li><li>故事板以连环画形式描绘 Apecar 移动艺术车穿行米兰各社区的服务场景构想</li></ul></div>
+          </div>
+          <img src="io-annex-42.jpg" style="width:100%;display:block;border-radius:8px;box-shadow:0 2px 12px rgba(0,0,0,.07);">
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:2.5rem;">
+
+          <!-- Res 09 + 10 share one bordered container -->
+          <div style="display:grid;grid-template-columns:140px 1fr;gap:2rem;align-items:start;">
+            <!-- Left labels stacked -->
+            <div style="display:flex;flex-direction:column;gap:0;">
+              <div style="margin-bottom:1.5rem;">
+                <p style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:0 0 .4rem;">Res 09</p>
+                <p style="font-size:13px;font-weight:500;color:var(--fg);line-height:1.4;margin:0 0 .5rem;">First Concepts:<br>Three Directions</p>
+                <p style="font-family:'Noto Serif SC',serif;font-size:11px;color:var(--soft);line-height:1.6;margin:0;">团队提出三条早期设计方向，分别从空间、教育、商业三个维度探索基金会的社区激活路径。</p>
+              </div>
+              <div>
+                <p style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:0 0 .4rem;">Res 10</p>
+                <p style="font-size:13px;font-weight:500;color:var(--fg);line-height:1.4;margin:0 0 .5rem;">Reference Cases:<br>Education &amp; Community</p>
+                <p style="font-family:'Noto Serif SC',serif;font-size:11px;color:var(--soft);line-height:1.6;margin:0;">针对②③概念的参考案例：High Line Park、Fondazione Prada 儿童学院、英国科学博物馆及米兰本地商户合作模式。</p>
+              </div>
+            </div>
+
+            <!-- Right: one bordered box for both -->
+            <div style="border:1px solid var(--border);border-radius:8px;overflow:hidden;">
+
+            <!-- Organic concept diagram -->
+            <div style="position:relative;width:100%;height:500px;background:var(--bg);">
+
+              <!-- Header -->
+              <div style="position:absolute;top:1.25rem;left:1.5rem;display:flex;align-items:baseline;gap:.75rem;">
+                <span style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:3rem;color:rgba(28,28,26,.08);line-height:1;">05</span>
+                <div>
+                  <p style="font-family:'Playfair Display',serif;font-size:1.2rem;color:var(--fg);margin:0;line-height:1.2;">First Concepts</p>
+                  <p style="font-family:'Noto Serif SC',serif;font-size:10px;color:var(--muted);margin:.2rem 0 0;">早期概念方向</p>
+                </div>
+              </div>
+
+              <!-- Teal blobs -->
+              <div style="position:absolute;top:18%;left:29%;width:90px;height:90px;background:radial-gradient(circle,rgba(94,207,201,.32) 0%,transparent 70%);border-radius:50%;"></div>
+              <div style="position:absolute;top:22%;left:55%;width:60px;height:60px;background:radial-gradient(circle,rgba(94,207,201,.22) 0%,transparent 70%);border-radius:50%;"></div>
+
+              <!-- SVG connecting curves -->
+              <svg style="position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;" viewBox="0 0 660 500" preserveAspectRatio="none">
+                <!-- Lend → Train curve -->
+                <path d="M 200 265 Q 250 370 330 315" stroke="#5ECFC9" stroke-width="1.2" fill="none" stroke-opacity=".55"/>
+                <!-- Train → Bring curve -->
+                <path d="M 375 295 Q 450 210 520 250" stroke="#5ECFC9" stroke-width="1.2" fill="none" stroke-opacity=".55"/>
+              </svg>
+
+              <!-- Floating italic labels -->
+              <p style="position:absolute;top:47%;left:27%;font-family:'Playfair Display',serif;font-style:italic;font-size:9.5px;color:var(--teal);transform:rotate(-28deg);margin:0;white-space:nowrap;">all the arts</p>
+              <p style="position:absolute;top:38%;left:45%;font-family:'Playfair Display',serif;font-style:italic;font-size:9.5px;color:var(--teal);transform:rotate(-10deg);margin:0;white-space:nowrap;">infinite ways to collaborate · 无限合作可能</p>
+              <p style="position:absolute;bottom:20%;left:9%;font-family:'Playfair Display',serif;font-style:italic;font-size:9.5px;color:var(--teal);margin:0;">education · 教育</p>
+              <p style="position:absolute;bottom:11%;left:15%;font-family:'Playfair Display',serif;font-style:italic;font-size:9.5px;color:var(--teal);margin:0;">inside · 内部</p>
+              <p style="position:absolute;bottom:10%;left:43%;font-family:'Playfair Display',serif;font-style:italic;font-size:9.5px;color:var(--teal);margin:0;">movement · 流动</p>
+              <p style="position:absolute;bottom:11%;left:64%;font-family:'Playfair Display',serif;font-style:italic;font-size:9.5px;color:var(--teal);margin:0;">history · 历史</p>
+              <p style="position:absolute;bottom:19%;left:76%;font-family:'Playfair Display',serif;font-style:italic;font-size:9.5px;color:var(--teal);margin:0;">outside · 外部</p>
+
+              <!-- Concept A: Lend the studio! — top left -->
+              <div style="position:absolute;top:22%;left:2%;width:30%;text-align:center;">
+                <p style="font-family:'Playfair Display',serif;font-size:.95rem;color:var(--fg);margin:0 0 .2rem;">Lend the studio!</p>
+                <p style="font-family:'Noto Serif SC',serif;font-size:.85rem;color:var(--fg);margin:0 0 .3rem;">借出工作室！</p>
+                <p style="font-family:'Space Mono',monospace;font-size:7.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:0 0 .65rem;">Residence-Studio · 驻留工作室</p>
+                <p style="font-size:10px;color:var(--soft);line-height:1.7;margin:0 0 .4rem;">Radice's studio is lent to artists chosen by a cultural committee for weekly workshops. At week's end, new artworks are exhibited alongside the collection.</p>
+                <p style="font-family:'Noto Serif SC',serif;font-size:10px;color:var(--soft);line-height:1.7;margin:0;">文化委员会遴选艺术家入驻 Radice 工作室，每周举办工作坊，周末展览使新作与馆藏形成对话。</p>
+              </div>
+
+              <!-- Concept B: Train my art! — center bottom -->
+              <div style="position:absolute;top:40%;left:35%;width:30%;text-align:center;">
+                <p style="font-family:'Playfair Display',serif;font-size:.95rem;color:var(--fg);margin:0 0 .2rem;">Train my art!</p>
+                <p style="font-family:'Noto Serif SC',serif;font-size:.85rem;color:var(--fg);margin:0 0 .3rem;">训练我的艺术！</p>
+                <p style="font-family:'Space Mono',monospace;font-size:7.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:0 0 .65rem;">Workshop &amp; Education · 工作坊</p>
+                <p style="font-size:10px;color:var(--soft);line-height:1.7;margin:0 0 .4rem;">Activities for kids — parties, evening events and summer camps — spread awareness while attracting parents to the foundation.</p>
+                <p style="font-family:'Noto Serif SC',serif;font-size:10px;color:var(--soft);line-height:1.7;margin:0;">为儿童策划派对、夜间活动与夏令营，借助孩子吸引家长，扩大基金会受众群体。</p>
+              </div>
+
+              <!-- Concept C: Bring them in! — right -->
+              <div style="position:absolute;top:22%;left:67%;width:31%;text-align:center;">
+                <p style="font-family:'Playfair Display',serif;font-size:.95rem;color:var(--fg);margin:0 0 .2rem;">Bring them in!</p>
+                <p style="font-family:'Noto Serif SC',serif;font-size:.85rem;color:var(--fg);margin:0 0 .3rem;">把他们带进来！</p>
+                <p style="font-family:'Space Mono',monospace;font-size:7.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:0 0 .65rem;">Community &amp; Shops · 社区商户</p>
+                <p style="font-size:10px;color:var(--soft);line-height:1.7;margin:0 0 .4rem;">Brera's generational shops and artisan studios collaborate with the Foundation to exchange art and products, creating events inside and outside its walls.</p>
+                <p style="font-family:'Noto Serif SC',serif;font-size:10px;color:var(--soft);line-height:1.7;margin:0;">布雷拉世代相传的店铺与工匠工作室与基金会合作，以艺术交换商品，在馆内外共同举办展览活动。</p>
+              </div>
+
+            </div>
+
+              <!-- Three images strip inside same border -->
+              <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;border-top:1px solid var(--border);">
+                <img src="io-annex-43R.jpg" style="width:100%;display:block;height:190px;object-fit:cover;">
+                <img src="io-annex-44L.jpg" style="width:100%;display:block;height:190px;object-fit:cover;border-left:1px solid var(--border);border-right:1px solid var(--border);">
+                <img src="io-annex-44R.jpg" style="width:100%;display:block;height:190px;object-fit:cover;">
+              </div>
+
+            </div><!-- end shared border box -->
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Group 4: Case Studies -->
+    <div style="margin-top:3rem;border-top:1px solid var(--border);padding-top:2rem;">
+      <p style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--navy);margin:0 0 2rem;">04 · 案例研究 Case Studies</p>
+      <div style="display:flex;flex-direction:column;gap:2.5rem;">
+
+        <div style="display:grid;grid-template-columns:140px 1fr;gap:2rem;align-items:start;">
+          <div>
+            <p style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:0 0 .4rem;">Res 11</p>
+            <p style="font-size:13px;font-weight:500;color:var(--fg);line-height:1.4;margin:0;">Case Studies Matrix<br>&amp; ReA! Kids</p>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;align-items:start;">
+            <div>
+              <img src="io-annex-47L.jpg" style="width:100%;display:block;border-radius:8px;box-shadow:0 2px 12px rgba(0,0,0,.07);margin-bottom:.75rem;">
+              <p style="font-size:11px;font-weight:500;color:var(--fg);margin:0 0 .3rem;">Case Studies Matrix · 案例定位矩阵</p>
+              <p style="font-family:'Noto Serif SC',serif;font-size:11px;color:var(--soft);line-height:1.65;margin:0;">以"社区导向 vs. 艺术家导向"为纵轴、"盈利 vs. 非盈利"为横轴，将 PSArt、Nuba、Munson、MUBA、Art4all 等十余个机构映射在矩阵中，帮助团队明确 IO 在竞争格局中的差异化定位。</p>
+            </div>
+            <div>
+              <img src="io-annex-47R.jpg" style="width:100%;display:block;border-radius:8px;box-shadow:0 2px 12px rgba(0,0,0,.07);margin-bottom:.75rem;">
+              <p style="font-size:11px;font-weight:500;color:var(--fg);margin:0 0 .3rem;">Case Study: ReA! Kids · 案例研究</p>
+              <p style="font-family:'Noto Serif SC',serif;font-size:11px;color:var(--soft);line-height:1.65;margin:0;">ReA!（米兰）为非盈利机构，面向5–12岁儿童提供剧场表演课（Corso Teatro-Performance）与美术课（Corso di Arte），每课15欧元，月度套餐60–160欧元。服务持续进行中，合作对象涵盖学校与企业。</p>
+            </div>
+          </div>
+        </div>
+
+        <div style="display:grid;grid-template-columns:140px 1fr;gap:2rem;align-items:start;">
+          <div>
+            <p style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:0 0 .4rem;">Res 12</p>
+            <p style="font-size:13px;font-weight:500;color:var(--fg);line-height:1.4;margin:0;">MUBA &amp; Munson:<br>Museum Learning</p>
+          </div>
+          <div>
+            <img src="io-annex-48.jpg" style="width:100%;display:block;border-radius:8px;box-shadow:0 2px 12px rgba(0,0,0,.07);margin-bottom:.75rem;">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;align-items:start;">
+              <div>
+                <p style="font-size:11px;font-weight:500;color:var(--fg);margin:0 0 .3rem;">MUBA · 米兰儿童博物馆</p>
+                <p style="font-family:'Noto Serif SC',serif;font-size:11px;color:var(--soft);line-height:1.65;margin:0;">面向4个月至11岁儿童，非盈利，通过企业赞助与学校合作提供课程，单次收费18–34欧元。</p>
+              </div>
+              <div>
+                <p style="font-size:11px;font-weight:500;color:var(--fg);margin:0 0 .3rem;">Munson · 纽约</p>
+                <p style="font-family:'Noto Serif SC',serif;font-size:11px;color:var(--soft);line-height:1.65;margin:0;">盈利机构，提供展览、艺术节、夏令营等，服务从儿童延伸至成人，收费10–80美元，定价体系更多元。</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div style="display:grid;grid-template-columns:140px 1fr;gap:2rem;align-items:start;">
+          <div>
+            <p style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:0 0 .4rem;">Res 13</p>
+            <p style="font-size:13px;font-weight:500;color:var(--fg);line-height:1.4;margin:0;">Art 3331 &amp;<br>Milan PGT 2030</p>
+          </div>
+          <div>
+            <img src="io-annex-49.jpg" style="width:100%;display:block;border-radius:8px;box-shadow:0 2px 12px rgba(0,0,0,.07);margin-bottom:.75rem;">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;align-items:start;">
+              <div>
+                <p style="font-size:11px;font-weight:500;color:var(--fg);margin:0 0 .3rem;">Art 3331 · 东京</p>
+                <p style="font-family:'Noto Serif SC',serif;font-size:11px;color:var(--soft);line-height:1.65;margin:0;">已停办盈利机构，通过活动策划、社区菜园与驻留项目连接艺术家与公众，月费21–26万日元，是"艺术即日常"社区嵌入模式的有益参照。</p>
+              </div>
+              <div>
+                <p style="font-size:11px;font-weight:500;color:var(--fg);margin:0 0 .3rem;">Milan PGT 2030 · 城市总体规划</p>
+                <p style="font-family:'Noto Serif SC',serif;font-size:11px;color:var(--soft);line-height:1.65;margin:0;">提出三项核心战略：连接近郊交通、工作机会促社会融合、公共空间作为公共财产——为 IO 移动服务进入边缘社区提供城市政策层面的合法性。</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Footer -->
+<div class="next-footer">
+  <div class="sec-inner">
+    <a href="index.html" class="back-link">← Back to Projects</a>
+    <div class="footer-project">
+      <div class="footer-label">IO · 2023 · Politecnico di Milano</div>
+      <div class="footer-title">Exchange Our Creativity</div>
+      <div class="footer-team">Battiato · Deng · Garancini · Hirata · Kuerban</div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const co = document.getElementById('co');
+  const ci = document.getElementById('ci');
+  document.addEventListener('mousemove', e => {
+    co.style.transform = `translate(${e.clientX - 14}px, ${e.clientY - 14}px)`;
+    ci.style.transform = `translate(${e.clientX - 3}px, ${e.clientY - 3}px)`;
+  });
+</script>
+</body>
+</html>
