@@ -1,0 +1,1717 @@
+<!DOCTYPE html>
+
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>智己汽车 IM Motors — Deng Jin Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;900&family=Playfair+Display:ital,wght@0,700;1,400;1,700&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Space+Mono:wght@400;700&family=Noto+Serif+SC:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #FAFAF6;
+    --fg: #1C1C1A;
+    --accent: #0D2B5A;
+    --accent-bg: #EDD5C2;
+    --soft: #5A5048;
+    --muted: #A09080;
+    --ph: #E8D0BC;
+    --border: #DDD0C4;
+    --dark: #0D1B2E;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { font-size: 16px; scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--fg); font-family: 'DM Sans', sans-serif; cursor: none; overflow-x: hidden; }
+
+  /* Cursor */
+  #co { position:fixed;top:0;left:0;width:28px;height:28px;border:1.5px solid var(--fg);border-radius:50%;pointer-events:none;z-index:9999;mix-blend-mode:multiply; }
+  #ci { position:fixed;top:0;left:0;width:6px;height:6px;background:var(--accent);border-radius:50%;pointer-events:none;z-index:9999; }
+
+  /* Nav */
+  nav { position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:1.25rem 3rem;background:rgba(250,250,246,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--border); }
+  .nav-logo { font-family:'Playfair Display',serif;font-style:italic;font-size:1.1rem;color:var(--fg);text-decoration:none; }
+  .nav-links { display:flex;gap:2rem; }
+  .nav-links a { font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--soft);text-decoration:none;transition:color .2s; }
+  .nav-links a:hover { color:var(--accent); }
+
+  /* Hero */
+  .hero { padding:9rem 3rem 5rem;max-width:1080px;margin:0 auto; }
+  .hero-meta { display:flex;align-items:center;gap:1.5rem;margin-bottom:3rem; }
+  .hero-meta span { font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent); }
+  .hero-meta .line { flex:1;max-width:80px;height:1px;background:var(--muted); }
+  .hero-title-en { font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(3.5rem,9vw,7rem);line-height:.92;text-transform:uppercase;color:var(--fg);letter-spacing:-.02em; }
+  .hero-title-zh { font-family:'Noto Serif SC',serif;font-weight:900;font-size:clamp(3rem,7vw,6rem);line-height:1;color:var(--accent);margin-top:.25rem;letter-spacing:.06em; }
+  .hero-desc { margin-top:3rem;max-width:640px; }
+  .hero-desc p.en { font-family:'Playfair Display',serif;font-size:1.35rem;line-height:1.75;color:var(--fg); }
+  .hero-desc p.zh { font-family:'DM Sans',sans-serif;font-size:14px;line-height:1.85;color:var(--muted);font-style:italic;margin-top:.5rem; }
+  .hero-strip { width:100%;height:2px;background:linear-gradient(90deg,var(--accent),transparent);margin-top:3rem; }
+
+  /* Section */
+  .sec { padding:5rem 3rem;opacity:1;transform:none; }
+  .sec-inner { max-width:1080px;margin:0 auto; }
+  .sec-label { display:flex;align-items:center;gap:.75rem;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:1.5rem; }
+  .sec-label::before { content:'';display:inline-block;width:24px;height:1px;background:var(--accent); }
+
+  /* Bilingual title block */
+  .title-block { margin-bottom:2.5rem; }
+  .title-block .t-en { font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(2rem,5vw,3.5rem);text-transform:uppercase;line-height:.95;color:var(--fg);letter-spacing:-.01em; }
+  .title-block .t-en em { font-family:'Playfair Display',serif;font-style:italic;font-weight:700;color:var(--accent); }
+  .title-block .t-zh { font-family:'Noto Serif SC',serif;font-weight:700;font-size:clamp(1.5rem,3.5vw,2.5rem);color:var(--accent);line-height:1.1;margin-top:.2rem; }
+  .title-block .t-sub { font-family:'DM Sans',sans-serif;font-size:13px;color:var(--muted);font-style:italic;margin-top:.75rem; }
+
+  /* Body bilingual */
+  .body-en { font-family:'Playfair Display',serif;font-size:1.1rem;line-height:1.85;color:var(--fg);max-width:680px; }
+  .body-zh { font-family:'DM Sans',sans-serif;font-size:13px;line-height:1.9;color:var(--muted);font-style:italic;border-left:2px solid var(--border);padding-left:1rem;margin-top:.75rem;max-width:620px; }
+
+  /* Grids */
+  .two-col { display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start; }
+  .three-col { display:grid;grid-template-columns:1fr 1fr 1fr;gap:2rem; }
+  .four-col { display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem; }
+
+  /* Data stats */
+  .data-row { display:flex;gap:3rem;flex-wrap:wrap;margin:2.5rem 0; }
+  .data-item { flex:1;min-width:120px; }
+  .data-num { font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:3rem;line-height:1;color:var(--accent); }
+  .data-label { font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-top:.4rem;line-height:1.5; }
+
+  /* Cards */
+  .card { background:#fff;border:1px solid var(--border);border-radius:6px;padding:1.5rem;box-shadow:0 2px 8px rgba(0,0,0,.06); }
+  .card-icon { font-size:1.5rem;margin-bottom:.75rem; }
+  .card-title-en { font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1.1rem;text-transform:uppercase;color:var(--fg);margin-bottom:.2rem; }
+  .card-title-zh { font-family:'Noto Serif SC',serif;font-size:.8rem;color:var(--accent);margin-bottom:.6rem; }
+  .card p { font-size:13px;line-height:1.7;color:var(--soft); }
+  .card p.zh { font-style:italic;color:var(--muted);font-size:12px;margin-top:.4rem; }
+
+  /* Quote section */
+  .quote-sec { background:var(--dark);color:#fff;padding:5rem 3rem; }
+  .quote-sec .sec-inner { max-width:1080px;margin:0 auto; }
+  .quote-text { font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(1.4rem,3vw,2rem);line-height:1.6;color:#fff;border-left:3px solid var(--accent);padding-left:2rem;max-width:720px; }
+  .quote-zh { font-family:'DM Sans',sans-serif;font-size:13px;font-style:italic;color:rgba(255,255,255,.5);padding-left:2rem;margin-top:.75rem; }
+  .quote-attr { font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.1em;color:rgba(255,255,255,.35);margin-top:2rem;padding-left:2rem; }
+
+  /* Insight card */
+  .insight-card { padding:1.5rem;border:1px solid var(--border);border-radius:6px;background:#fff;border-top:3px solid var(--accent); }
+  .insight-card .i-num { font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:2rem;color:var(--accent);line-height:1;margin-bottom:.5rem; }
+  .insight-card p { font-size:13px;line-height:1.7;color:var(--soft); }
+  .insight-card p.zh { font-style:italic;color:var(--muted);font-size:12px;margin-top:.4rem; }
+
+  /* Step flow */
+  .step-item { display:flex;gap:1.5rem;padding:1.25rem 0;border-bottom:1px solid var(--border); }
+  .step-num { font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.75rem;color:var(--accent);line-height:1;flex-shrink:0;width:2rem; }
+  .step-content .s-title { font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1rem;text-transform:uppercase;color:var(--fg); }
+  .step-content .s-zh { font-family:'Noto Serif SC',serif;font-size:.8rem;color:var(--accent);margin:.1rem 0 .4rem; }
+  .step-content p { font-size:13px;color:var(--soft);line-height:1.65; }
+
+  /* Q card */
+  .q-card { padding:1.25rem 1.5rem;background:#fff;border-left:3px solid var(--accent);border-radius:0 6px 6px 0;box-shadow:0 1px 4px rgba(0,0,0,.06); }
+  .q-card p { font-size:13px;line-height:1.75;font-style:italic;color:var(--soft); }
+  .q-card .attr { font-size:10px;font-family:'Space Mono',monospace;color:var(--muted);margin-top:.4rem; }
+
+  /* Progress bar */
+  .bar-row { display:flex;align-items:center;gap:1rem;margin-bottom:.75rem; }
+  .bar-label { font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.06em;color:var(--soft);width:120px;flex-shrink:0; }
+  .bar-track { flex:1;height:6px;background:var(--border);border-radius:3px;overflow:hidden; }
+  .bar-fill { height:100%;background:var(--accent);border-radius:3px; }
+  .bar-val { font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1rem;color:var(--accent);width:60px;text-align:right; }
+
+  /* HMW card */
+  .hmw-card { background:var(--fg);color:#fff;padding:2rem;border-radius:6px; }
+  .hmw-label { font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem; }
+  .hmw-q { font-family:'Playfair Display',serif;font-style:italic;font-size:1.1rem;line-height:1.6;color:#fff;margin-bottom:.75rem; }
+  .hmw-zh { font-family:'DM Sans',sans-serif;font-size:12px;color:rgba(255,255,255,.5);font-style:italic;margin-bottom:1.25rem; }
+  .hmw-metrics { display:flex;flex-direction:column;gap:.4rem; }
+  .hmw-metric { font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.06em;color:rgba(255,255,255,.4); }
+  .hmw-metric span { color:var(--accent);font-size:1.1rem;font-family:'Barlow Condensed',sans-serif;font-weight:700;margin-right:.25rem; }
+
+  /* Needs pyramid */
+  .pyramid { display:flex;flex-direction:column;gap:.5rem; }
+  .pyramid-row { display:flex;align-items:center;gap:1.5rem;padding:1rem 1.5rem;border-radius:4px; }
+  .pyramid-row .p-level { font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);width:60px;flex-shrink:0; }
+  .pyramid-row .p-title { font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1rem;text-transform:uppercase;color:var(--fg); }
+  .pyramid-row .p-zh { font-family:'Noto Serif SC',serif;font-size:.75rem;color:var(--accent);margin-left:.5rem; }
+  .pyramid-row .p-desc { font-size:12px;color:var(--soft);margin-left:auto;text-align:right;max-width:320px; }
+
+  /* Table */
+  .data-table { width:100%;border-collapse:collapse;margin-top:1.5rem; }
+  .data-table th { font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.9rem;text-transform:uppercase;color:#fff;background:var(--accent);padding:.65rem 1rem;text-align:left; }
+  .data-table td { padding:.65rem 1rem;font-size:12px;color:var(--soft);line-height:1.6;border-bottom:1px solid var(--border);vertical-align:top; }
+  .data-table tr:nth-child(even) td { background:#f5ede4; }
+
+  /* Reflection */
+  .reflection { background:var(--accent-bg);padding:5rem 3rem; }
+  .reflection .sec-inner { max-width:1080px;margin:0 auto; }
+
+  /* Next footer */
+  .next-footer { padding:4rem 3rem;border-top:1px solid var(--border); }
+  .next-footer .sec-inner { max-width:1080px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:center; }
+  .next-label { font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:.5rem; }
+  .next-title { font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:2rem;text-transform:uppercase;color:var(--fg); }
+  .next-btn { display:inline-flex;align-items:center;gap:.75rem;padding:.75rem 1.75rem;background:var(--fg);color:#fff;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;border-radius:2px;transition:background .2s; }
+  .next-btn:hover { background:var(--accent); }
+  .back-link { display:inline-flex;align-items:center;gap:.5rem;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .2s; }
+  .back-link:hover { color:var(--fg); }
+  .sep { border:none;border-top:1px solid var(--border);margin:0; }
+
+  /* Marquee */
+  .marquee-bar { background:var(--accent);overflow:hidden;padding:.75rem 0;white-space:nowrap; }
+  .marquee-track { display:inline-flex;animation:marquee 22s linear infinite; }
+  .marquee-item { font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.1rem;text-transform:uppercase;color:#fff;letter-spacing:.06em;padding:0 2rem; }
+  .marquee-item span { color:rgba(255,255,255,.4);margin-left:2rem; }
+  @keyframes marquee { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
+
+  @media(max-width:768px){
+    nav{padding:1rem 1.5rem;}
+    .hero{padding:7rem 1.5rem 3rem;}
+    .sec,.quote-sec,.reflection{padding:3.5rem 1.5rem;}
+    .two-col,.three-col,.four-col{grid-template-columns:1fr;}
+    .next-footer .sec-inner{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+<div id="co"></div>
+<div id="ci"></div>
+
+<!-- Nav -->
+<nav>
+  <a href="portfolio.html" class="nav-logo">Deng Jin</a>
+  <div class="nav-links">
+    <a href="portfolio.html">Home</a>
+    <a href="portfolio.html#projects">Projects</a>
+    <a href="about.html">About</a>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-meta">
+    <span>Project 03</span>
+    <div class="line"></div>
+    <span>UX Research · Mobile App</span>
+  </div>
+  <div class="hero-title-en">IM MOTORS<br><em style="font-family:'Playfair Display',serif;font-style:italic;">Car Control</em></div>
+  <div class="hero-title-zh">智己汽车</div>
+  <div class="hero-desc">
+    <p class="en">Redesigning the "My Car" homepage of IM Motors app — through user research, data analysis and competitive benchmarking, defining the optimal experience for remote vehicle control.</p>
+    <p class="zh">通过用户访谈、数据埋点与竞品分析，重新定义智己汽车APP爱车首页的远控体验与信息架构。</p>
+  </div>
+  <div style="margin-top:2.5rem;display:flex;gap:3rem;flex-wrap:wrap;">
+    <div>
+      <div style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:.25rem;">Duration / 时间</div>
+      <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1.1rem;color:var(--fg);">2022</div>
+    </div>
+    <div>
+      <div style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:.25rem;">Role / 角色</div>
+      <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1.1rem;color:var(--fg);">UX Research · Design Strategy</div>
+    </div>
+    <div>
+      <div style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:.25rem;">Type / 类型</div>
+      <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1.1rem;color:var(--fg);">Mobile App · Smart EV</div>
+    </div>
+  </div>
+  <div class="hero-strip"></div>
+</section>
+
+<!-- Project Background -->
+<section class="sec" style="background:var(--bg);padding-top:2rem;">
+  <div class="sec-inner">
+    <div class="sec-label">Background / 研究背景</div>
+    <div class="title-block" style="margin-bottom:2.5rem;">
+      <div class="t-en">RESEARCH<br><em>Background</em></div>
+      <div class="t-zh">研究背景</div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;">
+      <div>
+        <p style="font-size:1rem;line-height:1.9;color:var(--fg);margin-bottom:.5rem;">智能汽车、手机APP、移动互联网三者的有机结合为智能汽车车主的良好用车体验提供了有效保障。借助手机APP，车主无需进入车辆便可通过网络信号或近场蓝牙远程实现解锁、开空调等操作，有效提升了车主用车效率与实际体验。</p>
+        <p style="font-size:12px;font-style:italic;color:var(--muted);border-left:2px solid var(--border);padding-left:.75rem;margin-bottom:1.5rem;">Smart vehicles, mobile apps, and connected networks together enable remote vehicle control — from unlocking to AC activation.</p>
+
+        <p style="font-size:1rem;line-height:1.9;color:var(--fg);margin-bottom:.5rem;">智己汽车APP的爱车页面为车主提供了大量车辆远程控制功能，同时还包括了虚拟车模、汽车服务等功能模块，致力于向提供舒适省心的用车服务。</p>
+        <p style="font-size:12px;font-style:italic;color:var(--muted);border-left:2px solid var(--border);padding-left:.75rem;margin-bottom:1.5rem;">IM Motors' "My Car" page offers remote control, a 3D model, and service modules — built for a seamless ownership experience.</p>
+
+        <p style="font-size:1rem;line-height:1.9;color:var(--fg);margin-bottom:.5rem;">距离上次车控从0-1的方案输出已经一年，随着团队不断努力的小步迭代下，之前构建的车控场景也越发的完整；随着越来越多真实车主用户的加入，我们也面临着更多真实使用场景的使用考验。</p>
+        <p style="font-size:1rem;line-height:1.9;color:var(--fg);margin-bottom:.5rem;">目前智己APP爱车页面存在首页有效信息较少、楼层卡片布局混乱、原子功能体验不佳等问题。因此，本次研究通过内部车主访谈，并结合其他数据来源，来帮助定义爱车页面内容，优化用户体验，明确业务优化方向。</p>
+        <p style="font-size:12px;font-style:italic;color:var(--muted);border-left:2px solid var(--border);padding-left:.75rem;">Yet the page suffers from sparse info, cluttered layout, and poor atomic-function UX. This research aims to fix that.</p>
+      </div>
+      <div>
+        <img src="im-interview.png" alt="User interview session" style="width:100%;display:block;border-radius:4px;">
+        <div style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:.75rem;">User Interview Session / 用户访谈现场</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="sep">
+
+<!-- PHASE DIVIDER 01 -->
+<div style="background:var(--accent);padding:1.1rem 3rem;display:flex;align-items:center;gap:2rem;">
+  <span style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.75rem;color:rgba(255,255,255,.15);letter-spacing:-.01em;line-height:1;">PHASE 01</span>
+  <div style="width:1px;height:28px;background:rgba(255,255,255,.2);"></div>
+  <div>
+    <div style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.5);">Research Design</div>
+    <div style="font-family:'Noto Serif SC',serif;font-size:14px;font-weight:700;color:#fff;margin-top:.15rem;">研究设计——目标 · 方法 · 对象</div>
+  </div>
+</div>
+
+<!-- Research Objectives -->
+<section class="sec" style="background:var(--bg);">
+  <div class="sec-inner">
+    <div class="sec-label">Objectives / 研究目标</div>
+    <div class="title-block" style="margin-bottom:3rem;">
+      <div class="t-en">RESEARCH<br><em>Objectives</em></div>
+      <div class="t-zh">研究目标</div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:2rem;">
+      <div style="border-top:2px solid var(--accent);padding-top:1.5rem;">
+        <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:2.5rem;color:var(--accent);line-height:1;margin-bottom:1rem;">01</div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1.1rem;text-transform:uppercase;color:var(--fg);margin-bottom:.5rem;">Scenario Mapping</div>
+        <div style="font-family:'Noto Serif SC',serif;font-size:.8rem;color:var(--accent);margin-bottom:.75rem;">用车场景梳理</div>
+        <p style="font-size:13px;color:var(--soft);line-height:1.7;">Identify high-frequency driving scenarios and the remote control behaviors, pain points, and motivations behind them.</p>
+        <p style="font-size:12px;color:var(--muted);font-style:italic;margin-top:.5rem;border-left:2px solid var(--border);padding-left:.75rem;">了解车主高频用车场景，找到远控功能使用行为与背后的痛点和原因。</p>
+      </div>
+      <div style="border-top:2px solid var(--accent);padding-top:1.5rem;">
+        <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:2.5rem;color:var(--accent);line-height:1;margin-bottom:1rem;">02</div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1.1rem;text-transform:uppercase;color:var(--fg);margin-bottom:.5rem;">UX Insights</div>
+        <div style="font-family:'Noto Serif SC',serif;font-size:.8rem;color:var(--accent);margin-bottom:.75rem;">用户体验洞察</div>
+        <p style="font-size:13px;color:var(--soft);line-height:1.7;">Generate insights to improve the car-control homepage and atomic function experience — balancing utility with emotional connection.</p>
+        <p style="font-size:12px;color:var(--muted);font-style:italic;margin-top:.5rem;border-left:2px solid var(--border);padding-left:.75rem;">提出提升车控首页与原子功能体验的用户洞察，在满足工具属性基础上建立情感连接。</p>
+      </div>
+      <div style="border-top:2px solid var(--accent);padding-top:1.5rem;">
+        <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:2.5rem;color:var(--accent);line-height:1;margin-bottom:1rem;">03</div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1.1rem;text-transform:uppercase;color:var(--fg);margin-bottom:.5rem;">Business Alignment</div>
+        <div style="font-family:'Noto Serif SC',serif;font-size:.8rem;color:var(--accent);margin-bottom:.75rem;">业务融合建议</div>
+        <p style="font-size:13px;color:var(--soft);line-height:1.7;">Integrate business needs — smart mall, service benefits — with user habits to form actionable design recommendations.</p>
+        <p style="font-size:12px;color:var(--muted);font-style:italic;margin-top:.5rem;border-left:2px solid var(--border);padding-left:.75rem;">结合智选商城、服务权益等业务，提出满足用户使用习惯的设计建议。</p>
+      </div>
+      <div style="border-top:2px solid var(--accent);padding-top:1.5rem;">
+        <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:2.5rem;color:var(--accent);line-height:1;margin-bottom:1rem;">04</div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1.1rem;text-transform:uppercase;color:var(--fg);margin-bottom:.5rem;">Homepage Redesign</div>
+        <div style="font-family:'Noto Serif SC',serif;font-size:.8rem;color:var(--accent);margin-bottom:.75rem;">业务驱动首页改版</div>
+        <p style="font-size:13px;color:var(--soft);line-height:1.7;">Translate research insights into concrete homepage design decisions — restructuring information hierarchy to serve both user needs and business goals.</p>
+        <p style="font-size:12px;color:var(--muted);font-style:italic;margin-top:.5rem;border-left:2px solid var(--border);padding-left:.75rem;">将研究洞察转化为首页改版方案，重构信息层级，同时满足用户使用需求与业务目标。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="sep">
+
+<!-- Research Methods -->
+<section class="sec">
+  <div class="sec-inner">
+    <div class="sec-label">Research Overview / 研究方法</div>
+    <div class="title-block" style="margin-bottom:2.5rem;">
+      <div class="t-en">RESEARCH<br><em>Methods</em></div>
+      <div class="t-zh">研究方法</div>
+    </div>
+    <div class="four-col">
+      <div class="card">
+        <div class="card-icon">🔍</div>
+        <div class="card-title-en">Competitive Analysis</div>
+        <div class="card-title-zh">竞品分析</div>
+        <p>Benchmarked IM Motors against Tesla, NIO, Xpeng, Lynk & Co to identify best practices in EV app car-control design.</p>
+        <p class="zh">对比特斯拉、蔚来、小鹏、领克等品牌APP，梳理电车与油车在远控功能设计上的共性与差异。</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">📊</div>
+        <div class="card-title-en">Data Analysis</div>
+        <div class="card-title-zh">数据分析</div>
+        <p>Analyzed 30-day click tracking data for all car-page cards and atomic functions — measuring usage frequency and success rates.</p>
+        <p class="zh">分析过去30天车控页面各卡片点击数据与原子功能使用埋点，量化用户行为与成功率。</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🗣</div>
+        <div class="card-title-en">Deep Interviews</div>
+        <div class="card-title-zh">深度访谈</div>
+        <p>11 in-depth interviews with IM Motors employees who use the app frequently — covering daily scenarios, pain points, and emotional drivers.</p>
+        <p class="zh">面向11位高频使用APP的智己车主进行深度访谈，挖掘日常用车场景、痛点与情感化需求。</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">💬</div>
+        <div class="card-title-en">Online Feedback</div>
+        <div class="card-title-zh">用户线上反馈</div>
+        <p>Collected and categorized user community posts and operations data — mapping real-world complaints and feature requests.</p>
+        <p class="zh">整理用户社区帖子与运维反馈，提取真实痛点与功能诉求，补充访谈结论。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="sep">
+
+<!-- Benchmarking -->
+<section class="sec">
+  <div class="sec-inner">
+    <div class="sec-label">Competitive Analysis / 竞品分析</div>
+    <div class="title-block" style="margin-bottom:3.5rem;">
+      <div class="t-en">COMPETITIVE<br><em>Benchmarking</em></div>
+      <div class="t-zh">竞品分析</div>
+    </div>
+
+    <!-- Finding 1 -->
+    <div style="margin-bottom:5rem;">
+      <!-- Spectrum bar -->
+      <div style="display:flex;align-items:center;gap:0;margin-bottom:1.5rem;">
+        <div style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:#888;white-space:nowrap;margin-right:.75rem;">油车</div>
+        <div style="flex:1;height:4px;background:linear-gradient(90deg,#4a9b5f,#2e7d8c,#0D2B5A);border-radius:2px;"></div>
+        <div style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:#0D2B5A;white-space:nowrap;margin-left:.75rem;">电车</div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 2fr;gap:3rem;align-items:start;">
+        <div>
+          <div style="font-family:'Noto Serif SC',serif;font-weight:700;font-size:1rem;color:var(--fg);line-height:1.6;margin-bottom:1.5rem;padding-left:1rem;border-left:3px solid var(--accent);">受限于油车与电车本身电气架构差异，APP 车控功能呈现出明显区别</div>
+          <div style="display:flex;flex-direction:column;gap:1.25rem;">
+            <div style="background:var(--bg);border:1px solid var(--border);border-radius:6px;padding:1rem 1.25rem;">
+              <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.9rem;text-transform:uppercase;letter-spacing:.08em;color:#4a9b5f;margin-bottom:.4rem;">油车</div>
+              <p style="font-size:13px;color:var(--soft);line-height:1.75;">以呈现车辆的基本数据信息为主，可远程控制的功能不多，车主和用车服务篇幅占比较大并附带车辆配件商城以满足用户升级需求。</p>
+            </div>
+            <div style="background:var(--bg);border:1px solid var(--border);border-radius:6px;padding:1rem 1.25rem;">
+              <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.9rem;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);margin-bottom:.4rem;">电车</div>
+              <p style="font-size:13px;color:var(--soft);line-height:1.75;">全栈自研的技术能够让远程信号控制更加灵活有效。小鹏和特斯拉的车控功能以车辆控制为主，且特斯拉更为精简，限制了展示的功能个数，但同时也带来了一些不便。</p>
+            </div>
+          </div>
+        </div>
+        <img src="im-comp-1.png" alt="油车 · 增程 · 电车 竞品截图" style="width:100%;border-radius:8px;display:block;mix-blend-mode:multiply;">
+      </div>
+    </div>
+
+    <!-- Divider -->
+    <div style="height:1px;background:var(--border);margin-bottom:5rem;"></div>
+
+    <!-- Finding 2 -->
+    <div>
+      <!-- Spectrum bar -->
+      <div style="display:flex;align-items:center;gap:0;margin-bottom:1.5rem;">
+        <div style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:#7b5ea7;white-space:nowrap;margin-right:.75rem;">平台 / 生态</div>
+        <div style="flex:1;height:4px;background:linear-gradient(90deg,#7b5ea7,#c07a3a);border-radius:2px;"></div>
+        <div style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:#c07a3a;white-space:nowrap;margin-left:.75rem;">工具 / 控制</div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 2fr;gap:3rem;align-items:start;">
+        <div>
+          <div style="font-family:'Noto Serif SC',serif;font-weight:700;font-size:1rem;color:var(--fg);line-height:1.6;margin-bottom:1.5rem;padding-left:1rem;border-left:3px solid var(--accent);">竞品爱车页面内容打造可以分为打造用车服务生态与专注车辆控制两大思路</div>
+          <div style="display:flex;flex-direction:column;gap:1.25rem;">
+            <div style="background:var(--bg);border:1px solid var(--border);border-radius:6px;padding:1rem 1.25rem;">
+              <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.9rem;text-transform:uppercase;letter-spacing:.08em;color:#7b5ea7;margin-bottom:.4rem;">平台 / 生态</div>
+              <p style="font-size:13px;color:var(--soft);line-height:1.75;">围绕车主全生命周期，覆盖高频的远程车辆控制和中低频的车辆服务。让用户能够个性化自定义服务或原子功能的顺序。</p>
+            </div>
+            <div style="background:var(--bg);border:1px solid var(--border);border-radius:6px;padding:1rem 1.25rem;">
+              <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.9rem;text-transform:uppercase;letter-spacing:.08em;color:#c07a3a;margin-bottom:.4rem;">工具 / 控制</div>
+              <p style="font-size:13px;color:var(--soft);line-height:1.75;">关注在车主用车的高频控车功能和场景，提供出更具体和细分的功能选项。让用户更精准的操作和获得反馈。</p>
+            </div>
+          </div>
+        </div>
+        <img src="im-comp-2.png" alt="平台/生态 vs 工具/控制 竞品截图" style="width:100%;border-radius:8px;display:block;mix-blend-mode:multiply;">
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<hr class="sep">
+
+<!-- Data Analysis -->
+<section class="sec" style="background:var(--bg);">
+  <div class="sec-inner">
+    <div class="sec-label">Data Analysis / 数据分析</div>
+
+    <!-- Title -->
+    <div style="margin-bottom:3.5rem;">
+      <h2 style="font-family:'Noto Serif SC',serif;font-size:clamp(1.6rem,3vw,2.4rem);font-weight:900;color:var(--fg);line-height:1.2;margin-bottom:.5rem;">数据分析——车主爱车页面</h2>
+      <div style="font-family:'Playfair Display',serif;font-size:1rem;font-style:italic;color:var(--muted);">Data Analysis</div>
+      <div style="width:40px;height:3px;background:var(--accent);margin-top:1rem;"></div>
+    </div>
+
+    <!-- Main 2-col: left content + right sticky image -->
+    <div style="display:grid;grid-template-columns:1.7fr 1fr;gap:4rem;align-items:start;">
+
+      <!-- Left: all stacked content -->
+      <div style="display:flex;flex-direction:column;gap:3rem;">
+
+        <!-- Description + bullets -->
+        <div style="display:flex;flex-direction:column;gap:1.75rem;">
+          <div>
+            <p style="font-size:13px;color:var(--soft);line-height:1.85;">于 <strong style="color:var(--accent);font-family:'Space Mono',monospace;">2022/08/03</strong> 统计过去30天内车主爱车页面点击总人数、各卡片点击人数、次数与人均次数</p>
+            <p style="font-size:11px;color:var(--muted);font-style:italic;margin-top:.3rem;">Tracking 30-day click data: total users, per-card counts, and per-user averages as of 2022.08.03</p>
+          </div>
+          <div style="display:flex;gap:1rem;align-items:flex-start;">
+            <div style="flex-shrink:0;width:6px;height:6px;background:var(--accent);border-radius:50%;margin-top:.45rem;"></div>
+            <div>
+              <p style="font-size:14px;color:var(--fg);line-height:1.85;">点击次数排名前五的卡片为：<strong>权益（6,812次）、私人管家（6,392次）、图库（3,781次）、体验及服务中心（3,204次）、配置解析</strong>，说明用户权益、售后服务等仍是用户最关心的内容</p>
+              <p style="font-size:11.5px;color:var(--muted);font-style:italic;margin-top:.4rem;">Top 5 by clicks: Benefits (6,812), Butler (6,392), Gallery (3,781), Service Center (3,204), Config — ownership rights and after-sales remain primary concerns.</p>
+            </div>
+          </div>
+          <div style="display:flex;gap:1rem;align-items:flex-start;">
+            <div style="flex-shrink:0;width:6px;height:6px;background:var(--accent);border-radius:50%;margin-top:.45rem;"></div>
+            <div>
+              <p style="font-size:14px;color:var(--fg);line-height:1.85;"><strong>私人管家人均点击次数最高（14.97次/人）</strong>，远高于其他卡片（权益 6.67、图库 13.55），可能与品牌目前处于车辆交付高峰期，新手车主较多有关；同时点击人数仅 427 人，较少，可能与私人管家入口较多有关</p>
+              <p style="font-size:11.5px;color:var(--muted);font-style:italic;margin-top:.4rem;">Butler: 14.97/user — highest rate. Only 427 unique users vs. Benefits' 1,022, likely due to multiple entry points during peak delivery period.</p>
+            </div>
+          </div>
+          <div style="display:flex;gap:1rem;align-items:flex-start;">
+            <div style="flex-shrink:0;width:6px;height:6px;background:var(--accent);border-radius:50%;margin-top:.45rem;"></div>
+            <div>
+              <p style="font-size:14px;color:var(--fg);line-height:1.85;"><strong>权益点击人数最多（1,022人）、总次数 6,812次</strong>，可以考虑将充电次数等关键信息的优先级提高，减少车主点击层级；人均 6.67 次适中，主要与反复查看充电权益有关</p>
+              <p style="font-size:11.5px;color:var(--muted);font-style:italic;margin-top:.4rem;">Benefits: 1,022 users, 6,812 total taps (6.67/user) — surfacing charging quota info could reduce tap depth.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- How to read + data table -->
+        <div style="padding-top:2.5rem;border-top:1px solid var(--border);">
+          <div style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem;">Card Click Data / 各卡片点击数据</div>
+          <div style="display:flex;gap:1.5rem;align-items:baseline;margin-bottom:1.25rem;">
+            <div style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);">数据格式说明 · How to Read</div>
+            <div style="display:flex;align-items:baseline;gap:.4rem;">
+              <span style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1rem;color:var(--fg);">人数</span>
+              <span style="font-family:'Space Mono',monospace;font-size:8px;color:var(--muted);">UV</span>
+              <span style="font-size:11px;color:var(--soft);">独立用户数</span>
+            </div>
+            <div style="display:flex;align-items:baseline;gap:.4rem;">
+              <span style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1rem;color:var(--accent);">次数</span>
+              <span style="font-family:'Space Mono',monospace;font-size:8px;color:var(--muted);">PV</span>
+              <span style="font-size:11px;color:var(--soft);">总点击次数</span>
+            </div>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(7,1fr);gap:0;border:1px solid var(--border);border-radius:8px;overflow:hidden;">
+            <div style="padding:.75rem .6rem;background:var(--accent);font-family:'Space Mono',monospace;font-size:8px;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.7);text-align:center;">卡片</div>
+            <div style="padding:.75rem .6rem;background:var(--accent);font-family:'Space Mono',monospace;font-size:8px;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.7);text-align:center;">私人管家</div>
+            <div style="padding:.75rem .6rem;background:var(--accent);font-family:'Space Mono',monospace;font-size:8px;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.7);text-align:center;">权益</div>
+            <div style="padding:.75rem .6rem;background:var(--accent);font-family:'Space Mono',monospace;font-size:8px;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.7);text-align:center;">图库</div>
+            <div style="padding:.75rem .6rem;background:var(--accent);font-family:'Space Mono',monospace;font-size:8px;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.7);text-align:center;">用户主理</div>
+            <div style="padding:.75rem .6rem;background:var(--accent);font-family:'Space Mono',monospace;font-size:8px;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.7);text-align:center;">活动</div>
+            <div style="padding:.75rem .6rem;background:var(--accent);font-family:'Space Mono',monospace;font-size:8px;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.7);text-align:center;">体验服务</div>
+            <div style="padding:.75rem .6rem;background:var(--accent-bg);font-family:'Space Mono',monospace;font-size:8px;letter-spacing:.08em;color:var(--soft);text-align:center;border-top:1px solid var(--border);">人数 <span style="opacity:.5;font-size:7px;">UV</span></div>
+            <div style="padding:.75rem .6rem;text-align:center;font-size:13px;font-weight:700;color:var(--fg);border-top:1px solid var(--border);border-left:1px solid var(--border);">427</div>
+            <div style="padding:.75rem .6rem;text-align:center;font-size:13px;font-weight:700;color:var(--fg);border-top:1px solid var(--border);border-left:1px solid var(--border);">1,022</div>
+            <div style="padding:.75rem .6rem;text-align:center;font-size:13px;font-weight:700;color:var(--fg);border-top:1px solid var(--border);border-left:1px solid var(--border);">279</div>
+            <div style="padding:.75rem .6rem;text-align:center;font-size:13px;font-weight:700;color:var(--fg);border-top:1px solid var(--border);border-left:1px solid var(--border);">455</div>
+            <div style="padding:.75rem .6rem;text-align:center;font-size:13px;font-weight:700;color:var(--fg);border-top:1px solid var(--border);border-left:1px solid var(--border);">263</div>
+            <div style="padding:.75rem .6rem;text-align:center;font-size:13px;font-weight:700;color:var(--fg);border-top:1px solid var(--border);border-left:1px solid var(--border);">668</div>
+            <div style="padding:.75rem .6rem;background:var(--accent-bg);font-family:'Space Mono',monospace;font-size:8px;letter-spacing:.08em;color:var(--soft);text-align:center;border-top:1px solid var(--border);">次数 <span style="opacity:.5;font-size:7px;">PV</span></div>
+            <div style="padding:.75rem .6rem;text-align:center;font-size:13px;font-weight:700;color:var(--accent);border-top:1px solid var(--border);border-left:1px solid var(--border);">6,392</div>
+            <div style="padding:.75rem .6rem;text-align:center;font-size:13px;font-weight:700;color:var(--accent);border-top:1px solid var(--border);border-left:1px solid var(--border);">6,812</div>
+            <div style="padding:.75rem .6rem;text-align:center;font-size:13px;font-weight:700;color:var(--accent);border-top:1px solid var(--border);border-left:1px solid var(--border);">3,781</div>
+            <div style="padding:.75rem .6rem;text-align:center;font-size:13px;font-weight:700;color:var(--accent);border-top:1px solid var(--border);border-left:1px solid var(--border);">1,528</div>
+            <div style="padding:.75rem .6rem;text-align:center;font-size:13px;font-weight:700;color:var(--accent);border-top:1px solid var(--border);border-left:1px solid var(--border);">496</div>
+            <div style="padding:.75rem .6rem;text-align:center;font-size:13px;font-weight:700;color:var(--accent);border-top:1px solid var(--border);border-left:1px solid var(--border);">3,204</div>
+            <div style="padding:.75rem .6rem;background:var(--accent-bg);font-family:'Space Mono',monospace;font-size:8px;letter-spacing:.08em;color:var(--soft);text-align:center;border-top:1px solid var(--border);">人均</div>
+            <div style="padding:.75rem .6rem;text-align:center;font-size:13px;color:var(--soft);border-top:1px solid var(--border);border-left:1px solid var(--border);font-weight:600;">14.97 ↑</div>
+            <div style="padding:.75rem .6rem;text-align:center;font-size:13px;color:var(--soft);border-top:1px solid var(--border);border-left:1px solid var(--border);">6.67</div>
+            <div style="padding:.75rem .6rem;text-align:center;font-size:13px;color:var(--soft);border-top:1px solid var(--border);border-left:1px solid var(--border);">13.55</div>
+            <div style="padding:.75rem .6rem;text-align:center;font-size:13px;color:var(--soft);border-top:1px solid var(--border);border-left:1px solid var(--border);">3.36</div>
+            <div style="padding:.75rem .6rem;text-align:center;font-size:13px;color:var(--soft);border-top:1px solid var(--border);border-left:1px solid var(--border);">1.89</div>
+            <div style="padding:.75rem .6rem;text-align:center;font-size:13px;color:var(--soft);border-top:1px solid var(--border);border-left:1px solid var(--border);">4.80</div>
+          </div>
+        </div>
+
+        <!-- Highlight callout row -->
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;">
+      <div style="padding:1.5rem;background:var(--accent-bg);border-radius:8px;">
+        <div style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:.75rem;">Top Total Clicks</div>
+        <div style="font-size:1.8rem;font-weight:900;color:var(--accent);font-family:'Barlow Condensed',sans-serif;letter-spacing:-.02em;">6,812</div>
+        <div style="font-size:13px;color:var(--fg);margin-top:.25rem;font-weight:600;">权益 Benefits</div>
+        <p style="font-size:12px;color:var(--soft);line-height:1.7;margin-top:.5rem;">点击次数最多，可考虑将关键信息优先级提高</p>
+      </div>
+      <div style="padding:1.5rem;background:var(--accent);border-radius:8px;">
+        <div style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:.75rem;">Highest Per-User</div>
+        <div style="font-size:1.8rem;font-weight:900;color:#fff;font-family:'Barlow Condensed',sans-serif;letter-spacing:-.02em;">14.97</div>
+        <div style="font-size:13px;color:#fff;margin-top:.25rem;font-weight:600;">私人管家 Butler</div>
+        <p style="font-size:12px;color:rgba(255,255,255,.7);line-height:1.7;margin-top:.5rem;">人均点击最高，与车辆交付高峰期及多入口相关</p>
+      </div>
+      <div style="padding:1.5rem;background:var(--accent-bg);border-radius:8px;">
+        <div style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:.75rem;">AC Success Rate</div>
+        <div style="font-size:1.8rem;font-weight:900;color:var(--accent);font-family:'Barlow Condensed',sans-serif;letter-spacing:-.02em;">55.92%</div>
+        <div style="font-size:13px;color:var(--fg);margin-top:.25rem;font-weight:600;">空调远程控制</div>
+        <p style="font-size:12px;color:var(--soft);line-height:1.7;margin-top:.5rem;">成功率不足六成，人均失败5.66次，体验急需优化</p>
+      </div>
+    </div>
+
+      </div><!-- end left col -->
+
+      <!-- Right: sticky app screenshot -->
+      <div style="position:sticky;top:6rem;display:flex;justify-content:flex-start;">
+        <img src="im-screen-app.png" alt="车主爱车页面截图" style="width:72%;object-fit:contain;border-radius:12px;display:block;mix-blend-mode:multiply;">
+      </div>
+
+    </div><!-- end main 2-col grid -->
+
+  </div>
+</section>
+
+<hr class="sep">
+
+<!-- Data Analysis 2: Atomic Functions -->
+<section class="sec">
+  <div class="sec-inner">
+    <div class="sec-label">Data Analysis / 数据分析</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:end;margin-bottom:3.5rem;">
+      <div>
+        <h2 style="font-family:'Noto Serif SC',serif;font-size:clamp(1.6rem,3vw,2.4rem);font-weight:900;color:var(--fg);line-height:1.2;margin-bottom:.5rem;">数据分析——原子功能</h2>
+        <div style="font-family:'Playfair Display',serif;font-size:1rem;font-style:italic;color:var(--muted);">Data Analysis · Atomic Functions</div>
+        <div style="width:40px;height:3px;background:var(--accent);margin-top:1rem;"></div>
+      </div>
+      <div>
+        <p style="font-size:13px;color:var(--soft);line-height:1.85;">于 <strong style="color:var(--accent);font-family:'Space Mono',monospace;">2022/08/03</strong> 统计过去30天内原子功能各功能点击人数、次数以及高频功能（车锁与空调）远控成功率</p>
+        <p style="font-size:11px;color:var(--muted);font-style:italic;margin-top:.4rem;">Tracking 30-day atomic function data: click UV/PV per feature, and remote-control success rates for lock and AC.</p>
+      </div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1.1fr;gap:5rem;align-items:start;">
+
+      <!-- Left: bullets -->
+      <div style="display:flex;flex-direction:column;gap:1.75rem;">
+
+        <div style="display:flex;gap:1rem;align-items:flex-start;">
+          <div style="flex-shrink:0;width:6px;height:6px;background:var(--accent);border-radius:50%;margin-top:.45rem;"></div>
+          <div>
+            <p style="font-size:14px;color:var(--fg);line-height:1.85;">原子功能点击 UV/PV 排名前五均为：<strong>解闭锁（1103 / 21965）、开关空调（1025 / 11140）、内页开关空调（513 / 2327）、空调温度调整（500 / 2012）、鸣笛闪灯（281 / 1430）</strong>，说明车锁与空调是车主最常使用的远控功能，且车主较少进入内页开关空调与调整温度</p>
+            <p style="font-size:11.5px;color:var(--muted);font-style:italic;margin-top:.4rem;">Top 5 atomic features by UV/PV: Lock/Unlock, AC On/Off, AC Inner Page, AC Temp, Horn/Flash. Lock and AC dominate remote usage.</p>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:1rem;align-items:flex-start;">
+          <div style="flex-shrink:0;width:6px;height:6px;background:var(--accent);border-radius:50%;margin-top:.45rem;"></div>
+          <div>
+            <p style="font-size:14px;color:var(--fg);line-height:1.85;"><strong>座椅加热、方向盘加热使用人均次数分别为 5.75、4.41</strong>，与当前季节反常，可能是近期提车人数较多，新车主进行功能尝试或展示</p>
+            <p style="font-size:11.5px;color:var(--muted);font-style:italic;margin-top:.4rem;">Seat heat (5.75/user) and wheel heat (4.41/user) are unseasonably high — likely new owners exploring features after delivery.</p>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:1rem;align-items:flex-start;">
+          <div style="flex-shrink:0;width:6px;height:6px;background:#c0392b;border-radius:50%;margin-top:.45rem;"></div>
+          <div>
+            <p style="font-size:14px;color:var(--fg);line-height:1.85;"><strong style="color:#c0392b;">开关空调成功率仅为 55.92%，且人均失败 5.66 次</strong>，造成较差用户体验，应进一步定位失败原因，完善功能设计</p>
+            <p style="font-size:11.5px;color:var(--muted);font-style:italic;margin-top:.4rem;">AC remote success rate is only 55.92% with 5.66 average failures per user — a critical experience gap requiring root-cause investigation.</p>
+          </div>
+        </div>
+
+        <!-- Callout stat -->
+        <div style="margin-top:.5rem;display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+          <div style="padding:1.25rem;background:#fdf0ef;border-radius:8px;border-left:3px solid #c0392b;">
+            <div style="font-family:'Space Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;color:#c0392b;margin-bottom:.5rem;">AC Success Rate</div>
+            <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:2rem;color:#c0392b;line-height:1;">55.92%</div>
+            <p style="font-size:11px;color:var(--soft);line-height:1.6;margin-top:.4rem;">人均失败 5.66 次</p>
+          </div>
+          <div style="padding:1.25rem;background:var(--accent-bg);border-radius:8px;border-left:3px solid var(--accent);">
+            <div style="font-family:'Space Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:.5rem;">Top Feature UV</div>
+            <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:2rem;color:var(--accent);line-height:1;">1,103</div>
+            <p style="font-size:11px;color:var(--soft);line-height:1.6;margin-top:.4rem;">解闭锁 · 21,965 PV</p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Right: image placeholder -->
+      <div>
+        <img src="im-screen-2.png" alt="App Screenshot" style="width:100%;max-height:500px;object-fit:contain;border-radius:12px;display:block;mix-blend-mode:multiply;">
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<hr class="sep">
+
+<!-- Online Feedback -->
+<section class="sec">
+  <div class="sec-inner">
+    <div class="sec-label">Online Feedback / 用户线上反馈</div>
+    <div class="title-block" style="margin-bottom:3rem;">
+      <div class="t-en">ONLINE<br><em>Feedback</em></div>
+      <div class="t-zh">用户线上反馈</div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;">
+
+      <!-- 痛点 -->
+      <div style="border:1px solid var(--border);border-radius:8px;overflow:hidden;">
+        <div style="background:var(--accent);padding:1rem 1.5rem;display:flex;align-items:center;gap:1rem;">
+          <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:2rem;color:rgba(255,255,255,.2);line-height:1;">痛点</div>
+          <div>
+            <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.9rem;text-transform:uppercase;letter-spacing:.1em;color:#fff;">Pain Points</div>
+            <div style="font-family:'Space Mono',monospace;font-size:8px;letter-spacing:.1em;color:rgba(255,255,255,.5);margin-top:.15rem;">用户反映的核心问题</div>
+          </div>
+        </div>
+        <div style="padding:1.5rem;display:flex;flex-direction:column;gap:1rem;">
+          <div style="display:flex;gap:.75rem;align-items:flex-start;">
+            <div style="flex-shrink:0;width:20px;height:20px;background:var(--accent-bg);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Space Mono',monospace;font-size:8px;color:var(--accent);font-weight:700;margin-top:.1rem;">01</div>
+            <p style="font-size:13px;color:var(--fg);line-height:1.7;">蓝牙无法连接或连接不稳定</p>
+          </div>
+          <div style="display:flex;gap:.75rem;align-items:flex-start;">
+            <div style="flex-shrink:0;width:20px;height:20px;background:var(--accent-bg);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Space Mono',monospace;font-size:8px;color:var(--accent);font-weight:700;margin-top:.1rem;">02</div>
+            <p style="font-size:13px;color:var(--fg);line-height:1.7;">APP 显示车辆状态与实际不符，如定位、原子功能按钮状态、充电信息等</p>
+          </div>
+          <div style="display:flex;gap:.75rem;align-items:flex-start;">
+            <div style="flex-shrink:0;width:20px;height:20px;background:var(--accent-bg);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Space Mono',monospace;font-size:8px;color:var(--accent);font-weight:700;margin-top:.1rem;">03</div>
+            <p style="font-size:13px;color:var(--fg);line-height:1.7;">远控开启空调失败或体验较差</p>
+          </div>
+          <div style="display:flex;gap:.75rem;align-items:flex-start;">
+            <div style="flex-shrink:0;width:20px;height:20px;background:var(--accent-bg);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Space Mono',monospace;font-size:8px;color:var(--accent);font-weight:700;margin-top:.1rem;">04</div>
+            <p style="font-size:13px;color:var(--fg);line-height:1.7;">空调远程开启次数限制用户体验较差</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 需求 -->
+      <div style="border:1px solid var(--border);border-radius:8px;overflow:hidden;">
+        <div style="background:var(--soft);padding:1rem 1.5rem;display:flex;align-items:center;gap:1rem;">
+          <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:2rem;color:rgba(255,255,255,.2);line-height:1;">需求</div>
+          <div>
+            <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.9rem;text-transform:uppercase;letter-spacing:.1em;color:#fff;">Feature Requests</div>
+            <div style="font-family:'Space Mono',monospace;font-size:8px;letter-spacing:.1em;color:rgba(255,255,255,.5);margin-top:.15rem;">用户期望新增的功能</div>
+          </div>
+        </div>
+        <div style="padding:1.5rem;display:flex;flex-direction:column;gap:1rem;">
+          <div style="display:flex;gap:.75rem;align-items:flex-start;">
+            <div style="flex-shrink:0;width:20px;height:20px;background:#f0ece8;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Space Mono',monospace;font-size:8px;color:var(--soft);font-weight:700;margin-top:.1rem;">01</div>
+            <p style="font-size:13px;color:var(--fg);line-height:1.7;">增加远控车窗功能</p>
+          </div>
+          <div style="display:flex;gap:.75rem;align-items:flex-start;">
+            <div style="flex-shrink:0;width:20px;height:20px;background:#f0ece8;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Space Mono',monospace;font-size:8px;color:var(--soft);font-weight:700;margin-top:.1rem;">02</div>
+            <p style="font-size:13px;color:var(--fg);line-height:1.7;">增加行驶里程信息并与 APP 端地图同步足迹信息</p>
+          </div>
+          <div style="display:flex;gap:.75rem;align-items:flex-start;">
+            <div style="flex-shrink:0;width:20px;height:20px;background:#f0ece8;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Space Mono',monospace;font-size:8px;color:var(--soft);font-weight:700;margin-top:.1rem;">03</div>
+            <p style="font-size:13px;color:var(--fg);line-height:1.7;">希望微信位置可以推送到车机导航</p>
+          </div>
+          <div style="display:flex;gap:.75rem;align-items:flex-start;">
+            <div style="flex-shrink:0;width:20px;height:20px;background:#f0ece8;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Space Mono',monospace;font-size:8px;color:var(--soft);font-weight:700;margin-top:.1rem;">04</div>
+            <p style="font-size:13px;color:var(--fg);line-height:1.7;">增加 iOS 系统车控小组件</p>
+          </div>
+          <div style="display:flex;gap:.75rem;align-items:flex-start;">
+            <div style="flex-shrink:0;width:20px;height:20px;background:#f0ece8;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Space Mono',monospace;font-size:8px;color:var(--soft);font-weight:700;margin-top:.1rem;">05</div>
+            <p style="font-size:13px;color:var(--fg);line-height:1.7;">APP 模拟车辆控制以供未提车车主提前熟悉</p>
+          </div>
+          <div style="display:flex;gap:.75rem;align-items:flex-start;">
+            <div style="flex-shrink:0;width:20px;height:20px;background:#f0ece8;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Space Mono',monospace;font-size:8px;color:var(--soft);font-weight:700;margin-top:.1rem;">06</div>
+            <p style="font-size:13px;color:var(--fg);line-height:1.7;">增加手机泊车与车辆直线召唤</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Feedback table -->
+    <div style="margin-top:2.5rem;border:1px solid var(--border);border-radius:8px;overflow:hidden;font-size:12px;">
+      <div style="background:#f5f5f5;padding:.6rem 1rem;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:.75rem;">
+        <span style="font-family:'Space Mono',monospace;font-size:9px;color:#888;letter-spacing:.08em;">数据来源 · 钉钉车控与蓝牙钥匙问题反馈表</span>
+        <span style="font-family:'Space Mono',monospace;font-size:9px;color:#aaa;">2022/07–08 · 共 26 条</span>
+      </div>
+      <div style="overflow-x:auto;">
+        <table style="width:100%;border-collapse:collapse;min-width:800px;">
+          <thead>
+            <tr style="background:#eeeeee;border-bottom:2px solid #ddd;">
+              <th style="padding:.5rem .75rem;text-align:left;font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.08em;color:#666;white-space:nowrap;font-weight:600;">时间</th>
+              <th style="padding:.5rem .75rem;text-align:left;font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.08em;color:#666;white-space:nowrap;font-weight:600;">提出人</th>
+              <th style="padding:.5rem .75rem;text-align:left;font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.08em;color:#666;white-space:nowrap;font-weight:600;">问题类型</th>
+              <th style="padding:.5rem .75rem;text-align:left;font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.08em;color:#666;white-space:nowrap;font-weight:600;">功能类型</th>
+              <th style="padding:.5rem .75rem;text-align:left;font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.08em;color:#666;white-space:nowrap;font-weight:600;">问题标签</th>
+              <th style="padding:.5rem .75rem;text-align:left;font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.08em;color:#666;font-weight:600;">问题简述</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom:1px solid #eee;background:#fff;">
+              <td style="padding:.55rem .75rem;color:#888;white-space:nowrap;">2022/7/9</td>
+              <td style="padding:.55rem .75rem;color:#555;white-space:nowrap;">于*</td>
+              <td style="padding:.55rem .75rem;"><span style="background:#fee2e2;color:#991b1b;padding:.15rem .5rem;border-radius:3px;font-size:10px;font-weight:600;">蓝牙</span></td>
+              <td style="padding:.55rem .75rem;"><span style="background:#f3f4f6;color:#555;padding:.15rem .5rem;border-radius:3px;font-size:10px;">功能</span></td>
+              <td style="padding:.55rem .75rem;"><span style="background:#fef9c3;color:#854d0e;padding:.15rem .5rem;border-radius:3px;font-size:10px;">网络问题</span></td>
+              <td style="padding:.55rem .75rem;color:#444;line-height:1.5;">麻烦这台车也确认下网络情况，c端用户抱怨网络情况</td>
+            </tr>
+            <tr style="border-bottom:1px solid #eee;background:#fafafa;">
+              <td style="padding:.55rem .75rem;color:#888;white-space:nowrap;">2022/7/9 2:00</td>
+              <td style="padding:.55rem .75rem;color:#555;white-space:nowrap;">金**</td>
+              <td style="padding:.55rem .75rem;"><span style="background:#dbeafe;color:#1d4ed8;padding:.15rem .5rem;border-radius:3px;font-size:10px;font-weight:600;">远控</span></td>
+              <td style="padding:.55rem .75rem;"><span style="background:#f3f4f6;color:#555;padding:.15rem .5rem;border-radius:3px;font-size:10px;">功能</span></td>
+              <td style="padding:.55rem .75rem;"><span style="background:#fef9c3;color:#854d0e;padding:.15rem .5rem;border-radius:3px;font-size:10px;">网络问题</span></td>
+              <td style="padding:.55rem .75rem;color:#444;line-height:1.5;">APP显示车辆状态与实际不符，之前远程开启过空调，停车回家后提醒空调仍已开启，应该只是APP提醒显示问题</td>
+            </tr>
+            <tr style="border-bottom:1px solid #eee;background:#fff;">
+              <td style="padding:.55rem .75rem;color:#888;white-space:nowrap;">2022/7/8 18:30</td>
+              <td style="padding:.55rem .75rem;color:#555;white-space:nowrap;">李**</td>
+              <td style="padding:.55rem .75rem;"><span style="background:#fee2e2;color:#991b1b;padding:.15rem .5rem;border-radius:3px;font-size:10px;font-weight:600;">蓝牙</span></td>
+              <td style="padding:.55rem .75rem;"><span style="background:#f3f4f6;color:#555;padding:.15rem .5rem;border-radius:3px;font-size:10px;">功能</span></td>
+              <td style="padding:.55rem .75rem;"><span style="background:#fee2e2;color:#991b1b;padding:.15rem .5rem;border-radius:3px;font-size:10px;">蓝牙连接不稳定</span></td>
+              <td style="padding:.55rem .75rem;color:#444;line-height:1.5;">已经停车，手机页面还是显示行驶中，无法锁车；蓝牙钥匙无法车控</td>
+            </tr>
+            <tr style="border-bottom:1px solid #eee;background:#fafafa;">
+              <td style="padding:.55rem .75rem;color:#888;white-space:nowrap;">2022/7/7 12:00</td>
+              <td style="padding:.55rem .75rem;color:#555;white-space:nowrap;">于*</td>
+              <td style="padding:.55rem .75rem;"><span style="background:#fee2e2;color:#991b1b;padding:.15rem .5rem;border-radius:3px;font-size:10px;font-weight:600;">蓝牙</span></td>
+              <td style="padding:.55rem .75rem;"><span style="background:#f3f4f6;color:#555;padding:.15rem .5rem;border-radius:3px;font-size:10px;">功能</span></td>
+              <td style="padding:.55rem .75rem;"><span style="background:#fef9c3;color:#854d0e;padding:.15rem .5rem;border-radius:3px;font-size:10px;">PEPS问题</span></td>
+              <td style="padding:.55rem .75rem;color:#444;line-height:1.5;">蓝牙钥匙PS区域不识别，上车后无法上高压，提示找不到钥匙（蓝牙钥匙上锁解锁正常）</td>
+            </tr>
+            <tr style="border-bottom:1px solid #eee;background:#fff;">
+              <td style="padding:.55rem .75rem;color:#888;white-space:nowrap;">2022/7/6 14:30</td>
+              <td style="padding:.55rem .75rem;color:#555;white-space:nowrap;">肖*</td>
+              <td style="padding:.55rem .75rem;"><span style="background:#fee2e2;color:#991b1b;padding:.15rem .5rem;border-radius:3px;font-size:10px;font-weight:600;">蓝牙</span></td>
+              <td style="padding:.55rem .75rem;"><span style="background:#f3f4f6;color:#555;padding:.15rem .5rem;border-radius:3px;font-size:10px;">功能</span></td>
+              <td style="padding:.55rem .75rem;"><span style="background:#fee2e2;color:#991b1b;padding:.15rem .5rem;border-radius:3px;font-size:10px;">蓝牙连接不稳定</span></td>
+              <td style="padding:.55rem .75rem;color:#444;line-height:1.5;">蓝牙钥匙靠近解锁车辆时好时坏，手机型号华为mate40，已是最新版本</td>
+            </tr>
+            <tr style="border-bottom:1px solid #eee;background:#fafafa;">
+              <td style="padding:.55rem .75rem;color:#888;white-space:nowrap;">2022/7/5 21:00</td>
+              <td style="padding:.55rem .75rem;color:#555;white-space:nowrap;">于*</td>
+              <td style="padding:.55rem .75rem;"><span style="background:#dbeafe;color:#1d4ed8;padding:.15rem .5rem;border-radius:3px;font-size:10px;font-weight:600;">远控</span></td>
+              <td style="padding:.55rem .75rem;"><span style="background:#f3f4f6;color:#555;padding:.15rem .5rem;border-radius:3px;font-size:10px;">功能</span></td>
+              <td style="padding:.55rem .75rem;"><span style="background:#fef9c3;color:#854d0e;padding:.15rem .5rem;border-radius:3px;font-size:10px;">网络问题</span></td>
+              <td style="padding:.55rem .75rem;color:#444;line-height:1.5;">7/5 8:00 APP显示空调及主驾车门开启，实际车辆处于锁车状态，手机网络满格，近期未有远控操作；18:30状态已同步</td>
+            </tr>
+            <tr style="border-bottom:1px solid #eee;background:#fff;">
+              <td style="padding:.55rem .75rem;color:#888;white-space:nowrap;">2022/7/2 14:00</td>
+              <td style="padding:.55rem .75rem;color:#555;white-space:nowrap;">于*</td>
+              <td style="padding:.55rem .75rem;"><span style="background:#fee2e2;color:#991b1b;padding:.15rem .5rem;border-radius:3px;font-size:10px;font-weight:600;">蓝牙</span></td>
+              <td style="padding:.55rem .75rem;"><span style="background:#f3f4f6;color:#555;padding:.15rem .5rem;border-radius:3px;font-size:10px;">功能</span></td>
+              <td style="padding:.55rem .75rem;"><span style="background:#fef9c3;color:#854d0e;padding:.15rem .5rem;border-radius:3px;font-size:10px;">网络问题</span></td>
+              <td style="padding:.55rem .75rem;color:#444;line-height:1.5;">APP与车辆无法连接，开到信号好的地方仍连不上，车辆重启后仍无法连接，已配合上传APP日志</td>
+            </tr>
+            <tr style="border-bottom:1px solid #eee;background:#fafafa;">
+              <td style="padding:.55rem .75rem;color:#888;white-space:nowrap;">2022/6/30 12:00</td>
+              <td style="padding:.55rem .75rem;color:#555;white-space:nowrap;">于*</td>
+              <td style="padding:.55rem .75rem;"><span style="background:#dbeafe;color:#1d4ed8;padding:.15rem .5rem;border-radius:3px;font-size:10px;font-weight:600;">远控</span></td>
+              <td style="padding:.55rem .75rem;"><span style="background:#f3f4f6;color:#555;padding:.15rem .5rem;border-radius:3px;font-size:10px;">功能</span></td>
+              <td style="padding:.55rem .75rem;"><span style="background:#fef9c3;color:#854d0e;padding:.15rem .5rem;border-radius:3px;font-size:10px;">信号问题</span></td>
+              <td style="padding:.55rem .75rem;color:#444;line-height:1.5;">远程启动空调每次均显示"执行超时"，车停地面信号无问题，其他远控功能未尝试</td>
+            </tr>
+            <tr style="background:#fff;">
+              <td style="padding:.55rem .75rem;color:#888;white-space:nowrap;">2022/6/29 21:00</td>
+              <td style="padding:.55rem .75rem;color:#555;white-space:nowrap;">于*</td>
+              <td style="padding:.55rem .75rem;"><span style="background:#dbeafe;color:#1d4ed8;padding:.15rem .5rem;border-radius:3px;font-size:10px;font-weight:600;">远控</span></td>
+              <td style="padding:.55rem .75rem;"><span style="background:#f3f4f6;color:#555;padding:.15rem .5rem;border-radius:3px;font-size:10px;">功能</span></td>
+              <td style="padding:.55rem .75rem;"><span style="background:#fef9c3;color:#854d0e;padding:.15rem .5rem;border-radius:3px;font-size:10px;">网络问题</span></td>
+              <td style="padding:.55rem .75rem;color:#444;line-height:1.5;">充电5分钟后APP显示已充97分钟，过段时间变成286分钟，重新扫码充5分钟APP显示已15分钟</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<hr class="sep">
+
+<!-- Quote -->
+<div class="quote-sec">
+  <div class="sec-inner">
+    <div class="quote-text">"The app shows me my car is locked — but I'm still standing at the door wondering if it really is. The feedback just doesn't feel reliable."</div>
+    <div class="quote-zh">"APP显示车已锁上，但我站在门口还是不确定，反馈让人没有安全感。"</div>
+    <div class="quote-attr">— Interview participant, IM Motors owner / 受访者，智己车主</div>
+  </div>
+</div>
+
+<!-- Interview Topics -->
+<hr class="sep">
+<section class="sec" style="background:var(--accent-bg);">
+  <div class="sec-inner">
+    <div style="display:grid;grid-template-columns:280px 1fr;gap:5rem;align-items:start;">
+      <!-- Left: title -->
+      <div style="position:sticky;top:7rem;">
+        <div class="sec-label">User Interview / 用户访谈目标</div>
+        <div class="t-en" style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(2rem,5vw,3.5rem);text-transform:uppercase;line-height:.95;color:var(--fg);">USER<br><em style="font-family:'Playfair Display',serif;font-style:italic;color:var(--accent);">Interview</em></div>
+        <div style="font-family:'Noto Serif SC',serif;font-weight:700;font-size:1.5rem;color:var(--accent);margin-top:.25rem;">用户访谈目标</div>
+      </div>
+      <!-- Right: topic rows -->
+      <div style="display:flex;flex-direction:column;gap:0;">
+        <!-- Row 1 -->
+        <div style="display:grid;grid-template-columns:160px 1fr;gap:2rem;padding:2rem 0;border-bottom:1px solid rgba(13,27,51,0.12);align-items:start;">
+          <div>
+            <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.25rem;text-transform:uppercase;color:var(--fg);">用车场景</div>
+            <div style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-top:.25rem;">Driving Scenarios</div>
+          </div>
+          <ul style="list-style:none;display:flex;flex-direction:column;gap:.6rem;">
+            <li style="font-size:14px;color:var(--soft);line-height:1.75;padding-left:1rem;border-left:2px solid var(--accent);">了解用户高频用车场景与用车流程，明确各场景下用户痛点与需求</li>
+          </ul>
+        </div>
+        <!-- Row 2 -->
+        <div style="display:grid;grid-template-columns:160px 1fr;gap:2rem;padding:2rem 0;border-bottom:1px solid rgba(13,27,51,0.12);align-items:start;">
+          <div>
+            <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.25rem;text-transform:uppercase;color:var(--fg);">产品页面</div>
+            <div style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-top:.25rem;">Product Page</div>
+          </div>
+          <ul style="list-style:none;display:flex;flex-direction:column;gap:.6rem;">
+            <li style="font-size:14px;color:var(--soft);line-height:1.75;padding-left:1rem;border-left:2px solid var(--accent);">了解爱车页设计风格与功能布局的用户态度与使用痛点</li>
+            <li style="font-size:14px;color:var(--soft);line-height:1.75;padding-left:1rem;border-left:2px solid var(--border);">了解各功能模块的用户理解与基本使用状况</li>
+            <li style="font-size:14px;color:var(--soft);line-height:1.75;padding-left:1rem;border-left:2px solid var(--border);">了解原子功能用户使用状况与需求痛点</li>
+            <li style="font-size:14px;color:var(--soft);line-height:1.75;padding-left:1rem;border-left:2px solid var(--border);">了解个性化与DLP、Carlog内容分享社区的用户态度与原因</li>
+          </ul>
+        </div>
+        <!-- Row 3 -->
+        <div style="display:grid;grid-template-columns:160px 1fr;gap:2rem;padding:2rem 0;align-items:start;">
+          <div>
+            <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.25rem;text-transform:uppercase;color:var(--fg);">情感化链接</div>
+            <div style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-top:.25rem;">Emotional Connection</div>
+          </div>
+          <ul style="list-style:none;display:flex;flex-direction:column;gap:.6rem;">
+            <li style="font-size:14px;color:var(--soft);line-height:1.75;padding-left:1rem;border-left:2px solid var(--accent);">了解用户与车辆情感化链接状况与需要</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Participants -->
+<hr class="sep">
+<section class="sec">
+  <div class="sec-inner">
+    <div class="sec-label">Participants / 访谈对象</div>
+    <div class="title-block" style="margin-bottom:2rem;">
+      <div class="t-en">INTERVIEW<br><em>Participants</em></div>
+      <div class="t-zh">访谈对象</div>
+    </div>
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>序号</th>
+          <th>姓名</th>
+          <th>性别</th>
+          <th>工作部门</th>
+          <th>车辆品牌</th>
+          <th>用车时长</th>
+          <th>APP车控使用频率</th>
+          <th>智能产品使用情况</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>1</td><td>高**</td><td>男</td><td>创意策略与发布</td><td>智己</td><td>0–1年</td><td>一天多次</td><td>空调、指纹锁、摄像头</td></tr>
+        <tr><td>2</td><td>吕**</td><td>男</td><td>区域运营</td><td>名爵6PHEV</td><td>1–3年</td><td>一周2–3次</td><td>指纹锁、安防</td></tr>
+        <tr><td>3</td><td>梁**</td><td>男</td><td>三电策略与开发</td><td>智己</td><td>0–1年</td><td>一周2–3次</td><td>指纹锁</td></tr>
+        <tr><td>4</td><td>徐**</td><td>男</td><td>智能座舱产品</td><td>智己</td><td>0–1年</td><td>一天多次</td><td>智能音箱</td></tr>
+        <tr><td>5</td><td>曾**</td><td>男</td><td>智能座舱产品</td><td>蔚来</td><td>1–3年</td><td>一周2–3次</td><td>扫地机器人、门锁</td></tr>
+        <tr><td>6</td><td>李*</td><td>男</td><td>电子电气部</td><td>智己 / 福特蒙迪欧</td><td>0–1年 / 5年以上</td><td>一天多次</td><td>没有</td></tr>
+        <tr><td>7</td><td>陈**</td><td>男</td><td>CSOP用户运营</td><td>领克03</td><td>1–3年</td><td>一天一次</td><td>智能遥控</td></tr>
+        <tr><td>8</td><td>屈**</td><td>男</td><td>感知提升LAB</td><td>智己 / 大众</td><td>0–1年</td><td>一周2–3次</td><td>台灯、音箱、闹钟</td></tr>
+        <tr><td>9</td><td>陈**</td><td>女</td><td>PMO</td><td>智己</td><td>0–1年</td><td>一天多次</td><td>没有</td></tr>
+        <tr><td>10</td><td>徐*</td><td>男</td><td>部署运维</td><td>智己</td><td>0–1年</td><td>一天一次</td><td>没有</td></tr>
+        <tr><td>11</td><td>徐*</td><td>男</td><td>APP数字产品部</td><td>智己</td><td>0–1年</td><td>一天多次</td><td>台灯、窗帘、扫地机器人</td></tr>
+      </tbody>
+    </table>
+    <div style="margin-top:2.5rem;">
+      <img src="car/record.png" alt="车主爱车调研看板" style="width:100%;border-radius:12px;display:block;">
+    </div>
+  </div>
+</section>
+
+<!-- Interview Findings -->
+<section style="background:#F5F1EC;padding:6rem 3rem;">
+  <div class="sec-inner">
+
+    <!-- Section Header -->
+    <div style="display:grid;grid-template-columns:auto 1fr;gap:3rem;align-items:end;margin-bottom:4rem;padding-bottom:2.5rem;border-bottom:2px solid rgba(13,27,90,.15);">
+      <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(5rem,12vw,9rem);color:rgba(13,43,90,.08);line-height:.85;letter-spacing:-.04em;user-select:none;">INT<br>VIEW</div>
+      <div>
+        <div style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem;opacity:.8;">Interview Findings / 访谈发现</div>
+        <h2 style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(2.5rem,5vw,4rem);text-transform:uppercase;line-height:.95;color:var(--fg);letter-spacing:-.02em;">INTERVIEW<br><em style="font-family:'Playfair Display',serif;font-style:italic;color:var(--accent);">Findings</em></h2>
+        <div style="font-family:'Noto Serif SC',serif;font-weight:700;font-size:1.25rem;color:var(--accent);margin-top:.5rem;">访谈发现</div>
+        <p style="font-size:13px;color:var(--soft);margin-top:1rem;max-width:480px;line-height:1.85;">11位深度访谈 · 5个维度 · 覆盖常规场景、特殊场景、页面布局、3D车模、车辆服务</p>
+      </div>
+    </div>
+
+    <!-- 01 常规场景 -->
+    <div style="margin-bottom:3.5rem;">
+      <div style="display:flex;align-items:center;gap:1rem;margin-bottom:1.5rem;padding-bottom:1rem;border-bottom:2px solid var(--accent);"><span style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.5rem;color:var(--accent);letter-spacing:-.01em;">01</span><span style="width:1px;height:1.2rem;background:var(--border);"></span><span style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1.1rem;text-transform:uppercase;letter-spacing:.06em;color:var(--fg);">Regular Scenarios</span><span style="font-family:'Noto Serif SC',serif;font-size:.85rem;color:var(--accent);font-weight:700;">常规场景</span></div>
+      <p style="font-size:1rem;font-weight:700;color:var(--fg);line-height:1.7;margin-bottom:1.5rem;">在车主用车场景中，空调是被提及使用频次最高的远控功能</p>
+      <div class="two-col">
+        <div style="display:flex;flex-direction:column;gap:.9rem;">
+          <div class="q-card"><p>11位车主均会在驾驶前远程打开空调，营造舒适车辆环境，但抱怨空调开启成功率不高，且有时达不到设定温度</p></div>
+          <div class="q-card"><p>希望增加车窗远程控制，并且车窗可以与空调联动，加快降温效率或通风</p></div>
+          <div class="q-card"><p>由于受访者大多为通勤场景，希望增加空调预约开启功能，在常规且固定的用车场景下，简化用户操作过程</p></div>
+          <div style="display:flex;flex-direction:column;gap:.75rem;margin-top:.5rem;">
+            <div class="step-item"><div class="step-num">→</div><div class="step-content"><div class="s-title">Window Remote Control</div><div class="s-zh">增加车窗远控，与空调联动</div></div></div>
+            <div class="step-item"><div class="step-num">→</div><div class="step-content"><div class="s-title">Scheduled AC</div><div class="s-zh">增加空调预约开启功能</div></div></div>
+          </div>
+        </div>
+        <div>
+          <img src="im-scenario-ac.png" alt="空调远控截图" style="width:44%;border-radius:12px;display:block;mix-blend-mode:multiply;">
+        </div>
+      </div>
+    </div>
+
+    <!-- 特殊场景（合并入常规场景） -->
+    <div class="four-col" style="margin-bottom:2rem;">
+      <div class="card">
+        <div style="margin-bottom:.85rem;">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21h6M12 3a6 6 0 0 1 6 6c0 2.2-1.2 4.2-3 5.4V17H9v-2.6A6 6 0 0 1 6 9a6 6 0 0 1 6-6z"/><path d="M9 17h6"/></svg>
+        </div>
+        <div class="card-title-zh">鸣笛闪灯分控</div>
+        <p>夜晚用车不希望鸣笛打扰他人，建议把闪灯和鸣笛分开控制，并设定合适的响应时长</p>
+      </div>
+      <div class="card">
+        <div style="margin-bottom:.85rem;">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9h11l-1 7H6L3 9z"/><path d="M14 9a5 5 0 0 1 5 5"/><circle cx="6.5" cy="19" r="1.5"/><circle cx="13.5" cy="19" r="1.5"/><path d="M3 9 2 5"/><circle cx="18" cy="5" r="2"/></svg>
+        </div>
+        <div class="card-title-zh">儿童乘车预通风</div>
+        <p>家人或有儿童乘车时，希望提前开窗通风，上车前有健康的空气环境</p>
+      </div>
+      <div class="card">
+        <div style="margin-bottom:.85rem;">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/><path d="M9 9l12-2"/></svg>
+        </div>
+        <div class="card-title-zh">远程开启音乐</div>
+        <p>有儿童乘车时希望远程提前开启音乐，缓解儿童焦躁情绪，防止孩子吵闹</p>
+      </div>
+      <div class="card">
+        <div style="margin-bottom:.85rem;">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+        </div>
+        <div class="card-title-zh">后排空调与音乐控制</div>
+        <p>现在只能前排操作音乐和媒体，希望增加后排乘客空调与音乐控制功能</p>
+      </div>
+    </div>
+
+    <!-- 关键发现：场景远控 -->
+    <div style="margin-top:2rem;padding:1.75rem 2rem;background:var(--accent-bg);border-radius:10px;border-left:3px solid var(--accent);">
+      <div style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:1.25rem;">Key Findings / 关键发现 · 场景远控</div>
+      <div style="overflow-x:auto;">
+        <table style="width:100%;border-collapse:collapse;font-size:12.5px;">
+          <thead>
+            <tr style="border-bottom:2px solid var(--accent);">
+              <th style="padding:.55rem .9rem;text-align:left;font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);white-space:nowrap;">场景</th>
+              <th style="padding:.55rem .9rem;text-align:left;font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);white-space:nowrap;">子场景</th>
+              <th style="padding:.55rem .9rem;text-align:left;font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);">目的</th>
+              <th style="padding:.55rem .9rem;text-align:left;font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);">行为</th>
+              <th style="padding:.55rem .9rem;text-align:left;font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);">问题</th>
+              <th style="padding:.55rem .9rem;text-align:left;font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);">期望</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom:1px solid var(--border);">
+              <td style="padding:.7rem .9rem;color:var(--fg);font-weight:600;" rowspan="3">上车前</td>
+              <td style="padding:.7rem .9rem;color:var(--soft);" rowspan="3">上班通勤</td>
+              <td style="padding:.7rem .9rem;color:var(--soft);">查看车内温度，判断是否需要降温或通风</td>
+              <td style="padding:.7rem .9rem;color:var(--soft);">打开空调</td>
+              <td style="padding:.7rem .9rem;color:var(--soft);">需要先打开空调，操作繁琐</td>
+              <td style="padding:.7rem .9rem;color:var(--fg);font-weight:500;">简化操作步骤，无需打开空调，首页直接显示</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border);">
+              <td style="padding:.7rem .9rem;color:var(--soft);">给车内快速降温</td>
+              <td style="padding:.7rem .9rem;color:var(--soft);">打开空调</td>
+              <td style="padding:.7rem .9rem;color:var(--soft);">调温速度较慢，效果较差</td>
+              <td style="padding:.7rem .9rem;color:var(--fg);font-weight:500;">车窗配合下降，空调预约开启</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border);">
+              <td style="padding:.7rem .9rem;color:var(--soft);">利用手机内地图导航</td>
+              <td style="padding:.7rem .9rem;color:var(--soft);">将地图发送到车机</td>
+              <td style="padding:.7rem .9rem;color:var(--soft);">微信内的地图无法发送</td>
+              <td style="padding:.7rem .9rem;color:var(--fg);font-weight:500;">提高平台通用性</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border);">
+              <td style="padding:.7rem .9rem;color:var(--fg);font-weight:600;" rowspan="2">上车前</td>
+              <td style="padding:.7rem .9rem;color:var(--soft);" rowspan="2">外出游玩</td>
+              <td style="padding:.7rem .9rem;color:var(--soft);">查找车辆位置</td>
+              <td style="padding:.7rem .9rem;color:var(--soft);">使用寻车地图</td>
+              <td style="padding:.7rem .9rem;color:var(--soft);">位置精确度不高</td>
+              <td style="padding:.7rem .9rem;color:var(--fg);font-weight:500;">提升位置精确度</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border);">
+              <td style="padding:.7rem .9rem;color:var(--soft);">查找车辆位置</td>
+              <td style="padding:.7rem .9rem;color:var(--soft);">使用闪灯鸣笛</td>
+              <td style="padding:.7rem .9rem;color:var(--soft);">响应不及时，30s 时长不合适</td>
+              <td style="padding:.7rem .9rem;color:var(--fg);font-weight:500;">及时响应</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border);">
+              <td style="padding:.7rem .9rem;color:var(--fg);font-weight:600;">上车前</td>
+              <td style="padding:.7rem .9rem;color:var(--soft);">夜晚用车</td>
+              <td style="padding:.7rem .9rem;color:var(--soft);">查找车辆位置</td>
+              <td style="padding:.7rem .9rem;color:var(--soft);">使用闪灯鸣笛</td>
+              <td style="padding:.7rem .9rem;color:var(--soft);">鸣笛太吵</td>
+              <td style="padding:.7rem .9rem;color:var(--fg);font-weight:500;">不要鸣笛</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border);">
+              <td style="padding:.7rem .9rem;color:var(--fg);font-weight:600;">上车前</td>
+              <td style="padding:.7rem .9rem;color:var(--soft);">儿童乘车</td>
+              <td style="padding:.7rem .9rem;color:var(--soft);">营造适合儿童的乘车环境</td>
+              <td style="padding:.7rem .9rem;color:var(--muted);">—</td>
+              <td style="padding:.7rem .9rem;color:var(--soft);">没有对应功能</td>
+              <td style="padding:.7rem .9rem;color:var(--fg);font-weight:500;">提前开窗通风与播放音乐</td>
+            </tr>
+            <tr>
+              <td style="padding:.7rem .9rem;color:var(--fg);font-weight:600;">行驶中</td>
+              <td style="padding:.7rem .9rem;color:var(--soft);">后排乘车</td>
+              <td style="padding:.7rem .9rem;color:var(--soft);">调整空调音乐</td>
+              <td style="padding:.7rem .9rem;color:var(--soft);">使用车内语音控制</td>
+              <td style="padding:.7rem .9rem;color:var(--soft);">后排语音控制不精准</td>
+              <td style="padding:.7rem .9rem;color:var(--fg);font-weight:500;">后排乘客精确控制</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <hr class="sep" style="margin-bottom:3.5rem;">
+
+    <!-- 02 页面布局 -->
+    <div style="margin-bottom:3.5rem;">
+      <div style="display:flex;align-items:center;gap:1rem;margin-bottom:1.5rem;padding-bottom:1rem;border-bottom:2px solid var(--accent);"><span style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.5rem;color:var(--accent);letter-spacing:-.01em;">02</span><span style="width:1px;height:1.2rem;background:var(--border);"></span><span style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1.1rem;text-transform:uppercase;letter-spacing:.06em;color:var(--fg);">Page Layout</span><span style="font-family:'Noto Serif SC',serif;font-size:.85rem;color:var(--accent);font-weight:700;">页面布局</span></div>
+      <div style="display:grid;grid-template-columns:2fr 1fr;gap:3rem;align-items:start;">
+        <div>
+          <img src="car/1.png" alt="页面布局关键发现" style="width:100%;display:block;mix-blend-mode:multiply;">
+          <p style="font-size:12px;font-weight:600;color:var(--fg);line-height:1.7;margin-top:1rem;margin-bottom:.4rem;">几乎所有受访者表示，几乎不使用体验中心以下卡片楼层，建议可以弱化或省略</p>
+          <ul style="margin:0;padding-left:1.1rem;display:flex;flex-direction:column;gap:.3rem;">
+            <li style="font-size:11.5px;color:var(--soft);line-height:1.6;">车主认为爱车页面应专注车辆控制及高频的补能需求，目前对于充电地图和剩余电量权益会比较关心</li>
+            <li style="font-size:11.5px;color:var(--soft);line-height:1.6;">10/11位车主基本不使用私人管家、体验及服务中心、活动、配置解析、图库等卡片，认为可以删除</li>
+            <li style="font-size:11.5px;color:var(--soft);line-height:1.6;">6/11位车主认为IMcare尊享权益、智选商城、服务中心可以删除、缩小占比或做成集合入口。尤其是尊享权益的设计形式容易被理解为广告</li>
+            <li style="font-size:11.5px;color:var(--soft);line-height:1.6;"><strong>建议</strong>拓展用户高频使用的功能的可操作面积，弱化或聚合购车阶段的信息外露</li>
+          </ul>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:.85rem;">
+          <div class="q-card"><p>车主希望爱车页面显示能耗、部件损耗程度等车况信息，以便增强车主对于车辆的掌控感</p></div>
+          <div class="q-card"><p>初次使用电动汽车，对于续航存在里程焦虑，对车辆的行驶里程、当下状态（零部件报错和故障）会十分在意</p></div>
+          <div class="q-card"><p>希望可以举办地区能耗排行竞赛，通过与其他车主的比赛，彰显车主的驾车实力</p></div>
+          <div class="q-card"><p>希望增加车辆行驶旅程与足迹地图，增强车主与车辆的情感连接，制造专属回忆</p></div>
+          <div class="q-card"><p><strong>建议</strong>在数据准确和故障可控的基础上，提供类似油车整车质检的反馈信息，或胎压、里程（参考电马）这些信息</p></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 关键发现：原子功能 -->
+    <div style="margin-top:2rem;padding:1.75rem 2rem;background:var(--accent-bg);border-radius:10px;border-left:3px solid var(--accent);">
+      <div style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:1.25rem;">Key Findings / 关键发现 · 原子功能</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem 2.5rem;">
+        <div style="display:flex;flex-direction:column;gap:.75rem;">
+          <div style="padding:.75rem 1rem;background:#fff;border-radius:6px;border:1px solid var(--border);">
+            <div style="font-size:11px;font-weight:700;color:var(--accent);margin-bottom:.3rem;text-transform:uppercase;letter-spacing:.06em;">原子功能排序</div>
+            <p style="font-size:12.5px;color:var(--soft);line-height:1.65;margin:0;">空调、车锁、充电地图、闪灯鸣笛、寻车地图、用车指南（刚用车时会用到）、精洗服务、维修保养</p>
+          </div>
+          <div style="padding:.75rem 1rem;background:#fff;border-radius:6px;border:1px solid var(--border);">
+            <div style="font-size:11px;font-weight:700;color:var(--accent);margin-bottom:.3rem;text-transform:uppercase;letter-spacing:.06em;">原子功能布局</div>
+            <p style="font-size:12.5px;color:var(--soft);line-height:1.65;margin:0;">希望取消折叠或露出按钮更多，常用按钮如车锁能够更醒目</p>
+          </div>
+          <div style="padding:.75rem 1rem;background:#fff;border-radius:6px;border:1px solid var(--border);">
+            <div style="font-size:11px;font-weight:700;color:var(--accent);margin-bottom:.3rem;text-transform:uppercase;letter-spacing:.06em;">加热</div>
+            <p style="font-size:12.5px;color:var(--soft);line-height:1.65;margin:0;">空调内页，看不出座椅加热可点击</p>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:.75rem;">
+          <div style="padding:.75rem 1rem;background:#fff;border-radius:6px;border:1px solid var(--border);">
+            <div style="font-size:11px;font-weight:700;color:var(--accent);margin-bottom:.3rem;text-transform:uppercase;letter-spacing:.06em;">充电地图</div>
+            <p style="font-size:12.5px;color:var(--soft);line-height:1.65;margin:0;">增加充电桩所在地停车费信息</p>
+          </div>
+          <div style="padding:.75rem 1rem;background:#fff;border-radius:6px;border:1px solid var(--border);">
+            <div style="font-size:11px;font-weight:700;color:var(--accent);margin-bottom:.3rem;text-transform:uppercase;letter-spacing:.06em;">闪灯鸣笛</div>
+            <p style="font-size:12.5px;color:var(--soft);line-height:1.65;margin:0;">认为点击麻烦（本来在钥匙上可以一键操作），希望闪灯与鸣笛可以分开控制，鸣笛时长 30s 大家褒贬不一</p>
+          </div>
+          <div style="padding:.75rem 1rem;background:#fff;border-radius:6px;border:1px solid var(--border);">
+            <div style="font-size:11px;font-weight:700;color:var(--accent);margin-bottom:.3rem;text-transform:uppercase;letter-spacing:.06em;">寻车地图</div>
+            <p style="font-size:12.5px;color:var(--soft);line-height:1.65;margin:0;">希望提高定位精确性、信号差时无法使用，行车轨迹地图或许可以作为寻车地图的补充</p>
+          </div>
+          <div style="padding:.75rem 1rem;background:#fff;border-radius:6px;border:1px solid var(--border);">
+            <div style="font-size:11px;font-weight:700;color:var(--accent);margin-bottom:.3rem;text-transform:uppercase;letter-spacing:.06em;">自定义编辑按钮</div>
+            <p style="font-size:12.5px;color:var(--soft);line-height:1.65;margin:0;">图标编辑按钮不明显，且容易误读成重命名</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="sep" style="margin-bottom:3.5rem;">
+
+    <!-- 04 3D车模 -->
+    <div>
+      <div style="display:flex;align-items:center;gap:1rem;margin-bottom:1.5rem;padding-bottom:1rem;border-bottom:2px solid var(--accent);"><span style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.5rem;color:var(--accent);letter-spacing:-.01em;">03</span><span style="width:1px;height:1.2rem;background:var(--border);"></span><span style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1.1rem;text-transform:uppercase;letter-spacing:.06em;color:var(--fg);">3D Car Model</span><span style="font-family:'Noto Serif SC',serif;font-size:.85rem;color:var(--accent);font-weight:700;">3D 车模</span></div>
+      <p style="font-size:1rem;font-weight:700;color:var(--fg);line-height:1.7;margin-bottom:1.5rem;">车主较少与车模互动，现有车模可交互可玩的功能较少，缺少动机</p>
+      <div class="two-col">
+        <div style="display:flex;flex-direction:column;gap:1rem;">
+          <div class="four-col" style="grid-template-columns:1fr 1fr;">
+            <div class="card">
+              <div class="card-title-zh">车模功能交互</div>
+              <p>希望点击车模相关区域可控制车门、车窗、后备箱，增加车模功能价值</p>
+            </div>
+            <div class="card">
+              <div class="card-title-zh">车模个性化</div>
+              <p>希望车模可以个性化调整，如车牌、车漆、装扮、背景环境等，增加可玩性</p>
+            </div>
+            <div class="card">
+              <div class="card-title-zh">缩小车模占比</div>
+              <p><strong>建议</strong>缩小3D车模部分屏幕占比，以提高首屏信息展示效率</p>
+            </div>
+            <div class="card">
+              <div class="card-title-zh">白模跳出体验</div>
+              <p><strong>建议</strong>寻找方式代替打开爱车页面时车模完全跳出的白模，用户体验感不佳，稍显突兀</p>
+            </div>
+          </div>
+          <div style="padding:1rem 1.25rem;background:var(--accent-bg);border-radius:6px;font-size:12.5px;color:var(--soft);line-height:1.7;">
+            8/11位用户<strong>不太关注天气状态</strong>显示，但勉强表达天气效果与车模的视觉效果不错
+          </div>
+        </div>
+        <div style="display:flex;align-items:flex-start;">
+          <img src="im-3d-model.png" alt="3D车模截图" style="width:44%;border-radius:12px;display:block;mix-blend-mode:multiply;">
+        </div>
+      </div>
+    </div>
+
+    <hr class="sep" style="margin-bottom:3.5rem;">
+
+    <!-- 05 车辆服务 -->
+    <div style="margin-bottom:3.5rem;">
+      <div style="display:flex;align-items:center;gap:1rem;margin-bottom:1.5rem;padding-bottom:1rem;border-bottom:2px solid var(--accent);"><span style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.5rem;color:var(--accent);letter-spacing:-.01em;">04</span><span style="width:1px;height:1.2rem;background:var(--border);"></span><span style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1.1rem;text-transform:uppercase;letter-spacing:.06em;color:var(--fg);">Vehicle Services</span><span style="font-family:'Noto Serif SC',serif;font-size:.85rem;color:var(--accent);font-weight:700;">车辆服务</span></div>
+      <div class="two-col">
+        <div style="display:flex;flex-direction:column;gap:1.5rem;">
+          <div>
+            <p style="font-size:1rem;font-weight:700;color:var(--fg);line-height:1.7;margin-bottom:1.25rem;">充电体验</p>
+            <div style="display:flex;flex-direction:column;gap:.85rem;">
+              <div class="q-card"><p>6/11位车主表达充电地图是他们高频使用的功能</p></div>
+              <div class="q-card"><p>2/11位受访者希望增加充电桩所在地停车费及支持免费停车的信息，以帮助挑选合适的充电站</p></div>
+              <div class="q-card"><p>6/11位表示充电时希望卡片增加显示充电桩品牌与快/慢充、实时电流数据、已充度数、电池温度等信息</p></div>
+              <div class="q-card"><p>查看3000度免费权益剩余时，查找充电订单的流程不够顺畅，希望可以直接点击剩余电量跳转至充电订单</p></div>
+            </div>
+          </div>
+          <div>
+            <p style="font-size:1rem;font-weight:700;color:var(--fg);line-height:1.7;margin-bottom:1.25rem;">寻车地图</p>
+            <div class="q-card"><p>由于信号不稳定且大多用户常在地库停车，2/11位受访者希望增加每次驾车后终点的定位，以便在游玩或下班后轻松找到车辆所在位置</p></div>
+          </div>
+        </div>
+        <div style="display:flex;align-items:flex-start;">
+          <img src="im-vehicle-service.png" alt="车辆服务截图" style="width:44%;border-radius:12px;display:block;mix-blend-mode:multiply;">
+        </div>
+      </div>
+    </div>
+
+    <hr class="sep" style="margin-bottom:3.5rem;">
+
+    <!-- 06 Carlog/DLP -->
+    <div style="margin-bottom:3.5rem;">
+      <div style="display:flex;align-items:center;gap:1rem;margin-bottom:1.5rem;padding-bottom:1rem;border-bottom:2px solid var(--accent);"><span style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.5rem;color:var(--accent);letter-spacing:-.01em;">06</span><span style="width:1px;height:1.2rem;background:var(--border);"></span><span style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1.1rem;text-transform:uppercase;letter-spacing:.06em;color:var(--fg);">Carlog / DLP</span></div>
+      <div class="two-col">
+        <div style="display:flex;flex-direction:column;gap:1rem;">
+          <p style="font-size:1rem;font-weight:700;color:var(--fg);line-height:1.7;">车主希望能够在手机上编辑，在不同平台分享 Carlog 视频</p>
+          <div style="display:flex;flex-direction:column;gap:.85rem;">
+            <div class="q-card"><p>车主抱怨 Carlog 视频导出不方便，希望能够与 APP 联动直接传输至手机，并在手机上编辑</p></div>
+            <div class="q-card"><p>尽管车主想要炫耀 DLP 的功能，但实际在 DLP 灯光演示场景下，折返于车内外很尴尬，希望能直接在手机上控制 DLP 灯光切换</p></div>
+            <div class="q-card"><p>希望增加 DLP 灯光样式分享社区与 Carlog 剪辑模板社区，在更多的社交平台上，分享自己所创作的作品吸粉</p></div>
+          </div>
+        </div>
+        <div style="display:flex;align-items:flex-start;">
+          <img src="im-carlog.png" alt="Carlog/DLP截图" style="width:100%;border-radius:12px;display:block;mix-blend-mode:multiply;">
+        </div>
+      </div>
+    </div>
+
+    <hr class="sep" style="margin-bottom:3.5rem;">
+
+    <!-- 07 情感化链接 -->
+    <div>
+      <div style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:1.25rem;">06 — Emotional Connection / 情感化链接</div>
+      <p style="font-size:1rem;font-weight:700;color:var(--fg);line-height:1.7;margin-bottom:1.5rem;">当前车主与车辆情感化链接较弱，车辆工具属性较强</p>
+      <div class="two-col">
+        <div>
+          <div class="q-card" style="margin-bottom:.85rem;"><p>7/11位受访者将车辆比喻为工具，是满足基本出行需求的工具，但也有车主赋予车辆玩具、朋友、宠物等额外情感属性，总体来讲工具属性仍占主导，与车辆情感链接较弱</p></div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:.75rem;">
+          <div style="display:flex;align-items:center;gap:1rem;padding:.75rem 1rem;background:#fff;border:1px solid var(--border);border-radius:4px;">
+            <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.9rem;text-transform:uppercase;color:var(--fg);width:60px;flex-shrink:0;">工具 7/11</div>
+            <div style="flex:1;height:6px;background:var(--border);border-radius:3px;overflow:hidden;"><div style="width:64%;height:100%;background:var(--accent);"></div></div>
+          </div>
+          <div style="padding:.75rem 1rem;background:#fff;border:1px solid var(--border);border-radius:4px;font-size:13px;color:var(--soft);line-height:1.65;"><strong style="color:var(--fg);">玩具：</strong>鉴于电车的可升级性与多功能属性，除了驾驶以外会常玩一玩车上功能</div>
+          <div style="padding:.75rem 1rem;background:#fff;border:1px solid var(--border);border-radius:4px;font-size:13px;color:var(--soft);line-height:1.65;"><strong style="color:var(--fg);">朋友：</strong>车辆的陪伴与语音助手的智能化，但认为语音仍不够智能</div>
+          <div style="padding:.75rem 1rem;background:#fff;border:1px solid var(--border);border-radius:4px;font-size:13px;color:var(--soft);line-height:1.65;"><strong style="color:var(--fg);">宠物：</strong>期待看到对应的成长</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 关键发现：其他 -->
+    <div style="margin-top:2rem;padding:1.75rem 2rem;background:var(--accent-bg);border-radius:10px;border-left:3px solid var(--accent);">
+      <div style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:1.25rem;">Key Findings / 关键发现 · 其他</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.25rem 2.5rem;">
+        <div style="padding:.9rem 1.1rem;background:#fff;border-radius:6px;border:1px solid var(--border);">
+          <div style="font-size:11px;font-weight:700;color:var(--accent);margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.06em;">车辆授权</div>
+          <p style="font-size:12.5px;color:var(--soft);line-height:1.7;margin:0;">5/11位用户希望更细致的授权权限选择。希望增加时间段、车速与电量限制、行车状态、车窗后备箱等部件控制、被授权人操作详情</p>
+        </div>
+        <div style="padding:.9rem 1.1rem;background:#fff;border-radius:6px;border:1px solid var(--border);">
+          <div style="font-size:11px;font-weight:700;color:var(--accent);margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.06em;">情感化（车辆属性）</div>
+          <div style="display:flex;flex-direction:column;gap:.4rem;">
+            <div style="font-size:12.5px;color:var(--soft);line-height:1.6;"><strong style="color:var(--fg);">玩具：</strong>可升级性与多功能，除驾驶外常玩车上功能</div>
+            <div style="font-size:12.5px;color:var(--soft);line-height:1.6;"><strong style="color:var(--fg);">朋友：</strong>车辆陪伴与语音助手，但认为语音仍不够智能</div>
+            <div style="font-size:12.5px;color:var(--soft);line-height:1.6;"><strong style="color:var(--fg);">宠物：</strong>期待看到对应的成长</div>
+          </div>
+        </div>
+        <div style="padding:.9rem 1.1rem;background:#fff;border-radius:6px;border:1px solid var(--border);">
+          <div style="font-size:11px;font-weight:700;color:var(--accent);margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.06em;">个性化</div>
+          <ul style="margin:0;padding-left:1.2rem;display:flex;flex-direction:column;gap:.35rem;">
+            <li style="font-size:12.5px;color:var(--soft);">原子功能按钮排序</li>
+            <li style="font-size:12.5px;color:var(--soft);">车模车漆、车牌、皮肤更改</li>
+            <li style="font-size:12.5px;color:var(--soft);">对修改页面主题、主题色、卡片装扮等内容不感兴趣</li>
+          </ul>
+        </div>
+        <div style="padding:.9rem 1.1rem;background:#fff;border-radius:6px;border:1px solid var(--border);">
+          <div style="font-size:11px;font-weight:700;color:var(--accent);margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.06em;">内容社区</div>
+          <ul style="margin:0;padding-left:1.2rem;display:flex;flex-direction:column;gap:.35rem;">
+            <li style="font-size:12.5px;color:var(--soft);">DLP：希望在手机上切换、编辑灯光样式；增加手机端入口</li>
+            <li style="font-size:12.5px;color:var(--soft);">Carlog：视频传输至手机或云端，以在手机上编辑视频，可以与各视频平台联动</li>
+            <li style="font-size:12.5px;color:var(--soft);"><strong style="color:var(--fg);">11/11</strong> 位用户愿意使用 DLP 灯光分享社区或 Carlog 模板社区</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 需求优先级评分标准 -->
+  <div style="max-width:1080px;margin:3rem auto 0;padding-top:3rem;border-top:1px solid rgba(13,27,90,.12);">
+    <div style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:2rem;opacity:.8;">Priority Score / 需求优先级评分——评判标准</div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;">
+
+      <!-- Left: formula + criteria -->
+      <div>
+        <!-- Formula -->
+        <div style="background:#fff;border-radius:8px;padding:1.5rem 2rem;margin-bottom:2rem;box-shadow:0 2px 8px rgba(0,0,0,.06);">
+          <div style="font-family:'Noto Serif SC',serif;font-weight:900;font-size:1rem;color:var(--fg);margin-bottom:1.25rem;">优先级评分 = A + B + C + D</div>
+          <div style="display:grid;grid-template-columns:auto 1fr 1fr 1fr 1fr;gap:.5rem .75rem;align-items:center;font-size:12px;">
+            <div></div>
+            <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.4rem;color:var(--accent);text-align:center;">A</div>
+            <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.4rem;color:var(--accent);text-align:center;">B</div>
+            <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.4rem;color:var(--accent);text-align:center;">C</div>
+            <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.4rem;color:var(--accent);text-align:center;">D</div>
+            <div style="font-family:'Space Mono',monospace;font-size:8px;color:var(--muted);text-transform:uppercase;">分值</div>
+            <div style="text-align:center;font-size:13px;font-weight:700;color:var(--fg);">X/11</div>
+            <div style="text-align:center;font-size:13px;font-weight:700;color:var(--fg);">0, 1</div>
+            <div style="text-align:center;font-size:13px;font-weight:700;color:var(--fg);">0–4</div>
+            <div style="text-align:center;font-size:13px;font-weight:700;color:var(--fg);">0–4</div>
+            <div style="font-family:'Space Mono',monospace;font-size:8px;color:var(--muted);text-transform:uppercase;">权重</div>
+            <div style="text-align:center;font-size:12px;color:var(--soft);">25%</div>
+            <div style="text-align:center;font-size:12px;color:var(--soft);">25%</div>
+            <div style="text-align:center;font-size:12px;color:var(--soft);">25%</div>
+            <div style="text-align:center;font-size:12px;color:var(--soft);">25%</div>
+          </div>
+        </div>
+
+        <!-- Criteria -->
+        <div style="display:flex;flex-direction:column;gap:.9rem;">
+          <div style="background:#fff;border-radius:6px;padding:1rem 1.25rem;box-shadow:0 1px 4px rgba(0,0,0,.05);">
+            <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.9rem;text-transform:uppercase;letter-spacing:.06em;color:var(--accent);margin-bottom:.35rem;">A · 反馈频次</div>
+            <p style="font-size:12px;color:var(--soft);line-height:1.7;">11位参与者中有 X 位反映了此痛点及需求</p>
+          </div>
+          <div style="background:#fff;border-radius:6px;padding:1rem 1.25rem;box-shadow:0 1px 4px rgba(0,0,0,.05);">
+            <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.9rem;text-transform:uppercase;letter-spacing:.06em;color:var(--accent);margin-bottom:.35rem;">B · 核心程度</div>
+            <p style="font-size:12px;color:var(--soft);line-height:1.7;">是否在关键业务流程上，没有这个功能会影响任务完成</p>
+          </div>
+          <div style="background:#fff;border-radius:6px;padding:1rem 1.25rem;box-shadow:0 1px 4px rgba(0,0,0,.05);">
+            <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.9rem;text-transform:uppercase;letter-spacing:.06em;color:var(--accent);margin-bottom:.35rem;">C · 严重程度</div>
+            <p style="font-size:12px;color:var(--soft);line-height:1.7;margin-bottom:.4rem;">是否有好的替代方案（0–4）<span style="color:var(--muted);font-style:italic;">【需求探索型项目】</span></p>
+            <p style="font-size:12px;color:var(--soft);line-height:1.7;">是否容易找到替代方案（0–4）<span style="color:var(--muted);font-style:italic;">【可用性项目】</span></p>
+          </div>
+          <div style="background:#fff;border-radius:6px;padding:1rem 1.25rem;box-shadow:0 1px 4px rgba(0,0,0,.05);">
+            <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.9rem;text-transform:uppercase;letter-spacing:.06em;color:var(--accent);margin-bottom:.35rem;">D · 情绪价值</div>
+            <p style="font-size:12px;color:var(--soft);line-height:1.7;">现状对用户主观情绪是否有消极影响（0-没有，1-轻微，2-有些，3-较大，4-严重）</p>
+          </div>
+          <div style="font-size:11px;color:var(--muted);font-style:italic;text-align:right;margin-top:.25rem;">参考：red-route 评分法</div>
+        </div>
+      </div>
+
+      <!-- Right: red-route scoring diagram -->
+      <div>
+        <img src="im-redroute.png" alt="red-route 评分法示意" style="width:100%;border-radius:8px;display:block;mix-blend-mode:multiply;">
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 痛点需求总结图 -->
+  <div style="max-width:1080px;margin:3rem auto 0;">
+    <div style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem;opacity:.8;">访谈发现——痛点需求总结 · Interview Findings Summary</div>
+    <img src="im-painpoints.png" alt="访谈发现——痛点需求总结" style="width:100%;border-radius:8px;display:block;mix-blend-mode:multiply;">
+  </div>
+
+</section>
+
+
+
+<hr class="sep">
+
+<!-- PHASE DIVIDER 03 -->
+<div style="background:var(--accent-bg);padding:1.1rem 3rem;display:flex;align-items:center;gap:2rem;border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+  <span style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.75rem;color:rgba(13,43,90,.12);letter-spacing:-.01em;line-height:1;">PHASE 03</span>
+  <div style="width:1px;height:28px;background:rgba(13,43,90,.2);"></div>
+  <div>
+    <div style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.15em;text-transform:uppercase;color:var(--accent);opacity:.7;">Synthesis & Action</div>
+    <div style="font-family:'Noto Serif SC',serif;font-size:14px;font-weight:700;color:var(--accent);margin-top:.15rem;">洞察与行动——优先排序 · 设计冲刺</div>
+  </div>
+</div>
+
+
+<!-- Design Sprint / HMW -->
+<section class="sec" style="background:var(--bg);">
+  <div class="sec-inner">
+    <div class="sec-label">Design Sprint / 设计冲刺</div>
+    <div style="border-left:4px solid var(--accent);padding-left:1.25rem;margin-bottom:3.5rem;">
+      <h2 style="font-family:'Noto Serif SC',serif;font-weight:900;font-size:clamp(1.5rem,3vw,2.4rem);color:var(--fg);line-height:1.2;">具体步骤</h2>
+      <p style="font-size:13px;color:var(--muted);font-style:italic;margin-top:.35rem;">通过设计冲刺快速定义爱车首页需要解决的关键问题与衡量指标</p>
+    </div>
+
+    <!-- 5 Steps -->
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;margin-bottom:1.5rem;position:relative;">
+      <!-- connector line -->
+      <div style="position:absolute;top:28px;left:10%;right:10%;height:2px;background:var(--border);z-index:0;"></div>
+      <!-- Step 1 -->
+      <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:.4rem;position:relative;z-index:1;">
+        <div style="font-family:'Space Mono',monospace;font-size:7px;letter-spacing:.12em;color:var(--muted);text-transform:uppercase;">STEP 1</div>
+        <div style="width:56px;height:56px;background:var(--accent);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto .1rem;"><span style="font-size:11px;color:#fff;font-weight:600;">写HMW</span></div>
+        <div style="font-size:10px;color:var(--muted);font-family:'Space Mono',monospace;">20 mins</div>
+      </div>
+      <!-- Step 2 -->
+      <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:.4rem;position:relative;z-index:1;">
+        <div style="font-family:'Space Mono',monospace;font-size:7px;letter-spacing:.12em;color:var(--muted);text-transform:uppercase;">STEP 2</div>
+        <div style="width:56px;height:56px;background:#6B7A8D;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto .1rem;"><span style="font-size:10px;color:#fff;font-weight:600;text-align:center;line-height:1.3;">闪电演讲</span></div>
+        <div style="font-size:10px;color:var(--muted);font-family:'Space Mono',monospace;">30 mins</div>
+      </div>
+      <!-- Step 3 -->
+      <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:.4rem;position:relative;z-index:1;">
+        <div style="font-family:'Space Mono',monospace;font-size:7px;letter-spacing:.12em;color:var(--muted);text-transform:uppercase;">STEP 3</div>
+        <div style="width:56px;height:56px;background:#6B7A8D;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto .1rem;"><span style="font-size:10px;color:#fff;font-weight:600;text-align:center;line-height:1.3;">问题定义</span></div>
+        <div style="font-size:10px;color:var(--muted);font-family:'Space Mono',monospace;">40 mins</div>
+      </div>
+      <!-- Step 4 -->
+      <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:.4rem;position:relative;z-index:1;">
+        <div style="font-family:'Space Mono',monospace;font-size:7px;letter-spacing:.12em;color:var(--muted);text-transform:uppercase;">STEP 4</div>
+        <div style="width:56px;height:56px;background:#6B7A8D;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto .1rem;"><span style="font-size:10px;color:#fff;font-weight:600;text-align:center;line-height:1.3;">问题投票</span></div>
+        <div style="font-size:10px;color:var(--muted);font-family:'Space Mono',monospace;">16 mins</div>
+      </div>
+      <!-- Step 5 -->
+      <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:.4rem;position:relative;z-index:1;">
+        <div style="font-family:'Space Mono',monospace;font-size:7px;letter-spacing:.12em;color:var(--muted);text-transform:uppercase;">STEP 5</div>
+        <div style="width:56px;height:56px;background:#6B7A8D;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto .1rem;"><span style="font-size:10px;color:#fff;font-weight:600;text-align:center;line-height:1.3;">确定指标</span></div>
+        <div style="font-size:10px;color:var(--muted);font-family:'Space Mono',monospace;">40 mins</div>
+      </div>
+    </div>
+
+    <!-- Step details -->
+    <div style="display:flex;flex-direction:column;gap:.75rem;margin-bottom:3rem;">
+
+      <!-- 第一步 -->
+      <div style="background:var(--accent-bg);border-radius:8px;padding:1rem 1.5rem;">
+        <div style="display:flex;align-items:center;gap:.75rem;margin-bottom:.75rem;">
+          <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.75rem;color:var(--accent);line-height:1;">第一步</div>
+          <div>
+            <div style="font-size:12px;font-weight:600;color:var(--fg);">根据现有问题，写下HMW</div>
+            <div style="display:inline-block;background:var(--accent);color:#fff;font-family:'Space Mono',monospace;font-size:8px;padding:.15rem .4rem;border-radius:3px;margin-top:.2rem;">20 mins</div>
+          </div>
+        </div>
+        <p style="font-size:12.5px;color:var(--fg);line-height:1.7;margin-bottom:.5rem;">「我们可以怎样」的提问方式放意保持一定程度的模糊性来扩展探索空间的可能性。</p>
+        <p style="font-size:12px;color:var(--soft);line-height:1.6;margin-bottom:.3rem;">「我们」——我们要一起做这件事，相互补充相互促进。</p>
+        <p style="font-size:12px;color:var(--soft);line-height:1.6;margin-bottom:.3rem;">「可以」——我们可以把想法抛出来，可能有用也可能没有用，无论怎样都没有关系。</p>
+        <p style="font-size:12px;color:var(--soft);line-height:1.6;margin-bottom:.75rem;">「怎样」——代表了解决方案是存在的，帮助我们探索各种可能，而不仅仅是执行我们认为的解决方案。</p>
+        <p style="font-size:12px;color:var(--soft);line-height:1.6;margin-bottom:.75rem;"><strong>格式：</strong>我们用什么办法让用户有什么样的体验　<strong>要求：</strong>5–6条 HMW / 人</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:.5rem;">
+          <div style="background:#fff;border-top:3px solid #4CAF50;border-radius:6px;padding:.6rem;"><div style="font-size:8px;font-weight:700;color:#4CAF50;letter-spacing:.1em;margin-bottom:.3rem;">YES ✓</div><p style="font-size:11px;color:var(--fg);line-height:1.5;">HMW — 我们如何让用户在上车时就能感受凉爽？</p></div>
+          <div style="background:#fff;border-top:3px solid #e53935;border-radius:6px;padding:.6rem;"><div style="font-size:8px;font-weight:700;color:#e53935;letter-spacing:.1em;margin-bottom:.3rem;">NO ✗</div><p style="font-size:11px;color:var(--soft);line-height:1.5;">HMW — 我们如何让用户在上车前就能<em style="color:#e53935;">便捷地打开空调</em>？</p></div>
+          <div style="background:#fff;border-top:3px solid #e53935;border-radius:6px;padding:.6rem;"><div style="font-size:8px;font-weight:700;color:#e53935;letter-spacing:.1em;margin-bottom:.3rem;">NO ✗</div><p style="font-size:11px;color:var(--soft);line-height:1.5;">HMW — 我们如何让用户在上车前就<em style="color:#e53935;">看到</em>车内温度？</p></div>
+        </div>
+      </div>
+
+      <!-- 第二步 -->
+      <div style="background:var(--accent-bg);border-radius:8px;padding:1rem 1.5rem;">
+        <div style="display:flex;align-items:center;gap:.75rem;margin-bottom:.75rem;">
+          <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.75rem;color:var(--accent);line-height:1;">第二步</div>
+          <div>
+            <div style="font-size:12px;font-weight:600;color:var(--fg);">闪电演讲 Lightning talk & 问题分类</div>
+            <div style="display:inline-block;background:var(--accent);color:#fff;font-family:'Space Mono',monospace;font-size:8px;padding:.15rem .4rem;border-radius:3px;margin-top:.2rem;">30 mins</div>
+          </div>
+        </div>
+        <p style="font-size:12.5px;color:var(--soft);line-height:1.7;">在 1min 内向大家介绍 HMW（可挑选 1–2 条）：</p>
+        <div style="font-size:12px;color:var(--fg);margin:.4rem 0;">1、写下此 HMW 的理由　2、专业角度的分析　3、个人的用车经验等</div>
+        <p style="font-size:12px;color:var(--soft);line-height:1.7;margin-top:.4rem;">阐述完毕后将 HMW 便签交给小助理；在阐述过程中，HMW 便签会按主题进行分类</p>
+      </div>
+
+      <!-- 第三步 -->
+      <div style="background:var(--accent-bg);border-radius:8px;padding:1rem 1.5rem;">
+        <div style="display:flex;align-items:center;gap:.75rem;margin-bottom:.75rem;">
+          <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.75rem;color:var(--accent);line-height:1;">第三步</div>
+          <div>
+            <div style="font-size:12px;font-weight:600;color:var(--fg);">问题定义</div>
+            <div style="display:inline-block;background:var(--accent);color:#fff;font-family:'Space Mono',monospace;font-size:8px;padding:.15rem .4rem;border-radius:3px;margin-top:.2rem;">40 mins</div>
+          </div>
+        </div>
+        <p style="font-size:12.5px;color:var(--soft);line-height:1.7;">针对 HMW 分类进行问题定义及重写，将分类后的 HMW 问题重新整合，使其更清晰、更聚焦</p>
+      </div>
+
+      <!-- 第四步 -->
+      <div style="background:var(--accent-bg);border-radius:8px;padding:1rem 1.5rem;">
+        <div style="display:flex;align-items:center;gap:.75rem;margin-bottom:.75rem;">
+          <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.75rem;color:var(--accent);line-height:1;">第四步</div>
+          <div>
+            <div style="font-size:12px;font-weight:600;color:var(--fg);">问题投票</div>
+            <div style="display:inline-block;background:var(--accent);color:#fff;font-family:'Space Mono',monospace;font-size:8px;padding:.15rem .4rem;border-radius:3px;margin-top:.2rem;">16 mins</div>
+          </div>
+        </div>
+        <p style="font-size:12.5px;color:var(--soft);line-height:1.7;">每人 3 票，对重新定义后的 HMW 问题进行投票，选出最需要解决的核心问题</p>
+      </div>
+
+      <!-- 第五步 -->
+      <div style="background:var(--accent-bg);border-radius:8px;padding:1rem 1.5rem;">
+        <div style="display:flex;align-items:center;gap:.75rem;margin-bottom:.75rem;">
+          <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.75rem;color:var(--accent);line-height:1;">第五步</div>
+          <div>
+            <div style="font-size:12px;font-weight:600;color:var(--fg);">确定指标</div>
+            <div style="display:inline-block;background:var(--accent);color:#fff;font-family:'Space Mono',monospace;font-size:8px;padding:.15rem .4rem;border-radius:3px;margin-top:.2rem;">40 mins</div>
+          </div>
+        </div>
+        <p style="font-size:12.5px;color:var(--soft);line-height:1.7;">根据投票结果确定设计目标与衡量指标，为后续设计方案提供方向</p>
+      </div>
+
+    </div>
+
+    <!-- HMW image -->
+    <div style="border-left:4px solid var(--accent);padding-left:1.25rem;margin-bottom:2rem;">
+      <h2 style="font-family:'Noto Serif SC',serif;font-weight:900;font-size:clamp(1.5rem,3vw,2.4rem);color:var(--fg);line-height:1.2;">设计冲刺——HMW</h2>
+      <p style="font-size:13px;color:var(--muted);font-style:italic;margin-top:.35rem;">爱车首页 HMW 问题分类及重写 · How Might We</p>
+    </div>
+    <img src="im-hmw.png" alt="设计冲刺 HMW 问题分类" style="width:100%;border-radius:8px;display:block;mix-blend-mode:multiply;">
+    <img src="im-sprint-photo.png" alt="设计冲刺现场" style="width:100%;border-radius:8px;display:block;mix-blend-mode:multiply;margin-top:1.5rem;">
+    <img src="car/2.png" alt="设计冲刺结论及建议指标" style="width:80%;border-radius:8px;display:block;mix-blend-mode:multiply;margin:1.5rem auto 0;">
+
+    <!-- 研究总结 -->
+    <div style="margin-top:3rem;">
+      <div style="border-left:4px solid var(--accent);padding-left:1.25rem;margin-bottom:1.75rem;">
+        <h2 style="font-family:'Noto Serif SC',serif;font-weight:900;font-size:clamp(1.2rem,2.5vw,1.8rem);color:var(--fg);line-height:1.2;">研究总结</h2>
+        <p style="font-size:12px;color:var(--muted);font-style:italic;margin-top:.3rem;">车主爱车首页调研报告</p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:.85rem;">
+        <div style="background:var(--accent-bg);border-radius:8px;padding:1rem 1.5rem;display:flex;gap:1rem;align-items:flex-start;">
+          <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.4rem;color:var(--accent);line-height:1;flex-shrink:0;">01</div>
+          <p style="font-size:12.5px;color:var(--fg);line-height:1.8;margin:0;">车主用车场景以上班通勤为主，上车前打开空调和解开车锁是远控高频使用功能，但由于信号连接等原因导致成功率不高；除此之外，闪灯鸣笛、寻车地图等功能同样较为常用。在一些特殊场景中，出于通风换气、安抚儿童等需要，还希望增加远程车窗、音乐控制等功能。</p>
+        </div>
+        <div style="background:var(--accent-bg);border-radius:8px;padding:1rem 1.5rem;display:flex;gap:1rem;align-items:flex-start;">
+          <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.4rem;color:var(--accent);line-height:1;flex-shrink:0;">02</div>
+          <p style="font-size:12.5px;color:var(--fg);line-height:1.8;margin:0;">车主认为爱车页面应当专注于日常使用车辆需要，访谈用户认为体验活动中心、活动卡片、配置解析、图库等卡片点击次数不高，且在社区已有类似内容，可以移除或缩小占比。奇怪的是，数据显示，车主人均点击图库卡片次数（2022/07/04–2022/08/03）仅低于私人管家与权益卡片，为 4.85 次，与访谈结论相左。</p>
+        </div>
+        <div style="background:var(--accent-bg);border-radius:8px;padding:1rem 1.5rem;display:flex;gap:1rem;align-items:flex-start;">
+          <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.4rem;color:var(--accent);line-height:1;flex-shrink:0;">03</div>
+          <p style="font-size:12.5px;color:var(--fg);line-height:1.8;margin:0;">车主爱车首页 3D 车模可互动性与功能性较差，因此车主认为其占比过大，而原子功能常用功能如空调、车锁、充电地图、闪灯鸣笛等按钮数量超过目前露出数量，造成使用不便，可以取消折叠或增加露出数量。</p>
+        </div>
+        <div style="background:var(--accent-bg);border-radius:8px;padding:1rem 1.5rem;display:flex;gap:1rem;align-items:flex-start;">
+          <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.4rem;color:var(--accent);line-height:1;flex-shrink:0;">04</div>
+          <p style="font-size:12.5px;color:var(--fg);line-height:1.8;margin:0;">车主赋予车辆玩具、朋友、宠物额外情感属性，但整体与车辆情感化链接较弱，车辆仍以工具属性为主，可以增加 3D 车模个性化设置并使车载语音更智能。</p>
+        </div>
+        <div style="background:var(--accent-bg);border-radius:8px;padding:1rem 1.5rem;display:flex;gap:1rem;align-items:flex-start;">
+          <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.4rem;color:var(--accent);line-height:1;flex-shrink:0;">05</div>
+          <p style="font-size:12.5px;color:var(--fg);line-height:1.8;margin:0;">车主使用 Carlog / DLP 频次较低，这与功能本身可玩性较差有关，同时也应增加视频传输至手机编辑分享、DLP 灯光手机切换、内容分享社区等手车互联功能。</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- PHASE DIVIDER 04 -->
+<div style="background:var(--fg);padding:1.1rem 3rem;display:flex;align-items:center;gap:2rem;">
+  <span style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.75rem;color:rgba(255,255,255,.1);letter-spacing:-.01em;line-height:1;">PHASE 04</span>
+  <div style="width:1px;height:28px;background:rgba(255,255,255,.2);"></div>
+  <div>
+    <div style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.4);">Design Solution</div>
+    <div style="font-family:'Noto Serif SC',serif;font-size:14px;font-weight:700;color:#fff;margin-top:.15rem;">设计方案——布局调整 · 原子优化</div>
+  </div>
+</div>
+
+<!-- Design Solution -->
+<section class="sec" style="background:var(--bg);">
+  <div class="sec-inner">
+    <div class="sec-label">Design Solution / 设计方案</div>
+
+    <!-- 设计目标 + 整体思路 -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-bottom:4rem;">
+      <div style="background:#fff;border:1px solid var(--border);border-radius:10px;padding:2rem;">
+        <div style="display:flex;align-items:center;gap:.6rem;margin-bottom:1rem;">
+          <span style="font-size:18px;">📌</span>
+          <span style="font-family:'Noto Serif SC',serif;font-weight:700;font-size:1rem;color:var(--fg);">设计目标</span>
+        </div>
+        <p style="font-size:1rem;font-weight:600;color:var(--accent);line-height:1.7;">完善用户核心场景下的车控需求</p>
+      </div>
+      <div style="background:#fff;border:1px solid var(--border);border-radius:10px;padding:2rem;">
+        <div style="display:flex;align-items:center;gap:.6rem;margin-bottom:1rem;">
+          <span style="font-size:18px;">🖥</span>
+          <span style="font-family:'Noto Serif SC',serif;font-weight:700;font-size:1rem;color:var(--fg);">整体思路</span>
+        </div>
+        <p style="font-size:14px;color:var(--soft);line-height:1.8;">结合产品长短期规划，甄别并解决目前用户核心痛点的同时满足后期长期规划的可扩展空间</p>
+      </div>
+    </div>
+
+    <!-- A. 方案描述 -->
+    <div style="margin-bottom:4rem;">
+      <div style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:1.5rem;">A. Solution Overview / 方案描述</div>
+    </div>
+
+    <!-- C. 优化列举 -->
+    <div>
+      <!-- 调整方向 + 图3 左右布局 -->
+      <div style="display:grid;grid-template-columns:1fr 1.6fr;gap:3rem;align-items:start;margin-bottom:2rem;">
+        <!-- 调整方向 文字 + 页面结构图 -->
+        <div>
+          <div style="font-size:15px;font-weight:700;color:var(--fg);margin-bottom:1.5rem;">调整方向</div>
+          <!-- 布局调整 -->
+          <div style="margin-bottom:1.5rem;">
+            <div style="display:inline-flex;align-items:center;gap:.5rem;background:var(--accent);color:#fff;font-size:12px;font-weight:700;padding:.35rem .9rem;border-radius:4px;margin-bottom:.85rem;">布局调整</div>
+            <div style="display:flex;flex-direction:column;gap:.6rem;padding-left:1.25rem;border-left:2px solid var(--accent);">
+              <div style="font-size:13px;color:var(--soft);line-height:1.7;"><strong style="color:var(--fg);">状态感知</strong> ·&nbsp; 车模降比（模型上移）</div>
+              <div style="font-size:13px;color:var(--soft);line-height:1.7;"><strong style="color:var(--fg);">信息获取</strong> ·&nbsp; 入口调优（蓝牙、寻车地图、私人管家）</div>
+              <div style="font-size:13px;color:var(--soft);line-height:1.7;"><strong style="color:var(--fg);">场景衔接</strong> ·&nbsp; 模块切分（首屏混合 / 二屏控制 / 三屏楼层）</div>
+            </div>
+          </div>
+          <!-- 原子优化 -->
+          <div style="margin-bottom:2rem;">
+            <div style="display:inline-flex;align-items:center;gap:.5rem;background:var(--soft);color:#fff;font-size:12px;font-weight:700;padding:.35rem .9rem;border-radius:4px;margin-bottom:.85rem;">原子优化</div>
+            <div style="display:flex;flex-direction:column;gap:.6rem;padding-left:1.25rem;border-left:2px solid var(--soft);">
+              <div style="font-size:13px;color:var(--soft);line-height:1.7;"><strong style="color:var(--fg);">增加外露</strong> ·&nbsp; 车控功能全量外露</div>
+              <div style="font-size:13px;color:var(--soft);line-height:1.7;"><strong style="color:var(--fg);">信息外显</strong> ·&nbsp; 原子调温、蓝牙信息、座椅控制</div>
+              <div style="font-size:13px;color:var(--soft);line-height:1.7;"><strong style="color:var(--fg);">权限活配</strong> ·&nbsp; 位置 / 私人管家 / 蓝牙</div>
+            </div>
+          </div>
+          <!-- 页面结构图 -->
+          <div style="font-size:11px;color:var(--muted);margin-bottom:.75rem;font-style:italic;">车控首页 V1.5 · 页面结构调整</div>
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem;align-items:end;">
+            <div style="display:flex;flex-direction:column;gap:.35rem;align-items:center;">
+              <div style="font-family:'Space Mono',monospace;font-size:8px;color:var(--muted);text-transform:uppercase;margin-bottom:.2rem;text-align:center;">首屏 · 混合</div>
+              <div style="width:100%;border-radius:6px;overflow:hidden;border:1.5px solid var(--border);">
+                <div style="background:#f5f0ea;height:18px;border-bottom:1px solid var(--border);display:flex;align-items:center;padding:0 .4rem;"><span style="font-size:8px;color:var(--muted);">车模场景</span></div>
+                <div style="background:#F5A623;padding:1.2rem .4rem;text-align:center;"><span style="font-size:8px;font-weight:700;color:#fff;">原子功能</span></div>
+              </div>
+              <div style="font-size:9px;color:#F5A623;font-weight:700;">50%</div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:.35rem;align-items:center;">
+              <div style="font-family:'Space Mono',monospace;font-size:8px;color:var(--muted);text-transform:uppercase;margin-bottom:.2rem;text-align:center;">二屏 · 原子控制</div>
+              <div style="width:100%;border-radius:6px;overflow:hidden;border:1.5px solid var(--border);">
+                <div style="background:#F5A623;padding:2rem .4rem;text-align:center;"><span style="font-size:8px;font-weight:700;color:#fff;">原子功能</span></div>
+                <div style="background:#4CAF50;padding:.6rem .4rem;text-align:center;"><span style="font-size:8px;font-weight:700;color:#fff;">购车/服务</span></div>
+              </div>
+              <div style="font-size:9px;color:var(--muted);">20%</div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:.35rem;align-items:center;">
+              <div style="font-family:'Space Mono',monospace;font-size:8px;color:var(--muted);text-transform:uppercase;margin-bottom:.2rem;text-align:center;">三屏 · 服务楼层</div>
+              <div style="width:100%;border-radius:6px;overflow:hidden;border:1.5px solid var(--border);">
+                <div style="background:#F5A623;padding:1.4rem .4rem;text-align:center;"><span style="font-size:8px;font-weight:700;color:#fff;">原子功能</span></div>
+                <div style="background:#4CAF50;padding:1.4rem .4rem;text-align:center;"><span style="font-size:8px;font-weight:700;color:#fff;">购车/服务 楼层</span></div>
+              </div>
+              <div style="font-size:9px;color:var(--muted);">20%</div>
+            </div>
+          </div>
+        </div>
+        <!-- 图3 -->
+        <img src="car/3.png" alt="布局调整方案" style="width:100%;border-radius:8px;display:block;mix-blend-mode:multiply;">
+      </div>
+      <div style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:2rem;">C. Optimization List / 优化列举 · 布局调整</div>
+
+      <!-- 优化1 -->
+      <div style="margin-bottom:3.5rem;">
+        <div style="background:#FFFBF0;border:1px solid #F5A623;border-radius:8px;padding:1.25rem 1.5rem;margin-bottom:1.75rem;display:flex;align-items:flex-start;gap:.75rem;">
+          <span style="font-size:16px;flex-shrink:0;">🌟</span>
+          <div>
+            <div style="font-size:14px;font-weight:700;color:var(--fg);margin-bottom:.6rem;">优化 1：车模降比，提升屏效</div>
+            <div style="display:flex;flex-direction:column;gap:.35rem;">
+              <div style="font-size:13px;color:#1565C0;">1. 保证车与用户关联的同时降低车模占比</div>
+              <div style="font-size:13px;color:#1565C0;">2. 提升原子功能入口露出比例，增加用户的可操作性</div>
+              <div style="font-size:13px;color:#1565C0;">3. 精简首屏信息露出，强化次主信息显示</div>
+              <div style="font-size:13px;color:#1565C0;">4. 结合用户反馈删减部分信息优先级</div>
+              <div style="font-size:13px;color:#1565C0;">5. 适当增加重点信息的显示比重，例如：车辆状态和车模更紧密</div>
+            </div>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:3fr 2.5fr;gap:1.5rem;height:580px;">
+          <img src="car/6.png" alt="优化1 车模降比" style="width:100%;height:100%;object-fit:cover;object-position:top left;border-radius:8px;display:block;">
+          <img src="car/5.png" alt="优化1 车模降比 After" style="width:100%;height:100%;object-fit:cover;object-position:top left;border-radius:8px;display:block;">
+        </div>
+      </div>
+
+      <!-- 优化2 -->
+      <div>
+        <div style="background:#FFFBF0;border:1px solid #F5A623;border-radius:8px;padding:1.25rem 1.5rem;margin-bottom:1.75rem;display:flex;align-items:flex-start;gap:.75rem;">
+          <span style="font-size:16px;flex-shrink:0;">🌟</span>
+          <div>
+            <div style="font-size:14px;font-weight:700;color:var(--fg);margin-bottom:.6rem;">优化 3：多模式切换，降低干扰</div>
+            <div style="display:flex;flex-direction:column;gap:.35rem;">
+              <div style="font-size:13px;color:#1565C0;">1. 针对用户对远控的需求优先级，将上划二屏作为远控模式</div>
+              <div style="font-size:13px;color:#1565C0;">2. 将三屏以下内容和远控做切分，提升核心功能的使用便利性</div>
+            </div>
+          </div>
+        </div>
+        <img src="car/8.png" alt="优化3 多模式切换" style="width:100%;border-radius:8px;display:block;">
+      </div>
+
+      <!-- 优化4 -->
+      <div>
+        <div style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:2rem;margin-top:4rem;">C. Optimization List / 优化列举 · 原子优化</div>
+        <div style="background:#FFFBF0;border:1px solid #F5A623;border-radius:8px;padding:1.25rem 1.5rem;margin-bottom:1.75rem;">
+          <div style="font-size:14px;font-weight:700;color:var(--fg);margin-bottom:1rem;">优化 4：页面原子优化</div>
+          <div style="display:flex;flex-direction:column;gap:1.25rem;">
+            <!-- 优化4-1 -->
+            <div style="display:flex;align-items:flex-start;gap:.75rem;">
+              <span style="font-size:16px;flex-shrink:0;">🌟</span>
+              <div>
+                <div style="font-size:13px;font-weight:700;color:var(--fg);margin-bottom:.4rem;">优化1：增加外显原子</div>
+                <div style="display:flex;flex-direction:column;gap:.3rem;">
+                  <div style="font-size:13px;color:#1565C0;">1. 原子功能全部外露展示</div>
+                  <div style="font-size:13px;color:#1565C0;">2. 首屏增加为3行原子高度显示</div>
+                  <div style="font-size:13px;color:#1565C0;">3. 二屏展示全部原子功能</div>
+                </div>
+              </div>
+            </div>
+            <!-- 优化4-2 -->
+            <div style="display:flex;align-items:flex-start;gap:.75rem;">
+              <span style="font-size:16px;flex-shrink:0;">🌟</span>
+              <div>
+                <div style="font-size:13px;font-weight:700;color:var(--fg);margin-bottom:.4rem;">优化2：原子信息外显</div>
+                <div style="display:flex;flex-direction:column;gap:.3rem;">
+                  <div style="font-size:13px;color:#1565C0;">1. 增加原子功能的同时，将开关下的信息外露给用户</div>
+                  <div style="font-size:13px;color:#1565C0;">2. 做到既是开关又是状态和信息</div>
+                </div>
+              </div>
+            </div>
+            <!-- 优化4-3 -->
+            <div style="display:flex;align-items:flex-start;gap:.75rem;">
+              <span style="font-size:16px;flex-shrink:0;">🌟</span>
+              <div>
+                <div style="font-size:13px;font-weight:700;color:var(--fg);margin-bottom:.4rem;">优化3：功能灵活配置</div>
+                <div style="display:flex;flex-direction:column;gap:.3rem;">
+                  <div style="font-size:13px;color:#1565C0;">1. 支持用户灵活配置自己关注的原子能力，既是开关也是信息</div>
+                  <div style="font-size:13px;color:#1565C0;">2. 支持对授权用户的信息展示上的可选露出，保证用户信息差异度的同时产品形态更加完整</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:3fr 2.5fr;gap:1.5rem;height:580px;margin-top:1.75rem;">
+          <img src="car/10.png" alt="优化4 原子优化" style="width:100%;height:100%;object-fit:cover;object-position:top left;border-radius:8px;display:block;">
+          <img src="car/11.png" alt="优化4 原子优化" style="width:100%;height:100%;object-fit:cover;object-position:top left;border-radius:8px;display:block;">
+        </div>
+      </div>
+
+      <!-- 修改后总页面展示 -->
+      <div style="margin-top:4rem;">
+        <div style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:1.75rem;">Final Design / 修改后总页面展示</div>
+        <img src="car/12.png" alt="修改后总页面展示" style="width:100%;border-radius:8px;display:block;">
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Next footer -->
+<div class="next-footer">
+  <div class="sec-inner">
+    <div>
+      <div class="next-label">Next Project / 下一个项目</div>
+      <div class="next-title">Relieved Farm</div>
+      <div style="font-family:'Noto Serif SC',serif;font-size:1rem;color:var(--accent);margin-top:.25rem;">蔬心农场</div>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:flex-end;gap:1rem;">
+      <a href="portfolio.html" class="back-link">← Back to All Projects</a>
+      <a href="#" class="next-btn">View Project →</a>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Cursor
+  const co = document.getElementById('co');
+  const ci = document.getElementById('ci');
+  let mx=0,my=0,ox=0,oy=0;
+  document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;ci.style.left=(mx-3)+'px';ci.style.top=(my-3)+'px';});
+  function animCursor(){ox+=(mx-ox)*.12;oy+=(my-oy)*.12;co.style.left=(ox-14)+'px';co.style.top=(oy-14)+'px';requestAnimationFrame(animCursor);}
+  animCursor();
+  document.querySelectorAll('a,button').forEach(el=>{
+    el.addEventListener('mouseenter',()=>{co.style.transform='scale(1.6)';co.style.borderColor='var(--accent)';});
+    el.addEventListener('mouseleave',()=>{co.style.transform='scale(1)';co.style.borderColor='var(--fg)';});
+  });
+</script>
+</body>
+</html>
+
+

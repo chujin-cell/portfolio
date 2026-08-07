@@ -3,6 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
 <title>Deng Jin — Product Manager & Designer</title>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;900&family=Playfair+Display:ital,wght@0,700;1,400;1,700&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Space+Mono:wght@400;700&family=Noto+Serif+SC:wght@400;700;900&display=swap" rel="stylesheet">
 <style>
@@ -36,12 +39,27 @@
   .hero-badge{display:flex;align-items:center;gap:.75rem;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:2.5rem;}
   .hero-badge::before{content:'';width:20px;height:1px;background:var(--muted);}
 
-  .hero-headline{font-family:'Noto Serif SC',serif;font-weight:900;font-size:clamp(3.2rem,5.5vw,5.5rem);line-height:1.05;color:var(--fg);margin-bottom:2rem;letter-spacing:-.02em;}
-  .hero-headline .hl{background:var(--accent);padding:0 .08em;display:inline;}
+  .hero-headline{font-family:'Noto Serif SC',serif;font-weight:900;font-size:clamp(3rem,5vw,5rem);line-height:1.08;color:var(--fg);margin-bottom:1.25rem;letter-spacing:-.02em;}
+  .hero-headline .hl{background:linear-gradient(var(--accent),var(--accent));background-size:100% 55%;background-repeat:no-repeat;background-position:0 90%;padding:0 .1em;}
+  .hero-headline .hero-hl-line{display:block;}
+
+  .hero-domains{display:flex;align-items:center;gap:.6rem;margin-bottom:2rem;}
+  .hero-domain{font-family:'Space Mono',monospace;font-size:15px;letter-spacing:.14em;text-transform:uppercase;padding:.55rem 1.5rem;border:1.5px solid var(--fg);color:var(--fg);border-radius:2px;}
+  .hero-domain-x{font-family:'Space Mono',monospace;font-size:16px;color:var(--muted);letter-spacing:.05em;}
 
   .hero-desc{font-family:'DM Sans',sans-serif;font-size:1rem;line-height:1.9;color:var(--soft);max-width:420px;margin-bottom:2.5rem;}
 
-  .hero-btns{display:flex;gap:1rem;flex-wrap:wrap;}
+  .hero-btns{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:1.5rem;}
+  .hero-contact{display:flex;align-items:center;gap:1rem;flex-wrap:wrap;}
+  .hero-contact-item{display:flex;align-items:center;gap:.5rem;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.06em;color:var(--soft);text-decoration:none;cursor:pointer;transition:color .2s;user-select:none;}
+  .hero-contact-item:hover{color:var(--fg);}
+  .hero-contact-item .ci-icon{font-size:18px;line-height:1;}
+  .hero-contact-item .ci-copy-btn{display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;opacity:.4;transition:opacity .2s;cursor:pointer;flex-shrink:0;}
+  .hero-contact-item:hover .ci-copy-btn{opacity:.7;}
+  .hero-contact-item.copied .ci-copy-btn{opacity:0;}
+  .hero-contact-item .ci-copied{font-size:9px;letter-spacing:.1em;color:var(--accent-dark);opacity:0;transition:opacity .2s;margin-left:.1rem;}
+  .hero-contact-item.copied .ci-copied{opacity:1;}
+  .hero-contact-sep{color:var(--border);font-size:14px;}
   .btn-dark{padding:.85rem 2rem;background:var(--fg);color:#fff;font-family:'Noto Serif SC',serif;font-size:.9rem;text-decoration:none;border-radius:2px;transition:background .2s;white-space:nowrap;}
   .btn-dark:hover{background:#333;}
   .btn-outline{padding:.85rem 2rem;border:1.5px solid var(--fg);color:var(--fg);font-family:'Noto Serif SC',serif;font-size:.9rem;text-decoration:none;border-radius:2px;transition:all .2s;white-space:nowrap;}
@@ -70,6 +88,10 @@
   .pc-text{padding-right:4rem;}
   .pc-meta{display:flex;align-items:center;gap:1.5rem;font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:1.25rem;}
   .pc-meta .pc-num{color:var(--fg);font-weight:700;}
+  .pc-type{font-family:'Space Mono',monospace;font-size:8px;letter-spacing:.12em;text-transform:uppercase;padding:.25rem .6rem;border-radius:2px;white-space:nowrap;}
+  .pc-type--company{background:var(--accent-dark);color:#fff;}
+  .pc-type--school{border:1px solid var(--fg);color:var(--fg);background:transparent;}
+  .pc-type--personal{border:1px solid var(--border);color:var(--muted);background:transparent;}
   .pc-title{font-family:'Playfair Display',serif;font-style:italic;font-weight:700;font-size:clamp(2.5rem,4vw,3.8rem);line-height:1;color:var(--fg);margin-bottom:.75rem;}
   .pc-title .zh{font-family:'Noto Serif SC',serif;font-style:normal;font-weight:700;}
   .pc-subtitle{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1rem;text-transform:uppercase;letter-spacing:.04em;color:var(--fg);margin-bottom:1.25rem;line-height:1.3;max-width:380px;}
@@ -78,8 +100,31 @@
   .pc-tag{font-family:'DM Sans',sans-serif;font-size:12px;padding:.3rem .75rem;border:1px solid var(--border);border-radius:20px;color:var(--soft);background:#fff;}
   .pc-link{display:inline-flex;align-items:center;gap:.5rem;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--fg);border-bottom:1px solid var(--fg);padding-bottom:2px;}
 
-  .pc-img{min-height:420px;max-height:500px;border-radius:6px;overflow:hidden;background:var(--ph);display:flex;align-items:center;justify-content:center;font-family:'Space Mono',monospace;font-size:10px;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;}
+  .pc-img{min-height:420px;max-height:500px;border-radius:6px;overflow:hidden;background:transparent;display:flex;align-items:center;justify-content:center;font-family:'Space Mono',monospace;font-size:10px;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;}
   .pc-img img{width:100%;height:100%;object-fit:cover;display:block;}
+
+  /* Work Experience Timeline */
+  .sec-head { display:flex;align-items:center;gap:1rem;margin-bottom:2rem; }
+  .sec-head-label { font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted); }
+  .sec-head-line { flex:1;height:1px;background:var(--border); }
+  .btn-resume { font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:#fff;background:var(--accent-dark);border:1px solid var(--accent-dark);padding:.4rem 1rem;text-decoration:none;border-radius:2px;white-space:nowrap;transition:background .2s; }
+  .btn-resume:hover { background:#2a6b4a; }
+  .timeline { display:flex;flex-direction:column;gap:0;margin-bottom:1rem; }
+  .tl-item { display:grid;grid-template-columns:90px 1fr;gap:1.5rem;padding:1.75rem 0;border-bottom:1px solid var(--border);position:relative; }
+  .tl-item:last-child { border-bottom:none; }
+  .tl-year { padding-top:.15rem; }
+  .tl-badge { display:inline-block;font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.06em;background:var(--fg);color:#fff;padding:.3rem .5rem;border-radius:3px;white-space:nowrap; }
+  .tl-badge.current { background:var(--accent-dark);color:#fff; }
+  .tl-dot { width:8px;height:8px;background:var(--accent-dark);border-radius:50%;margin:0 auto;margin-top:.75rem; }
+  .tl-company { font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1.15rem;text-transform:uppercase;color:var(--fg);letter-spacing:.02em; }
+  .tl-role { font-family:'DM Sans',sans-serif;font-size:13px;color:var(--accent-dark);font-weight:500;margin:.15rem 0 .75rem; }
+  .tl-location { font-family:'Space Mono',monospace;font-size:9px;color:var(--muted);letter-spacing:.06em;margin-bottom:.75rem; }
+  .tl-bullets { list-style:none;display:flex;flex-direction:column;gap:.5rem; }
+  .tl-bullets li { font-family:'DM Sans',sans-serif;font-size:13px;line-height:1.75;color:var(--soft);padding-left:1rem;position:relative; }
+  .tl-bullets li::before { content:'';position:absolute;left:0;top:.65em;width:4px;height:4px;background:var(--border);border-radius:50%; }
+  .tl-bullets li strong { color:var(--fg);font-weight:500; }
+  .tl-imgs { display:flex;flex-direction:column;gap:.6rem;margin:.9rem 0 .5rem; }
+  .tl-imgs img { width:33vw;height:auto;display:block;border-radius:4px;border:1px solid var(--border); }
 
   /* About placeholder */
   .about-ph{background:#fff;padding:5rem 3rem;text-align:center;}
@@ -163,14 +208,32 @@
   <div class="hero-right">
     <div class="hero-badge">Open to Work</div>
     <h1 class="hero-headline">
-      打<span class="hl">造</span><br>
-      有温度<br>
-      的产品
+      <span class="hero-hl-line">用数据和体验设计</span>
+      驱动<span class="hl">产品增长</span>
     </h1>
-    <p class="hero-desc">相信好的产品，是用户与商业之间最温暖的桥梁。每一次迭代，都让人与产品的距离更近一步。</p>
+    <div class="hero-domains">
+      <span class="hero-domain">AI</span>
+      <span class="hero-domain-x">×</span>
+      <span class="hero-domain">物理空间</span>
+      <span class="hero-domain-x">×</span>
+      <span class="hero-domain">Product-Led Growth</span>
+    </div>
+    <p class="hero-desc">采纳率 +90% · 开发周期 -92% · 操作步骤 -60% · 服务7个AI功能从0到1上线</p>
     <div class="hero-btns">
       <a href="#projects" class="btn-dark">查看项目 →</a>
-      <a href="mailto:dengjin@example.com" class="btn-outline">联系我</a>
+    </div>
+    <div class="hero-contact">
+      <span class="hero-contact-item" data-copy="yyddlin@163.com">
+        <span class="ci-icon">✉</span>yyddlin@163.com
+        <svg class="ci-copy-btn" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="5" y="5" width="8" height="9" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M3 11V3a1 1 0 0 1 1-1h6" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+        <span class="ci-copied">已复制</span>
+      </span>
+      <span class="hero-contact-sep">·</span>
+      <span class="hero-contact-item" data-copy="+86 131 3215 1038">
+        <span class="ci-icon">✆</span>+86 131 3215 1038
+        <svg class="ci-copy-btn" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="5" y="5" width="8" height="9" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M3 11V3a1 1 0 0 1 1-1h6" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+        <span class="ci-copied">已复制</span>
+      </span>
     </div>
 
   </div>
@@ -178,19 +241,242 @@
 
 <!-- ── MARQUEE ── -->
 
+<!-- ── WORK EXPERIENCE ── -->
+<section class="sec fade" id="experience">
+  <div class="sec-inner">
+    <div class="sec-head">
+      <div class="sec-head-label">Professional Experience / 工作经历</div>
+      <div class="sec-head-line"></div>
+      <a href="resume.pdf" download class="btn-resume">下载简历 ↓</a>
+    </div>
+    <div class="timeline">
+
+      <div class="tl-item">
+        <div class="tl-year">
+          <div class="tl-badge current">2025.12 — Now</div>
+          <div class="tl-dot"></div>
+        </div>
+        <div class="tl-body">
+          <div class="tl-company" style="display:flex;align-items:center;gap:.75rem;flex-wrap:wrap;">
+            小冰跃动科技 · 微软小冰
+            <img src="car/17.png" alt="小冰跃动科技 logo" style="height:28px;width:auto;object-fit:contain;">
+            <span style="font-size:18px;color:var(--muted);">×</span>
+            <img src="car/18.png" alt="微软小冰 logo" style="height:28px;width:auto;object-fit:contain;">
+          </div>
+          <div class="tl-role">AI 产品经理</div>
+          <div class="tl-location">北京，中国</div>
+          <ul class="tl-bullets">
+            <li>基于 RAG 技术在 Coze 平台搭建 <strong>AI 医疗助手智能体</strong>，实现 7×24 小时自动化专业问答服务</li>
+            <li>深度拆解运营人员工作流，基于业务场景设计并落地 <strong>50+ 个 Agent、10+ 个 Skill</strong>，涵盖品牌官网生成、目标企业品牌环境分析、企业文章效果优化等核心 Skill，及搜索意图洞察、多类型文章生成等 Agent，构建覆盖<strong>营销文章、品牌内容、企业官网及智能客服</strong>的批量自动化生产体系</li>
+            <div class="tl-imgs">
+              <img src="resume-img-2.png" alt="Agent 矩阵截图">
+            </div>
+            <li>设计<strong>企业内部内容生产看板</strong>及 <strong>GEO 客户侧数据平台</strong>：看板统一管理内容生产进度，推动规模化落地；随 GEO 产品逐步成熟，为客户提供统一、直观、低学习成本的数据查看与管理入口，展示其在大模型生态中的优化成果与品牌表现</li>
+            <div class="tl-imgs">
+              <img src="resume-img-3.png" alt="GEO 客户看板 - 品牌监测">
+            </div>
+            <li>研究 GEO 趋势，优化内容策略，提升官网产品信息的可见性与触达效率</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-year">
+          <div class="tl-badge">2025.7 — 12</div>
+          <div class="tl-dot"></div>
+        </div>
+        <div class="tl-body">
+          <div class="tl-company" style="display:flex;align-items:center;gap:.75rem;flex-wrap:wrap;">
+            金山办公 WPS
+            <img src="car/19.png" alt="金山办公 WPS logo" style="height:28px;width:auto;object-fit:contain;">
+          </div>
+          <div class="tl-role">表格 AI 应用产品经理</div>
+          <div class="tl-location">珠海，中国</div>
+          <ul class="tl-bullets">
+            <li>从 0 到 1 上线 <strong>AI 智能提取、AI 简历助手、AI 情绪识别</strong>等 7 个 AI 功能插件</li>
+            <li>推动 AI 能力插件化策略，开发周期从 <strong>40 天缩短至 3 天</strong>，支撑 100+ AI 功能快速上新</li>
+            <li>主导智能分列功能诊断优化，标注归因 500 条客诉，<strong>用户采纳率提升至 90%</strong></li>
+          </ul>
+          <div class="tl-imgs">
+            <img src="resume-img-8.gif" alt="WPS AI 功能演示">
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-year">
+          <div class="tl-badge">2025.2 — 6</div>
+          <div class="tl-dot"></div>
+        </div>
+        <div class="tl-body">
+          <div class="tl-company" style="display:flex;align-items:center;gap:.75rem;flex-wrap:wrap;">
+            Tangity · NTT Group
+            <img src="car/20.png" alt="Tangity logo" style="height:28px;width:auto;display:block;">
+            <span style="font-size:18px;color:var(--muted);line-height:1;">×</span>
+            <img src="car/21.png" alt="NTT Group logo" style="height:28px;width:auto;display:block;">
+          </div>
+          <div class="tl-role">用户体验设计师 (Intern)</div>
+          <div class="tl-location">Milan, Italy</div>
+          <ul class="tl-bullets">
+            <li>参与意大利头部定制旅行平台 <strong>Aliday B 端 AI 助手</strong>产品设计，将 AI 深度集成至旅行社工作流</li>
+            <li>参与意大利国家级支付平台 <strong>Pagopa 数字钱包商业模式设计</strong>，通过深度市场调研提出一站式数字税务平台方案</li>
+          </ul>
+          <div class="tl-imgs" style="flex-direction:row;gap:.6rem;">
+            <img src="car/13.png" alt="Pagopa 数字钱包" style="width:50%;height:280px;object-fit:cover;object-position:top left;">
+            <img src="car/14.png" alt="Pagopa 数字钱包" style="width:auto;height:280px;object-fit:contain;">
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-year">
+          <div class="tl-badge">2023.4 — 11</div>
+          <div class="tl-dot"></div>
+        </div>
+        <div class="tl-body">
+          <div class="tl-company">大众汽车集团 · 奥迪中国</div>
+          <div class="tl-role">行业与产品创新研究员</div>
+          <div class="tl-location">长春，中国</div>
+          <ul class="tl-bullets">
+            <li>完成 6 份竞品深度报告（蔚来、理想等）、7 份技术趋势调研，调研结论被用于<strong>定义下一代车载功能</strong></li>
+            <li>设计"周更-双周-双月"三级情报推送机制，搭建中德双方常态化协同沟通体系</li>
+          </ul>
+          <div class="tl-imgs" style="flex-direction:row;gap:.6rem;">
+            <img src="resume-img-5.png" alt="竞品研究报告" style="width:50%;height:auto;">
+            <img src="resume-img-6.png" alt="技术趋势调研" style="width:50%;height:auto;">
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-year">
+          <div class="tl-badge">2022.4 — 11</div>
+          <div class="tl-dot"></div>
+        </div>
+        <div class="tl-body">
+          <div class="tl-company">上汽集团 · 智己汽车</div>
+          <div class="tl-role">手机 APP · ToC 产品经理</div>
+          <div class="tl-location">上海，中国</div>
+          <ul class="tl-bullets">
+            <li>重构蓝牙钥匙激活流程，优化界面文案与动效，显著降低新用户功能放弃率</li>
+            <li>设计并上线<strong>桌面车控小组件</strong>，关键操作步骤减少 <strong>60%</strong>（5–6 步 → 1–2 步）</li>
+            <li>基于 16 名用户深度访谈与 865 条反馈，主导远程控车首页结构性改版</li>
+          </ul>
+          <div class="tl-imgs" style="flex-direction:row;gap:.6rem;">
+            <img src="car/22.png" alt="智己汽车" style="height:360px;width:auto;object-fit:contain;">
+            <img src="resume-img-9.png" alt="智己汽车产品成果" style="height:360px;width:auto;object-fit:contain;">
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-year">
+          <div class="tl-badge">2019.7 — 2021.10</div>
+          <div class="tl-dot"></div>
+        </div>
+        <div class="tl-body">
+          <div class="tl-company">米川工作室 · 水石建筑设计院</div>
+          <div class="tl-role">建筑师</div>
+          <div class="tl-location">上海，中国</div>
+          <ul class="tl-bullets">
+            <li>主导<strong>用户调研与需求挖掘</strong>，结合访谈、问卷与竞品分析，支撑多类型商业项目的方案决策</li>
+            <li>设计<strong>多业态运营方案</strong>，提出"租金＋股金＋就业收入"模型，推动乡村振兴项目可持续落地</li>
+            <li><strong>跨角色协调推进</strong>，对接甲方、材料商与施工方，全程跟进项目交付</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 <!-- ── PROJECTS ── -->
 <section class="sec" id="projects">
   <div class="sec-inner">
     <div class="sec-label">Selected Work / 精选项目</div>
     <div class="projects-list">
 
-      <!-- Project 01 -->
-      <a href="project-furnipair.html" class="project-card">
+      <!-- Project 01 · 公司项目 -->
+      <a href="project-im.html" class="project-card">
         <div class="pc-text">
           <div class="pc-meta">
             <span class="pc-num">01</span>
+            <span>Product Design / Automotive</span>
+            <span>2022</span>
+            <span class="pc-type pc-type--company">公司项目</span>
+          </div>
+          <div class="pc-title"><em>IM ZHIJI</em> <span class="zh">智己汽车</span></div>
+          <div class="pc-subtitle">Car Control Home Page Revision<br>Page Revision Based on User Experience</div>
+          <p class="pc-desc-zh">智己汽车是一家致力于为用户创造愉悦生活方式的新能源汽车企业。在产品快速迭代后，App 已达到"能用"但尚未达到"好用"的阶段。本项目通过用户研究与设计冲刺，重新梳理车控首页体验，让核心功能真正贴近用户真实需求。</p>
+          <div class="pc-tags">
+            <span class="pc-tag">体验设计</span>
+            <span class="pc-tag">用户研究</span>
+            <span class="pc-tag">用户分析</span>
+            <span class="pc-tag">Design Sprint</span>
+          </div>
+          <span class="pc-link">View Case Study →</span>
+        </div>
+        <div class="pc-img" style="min-height:0;max-height:320px;height:320px;"><img src="car/23.jpg" alt="智己汽车封面" style="object-position:center center;"></div>
+      </a>
+
+      <!-- Project 02 · 学校项目 -->
+      <a href="project-io.html" class="project-card">
+        <div class="pc-text">
+          <div class="pc-meta">
+            <span class="pc-num">02</span>
+            <span>Service Design / Community Art</span>
+            <span>2023</span>
+            <span class="pc-type pc-type--school">学校项目</span>
+          </div>
+          <div class="pc-title"><em>IO</em> <span class="zh">Inside / Outside</span></div>
+          <div class="pc-subtitle">Exchange Our Creativity<br>Participatory Art Service for Milan's Suburbs</div>
+          <p class="pc-desc-zh">IO 是一个以米兰郊区为场景的参与式艺术服务系统，连接城市艺术家与边缘社区居民，通过移动 Apecar 工坊将创造力带出美术馆，走进街区。本项目为 Politecnico di Milano 服务设计课程作业。</p>
+          <div class="pc-tags">
+            <span class="pc-tag">服务设计</span>
+            <span class="pc-tag">参与式艺术</span>
+            <span class="pc-tag">社区营造</span>
+            <span class="pc-tag">用户研究</span>
+          </div>
+          <span class="pc-link">View Case Study →</span>
+        </div>
+        <div class="pc-img">
+          <img src="io-cover.png" alt="IO Inside / Outside">
+        </div>
+      </a>
+
+      <!-- Project 03 · 学校项目 -->
+      <a href="project-netnook.html" class="project-card">
+        <div class="pc-text">
+          <div class="pc-meta">
+            <span class="pc-num">03</span>
+            <span>Service Design / Sustainability</span>
+            <span>2023/24</span>
+            <span class="pc-type pc-type--school">学校项目</span>
+          </div>
+          <div class="pc-title"><em>NETNOOK</em> <span class="zh">近家办公</span></div>
+          <div class="pc-subtitle">Coworking Near You<br>Modular Pop-Up Workspace for Residential Neighbourhoods</div>
+          <p class="pc-desc-zh">NetNook 是一套可折叠部署的模块化共创空间系统，专为意大利高密度住宅社区设计。通过轻量铝合金骨架、Tensotherm 覆膜与 EcoFlow 离网供电，将闲置废弃房屋变为触手可及的专业办公场所，推动"近家办公"的可持续生活方式。本项目为 Politecnico di Milano 产品服务设计课程作业。</p>
+          <div class="pc-tags">
+            <span class="pc-tag">服务设计</span>
+            <span class="pc-tag">产品设计</span>
+            <span class="pc-tag">可持续</span>
+            <span class="pc-tag">共创空间</span>
+          </div>
+          <span class="pc-link">View Case Study →</span>
+        </div>
+        <div class="pc-img">
+          <img src="home.png" alt="NetNook project cover">
+        </div>
+      </a>
+
+      <!-- Project 04 · 个人项目 -->
+      <a href="project-furnipair.html" class="project-card">
+        <div class="pc-text">
+          <div class="pc-meta">
+            <span class="pc-num">04</span>
             <span>Service Design / Sustainability</span>
             <span>2019.10 — 2020.6</span>
+            <span class="pc-type pc-type--personal">个人项目</span>
           </div>
           <div class="pc-title"><em>FURNIPAR</em> <span class="zh">家具派</span></div>
           <div class="pc-subtitle">Reducing Waste Through<br>Circular Service Design</div>
@@ -204,17 +490,18 @@
           <span class="pc-link">View Case Study →</span>
         </div>
         <div class="pc-img">
-          <img src="project-furnipar.jpg" alt="FURNIPAR project cover">
+          <img src="furnipar-cover.png" alt="FURNIPAR 家具派 project cover">
         </div>
       </a>
 
-      <!-- Project 02 -->
+      <!-- Project 05 · 个人项目 -->
       <a href="project-bookstore.html" class="project-card">
         <div class="pc-text">
           <div class="pc-meta">
-            <span class="pc-num">02</span>
+            <span class="pc-num">05</span>
             <span>Service Design / Space Design</span>
             <span>2020.7 — 2021.7</span>
+            <span class="pc-type pc-type--personal">个人项目</span>
           </div>
           <div class="pc-title"><em>JINGSHI</em> <span class="zh">经世书局</span></div>
           <div class="pc-subtitle">Reimagining an Independent<br>Bookstore's Service Experience</div>
@@ -232,63 +519,6 @@
         </div>
       </a>
 
-      <!-- Project 03 WIP -->
-      <div class="project-card project-card--wip" onclick="showToast()">
-        <div class="pc-text">
-          <div class="pc-meta">
-            <span class="pc-num">03</span>
-            <span>Product Design / Automotive</span>
-            <span>2022</span>
-          </div>
-          <div class="pc-title"><em>IM ZHIJI</em> <span class="zh">智己汽车</span></div>
-          <div class="pc-subtitle">Car Control Home Page Revision<br>Page Revision Based on User Experience</div>
-          <p class="pc-desc-zh">智己汽车是一家致力于为用户创造愉悦生活方式的新能源汽车企业。在产品快速迭代后，App 已达到"能用"但尚未达到"好用"的阶段。本项目通过用户研究与设计冲刺，重新梳理车控首页体验，让核心功能真正贴近用户真实需求。</p>
-          <div class="pc-tags">
-            <span class="pc-tag">体验设计</span>
-            <span class="pc-tag">用户研究</span>
-            <span class="pc-tag">用户分析</span>
-            <span class="pc-tag">Design Sprint</span>
-          </div>
-          <span class="pc-link" style="opacity:.5;">Case Study Coming Soon</span>
-        </div>
-        <div class="pc-img"><div class="pc-wip-img"><span class="pc-wip-label">In Progress</span></div></div>
-      </div>
-
-      <!-- Project 04 WIP -->
-      <div class="project-card project-card--wip" onclick="showToast()">
-        <div class="pc-text">
-          <div class="pc-meta">
-            <span class="pc-num">04</span>
-            <span>Service Design / Agriculture</span>
-            <span>2015.5 — 2016.10</span>
-          </div>
-          <div class="pc-title"><em>RELIEVED FARM</em> <span class="zh">蔬心农场</span></div>
-          <div class="pc-subtitle">Relieved Farm Service Design<br>Exploring Localised Improvements to the CSA Model</div>
-          <p class="pc-desc-zh">致力于优化 CSA 模式，持续本地化改良，探索符合城乡协调发展目标的农场服务体系。通过消除城市消费者对有机蔬菜的疑虑、加强城乡新居民沟通，实现农民可持续增收与区域农业的长效发展。</p>
-          <div class="pc-tags">
-            <span class="pc-tag">服务设计</span>
-            <span class="pc-tag">CSA 模式</span>
-            <span class="pc-tag">市场研究</span>
-            <span class="pc-tag">产品设计</span>
-          </div>
-          <span class="pc-link" style="opacity:.5;">Case Study Coming Soon</span>
-        </div>
-        <div class="pc-img"><div class="pc-wip-img"><span class="pc-wip-label">In Progress</span></div></div>
-      </div>
-
-      <!-- Project 05 WIP -->
-      <div class="project-card project-card--wip" onclick="showToast()">
-        <div class="pc-text">
-          <div class="pc-meta">
-            <span class="pc-num">05</span>
-            <span>Coming Soon</span>
-          </div>
-          <div class="pc-title" style="color:var(--muted);">项目五</div>
-          <div class="pc-subtitle" style="color:var(--muted);">正在整理中，敬请期待</div>
-        </div>
-        <div class="pc-img"><div class="pc-wip-img"><span class="pc-wip-label">In Progress</span></div></div>
-      </div>
-
     </div>
   </div>
 </section>
@@ -304,8 +534,6 @@
       <a href="about.html" class="cd-btn">了解更多 →</a>
     </div>
     <div class="cd-h-track">
-
-      <!-- 手绘波浪线 -->
       <svg class="cd-h-wave" viewBox="0 0 800 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
         <defs>
           <filter id="hand-drawn" x="-5%" y="-30%" width="110%" height="160%">
@@ -316,99 +544,16 @@
         <path d="M0,60 C30,60 42,60 57,60 C90,110 138,110 171,60 C204,10 252,10 286,60 C318,106 366,112 400,60 C434,8 470,6 514,60 C548,112 592,112 629,60 C662,8 706,8 743,60 C762,60 800,60 800,60"
           stroke="#b0a89c" stroke-width="1.5" fill="none" stroke-linecap="round" filter="url(#hand-drawn)"/>
       </svg>
-
-      <!-- 01: 平缓起点 x=30 y_svg=60 → top=195px -->
-      <div class="cd-h-node" style="left:3.75%;top:195px;">
-        <div class="cd-h-dot"></div>
-        <div class="cd-h-card cd-h-card--above">
-          <div class="cd-h-meta">01 · 2015</div>
-          <div class="cd-h-title">环境设计</div>
-          <div class="cd-h-body">从空间读懂"以人为中心"，却逐渐看到未来的交互核心正在从物理实体向数字化转移。</div>
-        </div>
-      </div>
-
-      <!-- 02: 下弧底部 x=114 y_svg=98 → top=233px -->
-      <div class="cd-h-node" style="left:14.25%;top:233px;">
-        <div class="cd-h-dot"></div>
-        <div class="cd-h-card cd-h-card--above">
-          <div class="cd-h-meta">02 · 2017</div>
-          <div class="cd-h-title">蔬心农场（创业项目）</div>
-          <div class="cd-h-body">帮助农民建立有机蔬菜商业模式——第一次感受到，好的机制设计可以让商业逻辑产生真实的社会价值。</div>
-        </div>
-      </div>
-
-      <!-- 03: 上弧顶部 x=228 y_svg=23 → top=158px -->
-      <div class="cd-h-node" style="left:28.5%;top:158px;">
-        <div class="cd-h-dot"></div>
-        <div class="cd-h-card cd-h-card--below">
-          <div class="cd-h-meta">03 · 2019</div>
-          <div class="cd-h-title">建筑设计院（米川建筑）</div>
-          <div class="cd-h-body">项目不只是一栋建筑——协调人、流程、商业与技术，让多重因素共同服务于一个目标。</div>
-        </div>
-      </div>
-
-      <!-- 04: 下弧底部 x=342 y_svg=97 → top=232px -->
-      <div class="cd-h-node" style="left:42.75%;top:232px;">
-        <div class="cd-h-dot"></div>
-        <div class="cd-h-card cd-h-card--above">
-          <div class="cd-h-meta">04 · 2022</div>
-          <div class="cd-h-title">产品服务设计</div>
-          <div class="cd-h-body">米兰理工：产品只是服务的载体。双钻模型、设计冲刺——科学的方法论让直觉变得可验证。</div>
-        </div>
-      </div>
-
-      <!-- 05: 上弧顶部 x=454 y_svg=21 → top=156px -->
-      <div class="cd-h-node" style="left:56.75%;top:156px;">
-        <div class="cd-h-dot"></div>
-        <div class="cd-h-card cd-h-card--below">
-          <div class="cd-h-meta">05 · 2022–2023</div>
-          <div class="cd-h-title">智己汽车</div>
-          <div class="cd-h-body">第一次端到端负责功能从 0 到 1 上线。数据说话，迭代落地，在量产节奏中磨出产品直觉。</div>
-        </div>
-      </div>
-
-      <!-- 06: 波浪交叉点 x=514 y_svg=60 → top=195px -->
-      <div class="cd-h-node" style="left:64.25%;top:195px;">
-        <div class="cd-h-dot"></div>
-        <div class="cd-h-card cd-h-card--above">
-          <div class="cd-h-meta">06 · 2023</div>
-          <div class="cd-h-title">管理工程双学位</div>
-          <div class="cd-h-body">产品经理不仅要对用户体验负责，更要对产品的商业成功负责。补齐了设计师通常缺乏的理性思维。</div>
-        </div>
-      </div>
-
-      <!-- 07: 下弧底部 x=571 y_svg=99 → top=234px -->
-      <div class="cd-h-node" style="left:71.375%;top:234px;">
-        <div class="cd-h-dot"></div>
-        <div class="cd-h-card cd-h-card--above">
-          <div class="cd-h-meta">07 · 2024.7–12</div>
-          <div class="cd-h-title">WPS · AI 协同</div>
-          <div class="cd-h-body">逐渐形成判断：不要让 AI 替代人，而要让人与 AI 各做擅长的事——Augmented Intelligence。</div>
-        </div>
-      </div>
-
-      <!-- 07: 波浪交叉点 x=628 y_svg=60 → top=195px -->
-      <div class="cd-h-node" style="left:78.5%;top:195px;">
-        <div class="cd-h-dot"></div>
-        <div class="cd-h-card cd-h-card--above">
-          <div class="cd-h-meta">08 · 2024</div>
-          <div class="cd-h-title">奥迪中国</div>
-          <div class="cd-h-body">通过竞品分析对行业宏观洞察与趋势预判，深化了在商业约束下的决策判断力。</div>
-        </div>
-      </div>
-
-      <!-- 08: 上弧顶部 x=685 y_svg=21 → top=156px (当前) -->
-      <div class="cd-h-node cd-h-node--current" style="left:85.625%;top:156px;">
-        <div class="cd-h-dot"></div>
-        <div class="cd-h-card cd-h-card--below">
-          <div class="cd-h-meta">09 · 2025 →</div>
-          <div class="cd-h-title">小冰 · 进行中</div>
-          <div class="cd-h-body">迅速识别并拆解业务的重复性、规则性环节，利用 Coze 快速搭建 MVP 智能体，用技术手段迅速撬动业务杠杆。</div>
-        </div>
-      </div>
-
+      <div class="cd-h-node" style="left:3.75%;top:195px;"><div class="cd-h-dot"></div><div class="cd-h-card cd-h-card--above"><div class="cd-h-meta">01 · 2015</div><div class="cd-h-title">环境设计</div><div class="cd-h-body">从空间读懂"以人为中心"，却逐渐看到未来的交互核心正在从物理实体向数字化转移。</div></div></div>
+      <div class="cd-h-node" style="left:14.25%;top:233px;"><div class="cd-h-dot"></div><div class="cd-h-card cd-h-card--above"><div class="cd-h-meta">02 · 2017</div><div class="cd-h-title">蔬心农场（创业项目）</div><div class="cd-h-body">帮助农民建立有机蔬菜商业模式——第一次感受到，好的机制设计可以让商业逻辑产生真实的社会价值。</div></div></div>
+      <div class="cd-h-node" style="left:28.5%;top:158px;"><div class="cd-h-dot"></div><div class="cd-h-card cd-h-card--below"><div class="cd-h-meta">03 · 2019</div><div class="cd-h-title">建筑设计院（米川建筑）</div><div class="cd-h-body">项目不只是一栋建筑——协调人、流程、商业与技术，让多重因素共同服务于一个目标。</div></div></div>
+      <div class="cd-h-node" style="left:42.75%;top:232px;"><div class="cd-h-dot"></div><div class="cd-h-card cd-h-card--above"><div class="cd-h-meta">04 · 2022</div><div class="cd-h-title">产品服务设计</div><div class="cd-h-body">米兰理工：产品只是服务的载体。双钻模型、设计冲刺——科学的方法论让直觉变得可验证。</div></div></div>
+      <div class="cd-h-node" style="left:56.75%;top:156px;"><div class="cd-h-dot"></div><div class="cd-h-card cd-h-card--below"><div class="cd-h-meta">05 · 2022–2023</div><div class="cd-h-title">智己汽车</div><div class="cd-h-body">第一次端到端负责功能从 0 到 1 上线。数据说话，迭代落地，在量产节奏中磨出产品直觉。</div></div></div>
+      <div class="cd-h-node" style="left:64.25%;top:195px;"><div class="cd-h-dot"></div><div class="cd-h-card cd-h-card--above"><div class="cd-h-meta">06 · 2023</div><div class="cd-h-title">管理工程双学位</div><div class="cd-h-body">产品经理不仅要对用户体验负责，更要对产品的商业成功负责。补齐了设计师通常缺乏的理性思维。</div></div></div>
+      <div class="cd-h-node" style="left:71.375%;top:234px;"><div class="cd-h-dot"></div><div class="cd-h-card cd-h-card--above"><div class="cd-h-meta">07 · 2024.7–12</div><div class="cd-h-title">WPS · AI 协同</div><div class="cd-h-body">逐渐形成判断：不要让 AI 替代人，而要让人与 AI 各做擅长的事——Augmented Intelligence。</div></div></div>
+      <div class="cd-h-node" style="left:78.5%;top:195px;"><div class="cd-h-dot"></div><div class="cd-h-card cd-h-card--above"><div class="cd-h-meta">08 · 2024</div><div class="cd-h-title">奥迪中国</div><div class="cd-h-body">通过竞品分析对行业宏观洞察与趋势预判，深化了在商业约束下的决策判断力。</div></div></div>
+      <div class="cd-h-node cd-h-node--current" style="left:85.625%;top:156px;"><div class="cd-h-dot"></div><div class="cd-h-card cd-h-card--below"><div class="cd-h-meta">09 · 2025 →</div><div class="cd-h-title">小冰 · 进行中</div><div class="cd-h-body">迅速识别并拆解业务的重复性、规则性环节，利用 Coze 快速搭建 MVP 智能体，用技术手段迅速撬动业务杠杆。</div></div></div>
     </div>
-
     <div class="cd-quote">
       <p>我无法预知未来，只能在回望时，才发现那些看似杂乱的点滴，是如何奇妙地串联在一起的。所以，我必须相信，此刻的好奇心与探索，终将在未来某一天，以我意想不到的方式，连接成一条属于我的独特路径。</p>
       <p>回顾过往，从建筑空间的感知，到服务系统的思考，再到如今 AI 产品的重构。我发现，那些曾经看似无关的设计点滴，如今正汇聚成一股力量，指引我用更本质、更人文的视角，去探索下一代智能产品的可能。</p>
@@ -427,8 +572,30 @@
   let mx=0,my=0,ox=0,oy=0;
   document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;ci.style.left=(mx-3)+'px';ci.style.top=(my-3)+'px';});
   (function loop(){ox+=(mx-14-ox)*.12;oy+=(my-14-oy)*.12;co.style.left=ox+'px';co.style.top=oy+'px';requestAnimationFrame(loop);})();
-  const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('vis');}),{threshold:.15});
-  document.querySelectorAll('.sec').forEach(s=>obs.observe(s));
+  const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('vis');}),{threshold:0,rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.sec,.fade').forEach(s=>obs.observe(s));
+  // Ensure projects section is always visible
+  const proj=document.getElementById('projects');
+  if(proj) proj.classList.add('vis');
+
+  function copyText(text, el){
+    try {
+      const ta=document.createElement('textarea');
+      ta.value=text; ta.style.cssText='position:fixed;opacity:0;top:0;left:0;pointer-events:none;';
+      document.body.appendChild(ta); ta.focus(); ta.select();
+      document.execCommand('copy');
+      document.body.removeChild(ta);
+    } catch(e){}
+    flashCopied(el);
+    if(navigator.clipboard) navigator.clipboard.writeText(text).catch(()=>{});
+  }
+  function flashCopied(el){
+    el.classList.add('copied');
+    setTimeout(()=>el.classList.remove('copied'),1800);
+  }
+  document.querySelectorAll('.hero-contact-item[data-copy]').forEach(el=>{
+    el.querySelector('.ci-copy-btn').addEventListener('click',()=>copyText(el.dataset.copy, el));
+  });
 
   function showToast(){
     const t=document.getElementById('toast');
