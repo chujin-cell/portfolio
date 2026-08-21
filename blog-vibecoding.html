@@ -70,7 +70,7 @@
   .arch-table tr:nth-child(even) td{background:#f5f1eb;}
   .arch-table td:first-child{color:var(--fg);font-weight:600;white-space:nowrap;}
 
-  .flow{display:flex;align-items:center;flex-wrap:wrap;gap:.5rem;margin:1.75rem 0;}
+  .flow{display:flex;align-items:center;flex-wrap:nowrap;gap:.5rem;margin:1.75rem 0;overflow-x:auto;}
   .flow-step{background:#fff;border:1px solid var(--border);border-radius:4px;padding:.55rem 1rem;font-size:.82rem;color:var(--fg);font-weight:500;white-space:nowrap;}
   .flow-arrow{color:var(--muted);font-size:1.1rem;flex-shrink:0;}
 
@@ -221,7 +221,7 @@
     <div class="card-grid">
       <div class="card">
         <div class="card-title">记账人</div>
-        <div class="card-body">目前由行政一人负责日常录入，没有区分角色。<strong>不是专业财务人员，不需要懂记账规则。</strong>使用手机端微信小程序随手记。</div>
+        <div class="card-body">负责日常录入，可能是前台、师傅，也可能是老板自己顺手记。<strong>不是专业财务人员，不需要懂记账规则。</strong>使用手机端微信小程序随手记。目前只有行政一个人记账，所以没有区分角色。</div>
       </div>
       <div class="card">
         <div class="card-title">老板</div>
@@ -238,17 +238,38 @@
       </li>
       <li>
         <div class="step-num">2</div>
-        <div class="step-content"><strong>未结算账期管理</strong>：修理厂经常先修车、后付款。账目没结清之前存进「未结算」，不占用当月收入统计。客户结清后，填上实际结算日期和到账金额，系统自动算出差额，并把这笔钱计入真正结清的那个月，账期不会记错。</div>
+        <div class="step-content"><strong>遇到特殊情况（赊账处理）</strong>：修理厂经常客户先修车、后付款。这种账没结清之前先存进「未结算」，不占用当月收入统计。等客户真结清了，回来打开这条记录，填实际结算日期和到账金额——哪怕跟当初谈的不一样，系统自动算出差额，把这笔钱计入真正结清的那个月，账期不会记错。</div>
       </li>
       <li>
         <div class="step-num">3</div>
-        <div class="step-content"><strong>Excel 自动报表</strong>：所有记录自动汇总进 Excel，每个月的收入、支出、结余，还有多少账没收回来，系统直接算好、按月生成。月底对账从几天缩短到<strong>几分钟</strong>。</div>
-      </li>
-      <li>
-        <div class="step-num">4</div>
-        <div class="step-content"><strong>电脑端网页版</strong>：列表铺得更开，一屏看到更多信息：日期、科目、金额、结算状态、关联车辆、凭证缩略图。支持车牌号搜索快速定位挂账记录。两端数据实时同步。</div>
+        <div class="step-content"><strong>数据自动沉淀（不用等月底手工算）</strong>：每一笔记录随手就自动汇总进系统，收入、支出、结余、还有多少账没收回来，全部实时算好，不需要月底再手工一笔笔对。</div>
       </li>
     </ul>
+
+    <div style="display:flex;gap:.75rem;margin:1.75rem 0;">
+      <img src="vibe-ss-1.png" alt="功能截图1" loading="lazy" style="flex:1;min-width:0;border-radius:6px;border:1px solid var(--border);">
+      <img src="vibe-ss-2.png" alt="功能截图2" loading="lazy" style="flex:1;min-width:0;border-radius:6px;border:1px solid var(--border);">
+      <img src="vibe-ss-3.png" alt="功能截图3" loading="lazy" style="flex:1;min-width:0;border-radius:6px;border:1px solid var(--border);">
+      <img src="vibe-ss-4.png" alt="功能截图4" loading="lazy" style="flex:1;min-width:0;border-radius:6px;border:1px solid var(--border);">
+      <img src="vibe-ss-5.png" alt="功能截图5" loading="lazy" style="flex:1;min-width:0;border-radius:6px;border:1px solid var(--border);">
+    </div>
+
+    <ul class="step-list">
+      <li>
+        <div class="step-num">4</div>
+        <div class="step-content"><strong>跨端协同核对（手机记、电脑查）</strong>：手机小程序负责随手记账，电脑网页版专门给企业管理者用来核对——列表铺得更开，日期、科目、金额、结算状态、关联车辆、凭证缩略图一屏看全，不用像手机上那样一条条点开翻。两端数据实时同步，工作人员刚记完，管理者电脑上马上就能看到。想找某笔挂账，「未结算」快捷筛选和车牌搜索能直接定位，比在手机上翻快得多。</div>
+      </li>
+      <li>
+        <div class="step-num">5</div>
+        <div class="step-content"><strong>Excel 导出交付（给老板/投资人的最终成果）</strong>：网页版一键导出报表，选好时间范围，自动拆成流水明细和汇总统计两张表，收入支出结余、各科目开销、未结算金额全部提前算好。哪怕这笔账是上个月做的、这个月才真正到账，报表也会自动算进实际到账的那个月，数字跟银行卡、现金抽屉对得上。文件自动命名，点开直接存档或发给老板，一份月度报表几分钟搞定——这正是整个使用旅程最终要交付的成果。</div>
+      </li>
+    </ul>
+
+    <div style="display:flex;gap:.75rem;margin:1.75rem 0;align-items:flex-start;overflow-x:auto;">
+      <img src="vibe-img-15.png" alt="Excel报表截图1" loading="lazy" style="height:220px;width:auto;flex-shrink:0;border-radius:6px;border:1px solid var(--border);">
+      <img src="vibe-img-16.png" alt="Excel报表截图2" loading="lazy" style="height:220px;width:auto;flex-shrink:0;border-radius:6px;border:1px solid var(--border);">
+      <img src="vibe-img-17.png" alt="Excel报表截图3" loading="lazy" style="height:220px;width:auto;flex-shrink:0;border-radius:6px;border:1px solid var(--border);">
+    </div>
 
     <div class="insight-box">
       <p>📌 小程序端不做导出功能。原因是微信小程序对文件下载有较多限制，而「导出报表给老板看」这件事本身更适合在电脑上完成——所以小程序端只保留「记账 + 查看」，导出统一放到网页端。</p>
@@ -296,7 +317,104 @@
     <div class="section-title">信息架构与 UI 设计</div>
 
     <div class="highlight-box">
-      <p>用一句话总结整套设计的取舍逻辑：它不是在做「功能齐全的记账软件」，而是在做<strong>「喷漆车间老板/师傅几秒钟内能完成一个动作」</strong>的工具。</p>
+      <p>用一句话总结整套设计的取舍逻辑：它不是在做「功能齐全的记账软件」，而是在做<strong>「非专业人员几秒钟内能完成一个动作」</strong>的工具。</p>
+    </div>
+
+    <!-- 信息架构图 -->
+    <div style="margin:2rem 0;overflow-x:auto;">
+      <svg viewBox="0 0 860 520" xmlns="http://www.w3.org/2000/svg" style="width:100%;min-width:640px;font-family:'Noto Sans SC',sans-serif;">
+        <!-- Root node -->
+        <rect x="20" y="220" width="100" height="40" rx="6" fill="#4F6FBF"/>
+        <text x="70" y="245" text-anchor="middle" fill="#fff" font-size="14" font-weight="600">会记账本</text>
+
+        <!-- L1 connector lines -->
+        <line x1="120" y1="240" x2="160" y2="240" stroke="#93AAD9" stroke-width="1.5"/>
+        <!-- branch line -->
+        <line x1="160" y1="100" x2="160" y2="400" stroke="#93AAD9" stroke-width="1.5"/>
+
+        <!-- L1: 首页流水 -->
+        <line x1="160" y1="100" x2="200" y2="100" stroke="#93AAD9" stroke-width="1.5"/>
+        <text x="205" y="105" fill="#1C1C1A" font-size="13" font-weight="600">首页：流水</text>
+
+        <!-- L1: 记一笔 -->
+        <line x1="160" y1="240" x2="200" y2="240" stroke="#93AAD9" stroke-width="1.5"/>
+        <text x="205" y="245" fill="#1C1C1A" font-size="13" font-weight="600">记一笔</text>
+
+        <!-- L1: 编辑记录 -->
+        <line x1="160" y1="400" x2="200" y2="400" stroke="#93AAD9" stroke-width="1.5"/>
+        <text x="205" y="405" fill="#1C1C1A" font-size="13" font-weight="600">编辑记录</text>
+
+        <!-- 首页 children vertical line -->
+        <line x1="310" y1="30" x2="310" y2="170" stroke="#B0BDD9" stroke-width="1.2"/>
+        <!-- 首页 connector -->
+        <line x1="290" y1="100" x2="310" y2="100" stroke="#B0BDD9" stroke-width="1.2"/>
+
+        <!-- 首页 children -->
+        <line x1="310" y1="30"  x2="340" y2="30"  stroke="#B0BDD9" stroke-width="1.2"/>
+        <text x="345" y="35"  fill="#4B5563" font-size="12">顶部汇总卡片：收入/支出/结余</text>
+
+        <line x1="310" y1="62"  x2="340" y2="62"  stroke="#B0BDD9" stroke-width="1.2"/>
+        <text x="345" y="67"  fill="#4B5563" font-size="12">未结算提示：应收应付</text>
+
+        <line x1="310" y1="94"  x2="340" y2="94"  stroke="#B0BDD9" stroke-width="1.2"/>
+        <text x="345" y="99"  fill="#4B5563" font-size="12">筛选 tab：今日 / 本月 / 全部 / 未结算</text>
+
+        <line x1="310" y1="126" x2="340" y2="126" stroke="#B0BDD9" stroke-width="1.2"/>
+        <text x="345" y="131" fill="#4B5563" font-size="12">搜索框：根据车牌号 / 车主搜索</text>
+
+        <line x1="310" y1="158" x2="340" y2="158" stroke="#B0BDD9" stroke-width="1.2"/>
+        <text x="345" y="163" fill="#4B5563" font-size="12">流水列表：点击单条记录 → 进入编辑页面</text>
+
+        <!-- 记一笔 children vertical line -->
+        <line x1="310" y1="188" x2="310" y2="380" stroke="#B0BDD9" stroke-width="1.2"/>
+        <!-- 记一笔 connector -->
+        <line x1="290" y1="240" x2="310" y2="240" stroke="#B0BDD9" stroke-width="1.2"/>
+
+        <!-- 记一笔 children -->
+        <line x1="310" y1="188" x2="340" y2="188" stroke="#B0BDD9" stroke-width="1.2"/>
+        <text x="345" y="193" fill="#4B5563" font-size="12">支出 / 收入</text>
+
+        <line x1="310" y1="212" x2="340" y2="212" stroke="#B0BDD9" stroke-width="1.2"/>
+        <text x="345" y="217" fill="#4B5563" font-size="12">科目：图标选择</text>
+
+        <line x1="310" y1="236" x2="340" y2="236" stroke="#B0BDD9" stroke-width="1.2"/>
+        <text x="345" y="241" fill="#4B5563" font-size="12">关联车辆：搜索已有车辆 / 增加新车</text>
+
+        <line x1="310" y1="260" x2="340" y2="260" stroke="#B0BDD9" stroke-width="1.2"/>
+        <text x="345" y="265" fill="#4B5563" font-size="12">结算状态：已支付 / 未支付</text>
+
+        <line x1="310" y1="284" x2="340" y2="284" stroke="#B0BDD9" stroke-width="1.2"/>
+        <text x="345" y="289" fill="#4B5563" font-size="12">凭证上传 / 暂无凭证</text>
+
+        <line x1="310" y1="308" x2="340" y2="308" stroke="#B0BDD9" stroke-width="1.2"/>
+        <text x="345" y="313" fill="#4B5563" font-size="12">金额</text>
+
+        <line x1="310" y1="332" x2="340" y2="332" stroke="#B0BDD9" stroke-width="1.2"/>
+        <text x="345" y="337" fill="#4B5563" font-size="12">备注</text>
+
+        <line x1="310" y1="356" x2="340" y2="356" stroke="#B0BDD9" stroke-width="1.2"/>
+        <text x="345" y="361" fill="#4B5563" font-size="12">日期：默认今天，可改</text>
+
+        <line x1="310" y1="380" x2="340" y2="380" stroke="#B0BDD9" stroke-width="1.2"/>
+        <text x="345" y="385" fill="#4B5563" font-size="12">完成</text>
+
+        <!-- 编辑记录 connector + children vertical line (connected) -->
+        <line x1="290" y1="400" x2="500" y2="400" stroke="#B0BDD9" stroke-width="1.2"/>
+        <line x1="500" y1="400" x2="500" y2="492" stroke="#B0BDD9" stroke-width="1.2"/>
+
+        <!-- 编辑记录 children -->
+        <line x1="500" y1="420" x2="530" y2="420" stroke="#B0BDD9" stroke-width="1.2"/>
+        <text x="535" y="425" fill="#4B5563" font-size="12">结算状态：未支付改为已支付</text>
+
+        <line x1="500" y1="444" x2="530" y2="444" stroke="#B0BDD9" stroke-width="1.2"/>
+        <text x="535" y="449" fill="#4B5563" font-size="12">结算日期</text>
+
+        <line x1="500" y1="468" x2="530" y2="468" stroke="#B0BDD9" stroke-width="1.2"/>
+        <text x="535" y="473" fill="#4B5563" font-size="12">实际结算金额</text>
+
+        <line x1="500" y1="492" x2="530" y2="492" stroke="#B0BDD9" stroke-width="1.2"/>
+        <text x="535" y="497" fill="#4B5563" font-size="12">保存</text>
+      </svg>
     </div>
 
     <p>每一处设计几乎都是把「信息完整」和「操作简洁」这对矛盾，往简洁那边多推了一步——该藏的信息藏起来，该提醒的用颜色/徽标被动提醒而不是弹窗打断，该省的步骤能省则省。</p>
